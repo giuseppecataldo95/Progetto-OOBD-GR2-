@@ -24,35 +24,23 @@ import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class creaTesseraJFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField inserisciNomeTB;
-	private JTextField inserisciCognomeTB;
-	private JTextField inserisciLuogoNTB;
+	JTextField inserisciNomeTB;
+	JTextField inserisciCognomeTB;
+	JTextField inserisciLuogoNTB;
+	ControllerClienti controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					creaTesseraJFrame frame = new creaTesseraJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public creaTesseraJFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	
+	public creaTesseraJFrame(ControllerClienti c) {
+		controller = c;
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -122,6 +110,14 @@ public class creaTesseraJFrame extends JFrame {
 		contentPane.add(percorsoTB);
 		
 		JButton clientiPercorsoButton = new JButton("> Clienti");
+		clientiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.pressClientiPercorso();
+				
+			}
+		});
 		clientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(clientiPercorsoButton);
 		
@@ -180,27 +176,19 @@ public class creaTesseraJFrame extends JFrame {
 		contentPane.add(inserisciCognomeTB);
 		inserisciCognomeTB.setColumns(10);
 		
-		JRadioButton selezionaSessoMRB = new JRadioButton("M");
-		selezionaSessoMRB.setBounds(316, 267, 50, 21);
-		contentPane.add(selezionaSessoMRB);
-		
-		JRadioButton selezionaSessoFRB = new JRadioButton("F");
-		selezionaSessoFRB.setBounds(368, 267, 103, 21);
-		contentPane.add(selezionaSessoFRB);
-		
-		JComboBox inserisciGiornoCB = new JComboBox();
+		final JComboBox inserisciGiornoCB = new JComboBox();
 		inserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		inserisciGiornoCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		inserisciGiornoCB.setBounds(316, 317, 45, 21);
 		contentPane.add(inserisciGiornoCB);
 		
-		JComboBox inserisciMeseCB = new JComboBox();
+		final JComboBox inserisciMeseCB = new JComboBox();
 		inserisciMeseCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		inserisciMeseCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
 		inserisciMeseCB.setBounds(368, 317, 103, 21);
 		contentPane.add(inserisciMeseCB);
 		
-		JComboBox inserisciAnnoCB = new JComboBox();
+		final JComboBox inserisciAnnoCB = new JComboBox();
 		inserisciAnnoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		inserisciAnnoCB.setModel(new DefaultComboBoxModel(new String[] {"1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004"}));
 		inserisciAnnoCB.setBounds(481, 317, 66, 21);
@@ -212,13 +200,43 @@ public class creaTesseraJFrame extends JFrame {
 		contentPane.add(inserisciLuogoNTB);
 		inserisciLuogoNTB.setColumns(10);
 		
+
+		final JComboBox inserisciSessoCB = new JComboBox();
+		inserisciSessoCB.setModel(new DefaultComboBoxModel(new String[] {"M", "F"}));
+		inserisciSessoCB.setBounds(316, 267, 41, 21);
+		contentPane.add(inserisciSessoCB);
+		
 		JButton indietroButton = new JButton("Indietro");
+		indietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.pressIndietroCreaTesseraButton();
+				
+			}
+		});
 		indietroButton.setBounds(640, 484, 103, 31);
 		contentPane.add(indietroButton);
 		
 		JButton avantiButton = new JButton("Avanti");
+		avantiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			 String giorno = inserisciGiornoCB.getSelectedItem().toString();
+			 int giorno1 = Integer.parseInt(giorno);
+			 String mese = inserisciMeseCB.getSelectedItem().toString();
+			 String anno = inserisciAnnoCB.getSelectedItem().toString();
+			 int anno1 = Integer.parseInt(anno);
+			 String sesso = inserisciSessoCB.getSelectedItem().toString();
+			 
+				setVisible(false);
+				
+				controller.salvaDatiCliente(inserisciNomeTB.getText(),inserisciCognomeTB.getText(),inserisciLuogoNTB.getText(),mese, giorno1, anno1,sesso);
+			}
+		});
 		avantiButton.setBounds(799, 484, 103, 31);
 		contentPane.add(avantiButton);
+		
 		
 	}
 }

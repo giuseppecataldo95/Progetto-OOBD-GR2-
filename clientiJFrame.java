@@ -16,32 +16,17 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class clientiJFrame extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					clientiJFrame frame = new clientiJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public clientiJFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	ControllerClienti controller;
+	
+	public clientiJFrame(ControllerClienti c) {
+		controller = c;
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -99,6 +84,14 @@ public class clientiJFrame extends JFrame {
 		toolBar.add(infoButton);
 		
 		JButton creaTesseraButton = new JButton("Crea Nuova Tessera");
+		creaTesseraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.pressNuovaTesseraButton();
+				
+			}
+		});
 		creaTesseraButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		creaTesseraButton.setBounds(315, 228, 183, 102);
 		contentPane.add(creaTesseraButton);
