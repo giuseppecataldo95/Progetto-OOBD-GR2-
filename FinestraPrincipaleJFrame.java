@@ -49,6 +49,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		FinestraPrincipalePanel = new JPanel();
+		FinestraPrincipalePanel.setBackground(new Color(255, 228, 181));
 		FinestraPrincipalePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(FinestraPrincipalePanel);
 		FinestraPrincipalePanel.setLayout(null);
@@ -64,6 +65,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		FinestraPrincipalePanel.add(SelezionaLB);
 		
 		ContainerBottoniPanel = new JPanel();
+		ContainerBottoniPanel.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.setBorder(null);
 		ContainerBottoniPanel.setBounds(10, 140, 966, 273);
 		FinestraPrincipalePanel.add(ContainerBottoniPanel);
