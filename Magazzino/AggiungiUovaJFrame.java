@@ -60,22 +60,22 @@ public class AggiungiUovaJFrame extends JFrame {
 		setContentPane(AggiungiUovaPanel);
 		AggiungiUovaPanel.setLayout(null);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 563);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		AggiungiUovaPanel.add(MenùLateraleTB);
+		JToolBar MenÃ¹LateraleTB = new JToolBar();
+		MenÃ¹LateraleTB.setBorder(null);
+		MenÃ¹LateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		MenÃ¹LateraleTB.setBorderPainted(false);
+		MenÃ¹LateraleTB.setFloatable(false);
+		MenÃ¹LateraleTB.setBackground(new Color(255, 153, 51));
+		MenÃ¹LateraleTB.setMaximumSize(new Dimension(100, 100));
+		MenÃ¹LateraleTB.setBounds(0, 0, 65, 563);
+		MenÃ¹LateraleTB.setOrientation(SwingConstants.VERTICAL);
+		AggiungiUovaPanel.add(MenÃ¹LateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
+		MenÃ¹LateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -85,7 +85,7 @@ public class AggiungiUovaJFrame extends JFrame {
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
+		MenÃ¹LateraleTB.add(VenditeButton);
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
@@ -93,7 +93,7 @@ public class AggiungiUovaJFrame extends JFrame {
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
+		MenÃ¹LateraleTB.add(MagazzinoButton);
 		
 		JButton DipendentiButton = new JButton("");
 		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
@@ -101,10 +101,10 @@ public class AggiungiUovaJFrame extends JFrame {
 		DipendentiButton.setBorder(null);
 		DipendentiButton.setBackground(new Color(255, 153, 51));
 		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
+		MenÃ¹LateraleTB.add(DipendentiButton);
 		
 		Component verticalStrut = Box.createVerticalStrut(200);
-		MenùLateraleTB.add(verticalStrut);
+		MenÃ¹LateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
@@ -112,7 +112,7 @@ public class AggiungiUovaJFrame extends JFrame {
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
+		MenÃ¹LateraleTB.add(InfoButton);
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -211,15 +211,12 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciScorteTB.setBounds(316, 389, 96, 20);
 		AggiungiUovaPanel.add(InserisciScorteTB);
 		
-		JButton IndietroButton = new JButton("Indietro");
-		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		IndietroButton.setBounds(640, 484, 103, 31);
-		AggiungiUovaPanel.add(IndietroButton);
-		
-		JButton AvantiButton = new JButton("Avanti");
-		AvantiButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		AvantiButton.setBounds(799, 484, 103, 31);
-		AggiungiUovaPanel.add(AvantiButton);
+
+		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
+		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
+		AggiungiUovaPanel.add(AggiungiProdottoButton);
+
 		
 		JLabel InserisciDataScadenzaLB = new JLabel("Data Scadenza : ");
 		InserisciDataScadenzaLB.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -227,11 +224,13 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciDataScadenzaLB.setBounds(129, 308, 150, 20);
 		AggiungiUovaPanel.add(InserisciDataScadenzaLB);
 		
-		JComboBox inserisciGiornoScadenzaCB = new JComboBox();
-		inserisciGiornoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
-		inserisciGiornoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		inserisciGiornoScadenzaCB.setBounds(316, 308, 45, 21);
-		AggiungiUovaPanel.add(inserisciGiornoScadenzaCB);
+
+		JComboBox InserisciGiornoScadenzaCB = new JComboBox();
+		InserisciGiornoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
+		InserisciGiornoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		InserisciGiornoScadenzaCB.setBounds(316, 308, 45, 21);
+		AggiungiUovaPanel.add(InserisciGiornoScadenzaCB);
+
 		
 		JComboBox InserisciScadenzaCB = new JComboBox();
 		InserisciScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
