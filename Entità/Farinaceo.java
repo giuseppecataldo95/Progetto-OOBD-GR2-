@@ -5,15 +5,15 @@ public class Farinaceo extends Prodotto_kg {
 	private Date Data_scadenza;
 	private String Lotto_lavorazione;
 	
-	public Farinaceo(int iD_Prodotto, String nome, float valore, double scorte_kg, Date data_scadenza) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+	public Farinaceo(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza) {
+		super(iD_Prodotto, nome, valore, scorte_kg);
 		Data_scadenza = data_scadenza;
 	}
 	
 	
-	public Farinaceo(int iD_Prodotto, String nome, float valore, double scorte_kg, Date data_scadenza,
+	public Farinaceo(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza,
 			String lotto_lavorazione) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+		super(iD_Prodotto, nome, valore, scorte_kg);
 		Data_scadenza = data_scadenza;
 		Lotto_lavorazione = lotto_lavorazione;
 	}

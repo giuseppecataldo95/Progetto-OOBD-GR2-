@@ -9,15 +9,15 @@ public class Latticino extends Prodotto_kg {
 	
 	
 	
-	public Latticino(int iD_Prodotto, String nome, float valore, double scorte_kg, Date data_scadenza) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+	public Latticino(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza) {
+		super(iD_Prodotto, nome, valore, scorte_kg);
 		Data_scadenza = data_scadenza;
 	}
 	
 	
-	public Latticino(int iD_Prodotto, String nome, float valore, double scorte_kg, Date data_scadenza,
+	public Latticino(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza,
 			Date data_mungitura, String paese_mungitura, String paese_lavorazione) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+		super(iD_Prodotto, nome, valore, scorte_kg);
 		Data_scadenza = data_scadenza;
 		Data_mungitura = data_mungitura;
 		Paese_mungitura = paese_mungitura;
