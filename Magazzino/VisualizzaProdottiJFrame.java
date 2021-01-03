@@ -20,10 +20,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-public class AggiungiProdottoJFrame extends JFrame {
+public class VisualizzaProdottiJFrame extends JFrame {
 
-	private JPanel AggiungiNuovoProdottoPanel;
+	private JPanel VisualizzaProdottiPanel;
 
 	/**
 	 * Launch the application.
@@ -32,7 +34,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AggiungiProdottoJFrame frame = new AggiungiProdottoJFrame();
+					VisualizzaProdottiJFrame frame = new VisualizzaProdottiJFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,15 +46,15 @@ public class AggiungiProdottoJFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiProdottoJFrame() {
+	public VisualizzaProdottiJFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
-		AggiungiNuovoProdottoPanel = new JPanel();
-		AggiungiNuovoProdottoPanel.setBackground(new Color(255, 228, 181));
-		AggiungiNuovoProdottoPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		AggiungiNuovoProdottoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(AggiungiNuovoProdottoPanel);
-		AggiungiNuovoProdottoPanel.setLayout(null);
+		VisualizzaProdottiPanel = new JPanel();
+		VisualizzaProdottiPanel.setBackground(new Color(255, 228, 181));
+		VisualizzaProdottiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		VisualizzaProdottiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(VisualizzaProdottiPanel);
+		VisualizzaProdottiPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -63,7 +65,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
 		MenùLateraleTB.setBounds(0, 0, 65, 563);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		AggiungiNuovoProdottoPanel.add(MenùLateraleTB);
+		VisualizzaProdottiPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setBackground(new Color(255, 153, 51));
@@ -116,51 +118,14 @@ public class AggiungiProdottoJFrame extends JFrame {
 		percorsoTB.setBackground(new Color(255, 204, 153));
 		percorsoTB.setMaximumSize(new Dimension(100, 100));
 		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiNuovoProdottoPanel.add(percorsoTB);
+		VisualizzaProdottiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
-		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
-		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
-		
-		JPanel ContainerPanel = new JPanel();
-		ContainerPanel.setBackground(new Color(255, 204, 153));
-		ContainerPanel.setBounds(186, 127, 663, 318);
-		AggiungiNuovoProdottoPanel.add(ContainerPanel);
-		ContainerPanel.setLayout(null);
-		
-		JButton FruttaButton = new JButton("Frutta");
-		FruttaButton.setBounds(10, 11, 213, 145);
-		ContainerPanel.add(FruttaButton);
-		
-		JButton VerduraButton = new JButton("Verdura");
-		
-		VerduraButton.setBounds(223, 11, 213, 145);
-		ContainerPanel.add(VerduraButton);
-		
-		JButton LatticiniButton = new JButton("Farinacei");
-		LatticiniButton.setBounds(436, 11, 213, 145);
-		ContainerPanel.add(LatticiniButton);
-		
-		JButton FarinaceiButton = new JButton("Latticini");
-		FarinaceiButton.setBounds(10, 162, 213, 145);
-		ContainerPanel.add(FarinaceiButton);
-		
-		JButton ConfezionatiButton = new JButton("Confezionati");
-		ConfezionatiButton.setBounds(223, 162, 213, 145);
-		ContainerPanel.add(ConfezionatiButton);
-		
-		JButton UovaButton = new JButton("Uova");
-		
-		UovaButton.setBounds(436, 162, 213, 145);
-		ContainerPanel.add(UovaButton);
-		
-		JLabel SelezionaCategoriaLB = new JLabel("Seleziona la categoria in cui vuoi inserire un nuovo prodotto");
-		SelezionaCategoriaLB.setFont(new Font("Arial", Font.BOLD, 20));
-		SelezionaCategoriaLB.setBounds(236, 66, 570, 66);
-		AggiungiNuovoProdottoPanel.add(SelezionaCategoriaLB);
+		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 	}
 }

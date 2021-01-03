@@ -14,7 +14,7 @@ public class Confezionato extends Prodotto_unitario {
 	
 	
 	
-	public Confezionato(int iD_Prodotto, float valore, int scorte, Date data_scadenza, String marca, String nome, float peso) {
+	public Confezionato(int iD_Prodotto, String nome, float valore, int scorte, Date data_scadenza, String marca,  float peso) {
 		super(iD_Prodotto, valore, scorte);
 		Data_scadenza = data_scadenza;
 		Marca = marca;

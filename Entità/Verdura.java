@@ -7,14 +7,14 @@ public class Verdura extends Prodotto_kg {
 	private String Provenienza;
     private String Lotto_lavorazione;
 	
-	public Verdura(int iD_Prodotto, String nome, float valore, double scorte_kg) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+	public Verdura(int iD_Prodotto, String nome, float valore, float scorte_kg) {
+		super(iD_Prodotto, nome, valore, scorte_kg);
 	}
 	
 	
-	public Verdura(int iD_Prodotto, String nome, float valore, double scorte_kg, Date data_raccolta, String provenienza,
+	public Verdura(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_raccolta, String provenienza,
 			String lotto_lavorazione) {
-		super(iD_Prodotto, valore, nome, scorte_kg);
+		super(iD_Prodotto, nome, valore, scorte_kg);
 		Data_raccolta = data_raccolta;
 		Provenienza = provenienza;
 		Lotto_lavorazione = lotto_lavorazione;
