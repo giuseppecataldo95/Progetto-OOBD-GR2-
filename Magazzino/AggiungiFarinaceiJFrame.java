@@ -59,22 +59,22 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		setContentPane(AggiungiFarinaceiPanel);
 		AggiungiFarinaceiPanel.setLayout(null);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 563);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		AggiungiFarinaceiPanel.add(MenùLateraleTB);
+		JToolBar MenÃ¹LateraleTB = new JToolBar();
+		MenÃ¹LateraleTB.setBorder(null);
+		MenÃ¹LateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		MenÃ¹LateraleTB.setBorderPainted(false);
+		MenÃ¹LateraleTB.setFloatable(false);
+		MenÃ¹LateraleTB.setBackground(new Color(255, 153, 51));
+		MenÃ¹LateraleTB.setMaximumSize(new Dimension(100, 100));
+		MenÃ¹LateraleTB.setBounds(0, 0, 65, 563);
+		MenÃ¹LateraleTB.setOrientation(SwingConstants.VERTICAL);
+		AggiungiFarinaceiPanel.add(MenÃ¹LateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
+		MenÃ¹LateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -84,7 +84,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
+		MenÃ¹LateraleTB.add(VenditeButton);
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
@@ -92,7 +92,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
+		MenÃ¹LateraleTB.add(MagazzinoButton);
 		
 		JButton DipendentiButton = new JButton("");
 		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
@@ -100,10 +100,10 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		DipendentiButton.setBorder(null);
 		DipendentiButton.setBackground(new Color(255, 153, 51));
 		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
+		MenÃ¹LateraleTB.add(DipendentiButton);
 		
 		Component verticalStrut = Box.createVerticalStrut(200);
-		MenùLateraleTB.add(verticalStrut);
+		MenÃ¹LateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
@@ -111,7 +111,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
+		MenÃ¹LateraleTB.add(InfoButton);
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -182,11 +182,13 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiFarinaceiPanel.add(InserisciLottoTB);
 		InserisciLottoTB.setColumns(10);
 		
+
 		final JComboBox InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		InserisciGiornoCB.setBounds(316, 317, 45, 21);
 		AggiungiFarinaceiPanel.add(InserisciGiornoCB);
+
 		
 		final JComboBox InserisciMeseCB = new JComboBox();
 		InserisciMeseCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -228,10 +230,11 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		KgLB.setFont(new Font("Arial", Font.ITALIC, 14));
 		KgLB.setBounds(422, 364, 27, 17);
 		AggiungiFarinaceiPanel.add(KgLB);
-		
+
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
 		AggiungiFarinaceiPanel.add(AggiungiProdottoButton);
+
 	}
 }
