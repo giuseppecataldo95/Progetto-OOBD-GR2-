@@ -1,4 +1,4 @@
-package Cliente;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -8,35 +8,24 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class erroreTesseraJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			erroreTesseraJDialog dialog = new erroreTesseraJDialog();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
+	
 	public erroreTesseraJDialog() {
-		setBounds(100, 100, 300, 150);
+		setAlwaysOnTop(true);
+		
+		setBounds(500, 500, 300, 150);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel erroreLB = new JLabel("");
+			JLabel erroreLB = new JLabel("Errore nell'inserimento dei dati!");
 			erroreLB.setBounds(10, 10, 266, 62);
 			contentPanel.add(erroreLB);
 		}
@@ -46,6 +35,7 @@ public class erroreTesseraJDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton riprovaButton = new JButton("Riprova");
+				
 				riprovaButton.setActionCommand("OK");
 				buttonPane.add(riprovaButton);
 				getRootPane().setDefaultButton(riprovaButton);
