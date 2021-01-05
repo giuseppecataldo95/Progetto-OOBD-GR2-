@@ -13,13 +13,13 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class clienteCreatoJDialog extends JDialog {
+public class ClienteCreatoJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
 
 
-	public clienteCreatoJDialog() {
+	public ClienteCreatoJDialog() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

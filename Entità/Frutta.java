@@ -2,6 +2,8 @@ package Entità;
 import java.util.*;
 
 public class Frutta extends Prodotto_kg{
+
+	
 	private Date Data_raccolta;
 	private String Provenienza;
 	private String Lotto_lavorazione;
@@ -41,7 +43,10 @@ public class Frutta extends Prodotto_kg{
 		Lotto_lavorazione = lotto_lavorazione;
 	}
 	
-	
+	public String toString() {
+		return "Frutta [Data_raccolta=" + Data_raccolta + ", Provenienza=" + Provenienza + ", Lotto_lavorazione="
+				+ Lotto_lavorazione + "]";
+	}
 
 	
 

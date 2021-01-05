@@ -11,7 +11,7 @@ public class ConnessioneDB {
     private final String PASSWORD = "arancia123";
     private final String IP = "objectbasi-db.cbwq2rsh90hv.us-east-2.rds.amazonaws.com";
     private final String PORT = "5432";
-    private String url = "jdbc:postgresql://"+IP+":"+PORT+"/postgres";
+    private String url = "jdbc:postgresql://"+IP+":"+PORT+"/PROGETTO";
 
     private ConnessioneDB() throws SQLException {
         try

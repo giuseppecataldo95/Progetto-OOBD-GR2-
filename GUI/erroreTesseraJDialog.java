@@ -11,12 +11,12 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class erroreTesseraJDialog extends JDialog {
+public class ErroreTesseraJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
 	
-	public erroreTesseraJDialog() {
+	public ErroreTesseraJDialog() {
 		setAlwaysOnTop(true);
 		
 		setBounds(500, 500, 300, 150);
