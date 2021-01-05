@@ -1,4 +1,4 @@
-package Magazzino;
+package GUI;
 
 import java.awt.EventQueue;
 

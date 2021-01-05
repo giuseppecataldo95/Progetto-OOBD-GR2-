@@ -21,11 +21,11 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JLabel;
 
-public class clientiJFrame extends JFrame {
+public class ClientiJFrame extends JFrame {
 
 	private JPanel ClientiPanel;
 	
-	public clientiJFrame() {
+	public ClientiJFrame() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		ClientiPanel = new JPanel();
@@ -35,21 +35,21 @@ public class clientiJFrame extends JFrame {
 		setContentPane(ClientiPanel);
 		ClientiPanel.setLayout(null);
 		
-		JToolBar Menï¿½LateraleTB = new JToolBar();
-		Menï¿½LateraleTB.setBorder(null);
-		Menï¿½LateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		Menï¿½LateraleTB.setBorderPainted(false);
-		Menï¿½LateraleTB.setFloatable(false);
-		Menï¿½LateraleTB.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.setMaximumSize(new Dimension(100, 100));
-		Menï¿½LateraleTB.setBounds(0, 0, 65, 574);
-		Menï¿½LateraleTB.setOrientation(SwingConstants.VERTICAL);
-		ClientiPanel.add(Menï¿½LateraleTB);
+		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBorder(null);
+		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		MenùLateraleTB.setBorderPainted(false);
+		MenùLateraleTB.setFloatable(false);
+		MenùLateraleTB.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
+		MenùLateraleTB.setBounds(0, 0, 65, 574);
+		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		ClientiPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.add(ClientiButton);
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(null);
@@ -59,7 +59,7 @@ public class clientiJFrame extends JFrame {
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.add(VenditeButton);
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
 		VenditeButton.setIcon(null);
@@ -68,7 +68,7 @@ public class clientiJFrame extends JFrame {
 		JButton DipendentiButton = new JButton("");
 		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		DipendentiButton.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.add(DipendentiButton);
+		MenùLateraleTB.add(DipendentiButton);
 		DipendentiButton.setBorderPainted(false);
 		DipendentiButton.setBorder(null);
 		DipendentiButton.setIcon(null);
@@ -77,7 +77,7 @@ public class clientiJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.add(MagazzinoButton);
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(null);
@@ -85,12 +85,12 @@ public class clientiJFrame extends JFrame {
 		
 		Component VerticalStrut = Box.createVerticalStrut(200);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
-		Menï¿½LateraleTB.add(VerticalStrut);
+		MenùLateraleTB.add(VerticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		InfoButton.setBackground(new Color(255, 153, 51));
-		Menï¿½LateraleTB.add(InfoButton);
+		MenùLateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
 		InfoButton.setIcon(null);
