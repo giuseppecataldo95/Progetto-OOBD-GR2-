@@ -1,15 +1,9 @@
-
 package DAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-package DAO;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import Entit√†.Cliente;
+import Entit‡.Cliente;
 
 
 
@@ -21,4 +15,3 @@ public interface ClienteDAO {
 	
 	
 }
-

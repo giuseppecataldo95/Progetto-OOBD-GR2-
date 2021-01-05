@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import DAO.ClienteDAO;
 import Entità.Cliente;
-import Entità.Frutta;
-import Cliente.CFGenerator;
 
 public class ClienteDAOPostgres implements ClienteDAO {
 
