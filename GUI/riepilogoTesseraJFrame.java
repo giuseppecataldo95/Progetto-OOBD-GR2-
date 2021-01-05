@@ -26,9 +26,10 @@ import java.awt.event.ActionEvent;
 
 public class riepilogoTesseraJFrame extends JFrame {
 
-	private JPanel RiepilogoTesseraPanel;
-	
-	 JTextField RiepilogoNomeTB;
+
+  
+   private JPanel RiepilogoTesseraPanel;
+   JTextField RiepilogoNomeTB;
 	 JTextField RiepilogoCognomeTB;
 	 JTextField RiepilogoSessoTB;
 	 JTextField RiepilogoLuogoNTB;
@@ -36,6 +37,7 @@ public class riepilogoTesseraJFrame extends JFrame {
 	 JTextField RiepilogoCFTB;
 	 JTextField RiepilogoMeseNTB;
 	 public JTextField RiepilogoAnnoNTB;
+
 	
 	
 	
@@ -44,6 +46,7 @@ public class riepilogoTesseraJFrame extends JFrame {
 	
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+
 		RiepilogoTesseraPanel = new JPanel();
 		RiepilogoTesseraPanel.setBackground(new Color(255, 228, 181));
 		RiepilogoTesseraPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -52,21 +55,21 @@ public class riepilogoTesseraJFrame extends JFrame {
 		RiepilogoTesseraPanel.setLayout(null);
 		
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 574);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		RiepilogoTesseraPanel.add(MenùLateraleTB);
+		JToolBar Menï¿½LateraleTB = new JToolBar();
+		Menï¿½LateraleTB.setBorder(null);
+		Menï¿½LateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		Menï¿½LateraleTB.setBorderPainted(false);
+		Menï¿½LateraleTB.setFloatable(false);
+		Menï¿½LateraleTB.setBackground(new Color(255, 153, 51));
+		Menï¿½LateraleTB.setMaximumSize(new Dimension(100, 100));
+		Menï¿½LateraleTB.setBounds(0, 0, 65, 574);
+		Menï¿½LateraleTB.setOrientation(SwingConstants.VERTICAL);
+		RiepilogoTesseraPanel.add(Menï¿½LateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(ClientiButton);
+		Menï¿½LateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(null);
@@ -76,7 +79,7 @@ public class riepilogoTesseraJFrame extends JFrame {
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(VenditeButton);
+		Menï¿½LateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
 		VenditeButton.setIcon(null);
@@ -85,7 +88,7 @@ public class riepilogoTesseraJFrame extends JFrame {
 		JButton DipendentiButton = new JButton("");
 		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
+		Menï¿½LateraleTB.add(DipendentiButton);
 		DipendentiButton.setBorderPainted(false);
 		DipendentiButton.setBorder(null);
 		DipendentiButton.setIcon(null);
@@ -95,7 +98,7 @@ public class riepilogoTesseraJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(MagazzinoButton);
+		Menï¿½LateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(null);
@@ -104,13 +107,14 @@ public class riepilogoTesseraJFrame extends JFrame {
 		
 		Component verticalStrut = Box.createVerticalStrut(200);
 		verticalStrut.setBackground(Color.LIGHT_GRAY);
-		MenùLateraleTB.add(verticalStrut);
+
+		Menï¿½LateraleTB.add(verticalStrut);
 		
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
+		Menï¿½LateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
 		InfoButton.setIcon(null);
@@ -179,11 +183,13 @@ public class riepilogoTesseraJFrame extends JFrame {
 		DataInseritaLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		DataInseritaLB.setBounds(173, 393, 176, 13);
 		RiepilogoTesseraPanel.add(DataInseritaLB);
+
 		
 		JLabel CodFiscaleLB = new JLabel("Codice Fiscale Calcolato: ");
 		CodFiscaleLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		CodFiscaleLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		CodFiscaleLB.setBounds(173, 442, 176, 13);
+
 		RiepilogoTesseraPanel.add(CodFiscaleLB);
 		
 		JButton IndietroButton = new JButton("Indietro");
@@ -250,5 +256,4 @@ public class riepilogoTesseraJFrame extends JFrame {
 		SlashData2.setBounds(571, 393, 28, 13);
 		RiepilogoTesseraPanel.add(SlashData2);
 	}
-
 }

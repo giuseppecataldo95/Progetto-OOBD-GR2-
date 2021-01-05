@@ -30,10 +30,12 @@ import java.awt.event.ActionEvent;
 
 public class creaTesseraJFrame extends JFrame {
 
+
 	private JPanel CreaTesseraPanel;
 	JTextField InserisciNomeTB;
 	JTextField InserisciCognomeTB;
 	JTextField InserisciLuogoNTB;
+
 
 
 
@@ -50,21 +52,21 @@ public class creaTesseraJFrame extends JFrame {
 		setContentPane(CreaTesseraPanel);
 		CreaTesseraPanel.setLayout(null);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 574);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		CreaTesseraPanel.add(MenùLateraleTB);
+		JToolBar MenÃ¹LateraleTB = new JToolBar();
+		MenÃ¹LateraleTB.setBorder(null);
+		MenÃ¹LateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		MenÃ¹LateraleTB.setBorderPainted(false);
+		MenÃ¹LateraleTB.setFloatable(false);
+		MenÃ¹LateraleTB.setBackground(new Color(255, 153, 51));
+		MenÃ¹LateraleTB.setMaximumSize(new Dimension(100, 100));
+		MenÃ¹LateraleTB.setBounds(0, 0, 65, 574);
+		MenÃ¹LateraleTB.setOrientation(SwingConstants.VERTICAL);
+		CreaTesseraPanel.add(MenÃ¹LateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(ClientiButton);
+		MenÃ¹LateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(null);
@@ -73,7 +75,7 @@ public class creaTesseraJFrame extends JFrame {
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(VenditeButton);
+		MenÃ¹LateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
 		VenditeButton.setIcon(null);
@@ -82,7 +84,7 @@ public class creaTesseraJFrame extends JFrame {
 		JButton DipendentiButton = new JButton("");
 		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
+		MenÃ¹LateraleTB.add(DipendentiButton);
 		DipendentiButton.setBorderPainted(false);
 		DipendentiButton.setBorder(null);
 		DipendentiButton.setIcon(null);
@@ -91,7 +93,7 @@ public class creaTesseraJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(MagazzinoButton);
+		MenÃ¹LateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(null);
@@ -99,12 +101,12 @@ public class creaTesseraJFrame extends JFrame {
 		
 		Component VerticalStrut = Box.createVerticalStrut(200);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
-		MenùLateraleTB.add(VerticalStrut);
+		MenÃ¹LateraleTB.add(VerticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
+		MenÃ¹LateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
 		InfoButton.setIcon(null);
@@ -219,5 +221,4 @@ public class creaTesseraJFrame extends JFrame {
 		
 		
 	}
-
 }
