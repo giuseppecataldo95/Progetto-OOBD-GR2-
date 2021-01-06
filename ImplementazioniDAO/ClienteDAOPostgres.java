@@ -39,7 +39,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		ResultSet rs = getClienti.executeQuery("SELECT * FROM cliente");
 		ArrayList<Cliente> Clienti = new ArrayList<Cliente>();
 		while(rs.next()) {
-			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogoN"), rs.getString("meseNascita"), rs.getInt("giornoNascita"), rs.getInt("annoNascita"), rs.getString("sesso"));
+			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cfr"), rs.getDate("data_nascita"));
 			
 			Clienti.add(c);
 		}

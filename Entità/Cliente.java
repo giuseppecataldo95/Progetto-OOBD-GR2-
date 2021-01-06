@@ -1,135 +1,106 @@
 package Entità;
 
+import java.sql.Date;
+
 public class Cliente {
 
 	
-	private String nome;
-	private String cognome;
-	private String luogoN;
-	private String meseNascita;
-	private String sesso;
-	private int  giornoNascita;
-	private int  annoNascita;
+	private String Nome;
+	private String Cognome;
+	private String Luogo_nascita;
+	private String Sesso;
+	private String CF;
+	private Date Data_nascita;
 	
 	
 	
-	public Cliente(String nome, String cognome, String luogoN, String  meseNascita, int giornoNascita,
-			int annoNascita, String sesso) {
+	public Cliente(String nome, String cognome, String luogo_nascita, String sesso, String cF, Date data_nascita) {
 		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.luogoN = luogoN;
-		this.meseNascita = meseNascita;
-		this.giornoNascita = giornoNascita;
-		this.annoNascita = annoNascita;
-		this.sesso = sesso;
+		Nome = nome;
+		Cognome = cognome;
+		Luogo_nascita = luogo_nascita;
+		Sesso = sesso;
+		CF = cF;
+		Data_nascita = data_nascita;
 	}
 
 
 
-	
+
 	public String getNome() {
-		return nome;
+		return Nome;
 	}
-
 
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		Nome = nome;
 	}
-
 
 
 	public String getCognome() {
-		return cognome;
+		return Cognome;
 	}
-
 
 
 	public void setCognome(String cognome) {
-		this.cognome = cognome;
+		Cognome = cognome;
 	}
 
 
-
-	public String getLuogoN() {
-		return luogoN;
+	public String getLuogo_nascita() {
+		return Luogo_nascita;
 	}
 
 
-
-	public void setLuogoN(String luogoN) {
-		this.luogoN = luogoN;
+	public void setLuogo_nascita(String luogo_nascita) {
+		Luogo_nascita = luogo_nascita;
 	}
-
-
-
-	public String getMeseNascita() {
-		return meseNascita;
-	}
-
-
-
-	public void setMeseNascita(String meseNascita) {
-		this.meseNascita = meseNascita;
-	}
-
 
 
 	public String getSesso() {
-		return sesso;
+		return Sesso;
 	}
-
 
 
 	public void setSesso(String sesso) {
-		this.sesso = sesso;
+		Sesso = sesso;
 	}
 
 
-
-	public int getGiornoNascita() {
-		return giornoNascita;
+	public String getCF() {
+		return CF;
 	}
 
 
-
-	public void setGiornoNascita(int giornoNascita) {
-		this.giornoNascita = giornoNascita;
+	public void setCF(String cF) {
+		CF = cF;
 	}
 
 
-
-	public int getAnnoNascita() {
-		return annoNascita;
+	public Date getData_nascita() {
+		return Data_nascita;
 	}
 
 
-
-	public void setAnnoNascita(int annoNascita) {
-		this.annoNascita = annoNascita;
+	public void setData_nascita(Date data_nascita) {
+		Data_nascita = data_nascita;
 	}
 
 
-
-
+	
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", cognome=" + cognome + ", luogoN=" + luogoN + ", meseNascita=" + meseNascita
-				+ ", sesso=" + sesso + ", giornoNascita=" + giornoNascita + ", annoNascita=" + annoNascita + "]";
+		return "Cliente [Nome=" + Nome + ", Cognome=" + Cognome + ", Luogo_nascita=" + Luogo_nascita + ", Sesso="
+				+ Sesso + ", CF=" + CF + ", Data_nascita=" + Data_nascita + "]";
 	}
-
-
+	
+	
 
 
 	
 
+	
+	
 
 
-
-	
-	
-	
-	
-	
 }
