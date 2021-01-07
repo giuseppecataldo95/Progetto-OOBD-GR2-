@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControllerCliente;
+
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,9 +17,11 @@ import java.awt.event.ActionEvent;
 public class ErroreTesseraJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-
+	ControllerCliente controller;
 	
-	public ErroreTesseraJDialog() {
+	public ErroreTesseraJDialog(ControllerCliente c) {
+		
+		controller = c;
 		setAlwaysOnTop(true);
 		
 		setBounds(500, 500, 300, 150);
@@ -35,6 +40,16 @@ public class ErroreTesseraJDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton riprovaButton = new JButton("Riprova");
+//				riprovaButton.addActionListener(new ActionListener() {
+//					public void actionPerformed(ActionEvent e) 
+//					
+//					{
+//						
+//						setVisible(false);
+//						controller.ErroreTesseraRiprovaButtonPressed();
+//						
+//					}
+//				});
 				
 				riprovaButton.setActionCommand("OK");
 				buttonPane.add(riprovaButton);

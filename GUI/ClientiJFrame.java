@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControllerCliente;
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -25,7 +28,11 @@ public class ClientiJFrame extends JFrame {
 
 	private JPanel ClientiPanel;
 	
-	public ClientiJFrame() {
+	ControllerCliente controller;
+
+	
+	public ClientiJFrame(ControllerCliente c)  {
+		controller =c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		ClientiPanel = new JPanel();
@@ -98,11 +105,26 @@ public class ClientiJFrame extends JFrame {
 
 		
 		JButton CreaTesseraButton = new JButton("Crea Nuova Tessera");
+		CreaTesseraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+					controller.ClientiCreaNuovaTesseraButtonPressed();
+				
+			}
+		});
 		CreaTesseraButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		CreaTesseraButton.setBounds(315, 228, 183, 102);
 		ClientiPanel.add(CreaTesseraButton);
 		
 		JButton VisualizzaClientiButton = new JButton("Visualizza Clienti");
+		VisualizzaClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.ClientiVisualizzaClientiButtonPressed();
+				
+			}
+		});
 		VisualizzaClientiButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		VisualizzaClientiButton.setBounds(534, 228, 183, 102);
 		ClientiPanel.add(VisualizzaClientiButton);
@@ -114,3 +136,4 @@ public class ClientiJFrame extends JFrame {
 
 	}
 }
+

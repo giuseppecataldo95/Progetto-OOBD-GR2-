@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerCliente;
+
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
@@ -32,17 +34,24 @@ public class CreaTesseraJFrame extends JFrame {
 
 
 	private JPanel CreaTesseraPanel;
-	JTextField InserisciNomeTB;
-	JTextField InserisciCognomeTB;
-	JTextField InserisciLuogoNTB;
+		JTextField InserisciNomeTB;
+	private	JTextField InserisciCognomeTB;
+	private	JTextField InserisciLuogoNTB;
+	private JComboBox  InserisciSessoCB;
+	private JComboBox  InserisciGiorno;
+	private JComboBox  InserisciMese;
+	private JComboBox  InserisciAnno;	
+	
+	 
 
-
-
+	ControllerCliente controller;
 
 	
-	
-	public CreaTesseraJFrame() {
-	
+	public CreaTesseraJFrame(ControllerCliente c) {
+		
+		controller = c;
+		
+		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		CreaTesseraPanel = new JPanel();
@@ -123,6 +132,13 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(PercorsoTB);
 		
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
+		ClientiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				
+			}
+		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(ClientiPercorsoButton);
 		
@@ -212,12 +228,37 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(InserisciSessoCB);
 		
 		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.CreaNuovaTesseraIndietroButtonPressed();
+				
+			}
+		});
 		IndietroButton.setBounds(640, 484, 103, 31);
 		CreaTesseraPanel.add(IndietroButton);
 		
 		JButton AvantiButton = new JButton("Avanti");	
+		AvantiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String 	giorno  = InserisciGiornoCB.getSelectedItem().toString();
+				int 	giorno1 = Integer.parseInt(giorno);
+				String 	mese = InserisciMeseCB.getSelectedItem().toString();
+				String 	anno = InserisciAnnoCB.getSelectedItem().toString();
+				int 	anno1 = Integer.parseInt(anno);
+				String 	sesso = InserisciSessoCB.getSelectedItem().toString();
+				 
+					setVisible(false);
+					
+				controller.CreaNuovaTesseraAvantiButtonPressed(InserisciNomeTB.getText(),InserisciCognomeTB.getText(),InserisciLuogoNTB.getText(),mese, giorno1, anno1,sesso);
+					
+				
+			}
+		});
 		AvantiButton.setBounds(799, 484, 103, 31);
 		CreaTesseraPanel.add(AvantiButton);
+		
 		
 		
 	}

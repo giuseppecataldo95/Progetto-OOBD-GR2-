@@ -16,6 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerCliente;
 
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -28,22 +29,23 @@ public class RiepilogoTesseraJFrame extends JFrame {
 
 
   
-   private JPanel RiepilogoTesseraPanel;
-   JTextField RiepilogoNomeTB;
-	 JTextField RiepilogoCognomeTB;
-	 JTextField RiepilogoSessoTB;
-	 JTextField RiepilogoLuogoNTB;
-	 JTextField RiepilogoGiornoNTB;
-	 JTextField RiepilogoCFTB;
-	 JTextField RiepilogoMeseNTB;
-	 public JTextField RiepilogoAnnoNTB;
+		public JPanel RiepilogoTesseraPanel;
+		public JTextField RiepilogoNomeTB;
+		public JTextField RiepilogoCognomeTB;
+		public JTextField RiepilogoSessoTB;
+		public JTextField RiepilogoLuogoNTB;
+		public JTextField RiepilogoGiornoNTB;
+		public JTextField RiepilogoCFTB;
+		public JTextField RiepilogoMeseNTB;
+		public JTextField RiepilogoAnnoNTB;
 
-	
+	ControllerCliente controller;
 	
 	
 
-	public RiepilogoTesseraJFrame() {
-	
+	public RiepilogoTesseraJFrame(ControllerCliente c) {
+		
+		controller = c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 
@@ -132,10 +134,26 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoTesseraPanel.add(PercorsoTB);
 
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
+		ClientiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				
+			}
+		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
+		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
+				
+			}
+		});
 		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		
@@ -193,10 +211,36 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoTesseraPanel.add(CodFiscaleLB);
 		
 		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.RiepilogoTesseraIndietroButtonPressed();
+				setVisible(false);
+				
+			}
+		});
 		IndietroButton.setBounds(603, 491, 103, 31);
 		RiepilogoTesseraPanel.add(IndietroButton);
 		
 		JButton AvantiButton = new JButton("Avanti");
+		AvantiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String MeseNascita = RiepilogoMeseNTB.getText();
+				int GiornoNascita = Integer.parseInt(RiepilogoGiornoNTB.getText());
+				int AnnoNascita = Integer.parseInt(RiepilogoAnnoNTB.getText());
+				String Nome = RiepilogoNomeTB.getText();
+				String Cognome = RiepilogoCognomeTB.getText();
+				String LuogoNascita = RiepilogoLuogoNTB.getText();
+				String CF = RiepilogoCFTB.getText();
+				String Sesso = RiepilogoSessoTB.getText();
+				
+				setVisible(false);
+				
+				controller.RiepilogoTesseraAvantiButtonPressed(MeseNascita, GiornoNascita, AnnoNascita, Nome, Cognome, LuogoNascita, CF, Sesso);
+						
+			}
+		});
 		AvantiButton.setBounds(808, 491, 103, 31);
 		RiepilogoTesseraPanel.add(AvantiButton);
 		
@@ -255,5 +299,73 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		JLabel SlashData2 = new JLabel("/");
 		SlashData2.setBounds(571, 393, 28, 13);
 		RiepilogoTesseraPanel.add(SlashData2);
+	}
+
+
+
+
+
+	public JTextField getRiepilogoNomeTB() {
+		return RiepilogoNomeTB;
+	}
+
+	public void setRiepilogoNomeTB(JTextField riepilogoNomeTB) {
+		RiepilogoNomeTB = riepilogoNomeTB;
+	}
+
+	public JTextField getRiepilogoCognomeTB() {
+		return RiepilogoCognomeTB;
+	}
+
+	public void setRiepilogoCognomeTB(JTextField riepilogoCognomeTB) {
+		RiepilogoCognomeTB = riepilogoCognomeTB;
+	}
+
+	public JTextField getRiepilogoSessoTB() {
+		return RiepilogoSessoTB;
+	}
+
+	public void setRiepilogoSessoTB(JTextField riepilogoSessoTB) {
+		RiepilogoSessoTB = riepilogoSessoTB;
+	}
+
+	public JTextField getRiepilogoLuogoNTB() {
+		return RiepilogoLuogoNTB;
+	}
+
+	public void setRiepilogoLuogoNTB(JTextField riepilogoLuogoNTB) {
+		RiepilogoLuogoNTB = riepilogoLuogoNTB;
+	}
+
+	public JTextField getRiepilogoGiornoNTB() {
+		return RiepilogoGiornoNTB;
+	}
+
+	public void setRiepilogoGiornoNTB(JTextField riepilogoGiornoNTB) {
+		RiepilogoGiornoNTB = riepilogoGiornoNTB;
+	}
+
+	public JTextField getRiepilogoCFTB() {
+		return RiepilogoCFTB;
+	}
+
+	public void setRiepilogoCFTB(JTextField riepilogoCFTB) {
+		RiepilogoCFTB = riepilogoCFTB;
+	}
+
+	public JTextField getRiepilogoMeseNTB() {
+		return RiepilogoMeseNTB;
+	}
+
+	public void setRiepilogoMeseNTB(JTextField riepilogoMeseNTB) {
+		RiepilogoMeseNTB = riepilogoMeseNTB;
+	}
+
+	public JTextField getRiepilogoAnnoNTB() {
+		return RiepilogoAnnoNTB;
+	}
+
+	public void setRiepilogoAnnoNTB(JTextField riepilogoAnnoNTB) {
+		RiepilogoAnnoNTB = riepilogoAnnoNTB;
 	}
 }
