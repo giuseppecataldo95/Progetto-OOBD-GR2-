@@ -14,34 +14,27 @@ import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControllerMagazzino;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
 
 public class MagazzinoJFrame extends JFrame {
 
 	private JPanel MagazzinoPanel;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MagazzinoJFrame frame = new MagazzinoJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ControllerMagazzino Controller;
+	private JButton MagazzinoButton;
 
 	/**
 	 * Create the frame.
 	 */
-	public MagazzinoJFrame() {
+	public  MagazzinoJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		MagazzinoPanel = new JPanel();
@@ -63,6 +56,11 @@ public class MagazzinoJFrame extends JFrame {
 		MagazzinoPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraClientidaMagazzino();
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -78,7 +76,12 @@ public class MagazzinoJFrame extends JFrame {
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
-		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
 		MagazzinoButton.setBorderPainted(false);
@@ -113,6 +116,12 @@ public class MagazzinoJFrame extends JFrame {
 		ContainerPanel.setLayout(new BoxLayout(ContainerPanel, BoxLayout.X_AXIS));
 		
 		JButton AggiungiNuovoProdottoButton = new JButton("Aggiungi nuovo prodotto");
+		AggiungiNuovoProdottoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraAggiungiProdotto();
+				
+			}
+		});
 		AggiungiNuovoProdottoButton.setMaximumSize(new Dimension(310, 189));
 		ContainerPanel.add(AggiungiNuovoProdottoButton);
 		
@@ -120,6 +129,12 @@ public class MagazzinoJFrame extends JFrame {
 		ContainerPanel.add(horizontalStrut);
 		
 		JButton VisualizzaProdottiButton = new JButton("Visualizza prodotti");
+		VisualizzaProdottiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraVisualizzaProdotto();
+				
+			}
+		});
 		VisualizzaProdottiButton.setMaximumSize(new Dimension(310, 189));
 		VisualizzaProdottiButton.setMinimumSize(new Dimension(310, 189));
 		ContainerPanel.add(VisualizzaProdottiButton);

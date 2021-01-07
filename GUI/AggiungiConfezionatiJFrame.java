@@ -22,6 +22,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerMagazzino;
+
 public class AggiungiConfezionatiJFrame extends JFrame {
 
 	private JPanel AggiungiConfezionatiPanel;
@@ -31,27 +33,16 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 	private JTextField InserisciScorteTB;
 	private JTextField InserisciModConservazioneTB;
 	private JTextField InserisciMarcaTB;
+	private ControllerMagazzino Controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiConfezionatiJFrame frame = new AggiungiConfezionatiJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiConfezionatiJFrame() {
+	public AggiungiConfezionatiJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiConfezionatiPanel = new JPanel();

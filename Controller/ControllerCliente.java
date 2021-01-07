@@ -91,7 +91,7 @@ public class ControllerCliente {
 		
 		CreaTessera.setVisible(false);
 		
-		RiepilogoTessera.RiepilogoNomeTB.setText(nome);;
+		RiepilogoTessera.RiepilogoNomeTB.setText(nome);
 		RiepilogoTessera.RiepilogoCognomeTB.setText(cognome);
 		RiepilogoTessera.RiepilogoLuogoNTB.setText(luogoNascita);
 		RiepilogoTessera.RiepilogoGiornoNTB.setText(String.valueOf(giorno1Nascita));
@@ -142,7 +142,7 @@ public class ControllerCliente {
 	
 	}
 
-public java.sql.Date ConvertiCBInDate(String meseNascita, int giornoNascita, int annoNascita) {
+     public java.sql.Date ConvertiCBInDate(String meseNascita, int giornoNascita, int annoNascita) {
 		
 
 		String separatore = "-";

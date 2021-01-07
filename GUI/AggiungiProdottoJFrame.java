@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControllerMagazzino;
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -24,27 +27,14 @@ import java.awt.event.ActionListener;
 public class AggiungiProdottoJFrame extends JFrame {
 
 	private JPanel AggiungiNuovoProdottoPanel;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiProdottoJFrame frame = new AggiungiProdottoJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ControllerMagazzino Controller;
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiProdottoJFrame() {
+	public AggiungiProdottoJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiNuovoProdottoPanel = new JPanel();
@@ -82,6 +72,11 @@ public class AggiungiProdottoJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
 		MagazzinoButton.setBorderPainted(false);
@@ -119,10 +114,20 @@ public class AggiungiProdottoJFrame extends JFrame {
 		AggiungiNuovoProdottoPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraMagazzinoPercorso();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraAggiungiProdPercorso();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
@@ -133,27 +138,57 @@ public class AggiungiProdottoJFrame extends JFrame {
 		ContainerPanel.setLayout(null);
 		
 		JButton FruttaButton = new JButton("Frutta");
+		FruttaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraFrutta();
+			}
+		});
 		FruttaButton.setBounds(10, 11, 213, 145);
 		ContainerPanel.add(FruttaButton);
 		
 		JButton VerduraButton = new JButton("Verdura");
+		VerduraButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraVerdura();
+			}
+		});
 		
 		VerduraButton.setBounds(223, 11, 213, 145);
 		ContainerPanel.add(VerduraButton);
 		
 		JButton LatticiniButton = new JButton("Farinacei");
+		LatticiniButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraFarinacei();
+			}
+		});
 		LatticiniButton.setBounds(436, 11, 213, 145);
 		ContainerPanel.add(LatticiniButton);
 		
 		JButton FarinaceiButton = new JButton("Latticini");
+		FarinaceiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraLatticini();
+			}
+		});
 		FarinaceiButton.setBounds(10, 162, 213, 145);
 		ContainerPanel.add(FarinaceiButton);
 		
 		JButton ConfezionatiButton = new JButton("Confezionati");
+		ConfezionatiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraConfezionati();
+			}
+		});
 		ConfezionatiButton.setBounds(223, 162, 213, 145);
 		ContainerPanel.add(ConfezionatiButton);
 		
 		JButton UovaButton = new JButton("Uova");
+		UovaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.MostraFinestraUova();
+			}
+		});
 		
 		UovaButton.setBounds(436, 162, 213, 145);
 		ContainerPanel.add(UovaButton);

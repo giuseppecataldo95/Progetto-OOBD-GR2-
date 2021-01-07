@@ -1,6 +1,6 @@
 package App;
 /*
-  * Descrizione: Classe incaricata al calcolo del codice fiscale
+  * Descrizione: Classe incaricata al calcolo del codice fiscale */
   
 
 

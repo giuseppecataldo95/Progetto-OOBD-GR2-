@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import ConnessioneDB.ConnessioneDB;
 import Controller.ControllerCliente;
+import Controller.ControllerMagazzino;
 import DAO.ClienteDAO;
 import DAO.MagazzinoDAO;
 import Entità.Cliente;
@@ -20,7 +21,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		ControllerCliente controller = new ControllerCliente();
+		//ControllerCliente controller = new ControllerCliente();
+		ControllerMagazzino Magazzino = new ControllerMagazzino();
 	
 		
 		

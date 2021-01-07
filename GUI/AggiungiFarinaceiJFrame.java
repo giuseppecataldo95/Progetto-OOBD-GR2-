@@ -22,6 +22,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerMagazzino;
+
 public class AggiungiFarinaceiJFrame extends JFrame {
 
 	private JPanel AggiungiFarinaceiPanel;
@@ -29,27 +31,16 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 	private JTextField InserisciLottoTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
+	private ControllerMagazzino Controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiFarinaceiJFrame frame = new AggiungiFarinaceiJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiFarinaceiJFrame() {
+	public AggiungiFarinaceiJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiFarinaceiPanel = new JPanel();

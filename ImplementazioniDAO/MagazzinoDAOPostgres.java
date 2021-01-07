@@ -13,9 +13,21 @@ import Entità.Verdura;
 
 public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	private Connection connessione;
+	private PreparedStatement inserisciFruttaPS;
+	private PreparedStatement inserisciVerduraPS;
+	private PreparedStatement inserisciConfezionatiPS;
+	private PreparedStatement inserisciLatticiniPS;
+	private PreparedStatement inserisciUovaPS;
+	private PreparedStatement inserisciFarinaceiPS;
 
 	public MagazzinoDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
+		inserisciFruttaPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,?,?,DEFAULT,?)");
+		inserisciVerduraPS = connessione.prepareStatement("INSERT INTO verdura VALUES (?,?,?,?,DEFAULT,?,?)");
+	    inserisciConfezionatiPS = connessione.prepareStatement("INSERT INTO confezionato VALUES (?,?,?,?,?,DEFAULT,?,?,?)");
+		inserisciLatticiniPS = connessione.prepareStatement("INSERT INTO latticino VALUES (?,?,?,?,?,DEFAULT,?,?)");
+	    inserisciUovaPS = connessione.prepareStatement("INSERT INTO uova VALUES (?,?,?,?,DEFAULT,?,?)");
+	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,DEFAULT,?,?)");
 	}
 	
 	@Override
@@ -111,4 +123,75 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		return ProdottiFarinacei;
 		
 	}
+	
+	public void inserisciFrutta(String Nome, String Lotto, String Provenienza, String Data, float Peso, float Valore) throws SQLException {
+		inserisciFruttaPS.setString(1, Data);
+		inserisciFruttaPS.setString(2, Nome);
+		inserisciFruttaPS.setString(3, Provenienza);
+		inserisciFruttaPS.setString(4, Lotto);
+		inserisciFruttaPS.setFloat(5,Peso);
+		inserisciFruttaPS.setFloat(6, Valore);
+		inserisciFruttaPS.executeUpdate();
+		
+	}
+	
+	public void inserisciVerdura(String Nome, String Lotto, String Provenienza, String Data, float Peso, float Valore) throws SQLException {
+		inserisciVerduraPS.setString(1, Data);
+		inserisciVerduraPS.setString(2, Nome);
+		inserisciVerduraPS.setString(3, Provenienza);
+		inserisciVerduraPS.setString(4, Lotto);
+		inserisciVerduraPS.setFloat(5,Peso);
+		inserisciVerduraPS.setFloat(6, Valore);
+		inserisciVerduraPS.executeUpdate();
+		
+	}
+	
+	public void inserisciFarinacei(String Nome, String Lotto, String Data, float Peso, float Valore) throws SQLException {
+		inserisciFarinaceiPS.setString(1, Data);
+		inserisciFarinaceiPS.setString(2, Nome);
+		inserisciFarinaceiPS.setString(3, Lotto);
+		inserisciFarinaceiPS.setFloat(4, Peso);
+		inserisciFarinaceiPS.setFloat(5,Valore);
+		inserisciFarinaceiPS.executeUpdate();
+		
+	}
+	
+	public void inserisciLatticini(String Nome, String PaeseMungitura, String PaeseLavorazione, String DataMungitura, String DataScadenza, float Peso, float Valore) throws SQLException {
+		inserisciLatticiniPS.setString(1, DataScadenza);
+		inserisciLatticiniPS.setString(2, DataMungitura);
+		inserisciLatticiniPS.setString(3, PaeseMungitura);
+		inserisciLatticiniPS.setString(4, PaeseLavorazione);
+		inserisciLatticiniPS.setString(5, Nome);
+		inserisciLatticiniPS.setFloat(6, Peso);
+		inserisciLatticiniPS.setFloat(7, Valore);
+		inserisciLatticiniPS.executeUpdate();
+		
+		
+	}
+	
+	public void inserisciConfezionati(String Nome, String Marca, String Lotto, String Conservazione, String DataScadenza, int NConfezioni, float PesoConfezione, float Valore) throws SQLException {
+		inserisciLatticiniPS.setString(1, DataScadenza);
+		inserisciLatticiniPS.setString(2, Nome);
+		inserisciLatticiniPS.setString(3, Lotto);
+		inserisciLatticiniPS.setString(4, Marca);
+		inserisciLatticiniPS.setString(5, Conservazione);
+		inserisciLatticiniPS.setInt(6, NConfezioni);
+		inserisciLatticiniPS.setFloat(7, Valore);
+		inserisciLatticiniPS.setFloat(8, PesoConfezione);
+		inserisciLatticiniPS.executeUpdate();
+		
+		
+	}
+	
+	public void inserisciUova(String Nome, String Lotto, String Data, String Provenienza, int NConfezioniUova, float Valore, int NPerConfezione) throws SQLException {
+		inserisciUovaPS.setString(1, Data);
+		inserisciUovaPS.setString(2, Lotto);
+		inserisciUovaPS.setInt(3, NPerConfezione);
+		inserisciUovaPS.setString(4, Provenienza);
+		inserisciUovaPS.setInt(5,NConfezioniUova);
+		inserisciUovaPS.setFloat(6, Valore);
+		inserisciUovaPS.executeUpdate();
+		
+	}
+	
 }

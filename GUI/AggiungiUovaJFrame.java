@@ -22,6 +22,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerMagazzino;
+
 public class AggiungiUovaJFrame extends JFrame {
 
 	private JPanel AggiungiUovaPanel;
@@ -30,27 +32,14 @@ public class AggiungiUovaJFrame extends JFrame {
 	private JTextField InserisciProvenienzaTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiUovaJFrame frame = new AggiungiUovaJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ControllerMagazzino Controller;
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiUovaJFrame() {
+	public AggiungiUovaJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiUovaPanel = new JPanel();

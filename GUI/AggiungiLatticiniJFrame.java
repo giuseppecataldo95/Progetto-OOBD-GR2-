@@ -22,6 +22,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerMagazzino;
+
 public class AggiungiLatticiniJFrame extends JFrame {
 
 	private JPanel AggiungiLatticiniPanel;
@@ -30,27 +32,15 @@ public class AggiungiLatticiniJFrame extends JFrame {
 	private JTextField InserisciProvenienzaTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
+	private ControllerMagazzino Controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiLatticiniJFrame frame = new AggiungiLatticiniJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiLatticiniJFrame() {
+	public AggiungiLatticiniJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiLatticiniPanel = new JPanel();

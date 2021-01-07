@@ -8,6 +8,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
@@ -22,6 +24,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ControllerMagazzino;
+
 public class AggiungiFruttaJFrame extends JFrame {
 
 	private JPanel AggiungiFruttaPanel;
@@ -30,27 +34,15 @@ public class AggiungiFruttaJFrame extends JFrame {
 	private JTextField InserisciProvenienzaTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
+	private ControllerMagazzino Controller;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AggiungiFruttaJFrame frame = new AggiungiFruttaJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiFruttaJFrame() {
+	public AggiungiFruttaJFrame(ControllerMagazzino c) {
+		Controller = c;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiFruttaPanel = new JPanel();
@@ -59,6 +51,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		AggiungiFruttaPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(AggiungiFruttaPanel);
 		AggiungiFruttaPanel.setLayout(null);
+	
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
