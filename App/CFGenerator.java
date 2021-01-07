@@ -1,12 +1,7 @@
 package App;
 /*
   * Descrizione: Classe incaricata al calcolo del codice fiscale
-  *
-  * Autore: Marco 'RootkitNeo' C.
-  *
-  *         Distribuito entro i termini della licenza GNU/GPL v.3
-  *
-  */
+  
 
 
 
