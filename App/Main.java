@@ -21,8 +21,21 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//ControllerCliente controller = new ControllerCliente();
-		ControllerMagazzino Magazzino = new ControllerMagazzino();
+		
+		ConnessioneDB DBconn = null;
+		Connection Conn = null;
+		ClienteDAO cliente = null;
+		
+		
+		try {
+			DBconn = ConnessioneDB.getInstance();
+			Conn = DBconn.getConnection();
+			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
+			ControllerCliente Cliente = new ControllerCliente();
+		
+		}catch(SQLException e) {
+			System.out.println("Errore: "+e);
+		}
 	
 		
 		
@@ -35,27 +48,8 @@ public class Main {
 		
 		
 		
-//		ConnessioneDB DBconn = null;
-//		Connection Conn = null;
-////    	MagazzinoDAO MagDAO = null;
-//		ClienteDAO cliente = null;
-//		
-//		try {
-//			DBconn = ConnessioneDB.getInstance();
-//			Conn = DBconn.getConnection();
-//			cliente = new ClienteDAOPostgres(Conn);
-//			
-//			ArrayList<Cliente> clienti = cliente.getCliente();
-//			for(Cliente o:clienti)
-//			{
-//				System.out.println(o);
-//			}
-//			
-//	
-//		}catch(SQLException e) {
-//			System.out.println("Errore: "+e);
-//		}
-//	}
+		
+	
 
 
 }

@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
@@ -27,11 +28,14 @@ import Controller.ControllerMagazzino;
 public class AggiungiUovaJFrame extends JFrame {
 
 	private JPanel AggiungiUovaPanel;
-	private JTextField InserisciNomeTB;
+	private JTextField InserisciNPerConfezioneTB;
 	private JTextField InserisciLottoTB;
 	private JTextField InserisciProvenienzaTB;
-	private JTextField InserisciValorekgTB;
+	private JTextField InserisciValoreTB;
 	private JTextField InserisciScorteTB;
+	private JComboBox InserisciGiornoScadenzaCB;
+	private JComboBox InserisciMeseScadenzaCB;
+	private JComboBox InserisciAnnoScadenzaCB;
 	private ControllerMagazzino Controller;
 
 	/**
@@ -160,11 +164,11 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciProvenienzaLB.setBounds(139, 349, 140, 20);
 		AggiungiUovaPanel.add(InserisciProvenienzaLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciNomeTB.setBounds(316, 172, 96, 19);
-		AggiungiUovaPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNPerConfezioneTB = new JTextField();
+		InserisciNPerConfezioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciNPerConfezioneTB.setBounds(316, 172, 96, 19);
+		AggiungiUovaPanel.add(InserisciNPerConfezioneTB);
+		InserisciNPerConfezioneTB.setColumns(10);
 		
 		InserisciLottoTB = new JTextField();
 		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -178,11 +182,11 @@ public class AggiungiUovaJFrame extends JFrame {
 		AggiungiUovaPanel.add(InserisciProvenienzaTB);
 		InserisciProvenienzaTB.setColumns(10);
 		
-		InserisciValorekgTB = new JTextField();
-		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValorekgTB.setBounds(316, 267, 96, 20);
-		AggiungiUovaPanel.add(InserisciValorekgTB);
-		InserisciValorekgTB.setColumns(10);
+		InserisciValoreTB = new JTextField();
+		InserisciValoreTB.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciValoreTB.setBounds(316, 267, 96, 20);
+		AggiungiUovaPanel.add(InserisciValoreTB);
+		InserisciValoreTB.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -201,8 +205,17 @@ public class AggiungiUovaJFrame extends JFrame {
 		AggiungiUovaPanel.add(InserisciScorteTB);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
+		AggiungiProdottoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Controller.UovaBottoneAvantiPremuto();
+				} catch (SQLException e1) {
+				//FINESTRA ERRORE
+				}
+			}
+		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
+		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiUovaPanel.add(AggiungiProdottoButton);
 		
 		JLabel InserisciDataScadenzaLB = new JLabel("Data Scadenza : ");
@@ -211,22 +224,66 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciDataScadenzaLB.setBounds(129, 308, 150, 20);
 		AggiungiUovaPanel.add(InserisciDataScadenzaLB);
 		
-		JComboBox InserisciGiornoScadenzaCB = new JComboBox();
+		InserisciGiornoScadenzaCB = new JComboBox();
 		InserisciGiornoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		InserisciGiornoScadenzaCB.setBounds(316, 308, 45, 21);
 		AggiungiUovaPanel.add(InserisciGiornoScadenzaCB);
 		
-		JComboBox InserisciScadenzaCB = new JComboBox();
-		InserisciScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
-		InserisciScadenzaCB.setBounds(371, 308, 103, 21);
-		AggiungiUovaPanel.add(InserisciScadenzaCB);
+		InserisciMeseScadenzaCB = new JComboBox();
+		InserisciMeseScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
+		InserisciMeseScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
+		InserisciMeseScadenzaCB.setBounds(371, 308, 103, 21);
+		AggiungiUovaPanel.add(InserisciMeseScadenzaCB);
 		
-		JComboBox InserisciAnnoScadenzaCB = new JComboBox();
+		InserisciAnnoScadenzaCB = new JComboBox();
 		InserisciAnnoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciAnnoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		InserisciAnnoScadenzaCB.setBounds(484, 308, 66, 21);
 		AggiungiUovaPanel.add(InserisciAnnoScadenzaCB);
+	}
+	
+	
+	public String getInserisciNomeTB() {
+		return InserisciNPerConfezioneTB.getText();
+	}
+
+
+
+	public String getInserisciValoreTB() {
+		return InserisciValoreTB.getText();
+	}
+
+
+	public String getInserisciScorteTB() {
+		return InserisciScorteTB.getText();
+	}
+
+
+	public String getInserisciGiornoScadenzaCB() {
+		return InserisciGiornoScadenzaCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciMeseScadenzaCB() {
+		return InserisciMeseScadenzaCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciAnnoScadenzaCB() {
+		return InserisciAnnoScadenzaCB.getSelectedItem().toString();
+	}
+	
+	public String getInserisciLottoTB() {
+		return InserisciLottoTB.getText();
+	}
+
+
+	public String getInserisciProvenienzaTB() {
+		return InserisciProvenienzaTB.getText();
+	}
+	
+	public String getInserisciNPerConfezione() {
+		return InserisciNPerConfezioneTB.getText();
 	}
 }

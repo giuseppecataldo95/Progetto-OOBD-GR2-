@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class RiepilogoTesseraJFrame extends JFrame {
@@ -226,18 +227,16 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String MeseNascita = RiepilogoMeseNTB.getText();
-				int GiornoNascita = Integer.parseInt(RiepilogoGiornoNTB.getText());
-				int AnnoNascita = Integer.parseInt(RiepilogoAnnoNTB.getText());
-				String Nome = RiepilogoNomeTB.getText();
-				String Cognome = RiepilogoCognomeTB.getText();
-				String LuogoNascita = RiepilogoLuogoNTB.getText();
-				String CF = RiepilogoCFTB.getText();
-				String Sesso = RiepilogoSessoTB.getText();
+				
 				
 				setVisible(false);
 				
-				controller.RiepilogoTesseraAvantiButtonPressed(MeseNascita, GiornoNascita, AnnoNascita, Nome, Cognome, LuogoNascita, CF, Sesso);
+				try {
+					controller.RiepilogoTesseraAvantiButtonPressed();
+				} catch (SQLException e1) {
+					
+					//APERTURA FINESTRA ERRORE
+				}
 						
 			}
 		});
@@ -303,69 +302,103 @@ public class RiepilogoTesseraJFrame extends JFrame {
 
 
 
-
-
-	public JTextField getRiepilogoNomeTB() {
-		return RiepilogoNomeTB;
+	public String getRiepilogoNomeTB() {
+		return RiepilogoNomeTB.getText();
 	}
 
-	public void setRiepilogoNomeTB(JTextField riepilogoNomeTB) {
-		RiepilogoNomeTB = riepilogoNomeTB;
+
+
+	public String getRiepilogoCognomeTB() {
+		return RiepilogoCognomeTB.getText();
 	}
 
-	public JTextField getRiepilogoCognomeTB() {
-		return RiepilogoCognomeTB;
+
+
+	public String getRiepilogoSessoTB() {
+		return RiepilogoSessoTB.getText();
 	}
 
-	public void setRiepilogoCognomeTB(JTextField riepilogoCognomeTB) {
-		RiepilogoCognomeTB = riepilogoCognomeTB;
+
+
+	public String getRiepilogoLuogoNTB() {
+		return RiepilogoLuogoNTB.getText();
 	}
 
-	public JTextField getRiepilogoSessoTB() {
-		return RiepilogoSessoTB;
+
+
+	public String getRiepilogoGiornoNTB() {
+		return RiepilogoGiornoNTB.getText();
 	}
 
-	public void setRiepilogoSessoTB(JTextField riepilogoSessoTB) {
-		RiepilogoSessoTB = riepilogoSessoTB;
+
+
+	public String getRiepilogoCFTB() {
+		return RiepilogoCFTB.getText();
 	}
 
-	public JTextField getRiepilogoLuogoNTB() {
-		return RiepilogoLuogoNTB;
+
+
+	public String getRiepilogoMeseNTB() {
+		return RiepilogoMeseNTB.getText();
 	}
 
-	public void setRiepilogoLuogoNTB(JTextField riepilogoLuogoNTB) {
-		RiepilogoLuogoNTB = riepilogoLuogoNTB;
+
+
+	public String getRiepilogoAnnoNTB() {
+		return RiepilogoAnnoNTB.getText();
 	}
 
-	public JTextField getRiepilogoGiornoNTB() {
-		return RiepilogoGiornoNTB;
+
+
+	public void setRiepilogoNomeTB(String riepilogoNomeTB) {
+		RiepilogoNomeTB.setText(riepilogoNomeTB);
 	}
 
-	public void setRiepilogoGiornoNTB(JTextField riepilogoGiornoNTB) {
-		RiepilogoGiornoNTB = riepilogoGiornoNTB;
+
+
+	public void setRiepilogoCognomeTB(String riepilogoCognomeTB) {
+		RiepilogoCognomeTB.setText(riepilogoCognomeTB);
 	}
 
-	public JTextField getRiepilogoCFTB() {
-		return RiepilogoCFTB;
+
+
+	public void setRiepilogoSessoTB(String riepilogoSessoTB) {
+		RiepilogoSessoTB.setText(riepilogoSessoTB);
 	}
 
-	public void setRiepilogoCFTB(JTextField riepilogoCFTB) {
-		RiepilogoCFTB = riepilogoCFTB;
+
+
+	public void setRiepilogoLuogoNTB(String riepilogoLuogoNTB) {
+		RiepilogoLuogoNTB.setText(riepilogoLuogoNTB);
 	}
 
-	public JTextField getRiepilogoMeseNTB() {
-		return RiepilogoMeseNTB;
+
+
+	public void setRiepilogoGiornoNTB(String riepilogoGiornoNTB) {
+		RiepilogoGiornoNTB.setText(riepilogoGiornoNTB);
 	}
 
-	public void setRiepilogoMeseNTB(JTextField riepilogoMeseNTB) {
-		RiepilogoMeseNTB = riepilogoMeseNTB;
+
+
+	public void setRiepilogoCFTB(String riepilogoCFTB) {
+		RiepilogoCFTB.setText(riepilogoCFTB);
 	}
 
-	public JTextField getRiepilogoAnnoNTB() {
-		return RiepilogoAnnoNTB;
+
+
+	public void setRiepilogoMeseNTB(String riepilogoMeseNTB) {
+		RiepilogoMeseNTB.setText(riepilogoMeseNTB);
 	}
 
-	public void setRiepilogoAnnoNTB(JTextField riepilogoAnnoNTB) {
-		RiepilogoAnnoNTB = riepilogoAnnoNTB;
+
+
+	public void setRiepilogoAnnoNTB(String riepilogoAnnoNTB) {
+		RiepilogoAnnoNTB.setText(riepilogoAnnoNTB);
 	}
+
+
+
+
+	
+	
 }

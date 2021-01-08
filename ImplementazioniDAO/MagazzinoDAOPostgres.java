@@ -124,8 +124,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public void inserisciFrutta(String Nome, String Lotto, String Provenienza, String Data, float Peso, float Valore) throws SQLException {
-		inserisciFruttaPS.setString(1, Data);
+	public void inserisciFrutta(String Nome, String Lotto, String Provenienza, Date Data, float Peso, float Valore) throws SQLException {
+		inserisciFruttaPS.setDate(1, Data);
 		inserisciFruttaPS.setString(2, Nome);
 		inserisciFruttaPS.setString(3, Provenienza);
 		inserisciFruttaPS.setString(4, Lotto);
@@ -135,8 +135,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public void inserisciVerdura(String Nome, String Lotto, String Provenienza, String Data, float Peso, float Valore) throws SQLException {
-		inserisciVerduraPS.setString(1, Data);
+	public void inserisciVerdura(String Nome, String Lotto, String Provenienza, Date Data, float Peso, float Valore) throws SQLException {
+		inserisciVerduraPS.setDate(1, Data);
 		inserisciVerduraPS.setString(2, Nome);
 		inserisciVerduraPS.setString(3, Provenienza);
 		inserisciVerduraPS.setString(4, Lotto);
@@ -146,8 +146,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public void inserisciFarinacei(String Nome, String Lotto, String Data, float Peso, float Valore) throws SQLException {
-		inserisciFarinaceiPS.setString(1, Data);
+	public void inserisciFarinacei(String Nome, String Lotto, Date Data, float Peso, float Valore) throws SQLException {
+		inserisciFarinaceiPS.setDate(1, Data);
 		inserisciFarinaceiPS.setString(2, Nome);
 		inserisciFarinaceiPS.setString(3, Lotto);
 		inserisciFarinaceiPS.setFloat(4, Peso);
@@ -156,9 +156,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public void inserisciLatticini(String Nome, String PaeseMungitura, String PaeseLavorazione, String DataMungitura, String DataScadenza, float Peso, float Valore) throws SQLException {
-		inserisciLatticiniPS.setString(1, DataScadenza);
-		inserisciLatticiniPS.setString(2, DataMungitura);
+	public void inserisciLatticini(String Nome, String PaeseMungitura, String PaeseLavorazione, Date DataMungitura, Date DataScadenza, float Peso, float Valore) throws SQLException {
+		inserisciLatticiniPS.setDate(1, DataScadenza);
+		inserisciLatticiniPS.setDate(2, DataMungitura);
 		inserisciLatticiniPS.setString(3, PaeseMungitura);
 		inserisciLatticiniPS.setString(4, PaeseLavorazione);
 		inserisciLatticiniPS.setString(5, Nome);
@@ -169,22 +169,22 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public void inserisciConfezionati(String Nome, String Marca, String Lotto, String Conservazione, String DataScadenza, int NConfezioni, float PesoConfezione, float Valore) throws SQLException {
-		inserisciLatticiniPS.setString(1, DataScadenza);
-		inserisciLatticiniPS.setString(2, Nome);
-		inserisciLatticiniPS.setString(3, Lotto);
-		inserisciLatticiniPS.setString(4, Marca);
-		inserisciLatticiniPS.setString(5, Conservazione);
-		inserisciLatticiniPS.setInt(6, NConfezioni);
-		inserisciLatticiniPS.setFloat(7, Valore);
-		inserisciLatticiniPS.setFloat(8, PesoConfezione);
-		inserisciLatticiniPS.executeUpdate();
+	public void inserisciConfezionati(String Nome, String Marca, String Lotto, String Conservazione, Date DataScadenza, int NConfezioni, float PesoConfezione, float Valore) throws SQLException {
+		inserisciConfezionatiPS.setDate(1, DataScadenza);
+		inserisciConfezionatiPS.setString(2, Nome);
+		inserisciConfezionatiPS.setString(3, Lotto);
+		inserisciConfezionatiPS.setString(4, Marca);
+		inserisciConfezionatiPS.setString(5, Conservazione);
+		inserisciConfezionatiPS.setInt(6, NConfezioni);
+		inserisciConfezionatiPS.setFloat(7, Valore);
+		inserisciConfezionatiPS.setFloat(8, PesoConfezione);
+		inserisciConfezionatiPS.executeUpdate();
 		
 		
 	}
 	
-	public void inserisciUova(String Nome, String Lotto, String Data, String Provenienza, int NConfezioniUova, float Valore, int NPerConfezione) throws SQLException {
-		inserisciUovaPS.setString(1, Data);
+	public void inserisciUova(String Lotto, Date Data, String Provenienza, int NConfezioniUova, float Valore, int NPerConfezione) throws SQLException {
+		inserisciUovaPS.setDate(1, Data);
 		inserisciUovaPS.setString(2, Lotto);
 		inserisciUovaPS.setInt(3, NPerConfezione);
 		inserisciUovaPS.setString(4, Provenienza);
@@ -193,5 +193,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		inserisciUovaPS.executeUpdate();
 		
 	}
+
+	
 	
 }

@@ -79,8 +79,10 @@ public class CFGenerator {
   String getMeseInserito() {
     return m;
   }
-  int getAnno() {
-    return (anno%100);
+  String getAnno() {
+    String Anno = String.valueOf(anno);
+    String anno = Anno.substring(2, 4);
+	  return anno;
   }
   int getAnnoInserito() {
     return anno;

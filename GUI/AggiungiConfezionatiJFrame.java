@@ -34,6 +34,10 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 	private JTextField InserisciModConservazioneTB;
 	private JTextField InserisciMarcaTB;
 	private ControllerMagazzino Controller;
+	private JComboBox InserisciGiornoCB;
+	private JComboBox InserisciMeseCB;
+	private JComboBox InserisciAnnoCB;
+	private JTextField InserisciPesoConfezioneTB;
 
 	
 
@@ -148,19 +152,19 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		JLabel InserisciLottoLB = new JLabel("Lotto lavorazione : ");
 		InserisciLottoLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		InserisciLottoLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciLottoLB.setBounds(129, 222, 150, 20);
+		InserisciLottoLB.setBounds(129, 202, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciLottoLB);
 		
 		JLabel InserisciValoreLB = new JLabel("Valore per unit\u00E0 : ");
 		InserisciValoreLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		InserisciValoreLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciValoreLB.setBounds(129, 267, 150, 20);
+		InserisciValoreLB.setBounds(129, 233, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciValoreLB);
 		
 		JLabel InserisciDataScadenzaLB = new JLabel("Data Scadenza : ");
 		InserisciDataScadenzaLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		InserisciDataScadenzaLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciDataScadenzaLB.setBounds(129, 317, 150, 20);
+		InserisciDataScadenzaLB.setBounds(129, 264, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciDataScadenzaLB);
 		
 		InserisciNomeTB = new JTextField();
@@ -171,78 +175,161 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		
 		InserisciLottoTB = new JTextField();
 		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciLottoTB.setBounds(316, 223, 190, 19);
+		InserisciLottoTB.setBounds(316, 203, 190, 19);
 		AggiungiConfezionatiPanel.add(InserisciLottoTB);
 		InserisciLottoTB.setColumns(10);
 		
-		final JComboBox InserisciGiornoCB = new JComboBox();
+		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		InserisciGiornoCB.setBounds(316, 317, 45, 21);
+		InserisciGiornoCB.setBounds(316, 264, 45, 21);
 		AggiungiConfezionatiPanel.add(InserisciGiornoCB);
 		
-		final JComboBox InserisciMeseCB = new JComboBox();
+		InserisciMeseCB = new JComboBox();
 		InserisciMeseCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciMeseCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
-		InserisciMeseCB.setBounds(368, 317, 103, 21);
+		InserisciMeseCB.setBounds(371, 264, 103, 21);
 		AggiungiConfezionatiPanel.add(InserisciMeseCB);
 		
 		
 		
-		final JComboBox InserisciAnnoCB = new JComboBox();
+		InserisciAnnoCB = new JComboBox();
 		InserisciAnnoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciAnnoCB.setModel(new DefaultComboBoxModel(new String[] {"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"}));
-		InserisciAnnoCB.setBounds(481, 317, 66, 21);
+		InserisciAnnoCB.setBounds(484, 264, 66, 21);
 		AggiungiConfezionatiPanel.add(InserisciAnnoCB);
 		
 		InserisciValorekgTB = new JTextField();
 		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValorekgTB.setBounds(316, 267, 96, 20);
+		InserisciValorekgTB.setBounds(316, 234, 96, 20);
 		AggiungiConfezionatiPanel.add(InserisciValorekgTB);
 		InserisciValorekgTB.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
-		EuroLB.setBounds(422, 269, 8, 14);
+		EuroLB.setBounds(422, 233, 8, 20);
 		AggiungiConfezionatiPanel.add(EuroLB);
 		
 		JLabel InserisciScorteLB = new JLabel("Scorte :");
 		InserisciScorteLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciScorteLB.setBounds(234, 366, 45, 14);
+		InserisciScorteLB.setBounds(234, 298, 45, 14);
 		AggiungiConfezionatiPanel.add(InserisciScorteLB);
 		
 		InserisciScorteTB = new JTextField();
 		InserisciScorteTB.setFont(new Font("Arial", Font.PLAIN, 11));
 		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(316, 364, 96, 20);
+		InserisciScorteTB.setBounds(316, 296, 96, 20);
 		AggiungiConfezionatiPanel.add(InserisciScorteTB);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
+		AggiungiProdottoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
+		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiConfezionatiPanel.add(AggiungiProdottoButton);
 		
 		JLabel InserisciModConservazioneLB = new JLabel("Modalit\u00E0 conservazione : ");
 		InserisciModConservazioneLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		InserisciModConservazioneLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciModConservazioneLB.setBounds(129, 400, 150, 20);
+		InserisciModConservazioneLB.setBounds(129, 326, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciModConservazioneLB);
 		
 		InserisciModConservazioneTB = new JTextField();
 		InserisciModConservazioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
 		InserisciModConservazioneTB.setColumns(10);
-		InserisciModConservazioneTB.setBounds(316, 400, 190, 19);
+		InserisciModConservazioneTB.setBounds(316, 327, 190, 19);
 		AggiungiConfezionatiPanel.add(InserisciModConservazioneTB);
 		
 		JLabel InserisciMarcaLB = new JLabel("Marca :");
 		InserisciMarcaLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciMarcaLB.setBounds(234, 439, 45, 14);
+		InserisciMarcaLB.setBounds(234, 359, 45, 14);
 		AggiungiConfezionatiPanel.add(InserisciMarcaLB);
 		
 		InserisciMarcaTB = new JTextField();
 		InserisciMarcaTB.setFont(new Font("Arial", Font.PLAIN, 11));
 		InserisciMarcaTB.setColumns(10);
-		InserisciMarcaTB.setBounds(316, 436, 190, 19);
+		InserisciMarcaTB.setBounds(316, 357, 190, 19);
 		AggiungiConfezionatiPanel.add(InserisciMarcaTB);
+		
+		JLabel lnserisciPesoConfezioneLB = new JLabel("Peso Confezione :");
+		lnserisciPesoConfezioneLB.setFont(new Font("Arial", Font.PLAIN, 12));
+		lnserisciPesoConfezioneLB.setBounds(176, 391, 103, 14);
+		AggiungiConfezionatiPanel.add(lnserisciPesoConfezioneLB);
+		
+		InserisciPesoConfezioneTB = new JTextField();
+		InserisciPesoConfezioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPesoConfezioneTB.setColumns(10);
+		InserisciPesoConfezioneTB.setBounds(316, 388, 96, 20);
+		AggiungiConfezionatiPanel.add(InserisciPesoConfezioneTB);
+		
+		JLabel KgLB = new JLabel("Kg");
+		KgLB.setFont(new Font("Arial", Font.ITALIC, 14));
+		KgLB.setBounds(422, 296, 27, 20);
+		AggiungiConfezionatiPanel.add(KgLB);
+		
+		JLabel KgLB_1 = new JLabel("Kg");
+		KgLB_1.setFont(new Font("Arial", Font.ITALIC, 14));
+		KgLB_1.setBounds(422, 387, 27, 20);
+		AggiungiConfezionatiPanel.add(KgLB_1);
+	}
+
+
+
+	public String getInserisciNomeTB() {
+		return InserisciNomeTB.getText();
+	}
+
+
+
+	public String getInserisciLottoTB() {
+		return InserisciLottoTB.getText();
+	}
+
+
+
+	public String getInserisciValorekgTB() {
+		return InserisciValorekgTB.getText();
+	}
+
+
+
+	public String getInserisciScorteTB() {
+		return InserisciScorteTB.getText();
+	}
+
+
+
+	public String getInserisciModConservazioneTB() {
+		return InserisciModConservazioneTB.getText();
+	}
+
+
+
+	public String getInserisciMarcaTB() {
+		return InserisciMarcaTB.getText();
+	}
+
+
+
+	public String getInserisciGiornoCB() {
+		return InserisciGiornoCB.getSelectedItem().toString();
+	}
+
+
+
+	public String getInserisciMeseCB() {
+		return InserisciMeseCB.getSelectedItem().toString();
+	}
+
+
+
+	public String getInserisciAnnoCB() {
+		return InserisciAnnoCB.getSelectedItem().toString();
+	}
+	
+	public String getInserisciPesoConfezioneTB() {
+		return InserisciPesoConfezioneTB.getText();
 	}
 }

@@ -2,6 +2,7 @@ package Controller;
 import GUI.*;
 import ImplementazioniDAO.ClienteDAOPostgres;
 import App.CFGenerator;
+import App.ConvertiCBInData;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +31,8 @@ public class ControllerCliente {
 	 public RiepilogoTesseraJFrame RiepilogoTessera;
 	 public VisualizzaClientiJFrame VisualizzaClienti;
 	 public ErroreTesseraJDialog ErroreTessera;
-	 
+	 private ConvertiCBInData Convertitore;
+	 private ClienteDAO DAO;
 	 
 	
 
@@ -82,7 +84,7 @@ public class ControllerCliente {
 		
 	}
 	
-	public void CreaNuovaTesseraAvantiButtonPressed(String nome, String cognome, String luogoNascita, String meseNascita, int giorno1Nascita, int anno1Nascita, String sesso) {
+	public void CreaNuovaTesseraAvantiButtonPressed() {
 		
 
 		
@@ -91,16 +93,22 @@ public class ControllerCliente {
 		
 		CreaTessera.setVisible(false);
 		
-		RiepilogoTessera.RiepilogoNomeTB.setText(nome);
-		RiepilogoTessera.RiepilogoCognomeTB.setText(cognome);
-		RiepilogoTessera.RiepilogoLuogoNTB.setText(luogoNascita);
-		RiepilogoTessera.RiepilogoGiornoNTB.setText(String.valueOf(giorno1Nascita));
-		RiepilogoTessera.RiepilogoMeseNTB.setText(meseNascita);
-		RiepilogoTessera.RiepilogoAnnoNTB.setText(String.valueOf(anno1Nascita));
-		RiepilogoTessera.RiepilogoSessoTB.setText(sesso);
-		CFGenerator cf = new CFGenerator(nome, cognome, luogoNascita, meseNascita, anno1Nascita, giorno1Nascita , sesso);
-		RiepilogoTessera.RiepilogoCFTB.setText(cf.getCodiceFiscale());
-		
+		String Nome = CreaTessera.getNomeTB();
+		String Cognome = CreaTessera.getCognomeTB();
+		String Luogo_Nascita = CreaTessera.getLuogoNTB();
+		int Giorno = Integer.parseInt(CreaTessera.getGiornoCB());
+		String Mese = CreaTessera.getMeseCB();
+		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
+		String Sesso = CreaTessera.getSessoCB();
+		CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
+		RiepilogoTessera.setRiepilogoNomeTB(Nome);
+		RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
+		RiepilogoTessera.setRiepilogoCFTB(cf.getCodiceFiscale());
+		RiepilogoTessera.setRiepilogoSessoTB(Sesso);
+		RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
+		RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
+		RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
+		RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
 		RiepilogoTessera.setVisible(true);
 
 		
@@ -120,61 +128,24 @@ public class ControllerCliente {
 	}
 
 
-	public void RiepilogoTesseraAvantiButtonPressed(String mese_nascita, int giorno_nascita, int anno_nascita, String nome, String cognome, String luogoNascita, String cf, String sesso) {
+	public void RiepilogoTesseraAvantiButtonPressed() throws SQLException {
 
 		
-		try 
-	{
-			ClienteDAOPostgres cliente = new ClienteDAOPostgres(ConnessioneDB.getInstance().getConnection());
+		
+			String Giorno = RiepilogoTessera.getRiepilogoGiornoNTB();
+	    	String Mese = RiepilogoTessera.getRiepilogoMeseNTB();
+	    	String Anno = RiepilogoTessera.getRiepilogoAnnoNTB();
+	    	String Nome = RiepilogoTessera.getRiepilogoNomeTB();
+			String Cognome = RiepilogoTessera.getRiepilogoCognomeTB();
+			String LuogoNascita = RiepilogoTessera.getRiepilogoLuogoNTB();
+			String CF = RiepilogoTessera.getRiepilogoCFTB();
+			String Sesso = RiepilogoTessera.getRiepilogoSessoTB();
+	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+	    	Date Data_N = Convertitore.Converti();
+			DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
 			
-			java.sql.Date data_nascita = ConvertiCBInDate(mese_nascita, giorno_nascita, anno_nascita);
-			cliente.insertCliente(nome, cognome, luogoNascita, cf, sesso,  data_nascita);
-			
-			} 
-		
-		catch (SQLException e1)
-		
-		{e1.printStackTrace();
-//			ErroreTesseraJDialog ErroreTessera = new ErroreTesseraJDialog(this);
-//			RiepilogoTessera.setEnabled(false);
-//			ErroreTessera.setVisible(true);
-		}
-	
-	}
-
-     public java.sql.Date ConvertiCBInDate(String meseNascita, int giornoNascita, int annoNascita) {
 		
 
-		String separatore = "-";
-		if(meseNascita.equals("GENNAIO"))
-		meseNascita = "01";
-		if(meseNascita.equals("FEBBRAIO"))
-		meseNascita = "02";
-		if(meseNascita.equals("MARZO"))
-		meseNascita = "03";
-		if(meseNascita.equals("APRILE"))
-		meseNascita = "04";
-		if(meseNascita.equals("MAGGIO"))
-		meseNascita = "05";	
-		if(meseNascita.equals("GIUGNO"))
-		meseNascita = "06";	
-		if(meseNascita.equals("LUGLIO"))
-		meseNascita = "07";
-		if(meseNascita.equals("AGOSTO"))
-		meseNascita = "08";
-		if(meseNascita.equals("SETTEMBRE"))
-		meseNascita = "09";
-		if(meseNascita.equals("OTTOBRE"))
-		meseNascita = "10";
-		if(meseNascita.equals("NOVEMBRE"))
-		meseNascita = "11";
-		if(meseNascita.equals("DICEMBRE"))
-		meseNascita = "12";
-	    String Data	= (String.valueOf(annoNascita).concat(separatore).concat(meseNascita).concat(separatore).concat(String.valueOf(giornoNascita)));
-		
-		Date dataNascita1 = Date.valueOf(Data);
-	    
-		return dataNascita1;
 	}
 
 

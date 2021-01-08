@@ -8,6 +8,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
@@ -22,17 +24,24 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import App.ConvertiCBInData;
 import Controller.ControllerMagazzino;
 
 public class AggiungiLatticiniJFrame extends JFrame {
 
 	private JPanel AggiungiLatticiniPanel;
 	private JTextField InserisciNomeTB;
-	private JTextField InserisciLottoTB;
-	private JTextField InserisciProvenienzaTB;
+	private JTextField InserisciPaeseLavorazioneTB;
+	private JTextField InserisciPaeseMungituraTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
 	private ControllerMagazzino Controller;
+	private JComboBox InserisciGiornoMungituraCB;
+	private JComboBox InserisciMeseMungituraCB;
+	private JComboBox InserisciAnnoMungituraCB;
+	private JComboBox InserisciGiornoScadenzaCB;
+	private JComboBox InserisciMeseScadenzaCB;
+	private JComboBox InserisciAnnoScadenzaCB;
 
 
 	/**
@@ -173,19 +182,19 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		AggiungiLatticiniPanel.add(InserisciNomeTB);
 		InserisciNomeTB.setColumns(10);
 		
-		InserisciLottoTB = new JTextField();
-		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciLottoTB.setBounds(316, 223, 190, 19);
-		AggiungiLatticiniPanel.add(InserisciLottoTB);
-		InserisciLottoTB.setColumns(10);
+		InserisciPaeseLavorazioneTB = new JTextField();
+		InserisciPaeseLavorazioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPaeseLavorazioneTB.setBounds(316, 223, 190, 19);
+		AggiungiLatticiniPanel.add(InserisciPaeseLavorazioneTB);
+		InserisciPaeseLavorazioneTB.setColumns(10);
 		
-		final JComboBox InserisciGiornoMungituraCB = new JComboBox();
+		InserisciGiornoMungituraCB = new JComboBox();
 		InserisciGiornoMungituraCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoMungituraCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		InserisciGiornoMungituraCB.setBounds(316, 317, 45, 21);
 		AggiungiLatticiniPanel.add(InserisciGiornoMungituraCB);
 		
-		final JComboBox InserisciMeseMungituraCB = new JComboBox();
+		InserisciMeseMungituraCB = new JComboBox();
 		InserisciMeseMungituraCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciMeseMungituraCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
 		InserisciMeseMungituraCB.setBounds(368, 317, 103, 21);
@@ -193,17 +202,17 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		
 		
 		
-		final JComboBox InserisciAnnoMungituraCB = new JComboBox();
+		InserisciAnnoMungituraCB = new JComboBox();
 		InserisciAnnoMungituraCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciAnnoMungituraCB.setModel(new DefaultComboBoxModel(new String[] {"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"}));
 		InserisciAnnoMungituraCB.setBounds(481, 317, 66, 21);
 		AggiungiLatticiniPanel.add(InserisciAnnoMungituraCB);
 		
-		InserisciProvenienzaTB = new JTextField();
-		InserisciProvenienzaTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciProvenienzaTB.setBounds(316, 399, 190, 19);
-		AggiungiLatticiniPanel.add(InserisciProvenienzaTB);
-		InserisciProvenienzaTB.setColumns(10);
+		InserisciPaeseMungituraTB = new JTextField();
+		InserisciPaeseMungituraTB.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPaeseMungituraTB.setBounds(316, 399, 190, 19);
+		AggiungiLatticiniPanel.add(InserisciPaeseMungituraTB);
+		InserisciPaeseMungituraTB.setColumns(10);
 		
 		InserisciValorekgTB = new JTextField();
 		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -233,8 +242,18 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		AggiungiLatticiniPanel.add(KgLB);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
+		AggiungiProdottoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					Controller.LatticiniBottoneAvantiPremuto();
+				} catch (SQLException e1) {
+					//FINESTRA ERRORE
+				}
+			}
+		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
+		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiLatticiniPanel.add(AggiungiProdottoButton);
 		
 		JLabel InserisciDataScadenzaLB = new JLabel("Data Scadenza : ");
@@ -243,22 +262,81 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		InserisciDataScadenzaLB.setBounds(129, 359, 150, 20);
 		AggiungiLatticiniPanel.add(InserisciDataScadenzaLB);
 		
-		JComboBox InserisciGiornoScadenzaCB = new JComboBox();
+		InserisciGiornoScadenzaCB = new JComboBox();
 		InserisciGiornoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		InserisciGiornoScadenzaCB.setBounds(316, 358, 45, 21);
 		AggiungiLatticiniPanel.add(InserisciGiornoScadenzaCB);
 		
-		JComboBox InserisciScadenzaCB = new JComboBox();
-		InserisciScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
-		InserisciScadenzaCB.setBounds(368, 358, 103, 21);
-		AggiungiLatticiniPanel.add(InserisciScadenzaCB);
+		InserisciMeseScadenzaCB = new JComboBox();
+		InserisciMeseScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
+		InserisciMeseScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
+		InserisciMeseScadenzaCB.setBounds(368, 358, 103, 21);
+		AggiungiLatticiniPanel.add(InserisciMeseScadenzaCB);
 		
-		JComboBox InserisciAnnoScadenzaCB = new JComboBox();
+		InserisciAnnoScadenzaCB = new JComboBox();
 		InserisciAnnoScadenzaCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciAnnoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		InserisciAnnoScadenzaCB.setBounds(481, 358, 66, 21);
 		AggiungiLatticiniPanel.add(InserisciAnnoScadenzaCB);
 	}
+
+
+	public String getInserisciNomeTB() {
+		return InserisciNomeTB.getText();
+	}
+
+
+	public String getInserisciPaeseLavorazioneTB() {
+		return InserisciPaeseLavorazioneTB.getText();
+	}
+
+
+	public String getInserisciPaeseMungituraTB() {
+		return InserisciPaeseMungituraTB.getText();
+	}
+
+
+	public String getInserisciValorekgTB() {
+		return InserisciValorekgTB.getText();
+	}
+
+
+	public String getInserisciScorteTB() {
+		return InserisciScorteTB.getText();
+	}
+
+
+	public String getInserisciGiornoMungituraCB() {
+		return InserisciGiornoMungituraCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciMeseMungituraCB() {
+		return InserisciMeseMungituraCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciAnnoMungituraCB() {
+		return InserisciAnnoMungituraCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciGiornoScadenzaCB() {
+		return InserisciGiornoScadenzaCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciMeseScadenzaCB() {
+		return InserisciMeseScadenzaCB.getSelectedItem().toString();
+	}
+
+
+	public String getInserisciAnnoScadenzaCB() {
+		return InserisciAnnoScadenzaCB.getSelectedItem().toString();
+	}
+	
+	
+	
+	
 }

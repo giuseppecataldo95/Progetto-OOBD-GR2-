@@ -27,7 +27,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 	}
 	
-	public int insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, java.sql.Date data_nascita) throws SQLException {
+	public int insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
 		
 		
 	
@@ -44,7 +44,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		return row;
 	}
 	
-//	public ArrayList<Cliente> getCliente() throws SQLException {
+	public ArrayList<Cliente> getCliente() throws SQLException {
 //		Statement getClienti = connessione.createStatement();
 //		ResultSet rs = getClienti.executeQuery("SELECT * FROM cliente");
 //		ArrayList<Cliente> Clienti = new ArrayList<Cliente>();
@@ -55,8 +55,9 @@ public class ClienteDAOPostgres implements ClienteDAO {
 //		}
 //		rs.close();
 //		return Clienti;
+		return 	null;
 //	
-//}
+}
 	
 	public Cliente getClienteByCF() throws SQLException {
 //		getClienteByCF.setString(1, "cliente");
@@ -72,18 +73,9 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	
 }
 
-@Override
-public ArrayList<Cliente> getCliente() throws SQLException {
-	// TODO Auto-generated method stub
-	return null;
-}
 
-@Override
-public int insertCliente(String nome, String cognome, String luogoNascita, String cf, String sesso, String dataN)
-		throws SQLException {
-	// TODO Auto-generated method stub
-	return 0;
-}
+
+
 
 
 

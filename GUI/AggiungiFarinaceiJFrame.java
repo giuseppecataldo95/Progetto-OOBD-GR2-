@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
@@ -31,6 +32,9 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 	private JTextField InserisciLottoTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
+	private JComboBox InserisciGiornoCB;
+	private JComboBox InserisciMeseCB;
+	private JComboBox InserisciAnnoCB;
 	private ControllerMagazzino Controller;
 
 
@@ -173,13 +177,13 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiFarinaceiPanel.add(InserisciLottoTB);
 		InserisciLottoTB.setColumns(10);
 		
-		final JComboBox InserisciGiornoCB = new JComboBox();
+		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciGiornoCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		InserisciGiornoCB.setBounds(316, 317, 45, 21);
 		AggiungiFarinaceiPanel.add(InserisciGiornoCB);
 		
-		final JComboBox InserisciMeseCB = new JComboBox();
+		InserisciMeseCB = new JComboBox();
 		InserisciMeseCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciMeseCB.setModel(new DefaultComboBoxModel(new String[] {"GENNAIO", "FEBBRAIO", "MARZO", "APRILE", "MAGGIO", "GIUGNO", "LUGLIO", "AGOSTO", "SETTEMBRE", "OTTOBRE", "NOVEMBRE", "DICEMBRE"}));
 		InserisciMeseCB.setBounds(368, 317, 103, 21);
@@ -187,7 +191,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		
 		
 		
-		final JComboBox InserisciAnnoCB = new JComboBox();
+		InserisciAnnoCB = new JComboBox();
 		InserisciAnnoCB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciAnnoCB.setModel(new DefaultComboBoxModel(new String[] {"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"}));
 		InserisciAnnoCB.setBounds(481, 317, 66, 21);
@@ -221,8 +225,52 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiFarinaceiPanel.add(KgLB);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
+		AggiungiProdottoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Controller.FarinaceiBottoneAvantiPremuto();
+				} catch (SQLException e1) {
+					//FINESTRA ERRORE
+				}
+			}
+		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		AggiungiProdottoButton.setBounds(799, 484, 119, 31);
+		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiFarinaceiPanel.add(AggiungiProdottoButton);
 	}
+
+	public String getInserisciNomeTB() {
+		return InserisciNomeTB.getText();
+	}
+
+	public String getInserisciLottoTB() {
+		return InserisciLottoTB.getText();
+	}
+
+	public String getInserisciValorekgTB() {
+		return InserisciValorekgTB.getText();
+	}
+
+	public String getInserisciScorteTB() {
+		return InserisciScorteTB.getText();
+	}
+	
+	public String getInserisciGiornoCB() {
+		return InserisciGiornoCB.getSelectedItem().toString();
+	}
+
+
+
+	public String getInserisciMeseCB() {
+		return InserisciMeseCB.getSelectedItem().toString();
+	}
+
+
+
+	public String getInserisciAnnoCB() {
+		return InserisciAnnoCB.getSelectedItem().toString();
+	}
+
+
+
 }
