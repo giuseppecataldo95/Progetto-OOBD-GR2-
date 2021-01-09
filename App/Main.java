@@ -30,7 +30,7 @@ public class Main {
 		try {
 			DBconn = ConnessioneDB.getInstance();
 			Conn = DBconn.getConnection();
-			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
+			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
 			ControllerCliente Cliente = new ControllerCliente();
 		
 		}catch(SQLException e) {

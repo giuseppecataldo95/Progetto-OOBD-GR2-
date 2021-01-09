@@ -233,6 +233,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 				
 				try {
 					controller.RiepilogoTesseraAvantiButtonPressed();
+					controller.RiepilogoTesseraAvantiButtonPressedMostraFinestraClienti();
 				} catch (SQLException e1) {
 					
 					//APERTURA FINESTRA ERRORE

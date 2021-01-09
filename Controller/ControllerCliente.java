@@ -144,6 +144,8 @@ public class ControllerCliente {
 	    	Date Data_N = Convertitore.Converti();
 			DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
 			
+			
+			
 		
 
 	}
@@ -153,6 +155,13 @@ public class ControllerCliente {
 	
 			CreaTessera.setVisible(true);
 
+		}
+
+
+		public void RiepilogoTesseraAvantiButtonPressedMostraFinestraClienti() {
+
+			Clienti.setVisible(true);
+			
 		}
 	
 		 
