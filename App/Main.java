@@ -31,7 +31,7 @@ public class Main {
 			DBconn = ConnessioneDB.getInstance();
 			Conn = DBconn.getConnection();
 			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			ControllerCliente Cliente = new ControllerCliente();
+			ControllerCliente Cliente = new ControllerCliente(Conn);
 		
 		}catch(SQLException e) {
 			System.out.println("Errore: "+e);

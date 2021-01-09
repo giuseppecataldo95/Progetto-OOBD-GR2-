@@ -1,11 +1,13 @@
 package Controller;
 import GUI.*;
 import ImplementazioniDAO.ClienteDAOPostgres;
+import ImplementazioniDAO.MagazzinoDAOPostgres;
 import App.CFGenerator;
 import App.ConvertiCBInData;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -38,10 +40,11 @@ public class ControllerCliente {
 
 	
 //	|-----Costruttore Controller-----|
-	public ControllerCliente()
+	public ControllerCliente(Connection Conn) throws SQLException
 	{
 		 Clienti = new ClientiJFrame(this);
 		 Clienti.setVisible(true);
+		 DAO = new ClienteDAOPostgres(Conn);
 	}
 
 	
@@ -89,7 +92,7 @@ public class ControllerCliente {
 
 		
 		
-		RiepilogoTesseraJFrame RiepilogoTessera = new RiepilogoTesseraJFrame(this);
+		RiepilogoTessera = new RiepilogoTesseraJFrame(this);
 		
 		CreaTessera.setVisible(false);
 		
