@@ -19,7 +19,7 @@ public class Prodotto {
 	}
 	
 	
-	public double getValore() {
+	public float getValore() {
 		return Valore;
 	}
 	public void setValore(float valore) {

@@ -1,6 +1,6 @@
 package Entità;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Confezionato extends Prodotto_unitario {
 	private Date Data_scadenza;

@@ -30,13 +30,8 @@ public class Main {
 		try {
 			DBconn = ConnessioneDB.getInstance();
 			Conn = DBconn.getConnection();
-<<<<<<< HEAD
 			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			ControllerCliente Cliente = new ControllerCliente();
-=======
-			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
 			ControllerCliente Cliente = new ControllerCliente(Conn);
->>>>>>>
 
 		}catch(SQLException e) {
 			System.out.println("Errore: "+e);

@@ -3,6 +3,7 @@ package Controller;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -18,9 +19,16 @@ import GUI.AggiungiUovaJFrame;
 import GUI.AggiungiVerduraJFrame;
 import GUI.ClientiJFrame;
 import GUI.MagazzinoJFrame;
+import GUI.VisualizzaConfezionatiJFrame;
+import GUI.VisualizzaFarinaceiJFrame;
+import GUI.VisualizzaFruttaJFrame;
+import GUI.VisualizzaLatticiniJFrame;
 import GUI.VisualizzaProdottiJFrame;
+import GUI.VisualizzaUovaJFrame;
+import GUI.VisualizzaVerduraJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
-
+import Entità.*
+;
 public class ControllerMagazzino {
 	
 	private MagazzinoJFrame Magazzino;
@@ -33,6 +41,12 @@ public class ControllerMagazzino {
 	private AggiungiVerduraJFrame Verdura;
 	private VisualizzaProdottiJFrame VisualizzaPr;
 	private AggiungiLatticiniJFrame Latticini;
+	private VisualizzaFruttaJFrame VisualizzaFrutta;
+	private VisualizzaVerduraJFrame VisualizzaVerdura;
+	private VisualizzaFarinaceiJFrame VisualizzaFarinacei;
+	private VisualizzaConfezionatiJFrame VisualizzaConfezionati;
+	private VisualizzaUovaJFrame VisualizzaUova;
+	private VisualizzaLatticiniJFrame VisualizzaLatticini;
 	private MagazzinoDAO DAO;
 	private ConvertiCBInData Convertitore;
 	
@@ -53,8 +67,15 @@ public class ControllerMagazzino {
 	
 	public void MostraFinestraVisualizzaProdotto() {
 		Magazzino.setVisible(false);
-		VisualizzaPr = new VisualizzaProdottiJFrame();
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
 		VisualizzaPr.setVisible(true);
+		
+	}
+	
+	public void MostraFinestraVisualizzaFrutta() {
+		VisualizzaPr.setVisible(false);
+		VisualizzaFrutta = new VisualizzaFruttaJFrame(this);
+		VisualizzaFrutta.setVisible(true);
 		
 	}
 	
@@ -231,6 +252,42 @@ public class ControllerMagazzino {
     	DAO.inserisciConfezionati(Nome, Marca, Lotto, Mod_Conservazione, Data_Scadenza, Scorte, Peso_Confezione, Valore);
     	
     	
+    }
+    
+    public void CompletaTabellaFrutta() throws SQLException {
+    	ArrayList<Frutta> ProdottiFrutta = DAO.getFrutta();
+    	for(Frutta f : ProdottiFrutta)
+    	VisualizzaFrutta.setRigheTabella(f.getID_Prodotto(), f.getNome(), f.getProvenienza(), f.getLotto_lavorazione(), f.getData_raccolta(), f.getValore(), f.getScorte_kg());
+    }
+    
+    public void CompletaTabellaVerdura() throws SQLException {
+    	ArrayList<Verdura> ProdottiVerdura = DAO.getVerdura();
+    	for(Verdura v : ProdottiVerdura)
+    	VisualizzaVerdura.setRigheTabella(v.getID_Prodotto(), v.getNome(), v.getProvenienza(), v.getLotto_lavorazione(), v.getData_raccolta(), v.getValore(), v.getScorte_kg());
+    }
+    
+    public void CompletaTabellaFarinacei() throws SQLException {
+    	ArrayList<Farinaceo> ProdottiFarinacei = DAO.getFarinacei();
+    	for(Farinaceo f : ProdottiFarinacei)
+    	VisualizzaFarinacei.setRigheTabella(f.getID_Prodotto(), f.getNome(),f.getLotto_lavorazione(),f.getData_scadenza(),f.getValore(),f.getScorte_kg());
+    }
+    
+    public void CompletaTabellaLatticini() throws SQLException {
+    	ArrayList<Latticino> ProdottiLatticini = DAO.getLatticini();
+    	for(Latticino l : ProdottiLatticini)
+    	VisualizzaLatticini.setRigheTabella(l.getID_Prodotto(), l.getNome(), l.getPaese_mungitura(), l.getPaese_lavorazione(), l.getData_mungitura(),l.getData_scadenza(), l.getValore(), l.getScorte_kg());
+    }
+    
+    public void CompletaTabellaUova() throws SQLException {
+    	ArrayList<Uova> ProdottiUova = DAO.getUova();
+    	for(Uova u : ProdottiUova)
+    	VisualizzaUova.setRigheTabella(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
+    }
+    
+    public void CompletaTabellaConfezionati() throws SQLException {
+    	ArrayList<Confezionato> ProdottiConfezionati = DAO.getConfezionati();
+    	for(Confezionato c : ProdottiConfezionati)
+    	VisualizzaConfezionati.setRigheTabella(c.getID_Prodotto(), c.getNome(), c.getMarca(), c.getLotto_lavorazione(), c.getData_scadenza(), c.getModalità_conservazione(),c.getPeso(), c.getValore(), c.getScorte());
     }
 
 

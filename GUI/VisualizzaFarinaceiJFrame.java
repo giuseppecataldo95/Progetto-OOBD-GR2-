@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
 import Controller.ControllerMagazzino;
+
 
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -23,17 +25,24 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
+import java.sql.Date;
+import java.awt.BorderLayout;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
-public class VisualizzaProdottiJFrame extends JFrame {
+public class VisualizzaFarinaceiJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino Controller;
+	private JTable table;
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Lotto Lavorazione", "Data Scadenza", "Valore al kg", "Scorte in kg"},0);
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaProdottiJFrame(ControllerMagazzino c) {
+	public VisualizzaFarinaceiJFrame(ControllerMagazzino c) {
 		Controller = c;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,100 +131,16 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
-		JPanel ContainerPanel = new JPanel();
-		ContainerPanel.setBackground(new Color(255, 204, 153));
-		ContainerPanel.setBounds(186, 127, 663, 318);
-		VisualizzaProdottiPanel.add(ContainerPanel);
-		ContainerPanel.setLayout(null);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(200, 116, 673, 385);
+		VisualizzaProdottiPanel.add(scrollPane);
+		table = new JTable(Model);
+		scrollPane.setViewportView(table);
 		
-		JButton FruttaButton = new JButton("Frutta");
-		FruttaButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaFrutta();
-				try {
-					Controller.CompletaTabellaFrutta();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		FruttaButton.setBounds(10, 11, 213, 145);
-		ContainerPanel.add(FruttaButton);
-		
-		JButton VerduraButton = new JButton("Verdura");
-		VerduraButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.CompletaTabellaVerdura();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		VerduraButton.setBounds(223, 11, 213, 145);
-		ContainerPanel.add(VerduraButton);
-		
-		JButton LatticiniButton = new JButton("Latticini");
-		LatticiniButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.CompletaTabellaLatticini();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		LatticiniButton.setBounds(436, 11, 213, 145);
-		ContainerPanel.add(LatticiniButton);
-		
-		JButton FarinaceiButton = new JButton("Farinacei");
-		FarinaceiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.CompletaTabellaFarinacei();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		FarinaceiButton.setBounds(10, 162, 213, 145);
-		ContainerPanel.add(FarinaceiButton);
-		
-		JButton ConfezionatiButton = new JButton("Confezionati");
-		ConfezionatiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.CompletaTabellaConfezionati();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		ConfezionatiButton.setBounds(223, 162, 213, 145);
-		ContainerPanel.add(ConfezionatiButton);
-		
-		JButton UovaButton = new JButton("Uova");
-		UovaButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.CompletaTabellaUova();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		UovaButton.setBounds(436, 162, 213, 145);
-		ContainerPanel.add(UovaButton);
-		
-		JLabel SelezionaCategoriaLB = new JLabel("Seleziona la categoria di cui vuoi visualizzare i prodotti");
-		SelezionaCategoriaLB.setFont(new Font("Arial", Font.BOLD, 20));
-		SelezionaCategoriaLB.setBounds(269, 63, 520, 66);
-		VisualizzaProdottiPanel.add(SelezionaCategoriaLB);
 	}
+	
+	public void setRigheTabella(int ID_Prodotto, String Nome, String Lotto, Date Data, float Valore, float Peso) {
+		Model.addRow(new Object[]{ID_Prodotto, Nome, Lotto, Data, Valore, Peso});
+		}
+	
 }

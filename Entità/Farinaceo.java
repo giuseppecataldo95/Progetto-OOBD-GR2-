@@ -1,5 +1,5 @@
 package Entità;
-import java.util.Date;
+import java.sql.Date;
 
 public class Farinaceo extends Prodotto_kg {
 	private Date Data_scadenza;

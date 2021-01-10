@@ -1,5 +1,5 @@
 package Entità;
-import java.util.*;
+import java.sql.Date;
 
 public class Verdura extends Prodotto_kg {
 	

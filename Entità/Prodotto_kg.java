@@ -19,7 +19,7 @@ public class Prodotto_kg extends Prodotto {
 		Nome = nome;
 	}
 
-	public double getScorte_kg() {
+	public float getScorte_kg() {
 		return Scorte_kg;
 	}
 
