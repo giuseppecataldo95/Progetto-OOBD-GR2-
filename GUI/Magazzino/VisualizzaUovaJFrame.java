@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Magazzino;
 
 import java.awt.EventQueue;
 
@@ -31,18 +31,22 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
-public class VisualizzaFruttaJFrame extends JFrame {
+public class VisualizzaUovaJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino Controller;
 	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore al kg", "Scorte in kg"},0);
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "N. In Singola Confezione", "Provenienza", "Lotto Lavorazione", "Data Scadenza", "Valore al kg", "Scorte in kg"},0){
+		 public boolean isCellEditable(int row, int column) {
+		       return false; //Tabella non modificabile
+		    }
+	};
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaFruttaJFrame(ControllerMagazzino c) {
+	public VisualizzaUovaJFrame(ControllerMagazzino c) {
 		Controller = c;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,15 +139,12 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		scrollPane.setBounds(200, 116, 673, 385);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
 		scrollPane.setViewportView(table);
 		
 	}
 	
-	public void setRigheTabella(int ID_Prodotto, String Nome, String Provenienza, String Lotto, Date Data, float Valore, float Peso) {
-		Model.addRow(new Object[]{ID_Prodotto, Nome, Provenienza, Lotto, Data, Valore, Peso});
+	public void setRigheTabella(int ID_Prodotto, int NinConfezione, String Provenienza, String Lotto, Date Data, float Valore, int Scorte) {
+		Model.addRow(new Object[]{ID_Prodotto, NinConfezione, Provenienza, Lotto, Data, Valore, Scorte});
 		}
 	
 }

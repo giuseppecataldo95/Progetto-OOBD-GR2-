@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Magazzino;
 
 import java.awt.EventQueue;
 
@@ -36,7 +36,11 @@ public class VisualizzaFarinaceiJFrame extends JFrame {
 	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino Controller;
 	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Lotto Lavorazione", "Data Scadenza", "Valore al kg", "Scorte in kg"},0);
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Lotto Lavorazione", "Data Scadenza", "Valore al kg", "Scorte in kg"},0){
+		 public boolean isCellEditable(int row, int column) {
+		       return false; //Tabella non modificabile
+		    }
+	};
 	
 
 	/**

@@ -21,27 +21,14 @@ import javax.swing.ImageIcon;
 import javax.swing.border.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Dimension;
 
 public class FinestraPrincipaleJFrame extends JFrame {
 
 	private JPanel FinestraPrincipalePanel;
 	private JPanel ContainerBottoniPanel;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FinestraPrincipaleJFrame frame = new FinestraPrincipaleJFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -58,62 +45,66 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		
 		JLabel BenvenutoLB = new JLabel("Benvenuto/a,");
 		BenvenutoLB.setFont(new Font("Arial", Font.BOLD, 40));
-		BenvenutoLB.setBounds(365, 11, 260, 59);
+		BenvenutoLB.setBounds(367, 26, 260, 59);
 		FinestraPrincipalePanel.add(BenvenutoLB);
 		
 		JLabel SelezionaLB = new JLabel("Seleziona l'area tematica:");
 		SelezionaLB.setFont(new Font("Arial", Font.PLAIN, 30));
-		SelezionaLB.setBounds(315, 81, 345, 36);
+		SelezionaLB.setBounds(315, 74, 345, 36);
 		FinestraPrincipalePanel.add(SelezionaLB);
 		
 		ContainerBottoniPanel = new JPanel();
-		ContainerBottoniPanel.setBackground(new Color(255, 255, 153));
+		ContainerBottoniPanel.setBackground(new Color(255, 204, 153));
 		ContainerBottoniPanel.setBorder(null);
-		ContainerBottoniPanel.setBounds(10, 140, 966, 273);
+		ContainerBottoniPanel.setBounds(50, 143, 878, 273);
 		FinestraPrincipalePanel.add(ContainerBottoniPanel);
-		ContainerBottoniPanel.setLayout(null);
+		ContainerBottoniPanel.setLayout(new BoxLayout(ContainerBottoniPanel, BoxLayout.X_AXIS));
+		
+		Component horizontalStrut = Box.createHorizontalStrut(20);
+		horizontalStrut.setMaximumSize(new Dimension(140, 32767));
+		ContainerBottoniPanel.add(horizontalStrut);
 		
 		JButton ClientiButton = new JButton("Clienti");
+		ClientiButton.setMaximumSize(new Dimension(170, 150));
 		ClientiButton.setIconTextGap(10);
 		ClientiButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		ClientiButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clienti.png"));
-		ClientiButton.setBackground(Color.WHITE);
-		ClientiButton.setBounds(14, 11, 226, 251);
+		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Downloads\\icons8-gruppo-di-utenti-90.png"));
+		ClientiButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(ClientiButton);
 		
+		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
+		horizontalStrut_1.setPreferredSize(new Dimension(100, 0));
+		horizontalStrut_1.setMaximumSize(new Dimension(50, 32767));
+		ContainerBottoniPanel.add(horizontalStrut_1);
+		
 		JButton VenditeButton = new JButton("Vendite");
+		VenditeButton.setMaximumSize(new Dimension(170, 150));
 		VenditeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		VenditeButton.setIconTextGap(10);
 		VenditeButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassa.png"));
-		VenditeButton.setBackground(Color.WHITE);
-		VenditeButton.setBounds(250, 11, 226, 251);
+		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(VenditeButton);
 		
+		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
+		horizontalStrut_2.setPreferredSize(new Dimension(100, 0));
+		horizontalStrut_2.setMaximumSize(new Dimension(50, 32767));
+		ContainerBottoniPanel.add(horizontalStrut_2);
+		
 		JButton MagazzinoButton = new JButton("Magazzino");
+		MagazzinoButton.setMaximumSize(new Dimension(170, 150));
 		MagazzinoButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatola.png"));
+		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
 		MagazzinoButton.setIconTextGap(10);
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 25));
 		MagazzinoButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		
 		MagazzinoButton.setActionCommand("Magazzino");
-		MagazzinoButton.setBackground(Color.WHITE);
-		MagazzinoButton.setBounds(490, 11, 226, 251);
+		MagazzinoButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(MagazzinoButton);
-		
-		JButton DipendentiButton = new JButton("Dipendenti");
-		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		DipendentiButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-		DipendentiButton.setIconTextGap(10);
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cartellino.png"));
-		DipendentiButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		DipendentiButton.setBackground(Color.WHITE);
-		DipendentiButton.setBounds(726, 11, 226, 251);
-		ContainerBottoniPanel.add(DipendentiButton);
 		
 	}
 }

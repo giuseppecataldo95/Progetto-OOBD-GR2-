@@ -31,12 +31,12 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 		
 	
-		insertCliente.setString(1, nome);
-		insertCliente.setString(2, cognome);
-		insertCliente.setString(3, cf);
-		insertCliente.setString(4, luogoNascita);
+		insertCliente.setString(1, nome.toUpperCase());
+		insertCliente.setString(2, cognome.toUpperCase());
+		insertCliente.setString(3, cf.toUpperCase());
+		insertCliente.setString(4, luogoNascita.toUpperCase());
 		insertCliente.setDate(5, data_nascita);
-		insertCliente.setString(6, sesso);
+		insertCliente.setString(6, sesso.toUpperCase());
 		int row = insertCliente.executeUpdate();
 		
 				

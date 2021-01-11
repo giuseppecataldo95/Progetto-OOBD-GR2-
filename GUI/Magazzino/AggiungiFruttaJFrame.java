@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Magazzino;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.GraphicsDevice;
@@ -182,6 +183,14 @@ public class AggiungiFruttaJFrame extends JFrame {
 		InserisciNomeTB.setColumns(10);
 		
 		InserisciLottoTB = new JTextField();
+		InserisciLottoTB.addKeyListener(new java.awt.event.KeyAdapter() {
+		    public void keyTyped(java.awt.event.KeyEvent evt) {
+		        if(InserisciLottoTB.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
+		            getToolkit().beep();
+		            evt.consume();
+		         }
+		     }
+		});
 		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
 		InserisciLottoTB.setBounds(316, 223, 190, 19);
 		AggiungiFruttaPanel.add(InserisciLottoTB);
@@ -243,11 +252,9 @@ public class AggiungiFruttaJFrame extends JFrame {
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+			
 					Controller.FruttaBottoneAvantiPremuto();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				
 			}
 		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));

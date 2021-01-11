@@ -1,5 +1,10 @@
 package Controller;
 import GUI.*;
+import GUI.Cliente.ClientiJFrame;
+import GUI.Cliente.CreaTesseraJFrame;
+import GUI.Cliente.ErroreTesseraJDialog;
+import GUI.Cliente.RiepilogoTesseraJFrame;
+import GUI.Cliente.VisualizzaClientiJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import App.CFGenerator;

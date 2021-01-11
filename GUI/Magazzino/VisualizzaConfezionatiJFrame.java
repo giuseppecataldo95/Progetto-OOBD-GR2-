@@ -1,48 +1,62 @@
-package GUI;
+package GUI.Magazzino;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
 
 import Controller.ControllerMagazzino;
 
-import java.awt.event.ActionListener;
+
+import javax.swing.JToolBar;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Component;
+import javax.swing.Box;
+
+import java.awt.Dimension;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.awt.BorderLayout;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
-public class MagazzinoJFrame extends JFrame {
+public class VisualizzaConfezionatiJFrame extends JFrame {
 
-	private JPanel MagazzinoPanel;
+	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino Controller;
-	private JButton MagazzinoButton;
+	private JTable table;
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Marca", "Lotto Lavorazione", "Data Scadenza", "Modalità Conservazione", "Peso", "Valore unitario", "Scorte"},0) {
+		 public boolean isCellEditable(int row, int column) {
+		       return false; //Tabella non modificabile
+		    }
+	};
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public  MagazzinoJFrame(ControllerMagazzino c) {
+	public VisualizzaConfezionatiJFrame(ControllerMagazzino c) {
 		Controller = c;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
-		MagazzinoPanel = new JPanel();
-		MagazzinoPanel.setBackground(new Color(255, 222, 173));
-		MagazzinoPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MagazzinoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(MagazzinoPanel);
-		MagazzinoPanel.setLayout(null);
+		VisualizzaProdottiPanel = new JPanel();
+		VisualizzaProdottiPanel.setBackground(new Color(255, 228, 181));
+		VisualizzaProdottiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		VisualizzaProdottiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(VisualizzaProdottiPanel);
+		VisualizzaProdottiPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -53,14 +67,9 @@ public class MagazzinoJFrame extends JFrame {
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
 		MenùLateraleTB.setBounds(0, 0, 65, 563);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		MagazzinoPanel.add(MenùLateraleTB);
+		VisualizzaProdottiPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
-		ClientiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraClientidaMagazzino();
-			}
-		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -76,7 +85,7 @@ public class MagazzinoJFrame extends JFrame {
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
-		MagazzinoButton = new JButton("");
+		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -108,35 +117,34 @@ public class MagazzinoJFrame extends JFrame {
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(InfoButton);
 		
-		JPanel ContainerPanel = new JPanel();
-		ContainerPanel.setBackground(new Color(255, 228, 181));
-		ContainerPanel.setMinimumSize(new Dimension(310, 189));
-		ContainerPanel.setBounds(290, 219, 490, 108);
-		MagazzinoPanel.add(ContainerPanel);
-		ContainerPanel.setLayout(new BoxLayout(ContainerPanel, BoxLayout.X_AXIS));
+		JToolBar percorsoTB = new JToolBar();
+		percorsoTB.setBorder(null);
+		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		percorsoTB.setBorderPainted(false);
+		percorsoTB.setFloatable(false);
+		percorsoTB.setBackground(new Color(255, 204, 153));
+		percorsoTB.setMaximumSize(new Dimension(100, 100));
+		percorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaProdottiPanel.add(percorsoTB);
 		
-		JButton AggiungiNuovoProdottoButton = new JButton("Aggiungi nuovo prodotto");
-		AggiungiNuovoProdottoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraAggiungiProdotto();
-				
-			}
-		});
-		AggiungiNuovoProdottoButton.setMaximumSize(new Dimension(310, 189));
-		ContainerPanel.add(AggiungiNuovoProdottoButton);
+		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(MagazzinoPercorsoButton);
 		
-		Component horizontalStrut = Box.createHorizontalStrut(40);
-		ContainerPanel.add(horizontalStrut);
+		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
-		JButton VisualizzaProdottiButton = new JButton("Visualizza prodotti");
-		VisualizzaProdottiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaProdotto();
-				
-			}
-		});
-		VisualizzaProdottiButton.setMaximumSize(new Dimension(310, 189));
-		VisualizzaProdottiButton.setMinimumSize(new Dimension(310, 189));
-		ContainerPanel.add(VisualizzaProdottiButton);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(200, 116, 673, 385);
+		VisualizzaProdottiPanel.add(scrollPane);
+		table = new JTable(Model);
+		scrollPane.setViewportView(table);
+		
 	}
+	
+	public void setRigheTabella(int ID_Prodotto, String Nome, String Marca, String Lotto, Date Data, String ModConservazione, float Peso, float Valore, int Scorte ) {
+		Model.addRow(new Object[]{ID_Prodotto, Nome, Marca, Lotto, Data, Peso, Valore, Scorte});
+		}
+	
 }

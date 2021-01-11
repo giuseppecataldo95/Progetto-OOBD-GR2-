@@ -126,9 +126,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	
 	public void inserisciFrutta(String Nome, String Lotto, String Provenienza, Date Data, float Peso, float Valore) throws SQLException {
 		inserisciFruttaPS.setDate(1, Data);
-		inserisciFruttaPS.setString(2, Nome);
-		inserisciFruttaPS.setString(3, Provenienza);
-		inserisciFruttaPS.setString(4, Lotto);
+		inserisciFruttaPS.setString(2, Nome.toUpperCase());
+		inserisciFruttaPS.setString(3, Provenienza.toUpperCase());
+		inserisciFruttaPS.setString(4, Lotto.toUpperCase());
 		inserisciFruttaPS.setFloat(5,Peso);
 		inserisciFruttaPS.setFloat(6, Valore);
 		inserisciFruttaPS.executeUpdate();
@@ -137,9 +137,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	
 	public void inserisciVerdura(String Nome, String Lotto, String Provenienza, Date Data, float Peso, float Valore) throws SQLException {
 		inserisciVerduraPS.setDate(1, Data);
-		inserisciVerduraPS.setString(2, Nome);
-		inserisciVerduraPS.setString(3, Provenienza);
-		inserisciVerduraPS.setString(4, Lotto);
+		inserisciVerduraPS.setString(2, Nome.toUpperCase());
+		inserisciVerduraPS.setString(3, Provenienza.toUpperCase());
+		inserisciVerduraPS.setString(4, Lotto.toUpperCase());
 		inserisciVerduraPS.setFloat(5,Peso);
 		inserisciVerduraPS.setFloat(6, Valore);
 		inserisciVerduraPS.executeUpdate();
@@ -148,8 +148,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	
 	public void inserisciFarinacei(String Nome, String Lotto, Date Data, float Peso, float Valore) throws SQLException {
 		inserisciFarinaceiPS.setDate(1, Data);
-		inserisciFarinaceiPS.setString(2, Nome);
-		inserisciFarinaceiPS.setString(3, Lotto);
+		inserisciFarinaceiPS.setString(2, Nome.toUpperCase());
+		inserisciFarinaceiPS.setString(3, Lotto.toUpperCase());
 		inserisciFarinaceiPS.setFloat(4, Peso);
 		inserisciFarinaceiPS.setFloat(5,Valore);
 		inserisciFarinaceiPS.executeUpdate();
@@ -159,9 +159,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	public void inserisciLatticini(String Nome, String PaeseMungitura, String PaeseLavorazione, Date DataMungitura, Date DataScadenza, float Peso, float Valore) throws SQLException {
 		inserisciLatticiniPS.setDate(1, DataScadenza);
 		inserisciLatticiniPS.setDate(2, DataMungitura);
-		inserisciLatticiniPS.setString(3, PaeseMungitura);
-		inserisciLatticiniPS.setString(4, PaeseLavorazione);
-		inserisciLatticiniPS.setString(5, Nome);
+		inserisciLatticiniPS.setString(3, PaeseMungitura.toUpperCase());
+		inserisciLatticiniPS.setString(4, PaeseLavorazione.toUpperCase());
+		inserisciLatticiniPS.setString(5, Nome.toUpperCase());
 		inserisciLatticiniPS.setFloat(6, Peso);
 		inserisciLatticiniPS.setFloat(7, Valore);
 		inserisciLatticiniPS.executeUpdate();
@@ -171,10 +171,10 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	
 	public void inserisciConfezionati(String Nome, String Marca, String Lotto, String Conservazione, Date DataScadenza, int NConfezioni, float PesoConfezione, float Valore) throws SQLException {
 		inserisciConfezionatiPS.setDate(1, DataScadenza);
-		inserisciConfezionatiPS.setString(2, Nome);
-		inserisciConfezionatiPS.setString(3, Lotto);
-		inserisciConfezionatiPS.setString(4, Marca);
-		inserisciConfezionatiPS.setString(5, Conservazione);
+		inserisciConfezionatiPS.setString(2, Nome.toUpperCase());
+		inserisciConfezionatiPS.setString(3, Lotto.toUpperCase());
+		inserisciConfezionatiPS.setString(4, Marca.toUpperCase());
+		inserisciConfezionatiPS.setString(5, Conservazione.toUpperCase());
 		inserisciConfezionatiPS.setInt(6, NConfezioni);
 		inserisciConfezionatiPS.setFloat(7, Valore);
 		inserisciConfezionatiPS.setFloat(8, PesoConfezione);
@@ -185,9 +185,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	
 	public void inserisciUova(String Lotto, Date Data, String Provenienza, int NConfezioniUova, float Valore, int NPerConfezione) throws SQLException {
 		inserisciUovaPS.setDate(1, Data);
-		inserisciUovaPS.setString(2, Lotto);
+		inserisciUovaPS.setString(2, Lotto.toUpperCase());
 		inserisciUovaPS.setInt(3, NPerConfezione);
-		inserisciUovaPS.setString(4, Provenienza);
+		inserisciUovaPS.setString(4, Provenienza.toUpperCase());
 		inserisciUovaPS.setInt(5,NConfezioniUova);
 		inserisciUovaPS.setFloat(6, Valore);
 		inserisciUovaPS.executeUpdate();

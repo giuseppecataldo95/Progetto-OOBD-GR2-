@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Magazzino;
 
 import java.awt.EventQueue;
 
