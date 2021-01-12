@@ -151,6 +151,8 @@ public class ControllerCliente {
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
 	    	Date Data_N = Convertitore.Converti();
 			DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
+			ClientiJFrame Clienti = new ClientiJFrame(this);
+			Clienti.setVisible(true);
 			
 			
 			
