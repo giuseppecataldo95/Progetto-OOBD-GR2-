@@ -140,8 +140,10 @@ public class VisualizzaClientiJFrame extends JFrame {
 		VisualizzaClientiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
-		System.out.println(table.getSelectedColumn());
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 1a797f00d82e6efce4513d6c9ee4f64bd065bef8
 	}
 	
 	public void setRigheTabella(String Nome, String Cognome, String Sesso, String LuogoNascita, Date DataNascita, String CodiceFiscale) throws SQLException {

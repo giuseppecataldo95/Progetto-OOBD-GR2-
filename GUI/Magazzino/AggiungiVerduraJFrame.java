@@ -119,14 +119,29 @@ public class AggiungiVerduraJFrame extends JFrame {
 		AggiungiVerduraPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Verdura_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Verdura_AggiungiProdottoPercorsoBottonePremuto();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton VerduraPercorsoButton = new JButton("> Verdura");
+		VerduraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Verdura_VerduraPercorsoBottonePremuto();
+			}
+		});
 		VerduraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VerduraPercorsoButton);
 		
@@ -257,6 +272,16 @@ public class AggiungiVerduraJFrame extends JFrame {
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiVerduraPanel.add(AggiungiProdottoButton);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VerduraBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(652, 484, 137, 31);
+		AggiungiVerduraPanel.add(IndietroButton);
 	}
 	
 	public String getInserisciNomeTB() {

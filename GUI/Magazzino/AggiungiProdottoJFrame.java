@@ -116,7 +116,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraMagazzinoPercorso();
+				Controller.AggiungiProdotto_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -125,7 +125,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraAggiungiProdPercorso();
+				Controller.AggiungiProdotto_AggiungiProdottoPercorsoBottonePremuto();
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
