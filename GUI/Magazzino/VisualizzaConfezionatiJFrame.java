@@ -139,7 +139,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 41, 867, 511);
+		scrollPane.setBounds(200, 116, 673, 385);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
