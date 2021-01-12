@@ -10,8 +10,8 @@ import DAO.ClienteDAO;
 import DAO.MagazzinoDAO;
 import Entità.Cliente;
 import Entità.Frutta;
-import GUI.ClientiJFrame;
-import GUI.CreaTesseraJFrame;
+import GUI.Cliente.ClientiJFrame;
+import GUI.Cliente.CreaTesseraJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 
@@ -32,8 +32,8 @@ public class Main {
 			Conn = DBconn.getConnection();
 
 
-			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			ControllerCliente Cliente = new ControllerCliente(Conn);
+			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
+			// ControllerCliente Cliente = new ControllerCliente(Conn);
  
 		
 		}catch(SQLException e) {
