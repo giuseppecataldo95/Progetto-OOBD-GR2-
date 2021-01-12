@@ -120,14 +120,29 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiFarinaceiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Farinacei_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Farinacei_AggiungiProdottoPercorsoBottonePremuto();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton FarinaceiPercorsoButton = new JButton("> Farinacei");
+		FarinaceiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Farinacei_FarinaceiPercorsoBottonePremuto();
+			}
+		});
 		FarinaceiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(FarinaceiPercorsoButton);
 		
@@ -246,6 +261,16 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		AggiungiProdottoButton.setBounds(799, 484, 137, 31);
 		AggiungiFarinaceiPanel.add(AggiungiProdottoButton);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.FarinaceiBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(652, 484, 137, 31);
+		AggiungiFarinaceiPanel.add(IndietroButton);
 	}
 
 	public String getInserisciNomeTB() {

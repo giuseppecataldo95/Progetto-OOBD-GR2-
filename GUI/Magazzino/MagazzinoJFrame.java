@@ -68,7 +68,7 @@ public class MagazzinoJFrame extends JFrame {
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
 		MenùLateraleTB.setBounds(0, 0, 65, 574);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		MagazzinoPanel.add(MenùLateraleTB);
+		MagazzinoPanel.add(MenùLateraleTB, BorderLayout.WEST);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -76,7 +76,7 @@ public class MagazzinoJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
-		ClientiButton.setIcon(null);
+		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton VenditeButton = new JButton("");

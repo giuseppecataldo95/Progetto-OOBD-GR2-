@@ -119,14 +119,29 @@ public class AggiungiUovaJFrame extends JFrame {
 		AggiungiUovaPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Uova_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Uova_AggiungiProdottoPercorsoBottonePremuto();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton UovaPercorsoButton = new JButton("> Uova");
+		UovaPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Uova_UovaPercorsoBottonePremuto();
+			}
+		});
 		UovaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(UovaPercorsoButton);
 		
@@ -250,6 +265,16 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciAnnoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		InserisciAnnoScadenzaCB.setBounds(484, 308, 66, 21);
 		AggiungiUovaPanel.add(InserisciAnnoScadenzaCB);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.UovaBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(652, 484, 137, 31);
+		AggiungiUovaPanel.add(IndietroButton);
 	}
 	
 	

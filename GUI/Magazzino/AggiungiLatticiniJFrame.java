@@ -124,14 +124,29 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		AggiungiLatticiniPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Latticini_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Latticini_AggiungiProdottoPercorsoBottonePremuto();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton LatticiniPercorsoButton = new JButton("> Latticini");
+		LatticiniPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Latticini_LatticiniPercorsoBottonePremuto();
+			}
+		});
 		LatticiniPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(LatticiniPercorsoButton);
 		
@@ -279,6 +294,16 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		InserisciAnnoScadenzaCB.setModel(new DefaultComboBoxModel(new String[] {"2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
 		InserisciAnnoScadenzaCB.setBounds(481, 358, 66, 21);
 		AggiungiLatticiniPanel.add(InserisciAnnoScadenzaCB);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.LatticiniBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(652, 484, 137, 31);
+		AggiungiLatticiniPanel.add(IndietroButton);
 	}
 
 

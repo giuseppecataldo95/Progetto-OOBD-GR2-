@@ -38,8 +38,8 @@ public class Main {
 			
 
 
-//			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			ControllerCliente Cliente = new ControllerCliente(Conn);
+			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
+//			ControllerCliente Cliente = new ControllerCliente(Conn);
 
 
 

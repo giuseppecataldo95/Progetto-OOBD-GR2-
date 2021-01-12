@@ -122,14 +122,29 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		AggiungiConfezionatiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Confezionati_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
+		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Confezionati_AggiungiProdottoPercorsoBottonePremuto();
+			}
+		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton ConfezionatiPercorsoButton = new JButton("> Confezionati");
+		ConfezionatiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.Confezionati_ConfezionatiPercorsoBottonePremuto();
+			}
+		});
 		ConfezionatiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(ConfezionatiPercorsoButton);
 		
@@ -282,6 +297,16 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		KgLB_1.setFont(new Font("Arial", Font.ITALIC, 14));
 		KgLB_1.setBounds(422, 387, 27, 20);
 		AggiungiConfezionatiPanel.add(KgLB_1);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.ConfezionatiBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(652, 484, 137, 31);
+		AggiungiConfezionatiPanel.add(IndietroButton);
 	}
 
 
