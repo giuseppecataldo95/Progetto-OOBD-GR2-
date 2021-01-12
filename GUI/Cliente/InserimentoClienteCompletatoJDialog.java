@@ -37,7 +37,6 @@ public class InserimentoClienteCompletatoJDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) 
 			
 			{
-				setVisible(false);
 				controller.MostraFinestraClientiDaInserimentoClienteCompletato();
 			}
 			

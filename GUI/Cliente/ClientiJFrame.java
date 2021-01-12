@@ -89,7 +89,6 @@ public class ClientiJFrame extends JFrame {
 		AggiungiTesseraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
 				Controller.ClientiCreaNuovaTesseraButtonPressed();
 			}
 		});
@@ -103,7 +102,7 @@ public class ClientiJFrame extends JFrame {
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				
 				Controller.ClientiVisualizzaClientiButtonPressed();
 				try {
 					Controller.CompletaTabellaCliente();

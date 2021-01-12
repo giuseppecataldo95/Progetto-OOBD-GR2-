@@ -84,7 +84,8 @@ public class ControllerCliente
 	
 	{
 		
-	
+		
+		Clienti.setVisible(false);
 		VisualizzaClienti = new VisualizzaClientiJFrame(this);
 		VisualizzaClienti.setVisible(true);
 		
@@ -117,13 +118,13 @@ public class ControllerCliente
 		
 		
 		RiepilogoTessera = new RiepilogoTesseraJFrame(this);
+		CreaTessera.setVisible(false);;
 		
-		CreaTessera.setVisible(false);
 		
 		String Nome = CreaTessera.getNomeTB();
 		String Cognome = CreaTessera.getCognomeTB();
 		String Luogo_Nascita = CreaTessera.getLuogoNTB();
-		int Giorno = Integer.parseInt(CreaTessera.getGiornoCB());
+		String Giorno = (CreaTessera.getGiornoCB());
 		String Mese = CreaTessera.getMeseCB();
 		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
 		String Sesso = CreaTessera.getSessoCB();
@@ -145,7 +146,7 @@ public class ControllerCliente
 	
 	{
 		
-		CreaTessera.setVisible(true);
+		CreaTessera.setVisible(false);;
 		
 	}
 
@@ -159,37 +160,54 @@ public class ControllerCliente
 	}
 
 
-	public void RiepilogoTesseraAvantiButtonPressed() throws SQLException
+	public void RiepilogoTesseraAvantiButtonPressed() 
 	
 	{
 
 		
 			
-			String Giorno = RiepilogoTessera.getRiepilogoGiornoNTB();
-	    	String Mese = RiepilogoTessera.getRiepilogoMeseNTB();
-	    	String Anno = RiepilogoTessera.getRiepilogoAnnoNTB();
-	    	String Nome = RiepilogoTessera.getRiepilogoNomeTB();
-			String Cognome = RiepilogoTessera.getRiepilogoCognomeTB();
-			String LuogoNascita = RiepilogoTessera.getRiepilogoLuogoNTB();
-			String CF = RiepilogoTessera.getRiepilogoCFTB();
-			String Sesso = RiepilogoTessera.getRiepilogoSessoTB();
-	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
-	    	Date Data_N = Convertitore.Converti();
-			DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
-			MostraInserimentoCompletatoJDialog();
+			try {
+				String Giorno = RiepilogoTessera.getRiepilogoGiornoNTB();
+				String Mese = RiepilogoTessera.getRiepilogoMeseNTB();
+				String Anno = RiepilogoTessera.getRiepilogoAnnoNTB();
+				String Nome = RiepilogoTessera.getRiepilogoNomeTB();
+				String Cognome = RiepilogoTessera.getRiepilogoCognomeTB();
+				String LuogoNascita = RiepilogoTessera.getRiepilogoLuogoNTB();
+				String CF = RiepilogoTessera.getRiepilogoCFTB();
+				String Sesso = RiepilogoTessera.getRiepilogoSessoTB();
+				Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+				Date Data_N = Convertitore.Converti();
+				DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
+				ClienteInserito = new InserimentoClienteCompletatoJDialog(this);
+				RiepilogoTessera.setEnabled(false);
+				ClienteInserito.setVisible(true);
+				
+			}
+			
+			catch (NumberFormatException NFE) {
+				NFE.printStackTrace();
+				RiepilogoTessera.setEnabled(false);;
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);
+				
+			}
+			
+			
+			
+			
+			catch (SQLException e) {
+				e.printStackTrace();
+				RiepilogoTessera.setEnabled(false);
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);
+				
+			}
+			
 			
 
 	}
 	
-	public void MostraInserimentoCompletatoJDialog()
 	
-	{
-		
-		InserimentoClienteCompletatoJDialog ClienteInserito = new InserimentoClienteCompletatoJDialog(this);
-		
-		ClienteInserito.setVisible(true);
-		
-	}
 
 		public void CompletaTabellaCliente() throws SQLException
 		
@@ -213,8 +231,10 @@ public class ControllerCliente
 		public void ErroreTesseraRiprovaButtonPressed() 
 		
 		{
-			
-			CreaTesseraJFrame CreaTessera = new CreaTesseraJFrame(this);
+			RiepilogoTessera.setEnabled(true);
+			RiepilogoTessera.dispose();
+			ErroreTessera.setVisible(false);
+			CreaTessera = new CreaTesseraJFrame(this);
 			CreaTessera.setVisible(true);
 			
 		}
@@ -223,10 +243,11 @@ public class ControllerCliente
 		public void MostraFinestraClientiDaInserimentoClienteCompletato()
 
 		{
-			ClientiJFrame Clienti = new ClientiJFrame(this);
+			Clienti = new ClientiJFrame(this);
+			ClienteInserito.setVisible(false);
 			Clienti.setVisible(true);
 			RiepilogoTessera.setVisible(false);
-			ClienteInserito.setVisible(false);
+			
 			
 		}
 

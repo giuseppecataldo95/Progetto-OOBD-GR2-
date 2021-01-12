@@ -59,6 +59,66 @@ public class MagazzinoJFrame extends JFrame {
 		panel.add(ContainerPanel, BorderLayout.CENTER);
 		ContainerPanel.setLayout(new BorderLayout(0, 0));
 		
+		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBorder(null);
+		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		MenùLateraleTB.setBorderPainted(false);
+		MenùLateraleTB.setFloatable(false);
+		MenùLateraleTB.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
+		MenùLateraleTB.setBounds(0, 0, 65, 574);
+		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		MagazzinoPanel.add(MenùLateraleTB);
+		
+		JButton ClientiButton = new JButton("");
+		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		ClientiButton.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setBorder(null);
+		ClientiButton.setBorderPainted(false);
+		ClientiButton.setIcon(null);
+		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		
+		JButton VenditeButton = new JButton("");
+		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		VenditeButton.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.add(VenditeButton);
+		VenditeButton.setBorderPainted(false);
+		VenditeButton.setBorder(null);
+		VenditeButton.setIcon(null);
+		VenditeButton.setMaximumSize(new Dimension(65, 70));
+		
+		JButton DipendentiButton = new JButton("");
+		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		DipendentiButton.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.add(DipendentiButton);
+		DipendentiButton.setBorderPainted(false);
+		DipendentiButton.setBorder(null);
+		DipendentiButton.setIcon(null);
+		DipendentiButton.setMaximumSize(new Dimension(65, 70));
+		
+		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		MagazzinoButton.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.add(MagazzinoButton);
+		MagazzinoButton.setBorderPainted(false);
+		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setIcon(null);
+		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		
+		Component VerticalStrut = Box.createVerticalStrut(200);
+		VerticalStrut.setBackground(Color.LIGHT_GRAY);
+		MenùLateraleTB.add(VerticalStrut);
+		
+		JButton InfoButton = new JButton("");
+		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		InfoButton.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.add(InfoButton);
+		InfoButton.setBorderPainted(false);
+		InfoButton.setBorder(null);
+		InfoButton.setIcon(null);
+		InfoButton.setMaximumSize(new Dimension(65, 70));
+		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
 		horizontalStrut.setPreferredSize(new Dimension(200, 0));
 		horizontalStrut.setMinimumSize(new Dimension(150, 0));
@@ -116,61 +176,6 @@ public class MagazzinoJFrame extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel, BorderLayout.NORTH);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MagazzinoPanel.add(MenùLateraleTB, BorderLayout.WEST);
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
 		
-		
-		JButton ClientiButton = new JButton("");
-		ClientiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraClientidaMagazzino();
-			}
-		});
-		ClientiButton.setBackground(new Color(255, 153, 51));
-		ClientiButton.setBorderPainted(false);
-		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
-		ClientiButton.setMaximumSize(new Dimension(65, 70));
-		
-		JButton VenditeButton = new JButton("");
-		VenditeButton.setBackground(new Color(255, 153, 51));
-		VenditeButton.setBorder(null);
-		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
-		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
-		
-		MagazzinoButton = new JButton("");
-		MagazzinoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
-		MagazzinoButton.setBorderPainted(false);
-		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
-		
-		Component verticalStrut = Box.createVerticalStrut(200);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		MenùLateraleTB.add(verticalStrut);
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
 	}
 }

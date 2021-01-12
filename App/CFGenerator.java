@@ -12,8 +12,8 @@ import java.io.File;
 public class CFGenerator {
   // Variabili di istanza
   // -------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String nome, cognome, comune, m, sesso;
-  private int anno, giorno;
+  private String nome, cognome, comune, m, sesso, giorno;
+  private int anno;
   
   // Array statici
   private final char[] elencoPari = {'0','1','2','3','4','5','6','7','8','9','A','B',
@@ -44,7 +44,7 @@ public class CFGenerator {
   
   // Inizializza le variabili di istanza della classe
   // --------------------------------------------------------------------------------------------------------------------------------------------------------------
-  public CFGenerator(String nome, String cognome, String comune, String m, int anno, int giorno,String sesso) {
+  public CFGenerator(String nome, String cognome, String comune, String m, int anno, String giorno,String sesso) {
     this.nome = nome;
     this.cognome = cognome;
     this.comune = comune;
@@ -87,12 +87,27 @@ public class CFGenerator {
   int getAnnoInserito() {
     return anno;
   }
-  int getGiorno() {
-    return (sesso.equals("M")) ? giorno : (giorno+40);
+  String getGiorno() {
+	  
+	  int Giorno = 0; 
+	  
+	  if(sesso.equals("M")) {
+		  
+		  return giorno;
+		  
+	  }
+	  else
+	  {
+		  
+		   Giorno = Integer.parseInt(giorno);
+		   Giorno += 40; 
+		  
+	  
+    return (String.valueOf(Giorno));
   }
-  int getGiornoInserito() {
-    return giorno;
   }
+
+  
   String getComune() {
     return elaboraCodiceComune();
   }
