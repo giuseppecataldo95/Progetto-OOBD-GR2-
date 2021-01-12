@@ -34,18 +34,15 @@ public class Main {
 		try {
 			DBconn = ConnessioneDB.getInstance();
 			Conn = DBconn.getConnection();
-<<<<<<< Updated upstream
-			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			//ControllerCliente Cliente = new ControllerCliente(Conn);
-=======
+
+			
+
 
 			ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
 			ControllerCliente Cliente = new ControllerCliente(Conn);
 
-			//ControllerMagazzino Magazzino = new ControllerMagazzino(Conn);
-			//ControllerCliente Cliente = new ControllerCliente(Conn);
 
->>>>>>> Stashed changes
+
 
 		}catch(SQLException e) {
 			System.out.println("Errore: "+e);
