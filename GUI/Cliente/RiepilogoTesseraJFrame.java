@@ -227,18 +227,17 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				
-				setVisible(false);
-				
-				try {
+				try
+				{
 					controller.RiepilogoTesseraAvantiButtonPressed();
-					controller.RiepilogoTesseraAvantiButtonPressedMostraFinestraClienti();
-				} catch (SQLException e1) {
-					
-					//APERTURA FINESTRA ERRORE
 				}
-						
+				catch (SQLException e1) 
+				{
+					setVisible(false);
+					controller.InserimentoNonAvvenuto();	
+				}
+					
+				
 			}
 		});
 		AvantiButton.setBounds(808, 491, 103, 31);

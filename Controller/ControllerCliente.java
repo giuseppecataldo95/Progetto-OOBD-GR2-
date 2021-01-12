@@ -3,6 +3,7 @@ import GUI.*;
 import GUI.Cliente.ClientiJFrame;
 import GUI.Cliente.CreaTesseraJFrame;
 import GUI.Cliente.ErroreTesseraJDialog;
+import GUI.Cliente.InserimentoClienteCompletatoJDialog;
 import GUI.Cliente.RiepilogoTesseraJFrame;
 import GUI.Cliente.VisualizzaClientiJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
@@ -17,6 +18,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 import javax.swing.JButton;
@@ -28,9 +30,12 @@ import com.sun.source.tree.CatchTree;
 import ConnessioneDB.*;
 import DAO.ClienteDAO;
 import Entità.Cliente;
+import Entità.Frutta;
 
 
-public class ControllerCliente {
+public class ControllerCliente 
+
+{
 	
 	
 	 public ClientiJFrame Clienti;
@@ -38,6 +43,7 @@ public class ControllerCliente {
 	 public RiepilogoTesseraJFrame RiepilogoTessera;
 	 public VisualizzaClientiJFrame VisualizzaClienti;
 	 public ErroreTesseraJDialog ErroreTessera;
+	 public InserimentoClienteCompletatoJDialog ClienteInserito;
 	 private ConvertiCBInData Convertitore;
 	 private ClienteDAO DAO;
 	 
@@ -46,6 +52,7 @@ public class ControllerCliente {
 	
 //	|-----Costruttore Controller-----|
 	public ControllerCliente(Connection Conn) throws SQLException
+	
 	{
 		 Clienti = new ClientiJFrame(this);
 		 Clienti.setVisible(true);
@@ -56,20 +63,26 @@ public class ControllerCliente {
 // 	|-----Metodi Controller-----|
 	
 	public void ClientiCreaNuovaTesseraButtonPressed()
+	
 	{	
 		Clienti.setVisible(false);
 		CreaTessera = new CreaTesseraJFrame(this);
 		CreaTessera.setVisible(true);
 	}
 
-	public void CreaNuovaTesseraIndietroButtonPressed() {
+	public void CreaNuovaTesseraIndietroButtonPressed() 
+	
+	{
 		
 		CreaTessera.setVisible(false);
 		Clienti.setVisible(true);
 		
 	}
 
-	public void ClientiVisualizzaClientiButtonPressed() {
+	public void ClientiVisualizzaClientiButtonPressed() 
+	
+	
+	{
 		
 	
 		VisualizzaClienti = new VisualizzaClientiJFrame(this);
@@ -77,14 +90,18 @@ public class ControllerCliente {
 		
 	}
 
-	public void CreaNuovaTesseraClientiPercorsoButtonPressed() {
+	public void CreaNuovaTesseraClientiPercorsoButtonPressed() 
+	
+	{
 		
 		CreaTessera.setVisible(false);
 		Clienti.setVisible(true);
 		
 	}
 	
-	public void VisualizzaClientiClientiPercorsoButtonPressed() {
+	public void VisualizzaClientiClientiPercorsoButtonPressed() 
+	
+	{
 		
 		VisualizzaClienti.setVisible(false);
 		Clienti.setVisible(true);
@@ -92,7 +109,9 @@ public class ControllerCliente {
 		
 	}
 	
-	public void CreaNuovaTesseraAvantiButtonPressed() {
+	public void CreaNuovaTesseraAvantiButtonPressed() 
+	
+	{
 		
 
 		
@@ -122,24 +141,30 @@ public class ControllerCliente {
 		
 	}
 
-	public void RiepilogoTesseraIndietroButtonPressed() {
+	public void RiepilogoTesseraIndietroButtonPressed() 
+	
+	{
 		
 		CreaTessera.setVisible(true);
 		
 	}
 
 
-	public void RiepilogoTesseraNuovaTesseraPercorsoButtonPressed() {
+	public void RiepilogoTesseraNuovaTesseraPercorsoButtonPressed() 
+	
+	{
 
 		CreaTessera.setVisible(true);
 		
 	}
 
 
-	public void RiepilogoTesseraAvantiButtonPressed() throws SQLException {
+	public void RiepilogoTesseraAvantiButtonPressed() throws SQLException
+	
+	{
 
 		
-		
+			
 			String Giorno = RiepilogoTessera.getRiepilogoGiornoNTB();
 	    	String Mese = RiepilogoTessera.getRiepilogoMeseNTB();
 	    	String Anno = RiepilogoTessera.getRiepilogoAnnoNTB();
@@ -151,30 +176,64 @@ public class ControllerCliente {
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
 	    	Date Data_N = Convertitore.Converti();
 			DAO.insertCliente(Nome, Cognome, LuogoNascita, CF, Sesso,  Data_N);
-			ClientiJFrame Clienti = new ClientiJFrame(this);
-			Clienti.setVisible(true);
+			MostraInserimentoCompletatoJDialog();
 			
-			
-			
-		
 
 	}
-
-
-		public void ErroreTesseraRiprovaButtonPressed() {
 	
-			CreaTessera.setVisible(true);
+	public void MostraInserimentoCompletatoJDialog()
+	
+	{
+		
+		InserimentoClienteCompletatoJDialog ClienteInserito = new InserimentoClienteCompletatoJDialog(this);
+		
+		ClienteInserito.setVisible(true);
+		
+	}
 
-		}
+		public void CompletaTabellaCliente() throws SQLException
+		
+		{
+	    	ArrayList<Cliente> Cliente = DAO.getCliente();
+	    	for(Cliente c : Cliente)
+	    	VisualizzaClienti.setRigheTabella(c.getNome(), c.getCognome(), c.getCF(), c.getLuogo_nascita(), c.getData_nascita(), c.getSesso());
+	    }
 
 
-		public void RiepilogoTesseraAvantiButtonPressedMostraFinestraClienti() {
-
-			Clienti.setVisible(true);
+		public void InserimentoNonAvvenuto()
+		
+		{
+			
+			ErroreTesseraJDialog ErroreTessera = new ErroreTesseraJDialog(this);
+			ErroreTessera.setVisible(true);
 			
 		}
-	
-		 
+
+
+		public void ErroreTesseraRiprovaButtonPressed() 
+		
+		{
+			
+			CreaTesseraJFrame CreaTessera = new CreaTesseraJFrame(this);
+			CreaTessera.setVisible(true);
+			
+		}
+
+
+		public void MostraFinestraClientiDaInserimentoClienteCompletato()
+
+		{
+			ClientiJFrame Clienti = new ClientiJFrame(this);
+			Clienti.setVisible(true);
+			RiepilogoTessera.setVisible(false);
+			ClienteInserito.setVisible(false);
+			
+		}
+
+
+		
+
+
 }
 		
 			

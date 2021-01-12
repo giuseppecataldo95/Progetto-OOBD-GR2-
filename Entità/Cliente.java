@@ -12,11 +12,11 @@ public class Cliente {
 	private String Luogo_nascita;
 	private String Sesso;
 	private String CF;
-	private String Data_nascita;
+	private Date Data_nascita;
 	
 	
 	
-	public Cliente(String nome, String cognome, String luogo_nascita, String sesso, String cF, String data_nascita) {
+	public Cliente(String nome, String cognome, String luogo_nascita, String sesso, String cF, Date data_nascita) {
 		super();
 		Nome = nome;
 		Cognome = cognome;
@@ -83,12 +83,12 @@ public class Cliente {
 	}
 
 
-	public String getData_nascita() {
+	public Date getData_nascita() {
 		return Data_nascita;
 	}
 
 
-	public void setData_nascita(String data_nascita) {
+	public void setData_nascita(Date data_nascita) {
 		Data_nascita = data_nascita;
 	}
 

@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.BoxLayout;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.SQLException;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -87,6 +88,8 @@ public class ClientiJFrame extends JFrame {
 		JButton AggiungiTesseraButton = new JButton("Aggiungi Nuova Tessera");
 		AggiungiTesseraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
 				Controller.ClientiCreaNuovaTesseraButtonPressed();
 			}
 		});
@@ -99,7 +102,15 @@ public class ClientiJFrame extends JFrame {
 		JButton VisualizzaClientiButton = new JButton("Visualizza Clienti");
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
 				Controller.ClientiVisualizzaClientiButtonPressed();
+				try {
+					Controller.CompletaTabellaCliente();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));

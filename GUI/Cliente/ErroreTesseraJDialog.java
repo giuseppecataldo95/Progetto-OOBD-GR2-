@@ -40,16 +40,16 @@ public class ErroreTesseraJDialog extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton riprovaButton = new JButton("Riprova");
-//				riprovaButton.addActionListener(new ActionListener() {
-//					public void actionPerformed(ActionEvent e) 
-//					
-//					{
-//						
-//						setVisible(false);
-//						controller.ErroreTesseraRiprovaButtonPressed();
-//						
-//					}
-//				});
+				riprovaButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) 
+					
+					{
+						
+						setVisible(false);
+						controller.ErroreTesseraRiprovaButtonPressed();
+						
+					}
+				});
 				
 				riprovaButton.setActionCommand("OK");
 				buttonPane.add(riprovaButton);

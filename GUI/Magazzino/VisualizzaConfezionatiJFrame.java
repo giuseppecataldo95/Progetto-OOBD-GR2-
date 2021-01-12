@@ -43,9 +43,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 	};
 	
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public VisualizzaConfezionatiJFrame(ControllerMagazzino c) {
 		Controller = c;
 		

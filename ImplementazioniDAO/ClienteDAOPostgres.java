@@ -23,7 +23,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 
 	public ClienteDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
-		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
+//		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 	}
 	
@@ -44,34 +44,33 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		return row;
 	}
 	
-	public ArrayList<Cliente> getCliente() throws SQLException {
-//		Statement getClienti = connessione.createStatement();
-//		ResultSet rs = getClienti.executeQuery("SELECT * FROM cliente");
-//		ArrayList<Cliente> Clienti = new ArrayList<Cliente>();
-//		while(rs.next()) {
-//			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
-//			
-//			Clienti.add(c);
-//		}
-//		rs.close();
-//		return Clienti;
-		return 	null;
-//	
-}
+	public ArrayList<Cliente> getCliente() throws SQLException
+	{
+		Statement getClienti = connessione.createStatement();
+		ResultSet rs = getClienti.executeQuery("SELECT * FROM cliente");
+		ArrayList<Cliente> Clienti = new ArrayList<Cliente>();
+		while(rs.next()) 
+			
+		{
+			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
+			Clienti.add(c);
+			
+		}
 	
-	public Cliente getClienteByCF() throws SQLException {
-//		getClienteByCF.setString(1, "cliente");
-//		ResultSet rs = getClienteByCF.executeQuery();
-//		
-//		
-//			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogoN"), rs.getString("meseNascita"), rs.getInt("giornoNascita"), rs.getInt("annoNascita"), rs.getString("sesso"));
-//			
-//			
-//		rs.close();
-//		return c;
-	return null;
+		rs.close();
+		return Clienti;
+		
+	}
 	
-}
+	public Cliente getClienteByCF() throws SQLException 
+	{
+		getClienteByCF.setString(1, "cliente");
+		ResultSet rs = getClienteByCF.executeQuery();		
+		Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
+		rs.close();
+		return c;
+	
+	}
 
 
 
