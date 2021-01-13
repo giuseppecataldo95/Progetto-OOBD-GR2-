@@ -83,11 +83,40 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaFrutta() throws SQLException {
-    	ArrayList<Frutta> ProdottiFrutta = DAO.getFrutta();
+	public void CompletaTabellaFrutta() {
+    	ArrayList<Frutta> ProdottiFrutta = null;
+		try {
+			ProdottiFrutta = DAO.getFrutta();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     	for(Frutta f : ProdottiFrutta)
     		VisualizzaFrutta.setRigheTabella(f.getID_Prodotto(), f.getNome(), f.getProvenienza(), f.getLotto_lavorazione(), f.getData_raccolta(), f.getValore(), f.getScorte_kg());
     }
+	
+	public void VisualizzaFrutta_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaFrutta.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaFrutta_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaFrutta.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto() {
+		
+    	VisualizzaFrutta.setVisible(false);
+    	VisualizzaFrutta = new VisualizzaFruttaJFrame(this);
+    	VisualizzaFrutta.setVisible(true);
+	
+	} 
 	
 	public void VisualizzaFruttaBottoneIndietroPremuto() {
     	VisualizzaFrutta.setVisible(false);
@@ -102,11 +131,41 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaVerdura() throws SQLException {
-    	ArrayList<Verdura> ProdottiVerdura = DAO.getVerdura();
+	public void CompletaTabellaVerdura() {
+    	ArrayList<Verdura> ProdottiVerdura = null;
+		try {
+			ProdottiVerdura = DAO.getVerdura();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
     	for(Verdura v : ProdottiVerdura)
     		VisualizzaVerdura.setRigheTabella(v.getID_Prodotto(), v.getNome(), v.getProvenienza(), v.getLotto_lavorazione(), v.getData_raccolta(), v.getValore(), v.getScorte_kg());
     }
+	
+	public void VisualizzaVerdura_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaVerdura.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaVerdura_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaVerdura.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaVerdura_VisualizzaVerduraPercorsoBottonePremuto() {
+		
+    	VisualizzaVerdura.setVisible(false);
+    	VisualizzaVerdura = new VisualizzaVerduraJFrame(this);
+    	VisualizzaVerdura.setVisible(true);
+	
+	} 
 	
 	public void VisualizzaVerduraBottoneIndietroPremuto() {
     	VisualizzaVerdura.setVisible(false);
@@ -121,11 +180,40 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaFarinacei() throws SQLException {
-    	ArrayList<Farinaceo> ProdottiFarinacei = DAO.getFarinacei();
+	public void CompletaTabellaFarinacei() {
+    	ArrayList<Farinaceo> ProdottiFarinacei = null;
+		try {
+			ProdottiFarinacei = DAO.getFarinacei();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     	for(Farinaceo f : ProdottiFarinacei)
 	    	VisualizzaFarinacei.setRigheTabella(f.getID_Prodotto(), f.getNome(),f.getLotto_lavorazione(),f.getData_scadenza(),f.getValore(),f.getScorte_kg());
 	}
+	
+	public void VisualizzaFarinacei_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaFarinacei.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaFarinacei_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaFarinacei.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaFarinacei_VisualizzaFarinaceiPercorsoBottonePremuto() {
+		
+    	VisualizzaFarinacei.setVisible(false);
+    	VisualizzaFarinacei = new VisualizzaFarinaceiJFrame(this);
+    	VisualizzaFarinacei.setVisible(true);
+	
+	} 
 	
 	public void VisualizzaFarinaceiBottoneIndietroPremuto() {
     	VisualizzaFarinacei.setVisible(false);
@@ -140,11 +228,41 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaLatticini() throws SQLException {
-    	ArrayList<Latticino> ProdottiLatticini = DAO.getLatticini();
+	public void CompletaTabellaLatticini() {
+    	ArrayList<Latticino> ProdottiLatticini = null;
+		try {
+			ProdottiLatticini = DAO.getLatticini();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	for(Latticino l : ProdottiLatticini)
     		VisualizzaLatticini.setRigheTabella(l.getID_Prodotto(), l.getNome(), l.getPaese_mungitura(), l.getPaese_lavorazione(), l.getData_mungitura(),l.getData_scadenza(), l.getValore(), l.getScorte_kg());
     }
+	
+	public void VisualizzaLatticini_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaLatticini.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaLatticini_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaLatticini.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaLatticini_VisualizzaLatticiniPercorsoBottonePremuto() {
+		
+    	VisualizzaLatticini.setVisible(false);
+    	VisualizzaLatticini = new VisualizzaLatticiniJFrame(this);
+    	VisualizzaLatticini.setVisible(true);
+	
+	}
 	
 	public void VisualizzaLatticiniBottoneIndietroPremuto() {
     	VisualizzaLatticini.setVisible(false);
@@ -159,11 +277,41 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaConfezionati() throws SQLException {
-    	ArrayList<Confezionato> ProdottiConfezionati = DAO.getConfezionati();
+	public void CompletaTabellaConfezionati() {
+    	ArrayList<Confezionato> ProdottiConfezionati = null;
+		try {
+			ProdottiConfezionati = DAO.getConfezionati();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	for(Confezionato c : ProdottiConfezionati)
     	VisualizzaConfezionati.setRigheTabella(c.getID_Prodotto(), c.getNome(), c.getMarca(), c.getLotto_lavorazione(), c.getData_scadenza(), c.getModalità_conservazione(),c.getPeso(), c.getValore(), c.getScorte());
     }
+	
+	public void VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaConfezionati.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaConfezionati_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaConfezionati.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaConfezionati_VisualizzaConfezionatiPercorsoBottonePremuto() {
+		
+    	VisualizzaConfezionati.setVisible(false);
+    	VisualizzaConfezionati = new VisualizzaConfezionatiJFrame(this);
+    	VisualizzaConfezionati.setVisible(true);
+	
+	}
 
 	public void VisualizzaConfezionatiBottoneIndietroPremuto() {
     	VisualizzaConfezionati.setVisible(false);
@@ -178,11 +326,41 @@ public class ControllerMagazzino {
 		
 	}
 	
-	public void CompletaTabellaUova() throws SQLException {
-    	ArrayList<Uova> ProdottiUova = DAO.getUova();
+	public void CompletaTabellaUova() {
+    	ArrayList<Uova> ProdottiUova = null;
+		try {
+			ProdottiUova = DAO.getUova();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	for(Uova u : ProdottiUova)
     	VisualizzaUova.setRigheTabella(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
     }
+	
+	public void VisualizzaUova_MagazzinoPercorsoBottonePremuto() {
+		
+		VisualizzaUova.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaUova_VisualizzaProdottoPercorsoBottonePremuto() {
+		
+    	VisualizzaUova.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
+	
+	} 
+    
+    public void VisualizzaUova_VisualizzaUovaPercorsoBottonePremuto() {
+		
+    	VisualizzaUova.setVisible(false);
+    	VisualizzaUova = new VisualizzaUovaJFrame(this);
+    	VisualizzaUova.setVisible(true);
+	
+	}
 	
 	public void VisualizzaUovaBottoneIndietroPremuto() {
     	VisualizzaUova.setVisible(false);

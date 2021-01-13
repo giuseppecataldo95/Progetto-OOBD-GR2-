@@ -128,18 +128,48 @@ public class VisualizzaFarinaceiJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFarinacei_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFarinacei_VisualizzaProdottoPercorsoBottonePremuto();
+			}
+		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
+		JButton VisualizzaFarinaceiPercorsoButton = new JButton("> Visualizza Farinacei");
+		VisualizzaFarinaceiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFarinacei_VisualizzaFarinaceiPercorsoBottonePremuto();
+				Controller.CompletaTabellaFarinacei();
+			}
+		});
+		VisualizzaFarinaceiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaFarinaceiPercorsoButton);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 116, 673, 385);
+		scrollPane.setBounds(95, 41, 867, 463);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFarinaceiBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(852, 521, 110, 31);
+		VisualizzaProdottiPanel.add(IndietroButton);
 		
 	}
 	

@@ -128,21 +128,51 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFrutta_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFrutta_VisualizzaProdottoPercorsoBottonePremuto();
+			}
+		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
+		JButton VisualizzaFruttaPercorsoButton = new JButton("> Visualizza Frutta\r\n\r\n");
+		VisualizzaFruttaPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto();
+				Controller.CompletaTabellaFrutta();
+			}
+		});
+		VisualizzaFruttaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaFruttaPercorsoButton);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 116, 673, 385);
+		scrollPane.setBounds(95, 41, 867, 463);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		table.setFont(new Font("Arial", Font.PLAIN, 11));
 		table.setRowSelectionAllowed(false);
 		table.setBackground(new Color(255, 204, 153));
 		scrollPane.setViewportView(table);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(852, 521, 110, 31);
+		VisualizzaProdottiPanel.add(IndietroButton);
 		
 	}
 	

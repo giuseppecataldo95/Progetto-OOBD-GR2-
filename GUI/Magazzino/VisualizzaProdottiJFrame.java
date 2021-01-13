@@ -132,12 +132,7 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		FruttaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaFrutta();
-				try {
-					Controller.CompletaTabellaFrutta();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaFrutta();
 			}
 		});
 		FruttaButton.setBounds(10, 11, 213, 145);
@@ -147,12 +142,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		VerduraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaVerdura();
-				try {
-					Controller.CompletaTabellaVerdura();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaVerdura();
+				
 			}
 		});
 		VerduraButton.setBounds(223, 11, 213, 145);
@@ -162,12 +153,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		LatticiniButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaLatticini();
-				try {
-					Controller.CompletaTabellaLatticini();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaLatticini();
+				
 			}
 		});
 		LatticiniButton.setBounds(436, 11, 213, 145);
@@ -177,12 +164,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		FarinaceiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaFarinacei();
-				try {
-					Controller.CompletaTabellaFarinacei();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaFarinacei();
+				
 			}
 		});
 		FarinaceiButton.setBounds(10, 162, 213, 145);
@@ -192,12 +175,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		ConfezionatiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaConfezionati();
-				try {
-					Controller.CompletaTabellaConfezionati();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaConfezionati();
+				
 			}
 		});
 		ConfezionatiButton.setBounds(223, 162, 213, 145);
@@ -207,12 +186,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		UovaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Controller.MostraFinestraVisualizzaUova();
-				try {
-					Controller.CompletaTabellaUova();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Controller.CompletaTabellaUova();
+				
 			}
 		});
 		UovaButton.setBounds(436, 162, 213, 145);

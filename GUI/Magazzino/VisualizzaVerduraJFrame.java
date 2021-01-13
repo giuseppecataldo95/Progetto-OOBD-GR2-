@@ -98,14 +98,6 @@ public class VisualizzaVerduraJFrame extends JFrame {
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
-		
 		Component verticalStrut = Box.createVerticalStrut(200);
 		MenùLateraleTB.add(verticalStrut);
 		
@@ -128,18 +120,48 @@ public class VisualizzaVerduraJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaVerdura_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaVerdura_VisualizzaProdottoPercorsoBottonePremuto();
+			}
+		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
+		JButton VisualizzaVerduraPercorsoButton = new JButton("> Visualizza Verdura");
+		VisualizzaVerduraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaVerdura_VisualizzaVerduraPercorsoBottonePremuto();
+				Controller.CompletaTabellaVerdura();
+			}
+		});
+		VisualizzaVerduraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaVerduraPercorsoButton);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 116, 673, 385);
+		scrollPane.setBounds(95, 41, 867, 463);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaVerduraBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(852, 521, 110, 31);
+		VisualizzaProdottiPanel.add(IndietroButton);
 		
 	}
 	

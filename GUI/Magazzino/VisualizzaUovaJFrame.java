@@ -128,18 +128,48 @@ public class VisualizzaUovaJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(percorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaUova_MagazzinoPercorsoBottonePremuto();
+			}
+		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
+		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaUova_VisualizzaProdottoPercorsoBottonePremuto();
+			}
+		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
+		JButton VisualizzaUovaPercorsoButton = new JButton("> Visualizza Uova");
+		VisualizzaUovaPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaUova_VisualizzaUovaPercorsoBottonePremuto();
+				Controller.CompletaTabellaUova();
+			}
+		});
+		VisualizzaUovaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaUovaPercorsoButton);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 116, 673, 385);
+		scrollPane.setBounds(95, 41, 867, 463);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.VisualizzaUovaBottoneIndietroPremuto();
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IndietroButton.setBounds(852, 521, 110, 31);
+		VisualizzaProdottiPanel.add(IndietroButton);
 		
 	}
 	
