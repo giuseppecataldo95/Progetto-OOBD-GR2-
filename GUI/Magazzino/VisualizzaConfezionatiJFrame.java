@@ -128,7 +128,6 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto();
 				
 			}
 		});
@@ -136,43 +135,19 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
-		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_VisualizzaProdottoPercorsoBottonePremuto();
-			}
-		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
-		JButton VisualizzaConfezionatiPercorsoButton = new JButton("> Visualizza Confezionati");
-		VisualizzaConfezionatiPercorsoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_VisualizzaConfezionatiPercorsoBottonePremuto();
-				Controller.CompletaTabellaConfezionati();
-			}
-		});
-		VisualizzaConfezionatiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaConfezionatiPercorsoButton);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 41, 867, 463);
+		scrollPane.setBounds(200, 116, 673, 385);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
-		
-		JButton IndietroButton = new JButton("Indietro");
-		IndietroButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionatiBottoneIndietroPremuto();
-			}
-		});
-		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		IndietroButton.setBounds(852, 521, 110, 31);
-		VisualizzaProdottiPanel.add(IndietroButton);
 		
 	}
 	
 	public void setRigheTabella(int ID_Prodotto, String Nome, String Marca, String Lotto, Date Data, String ModConservazione, float Peso, float Valore, int Scorte ) {
 		Model.addRow(new Object[]{ID_Prodotto, Nome, Marca, Lotto, Data, Peso, Valore, Scorte});
 		}
+	
 }
