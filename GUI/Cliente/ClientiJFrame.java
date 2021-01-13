@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
-
+import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -30,14 +30,16 @@ import java.awt.Font;
 public class ClientiJFrame extends JFrame {
 
 	private JPanel ClientiPanel;
-	private ControllerCliente Controller;
+	private ControllerCliente ControllerC;
 	private JButton MagazzinoButton;
 
-	/**
-	 * Create the frame.
-	 */
-	public  ClientiJFrame(ControllerCliente c) {
-		Controller = c;
+	ControllerPrincipale ControllerP;
+	
+	
+	
+	public  ClientiJFrame(ControllerCliente CC, ControllerPrincipale CP) {
+		ControllerC = CC;
+		ControllerP = CP;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -89,7 +91,7 @@ public class ClientiJFrame extends JFrame {
 		AggiungiTesseraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.ClientiCreaNuovaTesseraButtonPressed();
+				ControllerC.ClientiCreaNuovaTesseraButtonPressed();
 			}
 		});
 		AggiungiTesseraButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -103,13 +105,10 @@ public class ClientiJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Controller.ClientiVisualizzaClientiButtonPressed();
-				try {
-					Controller.CompletaTabellaCliente();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				ControllerC.ClientiVisualizzaClientiButtonPressed();
+				
+					ControllerC.CompletaTabellaCliente();
+				
 			}
 		});
 		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -143,8 +142,16 @@ public class ClientiJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon("C:\\Users\\simon\\OneDrive\\Desktop\\customer_person_people_man_you_1625.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			
+			{
+				
+			}
+		
+		});
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
@@ -154,7 +161,8 @@ public class ClientiJFrame extends JFrame {
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
-		MagazzinoButton = new JButton("");
+		
+		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

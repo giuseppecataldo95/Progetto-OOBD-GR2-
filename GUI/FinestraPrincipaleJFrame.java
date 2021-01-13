@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
+
 import java.awt.Window.Type;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -29,11 +33,12 @@ public class FinestraPrincipaleJFrame extends JFrame {
 
 	private JPanel FinestraPrincipalePanel;
 	private JPanel ContainerBottoniPanel;
-
-	/**
-	 * Create the frame.
-	 */
-	public FinestraPrincipaleJFrame() {
+	ControllerPrincipale controller;
+	ControllerCliente ControllerC;
+	
+	public FinestraPrincipaleJFrame(ControllerPrincipale c, ControllerCliente c1) {
+		controller = c;
+		ControllerC = c1;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -65,6 +70,16 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ContainerBottoniPanel.add(horizontalStrut);
 		
 		JButton ClientiButton = new JButton("Clienti");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			
+			{
+				
+				c.FinestraPrincipaleClientiButtonPressed();
+				
+			}
+			
+		});
 		ClientiButton.setMaximumSize(new Dimension(170, 150));
 		ClientiButton.setIconTextGap(10);
 		ClientiButton.setVerticalTextPosition(SwingConstants.BOTTOM);

@@ -47,14 +47,16 @@ public class ControllerCliente
 	 private ConvertiCBInData Convertitore;
 	 private ClienteDAO DAO;
 	 
-	
+	ControllerPrincipale ControllerP;
 
 	
 //	|-----Costruttore Controller-----|
 	public ControllerCliente(Connection Conn) throws SQLException
 	
 	{
-		 Clienti = new ClientiJFrame(this);
+	
+		
+		 Clienti = new ClientiJFrame(this,ControllerP);
 		 Clienti.setVisible(true);
 		 DAO = new ClienteDAOPostgres(Conn);
 	}
@@ -66,7 +68,7 @@ public class ControllerCliente
 	
 	{	
 		Clienti.setVisible(false);
-		CreaTessera = new CreaTesseraJFrame(this);
+		CreaTessera = new CreaTesseraJFrame(this, ControllerP);
 		CreaTessera.setVisible(true);
 	}
 
@@ -182,6 +184,7 @@ public class ControllerCliente
 				RiepilogoTessera.setEnabled(false);
 				ClienteInserito.setVisible(true);
 				
+				
 			}
 			
 			catch (NumberFormatException NFE) {
@@ -209,12 +212,22 @@ public class ControllerCliente
 	
 	
 
-		public void CompletaTabellaCliente() throws SQLException
+		public void CompletaTabellaCliente()  
+		
 		
 		{
-	    	ArrayList<Cliente> Cliente = DAO.getCliente();
+	    	ArrayList<Cliente> Cliente=null;
+	   
+			try {
+				Cliente = DAO.getCliente();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    	for(Cliente c : Cliente)
-	    	VisualizzaClienti.setRigheTabella(c.getNome(), c.getCognome(), c.getCF(), c.getLuogo_nascita(), c.getData_nascita(), c.getSesso());
+				
+					VisualizzaClienti.setRigheTabella(c.getNome(), c.getCognome(), c.getCF(), c.getLuogo_nascita(), c.getData_nascita(), c.getSesso());
+				
 	    }
 
 
@@ -234,7 +247,7 @@ public class ControllerCliente
 			RiepilogoTessera.setEnabled(true);
 			RiepilogoTessera.dispose();
 			ErroreTessera.setVisible(false);
-			CreaTessera = new CreaTesseraJFrame(this);
+			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
 			CreaTessera.setVisible(true);
 			
 		}
@@ -243,7 +256,7 @@ public class ControllerCliente
 		public void MostraFinestraClientiDaInserimentoClienteCompletato()
 
 		{
-			Clienti = new ClientiJFrame(this);
+			Clienti = new ClientiJFrame(this, ControllerP);
 			ClienteInserito.setVisible(false);
 			Clienti.setVisible(true);
 			RiepilogoTessera.setVisible(false);
