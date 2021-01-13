@@ -69,6 +69,13 @@ public class VisualizzaClientiJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
@@ -146,7 +153,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 
 	}
 	
-	public void setRigheTabella(String Nome, String Cognome, String Sesso, String LuogoNascita, Date DataNascita, String CodiceFiscale) throws SQLException {
+	public void setRigheTabella(String Nome, String Cognome, String Sesso, String LuogoNascita, Date DataNascita, String CodiceFiscale){
 		Model.addRow(new Object[] {Nome, Cognome, DataNascita, LuogoNascita, Sesso, CodiceFiscale});
 		
 		}

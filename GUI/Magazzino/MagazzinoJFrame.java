@@ -31,9 +31,7 @@ public class MagazzinoJFrame extends JFrame {
 	private ControllerMagazzino Controller;
 	private JButton MagazzinoButton;
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public  MagazzinoJFrame(ControllerMagazzino c) {
 		Controller = c;
 		

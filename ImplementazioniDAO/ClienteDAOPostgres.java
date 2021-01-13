@@ -38,7 +38,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		insertCliente.setDate(5, data_nascita);
 		insertCliente.setString(6, sesso.toUpperCase());
 		int row = insertCliente.executeUpdate();
-		
+		connessione.close();
 				
 		
 		return row;

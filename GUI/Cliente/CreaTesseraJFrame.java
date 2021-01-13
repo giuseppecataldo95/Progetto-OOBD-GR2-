@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
 
 import java.awt.Font;
 import javax.swing.JSeparator;
@@ -44,13 +45,13 @@ public class CreaTesseraJFrame extends JFrame {
 	
 	 
 
-	ControllerCliente Controller;
-
+	private	ControllerCliente Controller;
+	private ControllerPrincipale ControllerP;
 	
-	public CreaTesseraJFrame(ControllerCliente c) {
+	public CreaTesseraJFrame(ControllerCliente c, ControllerPrincipale c1) {
 		
 		Controller = c;
-		
+		ControllerP = c1;
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -72,7 +73,7 @@ public class CreaTesseraJFrame extends JFrame {
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
 		CreaTesseraPanel.add(MenùLateraleTB);
 		
-		JButton ClientiButton = new JButton("");
+		JButton ClientiButton = new JButton("C:\\Users\\simon\\OneDrive\\Desktop\\customer_person_people_man_you_1625.png");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
@@ -80,6 +81,17 @@ public class CreaTesseraJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(null);
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		ClientiButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
+			
+			
+			
+			
+			
+		}
+	});
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
