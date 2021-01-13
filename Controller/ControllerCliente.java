@@ -23,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import com.sun.source.tree.CatchTree;
@@ -38,20 +39,19 @@ public class ControllerCliente
 {
 	
 	
-	 public ClientiJFrame Clienti;
-	 public CreaTesseraJFrame CreaTessera;
-	 public RiepilogoTesseraJFrame RiepilogoTessera;
-	 public VisualizzaClientiJFrame VisualizzaClienti;
-	 public ErroreTesseraJDialog ErroreTessera;
-	 public InserimentoClienteCompletatoJDialog ClienteInserito;
+	 private ClientiJFrame Clienti;
+	 private CreaTesseraJFrame CreaTessera;
+	 private RiepilogoTesseraJFrame RiepilogoTessera;
+	 private VisualizzaClientiJFrame VisualizzaClienti;
+	 private ErroreTesseraJDialog ErroreTessera;
+	 private InserimentoClienteCompletatoJDialog ClienteInserito;
 	 private ConvertiCBInData Convertitore;
 	 private ClienteDAO DAO;
-	 
-	ControllerPrincipale ControllerP;
+	 private ControllerPrincipale ControllerP;
 
 	
 //	|-----Costruttore Controller-----|
-	public ControllerCliente(Connection Conn) throws SQLException
+	public ControllerCliente(Connection Conn, ControllerPrincipale P) throws SQLException
 	
 	{
 	
@@ -59,6 +59,7 @@ public class ControllerCliente
 		 Clienti = new ClientiJFrame(this,ControllerP);
 		 Clienti.setVisible(true);
 		 DAO = new ClienteDAOPostgres(Conn);
+		 ControllerP = P;
 	}
 
 	
@@ -262,6 +263,10 @@ public class ControllerCliente
 			RiepilogoTessera.setVisible(false);
 			
 			
+		}
+		
+		public JFrame getCreaTessera() {
+			return CreaTessera;
 		}
 
 

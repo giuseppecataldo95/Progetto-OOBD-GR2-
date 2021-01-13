@@ -20,43 +20,38 @@ public class ControllerPrincipale {
 	
 	private MagazzinoJFrame Magazzino;
 	private ControllerCliente ControllerC;
+	private ControllerMagazzino ControllerM;
 	private Connection Connessione;
 	
-public ControllerPrincipale(Connection Conn) 
-	
-	{
+	public ControllerPrincipale(Connection Conn) {
 		 Connessione= Conn;
-		 FinestraPrincipale = new FinestraPrincipaleJFrame(this, ControllerC);
+		 FinestraPrincipale = new FinestraPrincipaleJFrame(this, ControllerC, ControllerM);
 		 FinestraPrincipale.setVisible(true);
-		 
 	}
 
- public void FinestraPrincipaleClientiButtonPressed(){
- 
-	 				
-						try 
-						
-						{
-							ControllerCliente ControllerC = new ControllerCliente(Connessione);
-							FinestraPrincipale.setVisible(false);
-						} 
-						catch (SQLException e) 
-						
-						{
-							e.printStackTrace();
-						}
-					
-		 			 
-
- }
-
-public void CreaTesseraMenùLateraleClientiButtonPressed() 
-
-{
-		
-		
+	public void FinestraPrincipaleClientiButtonPressed(){
+		try {
+			ControllerC = new ControllerCliente(Connessione, this);
+			FinestraPrincipale.setVisible(false);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
-}
+	public void FinestraPrincipaleMagazzinoButtonPressed(){
+		try {
+			ControllerM = new ControllerMagazzino(Connessione, this);
+			FinestraPrincipale.setVisible(false);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+ 	public void CreaTesseraMenùLateraleClientiButtonPressed() {
+		ControllerC.getCreaTessera().setVisible(false);
+		Clienti = new ClientiJFrame(ControllerC, this);
+		Clienti.setVisible(true);
+ 	}
 
 
  

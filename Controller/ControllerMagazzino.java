@@ -7,9 +7,6 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
 
 import App.ConvertiCBInData;
 import DAO.MagazzinoDAO;
@@ -36,7 +33,6 @@ import Entità.*
 public class ControllerMagazzino {
 	
 	private MagazzinoJFrame Magazzino;
-	private ClientiJFrame Clienti;
 	private AggiungiConfezionatiJFrame Confezionati;
 	private AggiungiFarinaceiJFrame Farinacei;
 	private AggiungiFruttaJFrame Frutta;
@@ -54,14 +50,16 @@ public class ControllerMagazzino {
 	private MagazzinoDAO DAO;
 	private ConvertiCBInData Convertitore;
 	private ErroreAggiungiProdottoJDialog FinestraErrore;
+	private ControllerPrincipale ControllerP;
 	
 	//COSTRUTTORE
 	
-	public ControllerMagazzino(Connection Conn) throws SQLException {
+	public ControllerMagazzino(Connection Conn, ControllerPrincipale P) throws SQLException {
 		
 		Magazzino = new MagazzinoJFrame(this);
 		Magazzino.setVisible(true);
 		DAO = new MagazzinoDAOPostgres(Conn);
+		ControllerP = P;
 		
 	}
 	
@@ -72,6 +70,18 @@ public class ControllerMagazzino {
 		VisualizzaPr = new VisualizzaProdottiJFrame(this);
 		VisualizzaPr.setVisible(true);
 		
+	}
+	
+	public void VisualizzaProdotti_MagazzinoPercorsoBottonePremuto() {
+		VisualizzaPr.setVisible(false);
+		Magazzino = new MagazzinoJFrame(this);
+		Magazzino.setVisible(true);
+	}
+	
+	public void VisualizzaProdotti_VisualizzaProdottiPercorsoBottonePremuto() {
+		VisualizzaPr.setVisible(false);
+		VisualizzaPr = new VisualizzaProdottiJFrame(this);
+		VisualizzaPr.setVisible(true);
 	}
 	
 	// METODI PER LO SNODO 'VISUALIZZA PRODOTTO'
@@ -750,7 +760,7 @@ public class ControllerMagazzino {
     
     public void Uova_MagazzinoPercorsoBottonePremuto() {
 		
-    	Confezionati.setVisible(false);
+    	Uova.setVisible(false);
 		Magazzino = new MagazzinoJFrame(this);
 		Magazzino.setVisible(true);
 	

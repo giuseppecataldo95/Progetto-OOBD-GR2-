@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
 
 import java.awt.Window.Type;
@@ -33,12 +34,14 @@ public class FinestraPrincipaleJFrame extends JFrame {
 
 	private JPanel FinestraPrincipalePanel;
 	private JPanel ContainerBottoniPanel;
-	ControllerPrincipale controller;
-	ControllerCliente ControllerC;
+	private ControllerPrincipale Controller;
+	private ControllerCliente ControllerC;
+	private ControllerMagazzino ControllerM;
 	
-	public FinestraPrincipaleJFrame(ControllerPrincipale c, ControllerCliente c1) {
-		controller = c;
-		ControllerC = c1;
+	public FinestraPrincipaleJFrame(ControllerPrincipale P, ControllerCliente C, ControllerMagazzino M) {
+		Controller = P;
+		ControllerC = C;
+		ControllerM = M;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -75,7 +78,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 			
 			{
 				
-				c.FinestraPrincipaleClientiButtonPressed();
+				Controller.FinestraPrincipaleClientiButtonPressed();
 				
 			}
 			
@@ -110,6 +113,11 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ContainerBottoniPanel.add(horizontalStrut_2);
 		
 		JButton MagazzinoButton = new JButton("Magazzino");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Controller.FinestraPrincipaleMagazzinoButtonPressed();
+			}
+		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));
 		MagazzinoButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
