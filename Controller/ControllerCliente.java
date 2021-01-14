@@ -2,7 +2,9 @@ package Controller;
 import GUI.*;
 import GUI.Cliente.ClientiJFrame;
 import GUI.Cliente.CreaTesseraJFrame;
+import GUI.Cliente.EliminaTesseraByNTesseraJDialog;
 import GUI.Cliente.ErroreTesseraJDialog;
+import GUI.Cliente.FormatoNTesseraErratoJDialog;
 import GUI.Cliente.InserimentoClienteCompletatoJDialog;
 import GUI.Cliente.RiepilogoTesseraJFrame;
 import GUI.Cliente.VisualizzaClientiJFrame;
@@ -32,6 +34,7 @@ import ConnessioneDB.*;
 import DAO.ClienteDAO;
 import Entità.Cliente;
 import Entità.Frutta;
+import Entità.Tessera;
 
 
 public class ControllerCliente 
@@ -48,6 +51,8 @@ public class ControllerCliente
 	 private ConvertiCBInData Convertitore;
 	 private ClienteDAO DAO;
 	 private ControllerPrincipale ControllerP;
+	 private EliminaTesseraByNTesseraJDialog EliminaTessera;
+	 private FormatoNTesseraErratoJDialog ErroreNumeroTessera;
 
 	
 //	|-----Costruttore Controller-----|
@@ -217,17 +222,17 @@ public class ControllerCliente
 		
 		
 		{
-	    	ArrayList<Cliente> Cliente=null;
+	    	ArrayList<Tessera> Tessera=null;
 	   
 			try {
-				Cliente = DAO.getCliente();
+				Tessera = DAO.getTessera();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	for(Cliente c : Cliente)
+	    	for(Tessera t : Tessera)
 				
-					VisualizzaClienti.setRigheTabella(c.getNome(), c.getCognome(), c.getCF(), c.getLuogo_nascita(), c.getData_nascita(), c.getSesso());
+					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getPuntiFedeltà(), t.getCF(), t.getDataRilascio(), t.getDataScadenza());
 				
 	    }
 
@@ -246,7 +251,7 @@ public class ControllerCliente
 		
 		{
 			RiepilogoTessera.setEnabled(true);
-			RiepilogoTessera.dispose();
+			RiepilogoTessera.setVisible(false);
 			ErroreTessera.setVisible(false);
 			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
 			CreaTessera.setVisible(true);
@@ -265,9 +270,167 @@ public class ControllerCliente
 			
 		}
 		
+		
+		
+		
 		public JFrame getCreaTessera() {
 			return CreaTessera;
 		}
+
+
+		public void ApriEliminaTesseraByNTessera() {
+			
+			EliminaTesseraByNTesseraJDialog EliminaTessera = new EliminaTesseraByNTesseraJDialog(this);
+			EliminaTessera.setVisible(true);
+			
+			
+		}
+
+
+		public void EliminaTesseraByNTessera() {
+
+			
+			
+			EliminaTessera.setVisible(false);
+			String N_tessera = EliminaTessera.getNTesseraDaEliminareTB().getText();
+			int NTessera = Integer.parseInt(N_tessera);
+			System.out.println(NTessera);
+			
+				try 
+				{
+			
+					 DAO.deleteTessera(NTessera);
+					 
+					 
+				} catch (NumberFormatException e) {
+					
+					
+					FormatoNTesseraErratoJDialog ErroreNTessera = new FormatoNTesseraErratoJDialog(this);
+					ErroreNTessera.setVisible(true);
+					
+				} catch (SQLException e) {
+							
+					
+					FormatoNTesseraErratoJDialog ErroreNumeroTessera = new FormatoNTesseraErratoJDialog(this);
+					ErroreNumeroTessera.setVisible(true);
+					
+			
+			}
+			
+		}
+		
+		
+
+
+		public ClientiJFrame getClienti() {
+			return Clienti;
+		}
+
+
+		public void setClienti(ClientiJFrame clienti) {
+			Clienti = clienti;
+		}
+
+
+		public RiepilogoTesseraJFrame getRiepilogoTessera() {
+			return RiepilogoTessera;
+		}
+
+
+		public void setRiepilogoTessera(RiepilogoTesseraJFrame riepilogoTessera) {
+			RiepilogoTessera = riepilogoTessera;
+		}
+
+
+		public VisualizzaClientiJFrame getVisualizzaClienti() {
+			return VisualizzaClienti;
+		}
+
+
+		public void setVisualizzaClienti(VisualizzaClientiJFrame visualizzaClienti) {
+			VisualizzaClienti = visualizzaClienti;
+		}
+
+
+		public ErroreTesseraJDialog getErroreTessera() {
+			return ErroreTessera;
+		}
+
+
+		public void setErroreTessera(ErroreTesseraJDialog erroreTessera) {
+			ErroreTessera = erroreTessera;
+		}
+
+
+		public InserimentoClienteCompletatoJDialog getClienteInserito() {
+			return ClienteInserito;
+		}
+
+
+		public void setClienteInserito(InserimentoClienteCompletatoJDialog clienteInserito) {
+			ClienteInserito = clienteInserito;
+		}
+
+
+		public ConvertiCBInData getConvertitore() {
+			return Convertitore;
+		}
+
+
+		public void setConvertitore(ConvertiCBInData convertitore) {
+			Convertitore = convertitore;
+		}
+
+
+		public ClienteDAO getDAO() {
+			return DAO;
+		}
+
+
+		public void setDAO(ClienteDAO dAO) {
+			DAO = dAO;
+		}
+
+
+		public ControllerPrincipale getControllerP() {
+			return ControllerP;
+		}
+
+
+		public void setControllerP(ControllerPrincipale controllerP) {
+			ControllerP = controllerP;
+		}
+
+
+		public EliminaTesseraByNTesseraJDialog getEliminaTessera() {
+			return EliminaTessera;
+		}
+
+
+		public void setEliminaTessera(EliminaTesseraByNTesseraJDialog eliminaTessera) {
+			EliminaTessera = eliminaTessera;
+		}
+
+
+		public void setCreaTessera(CreaTesseraJFrame creaTessera) {
+			CreaTessera = creaTessera;
+		}
+
+
+		public FormatoNTesseraErratoJDialog getErroreNumeroTessera() {
+			return ErroreNumeroTessera;
+		}
+
+
+		public void setErroreNumeroTessera(FormatoNTesseraErratoJDialog erroreNumeroTessera) {
+			ErroreNumeroTessera = erroreNumeroTessera;
+		}
+
+
+		
+
+		
+		
 
 
 		

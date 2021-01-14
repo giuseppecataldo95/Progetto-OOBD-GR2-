@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class InserimentoClienteCompletatoJDialog extends JDialog {
 
 	private final JPanel InserimentoClientePanel = new JPanel();
-	ControllerCliente controller;
+	private ControllerCliente controller;
 
 	
 	public InserimentoClienteCompletatoJDialog(ControllerCliente c)

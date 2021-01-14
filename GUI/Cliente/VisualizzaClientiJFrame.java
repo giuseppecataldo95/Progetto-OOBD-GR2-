@@ -32,7 +32,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	private JPanel VisualizzaClientiPanel;
 	ControllerCliente controller;
 	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Nome", "Cognome", "Data di Nascita",  "Luogo di Nascita", "Codice Fiscale", "Sesso", },0) {
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"Numero Tessera", "Punti Fedeltà",  "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -147,14 +147,30 @@ public class VisualizzaClientiJFrame extends JFrame {
 		VisualizzaClientiPanel.add(scrollPane);
 		table = new JTable(Model);
 		scrollPane.setViewportView(table);
+		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBounds(75, 153, 115, 316);
+		VisualizzaClientiPanel.add(toolBar);
+		
+		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
+		EliminaTesseraJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.ApriEliminaTesseraByNTessera();
+				
+			}
+		});
+		EliminaTesseraJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		toolBar.add(EliminaTesseraJButton);
 
 		
 
 
 	}
 	
-	public void setRigheTabella(String Nome, String Cognome, String Sesso, String LuogoNascita, Date DataNascita, String CodiceFiscale){
-		Model.addRow(new Object[] {Nome, Cognome, DataNascita, LuogoNascita, Sesso, CodiceFiscale});
+	public void setRigheTabella(int NTessera, int PuntiFedeltà, String CF, Date DataRilascio, Date DataScadenza ){
+		Model.addRow(new Object[] {NTessera, PuntiFedeltà, CF, DataRilascio, DataScadenza});
 		
 		}
 }

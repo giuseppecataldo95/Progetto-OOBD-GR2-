@@ -10,13 +10,14 @@ import java.util.ArrayList;
 
 import DAO.ClienteDAO;
 import Entità.Cliente;
+import Entità.Tessera;
 
 public class ClienteDAOPostgres implements ClienteDAO {
 
 	private Connection connessione;
 	private PreparedStatement getClienteByCF;
 	private PreparedStatement insertCliente;
-
+	private PreparedStatement deleteTessera;
 	
 
 	
@@ -25,6 +26,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		this.connessione = connessione;
 //		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
+		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
 	}
 	
 	public int insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
@@ -44,21 +46,21 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		return row;
 	}
 	
-	public ArrayList<Cliente> getCliente() throws SQLException
+	public ArrayList<Tessera> getTessera() throws SQLException
 	{
-		Statement getClienti = connessione.createStatement();
-		ResultSet rs = getClienti.executeQuery("SELECT * FROM cliente");
-		ArrayList<Cliente> Clienti = new ArrayList<Cliente>();
+		Statement getTessera = connessione.createStatement();
+		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera");
+		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
 		while(rs.next()) 
 			
 		{
-			Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
-			Clienti.add(c);
+			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_fedeltà"),rs.getString("cf"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
+			Tessera.add(c);
 			
 		}
 	
 		rs.close();
-		return Clienti;
+		return Tessera;
 		
 	}
 	
@@ -72,7 +74,16 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	
 	}
 
-
+	public int deleteTessera(int NTessera) throws SQLException  {
+		
+		
+		deleteTessera.setInt(1, NTessera);
+		
+		int row = deleteTessera.executeUpdate();
+		return row;
+		
+		
+	}
 
 
 
