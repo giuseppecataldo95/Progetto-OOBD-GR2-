@@ -241,7 +241,7 @@ public class ControllerCliente
 		
 		{
 			
-			ErroreTesseraJDialog ErroreTessera = new ErroreTesseraJDialog(this);
+			ErroreTessera = new ErroreTesseraJDialog(this);
 			ErroreTessera.setVisible(true);
 			
 		}
@@ -280,7 +280,7 @@ public class ControllerCliente
 
 		public void ApriEliminaTesseraByNTessera() {
 			
-			EliminaTesseraByNTesseraJDialog EliminaTessera = new EliminaTesseraByNTesseraJDialog(this);
+			EliminaTessera = new EliminaTesseraByNTesseraJDialog(this);
 			EliminaTessera.setVisible(true);
 			
 			
