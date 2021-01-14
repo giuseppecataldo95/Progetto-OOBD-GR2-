@@ -139,6 +139,14 @@ public class VisualizzaClientiJFrame extends JFrame {
 		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Clienti");
+		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				controller.VisualizzaClientiVisualizzaClientiPercorsoButtonPressed();
+				controller.CompletaTabellaTessera();
+			}
+		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
@@ -163,6 +171,18 @@ public class VisualizzaClientiJFrame extends JFrame {
 		});
 		EliminaTesseraJButton.setFont(new Font("Arial", Font.BOLD, 12));
 		toolBar.add(EliminaTesseraJButton);
+		
+		JButton VisualizzaDettagliClienteJButton = new JButton("Dettagli Cliente");
+		VisualizzaDettagliClienteJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.ApriDettagliClienteJDialog();
+				
+				
+			}
+		});
+		VisualizzaDettagliClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		toolBar.add(VisualizzaDettagliClienteJButton);
 
 		
 

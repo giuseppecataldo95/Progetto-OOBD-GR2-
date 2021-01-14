@@ -19,14 +19,15 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	private PreparedStatement insertCliente;
 	private PreparedStatement deleteTessera;
 	
+	
 
 	
 
 	public ClienteDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
-//		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
+		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
-		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
+		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE cf = ?");
 	}
 	
 	public int insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
@@ -64,14 +65,24 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 	}
 	
-	public Cliente getClienteByCF() throws SQLException 
-	{
-		getClienteByCF.setString(1, "cliente");
-		ResultSet rs = getClienteByCF.executeQuery();		
-		Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
-		rs.close();
-		return c;
 	
+	
+	public  ArrayList<Cliente> getClienteByCF(String cf) throws SQLException 
+	{
+	
+		getClienteByCF.setString(1, cf);
+		ResultSet rs = getClienteByCF.executeQuery();
+		ArrayList<Cliente> Cliente = new ArrayList<Cliente>();
+
+				while(rs.next()) 
+		{
+		Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
+		
+		
+		
+		
+		}
+		return Cliente;
 	}
 
 	public int deleteTessera(int NTessera) throws SQLException  {

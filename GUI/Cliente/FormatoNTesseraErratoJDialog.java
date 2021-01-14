@@ -39,7 +39,7 @@ public class FormatoNTesseraErratoJDialog extends JDialog {
 			NTesseraErratoRiprovaButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					setVisible(false);
+					controller.NTesseraErratoRiprovaButtonPressed();
 					
 				}
 			});

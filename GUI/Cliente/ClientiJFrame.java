@@ -107,7 +107,7 @@ public class ClientiJFrame extends JFrame {
 				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
 				
-					ControllerC.CompletaTabellaCliente();
+					ControllerC.CompletaTabellaTessera();
 				
 			}
 		});
@@ -144,14 +144,7 @@ public class ClientiJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon("C:\\Users\\simon\\OneDrive\\Desktop\\customer_person_people_man_you_1625.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
-		ClientiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			
-			{
-				
-			}
 		
-		});
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
