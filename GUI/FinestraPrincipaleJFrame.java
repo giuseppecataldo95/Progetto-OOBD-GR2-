@@ -88,7 +88,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ClientiButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		ClientiButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Downloads\\icons8-gruppo-di-utenti-90.png"));
+		ClientiButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(ClientiButton);
 		
@@ -103,7 +103,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		VenditeButton.setIconTextGap(10);
 		VenditeButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(VenditeButton);
 		
@@ -120,7 +120,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));
 		MagazzinoButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setIconTextGap(10);
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 25));
 		MagazzinoButton.setVerticalTextPosition(SwingConstants.BOTTOM);

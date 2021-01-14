@@ -262,11 +262,8 @@ public class AggiungiVerduraJFrame extends JFrame {
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Controller.VerduraBottoneAvantiPremuto();
-				} catch (SQLException e1) {
-					//FINESTRA ERRORE
-				}
+				
+				Controller.VerduraBottoneAvantiPremuto();
 			}
 		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));

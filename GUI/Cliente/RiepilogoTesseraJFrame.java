@@ -75,7 +75,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
-		ClientiButton.setIcon(null);
+		ClientiButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
@@ -85,17 +85,8 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
-		VenditeButton.setIcon(null);
+		VenditeButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setIcon(null);
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
@@ -104,11 +95,11 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setIcon(null);
+		MagazzinoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
 		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
 		verticalStrut.setBackground(Color.LIGHT_GRAY);
 
 		MenùLateraleTB.add(verticalStrut);
@@ -120,7 +111,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
-		InfoButton.setIcon(null);
+		InfoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 

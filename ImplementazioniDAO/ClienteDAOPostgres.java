@@ -18,6 +18,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	private PreparedStatement getClienteByCF;
 	private PreparedStatement insertCliente;
 	private PreparedStatement deleteTessera;
+
 	
 	
 
@@ -28,9 +29,10 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE cf = ?");
+		
 	}
 	
-	public int insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
+	public void insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
 		
 		
 	
@@ -40,11 +42,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		insertCliente.setString(4, luogoNascita.toUpperCase());
 		insertCliente.setDate(5, data_nascita);
 		insertCliente.setString(6, sesso.toUpperCase());
-		int row = insertCliente.executeUpdate();
-		connessione.close();
-				
 		
-		return row;
 	}
 	
 	public ArrayList<Tessera> getTessera() throws SQLException

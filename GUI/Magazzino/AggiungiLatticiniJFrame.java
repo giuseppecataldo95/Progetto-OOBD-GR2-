@@ -260,11 +260,9 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
+				
 					Controller.LatticiniBottoneAvantiPremuto();
-				} catch (SQLException e1) {
-					//FINESTRA ERRORE
-				}
+			
 			}
 		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 11));

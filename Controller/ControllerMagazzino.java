@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
 
 import App.ConvertiCBInData;
 import DAO.MagazzinoDAO;
@@ -19,6 +20,7 @@ import GUI.Magazzino.AggiungiProdottoJFrame;
 import GUI.Magazzino.AggiungiUovaJFrame;
 import GUI.Magazzino.AggiungiVerduraJFrame;
 import GUI.Magazzino.ErroreAggiungiProdottoJDialog;
+import GUI.Magazzino.InserimentoProdottoCompletatoJDialog;
 import GUI.Magazzino.MagazzinoJFrame;
 import GUI.Magazzino.VisualizzaConfezionatiJFrame;
 import GUI.Magazzino.VisualizzaFarinaceiJFrame;
@@ -51,6 +53,7 @@ public class ControllerMagazzino {
 	private ConvertiCBInData Convertitore;
 	private ErroreAggiungiProdottoJDialog FinestraErrore;
 	private ControllerPrincipale ControllerP;
+	private InserimentoProdottoCompletatoJDialog InserimentoCompletato;
 	
 	//COSTRUTTORE
 	
@@ -447,14 +450,17 @@ public class ControllerMagazzino {
     		Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
     		Date Data_Raccolta = Convertitore.Converti();
     		DAO.inserisciFrutta(Nome,Lotto,Provenienza,Data_Raccolta,Scorte,Valore);
+    		Frutta.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Frutta);
+    		InserimentoCompletato.setVisible(true);
 		} catch (NumberFormatException e) {
 			Frutta.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Frutta);
 			FinestraErrore.setError("ERRORE: "+e.getMessage());
 			FinestraErrore.setVisible(true);
 		
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Frutta);
 			FinestraErrore.setError(e.getMessage());
 			FinestraErrore.setVisible(true);
 		}
@@ -465,13 +471,7 @@ public class ControllerMagazzino {
     	AggiungiPr = new AggiungiProdottoJFrame(this);
     	AggiungiPr.setVisible(true);
     }
-    
-    public void RiprovaBottonePremutoDaFrutta() {
-    	Frutta.setEnabled(true);
-    	FinestraErrore.setVisible(false);
-		
-	}
-	
+   
     public void MostraFinestraVerdura() {
     	
     	AggiungiPr.setVisible(false);
@@ -504,7 +504,7 @@ public class ControllerMagazzino {
 	
 	} 
     
-    public void VerduraBottoneAvantiPremuto() throws SQLException {
+    public void VerduraBottoneAvantiPremuto() {
     	try {
     		String Nome = Verdura.getInserisciNomeTB();
     		String Lotto = Verdura.getInserisciLottoTB();
@@ -517,14 +517,17 @@ public class ControllerMagazzino {
     		Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
     		Date Data_Raccolta = Convertitore.Converti();
     		DAO.inserisciVerdura(Nome,Lotto,Provenienza,Data_Raccolta,Scorte,Valore);
+    		Verdura.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Verdura);
+    		InserimentoCompletato.setVisible(true);
     	} catch (NumberFormatException e) {
 			Verdura.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Verdura);
 			FinestraErrore.setError("ERRORE: "+e.getMessage());
 			FinestraErrore.setVisible(true);
 	
     	} catch (SQLException e) {
-    		FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+    		FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Verdura);
     		FinestraErrore.setError(e.getMessage());
     		FinestraErrore.setVisible(true);
     	}
@@ -536,11 +539,7 @@ public class ControllerMagazzino {
     	AggiungiPr.setVisible(true);
     }
     
-    public void RiprovaBottonePremutoDaVerdura() {
-    	Verdura.setEnabled(true);
-    	FinestraErrore.setVisible(false);
-		
-	}
+   
     
     public void MostraFinestraFarinacei() {
     	
@@ -574,7 +573,7 @@ public class ControllerMagazzino {
 	
 	} 
     
-    public void FarinaceiBottoneAvantiPremuto() throws SQLException {
+    public void FarinaceiBottoneAvantiPremuto() {
 	    try {	
     		String Nome = Farinacei.getInserisciNomeTB();
 	    	String Lotto = Farinacei.getInserisciLottoTB();
@@ -586,14 +585,17 @@ public class ControllerMagazzino {
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciFarinacei(Nome,Lotto,Data_Scadenza,Scorte,Valore);
+	    	Farinacei.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Farinacei);
+    		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Farinacei.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Farinacei);
 			FinestraErrore.setError("ERRORE: "+e.getMessage());
 			FinestraErrore.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Farinacei);
 			FinestraErrore.setError(e.getMessage());
 			FinestraErrore.setVisible(true);
 		}
@@ -606,11 +608,7 @@ public class ControllerMagazzino {
     	AggiungiPr.setVisible(true);
     }
     
-    public void RiprovaBottonePremutoDaFarinacei() {
-    	Farinacei.setEnabled(true);
-    	FinestraErrore.setVisible(false);
-		
-	}
+    
     
     public void MostraFinestraLatticini() {
     	
@@ -644,7 +642,7 @@ public class ControllerMagazzino {
 	
 	} 
     
-    public void LatticiniBottoneAvantiPremuto() throws SQLException {
+    public void LatticiniBottoneAvantiPremuto() {
     	try {	
     		String Nome = Latticini.getInserisciNomeTB();
     		String Paese_Lavorazione = Latticini.getInserisciPaeseLavorazioneTB();
@@ -662,14 +660,17 @@ public class ControllerMagazzino {
 	    	Convertitore = new ConvertiCBInData(GiornoS,MeseS,AnnoS);
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciLatticini(Nome,Paese_Mungitura,Paese_Lavorazione,Data_Mungitura,Data_Scadenza,Scorte,Valore);
+	    	Latticini.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Latticini);
+    		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Latticini.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Latticini);
 			FinestraErrore.setError("ERRORE: "+e.getMessage());
 			FinestraErrore.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Latticini);
 			FinestraErrore.setError(e.getMessage());
 			FinestraErrore.setVisible(true);
 		}
@@ -682,11 +683,7 @@ public class ControllerMagazzino {
     	AggiungiPr.setVisible(true);
     }
     
-    public void RiprovaBottonePremutoDaLatticini() {
-    	Latticini.setEnabled(true);
-    	FinestraErrore.setVisible(false);
-		
-	}
+  
     
     public void MostraFinestraConfezionati() {
     	
@@ -720,21 +717,35 @@ public class ControllerMagazzino {
 	
 	} 
     
-    public void ConfezionatiBottoneAvantiPremuto() throws SQLException {
-    	String Nome = Confezionati.getInserisciNomeTB();
-    	String Lotto = Confezionati.getInserisciLottoTB();
-    	String Mod_Conservazione = Confezionati.getInserisciModConservazioneTB();
-    	String Marca = Confezionati.getInserisciMarcaTB();
-    	int Scorte = Integer.parseInt(Confezionati.getInserisciScorteTB());
-    	float Valore = Float.parseFloat(Confezionati.getInserisciValorekgTB());
-    	float Peso_Confezione = Float.parseFloat(Confezionati.getInserisciPesoConfezioneTB());
-    	String Giorno = Confezionati.getInserisciGiornoCB();
-    	String Mese = Confezionati.getInserisciMeseCB();
-    	String Anno = Confezionati.getInserisciAnnoCB();
-    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
-    	Date Data_Scadenza = Convertitore.Converti();
-    	DAO.inserisciConfezionati(Nome, Marca, Lotto, Mod_Conservazione, Data_Scadenza, Scorte, Peso_Confezione, Valore);
-    	
+    public void ConfezionatiBottoneAvantiPremuto() {
+    	try {
+	    	String Nome = Confezionati.getInserisciNomeTB();
+	    	String Lotto = Confezionati.getInserisciLottoTB();
+	    	String Mod_Conservazione = Confezionati.getInserisciModConservazioneTB();
+	    	String Marca = Confezionati.getInserisciMarcaTB();
+	    	int Scorte = Integer.parseInt(Confezionati.getInserisciScorteTB());
+	    	float Valore = Float.parseFloat(Confezionati.getInserisciValorekgTB());
+	    	float Peso_Confezione = Float.parseFloat(Confezionati.getInserisciPesoConfezioneTB());
+	    	String Giorno = Confezionati.getInserisciGiornoCB();
+	    	String Mese = Confezionati.getInserisciMeseCB();
+	    	String Anno = Confezionati.getInserisciAnnoCB();
+	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+	    	Date Data_Scadenza = Convertitore.Converti();
+	    	DAO.inserisciConfezionati(Nome, Marca, Lotto, Mod_Conservazione, Data_Scadenza, Scorte, Peso_Confezione, Valore);
+	    	Confezionati.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Confezionati);
+    		InserimentoCompletato.setVisible(true);
+    	} catch (NumberFormatException e) {
+			Uova.setEnabled(false);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
+			FinestraErrore.setError("ERRORE: "+e.getMessage());
+			FinestraErrore.setVisible(true);
+
+    	} catch (SQLException e) {
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
+			FinestraErrore.setError(e.getMessage());
+			FinestraErrore.setVisible(true);
+    	}
     	
     }
     
@@ -744,11 +755,7 @@ public class ControllerMagazzino {
     	AggiungiPr.setVisible(true);
     }
     
-    public void RiprovaBottonePremutoDaConfezionati() {
-    	Confezionati.setEnabled(true);
-    	FinestraErrore.setVisible(false);
-		
-	}
+   
     
     public void MostraFinestraUova() {
     	
@@ -782,7 +789,7 @@ public class ControllerMagazzino {
 	
 	} 
     
-    public void UovaBottoneAvantiPremuto() throws SQLException {
+    public void UovaBottoneAvantiPremuto() {
 	    try {
     		String Nome = Uova.getInserisciNomeTB();
 	    	String Lotto = Uova.getInserisciLottoTB();
@@ -796,14 +803,17 @@ public class ControllerMagazzino {
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciUova(Lotto,Data_Scadenza,Provenienza,Scorte,Valore,NPerConfezione);
+	    	Uova.setEnabled(false);
+    		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Uova);
+    		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Uova.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
 			FinestraErrore.setError("ERRORE: "+e.getMessage());
 			FinestraErrore.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this);
+			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
 			FinestraErrore.setError(e.getMessage());
 			FinestraErrore.setVisible(true);
 		}
@@ -816,11 +826,20 @@ public class ControllerMagazzino {
     	AggiungiPr.setVisible(true);
     }
     
-    public void RiprovaBottonePremutoDaUova() {
-    	Farinacei.setEnabled(true);
+    public void RiprovaBottonePremuto(JFrame FinestraDaCuiApro) {
+    	FinestraDaCuiApro.setEnabled(true);
     	FinestraErrore.setVisible(false);
 		
 	}
+    
+    public void OkBottonePremuto(JFrame FinestraDaCuiApro) {
+    	FinestraDaCuiApro.setEnabled(true);
+    	FinestraDaCuiApro.setVisible(false);
+    	InserimentoCompletato.setVisible(false);
+    	VisualizzaPr = new VisualizzaProdottiJFrame(this);
+    	VisualizzaPr.setVisible(true);
+    }
+   
     
     
 }
