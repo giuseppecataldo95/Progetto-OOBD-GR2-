@@ -74,14 +74,14 @@ public class VisualizzaUovaJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon("/Risorse/cliente.png"));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon("/Risorse/vendite-menu.png"));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
@@ -92,26 +92,18 @@ public class VisualizzaUovaJFrame extends JFrame {
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon("/Risorse/magazzino.png"));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
 		
 		Component verticalStrut = Box.createVerticalStrut(200);
 		MenùLateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
+		InfoButton.setIcon(new ImageIcon("/Risorse/info-menu.png"));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));

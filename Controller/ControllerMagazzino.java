@@ -57,7 +57,7 @@ public class ControllerMagazzino {
 	
 	public ControllerMagazzino(Connection Conn, ControllerPrincipale P) throws SQLException {
 		
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 		DAO = new MagazzinoDAOPostgres(Conn);
 		ControllerP = P;
@@ -75,7 +75,7 @@ public class ControllerMagazzino {
 	
 	public void VisualizzaProdotti_MagazzinoPercorsoBottonePremuto() {
 		VisualizzaPr.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	}
 	
@@ -87,6 +87,14 @@ public class ControllerMagazzino {
 	
 	// METODI PER LO SNODO 'VISUALIZZA PRODOTTO'
 	
+	public MagazzinoJFrame getMagazzino() {
+		return Magazzino;
+	}
+
+	public void setMagazzino(MagazzinoJFrame magazzino) {
+		Magazzino = magazzino;
+	}
+
 	public void MostraFinestraVisualizzaFrutta() {
 		VisualizzaPr.setVisible(false);
 		VisualizzaFrutta = new VisualizzaFruttaJFrame(this);
@@ -108,7 +116,7 @@ public class ControllerMagazzino {
 	public void VisualizzaFrutta_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaFrutta.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -157,7 +165,7 @@ public class ControllerMagazzino {
 	public void VisualizzaVerdura_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaVerdura.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -205,7 +213,7 @@ public class ControllerMagazzino {
 	public void VisualizzaFarinacei_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaFarinacei.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -254,7 +262,7 @@ public class ControllerMagazzino {
 	public void VisualizzaLatticini_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaLatticini.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -303,7 +311,7 @@ public class ControllerMagazzino {
 	public void VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaConfezionati.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -351,7 +359,7 @@ public class ControllerMagazzino {
 	public void VisualizzaUova_MagazzinoPercorsoBottonePremuto() {
 		
 		VisualizzaUova.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -389,7 +397,7 @@ public class ControllerMagazzino {
     public void AggiungiProdotto_MagazzinoPercorsoBottonePremuto() {
 		
 		AggiungiPr.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -413,7 +421,7 @@ public class ControllerMagazzino {
     public void Frutta_MagazzinoPercorsoBottonePremuto() {
 		
 		Frutta.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -480,7 +488,7 @@ public class ControllerMagazzino {
     public void Verdura_MagazzinoPercorsoBottonePremuto() {
 		
     	Verdura.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -549,7 +557,7 @@ public class ControllerMagazzino {
     public void Farinacei_MagazzinoPercorsoBottonePremuto() {
 		
     	Farinacei.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -618,7 +626,7 @@ public class ControllerMagazzino {
     public void Latticini_MagazzinoPercorsoBottonePremuto() {
 		
     	Latticini.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -693,7 +701,7 @@ public class ControllerMagazzino {
     public void Confezionati_MagazzinoPercorsoBottonePremuto() {
 		
     	Confezionati.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 
@@ -765,7 +773,7 @@ public class ControllerMagazzino {
     public void Uova_MagazzinoPercorsoBottonePremuto() {
 		
     	Uova.setVisible(false);
-		Magazzino = new MagazzinoJFrame(this);
+		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 	
 	} 

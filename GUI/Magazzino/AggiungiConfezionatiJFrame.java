@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
+import GUI.Cliente.ClientiJFrame;
 
 public class AggiungiConfezionatiJFrame extends JFrame {
 
@@ -58,58 +59,59 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		AggiungiConfezionatiPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
+		AggiungiConfezionatiPanel.add(MenùLateraleTB, BorderLayout.WEST);
 		MenùLateraleTB.setBorder(null);
 		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
 		MenùLateraleTB.setBorderPainted(false);
 		MenùLateraleTB.setFloatable(false);
 		MenùLateraleTB.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 563);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		AggiungiConfezionatiPanel.add(MenùLateraleTB);
+		
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
+		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
-		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
+		verticalStrut.setMaximumSize(new Dimension(32767, 300));
 		MenùLateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
+		InfoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(InfoButton);
+	
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);

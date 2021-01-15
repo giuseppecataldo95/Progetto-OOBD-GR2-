@@ -99,7 +99,7 @@ public class ControllerCliente
 		
 		
 		Clienti.setVisible(false);
-		VisualizzaClienti = new VisualizzaClientiJFrame(this);
+		VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 		VisualizzaClienti.setVisible(true);
 		
 	}
@@ -130,7 +130,7 @@ public class ControllerCliente
 
 		
 		
-		RiepilogoTessera = new RiepilogoTesseraJFrame(this);
+		RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
 		CreaTessera.setVisible(false);;
 		
 		
@@ -267,7 +267,7 @@ public class ControllerCliente
 		{
 			ClienteInserito.setVisible(false);
 			
-			VisualizzaClienti = new VisualizzaClientiJFrame(this);
+			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 			CompletaTabellaTessera();
 			VisualizzaClienti.setVisible(true);
 			
@@ -350,7 +350,7 @@ public class ControllerCliente
 			
 			TesseraEliminata.setVisible(false);
 			VisualizzaClienti.setVisible(false);
-			VisualizzaClienti = new VisualizzaClientiJFrame(this);
+			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 			VisualizzaClienti.setVisible(true);
 			
 		}
@@ -359,7 +359,7 @@ public class ControllerCliente
 		public void VisualizzaClientiVisualizzaClientiPercorsoButtonPressed() {
 
 			VisualizzaClienti.setVisible(false);
-			VisualizzaClienti = new VisualizzaClientiJFrame(this);
+			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 			VisualizzaClienti.setVisible(true);
 			
 		}
@@ -403,6 +403,9 @@ public class ControllerCliente
 			VisualizzaDettagli.setVisible(true);
 			
 		}
+		
+		
+
 
 		public ClientiJFrame getClienti() {
 			return Clienti;
@@ -508,6 +511,8 @@ public class ControllerCliente
 			ErroreNumeroTessera = erroreNumeroTessera;
 		}
 
+
+		
 
 		
 
