@@ -586,9 +586,19 @@ public class ControllerCliente
 
 		public void RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed() {
 			
+			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
+			CreaTessera.setVisible(false);
 			RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
 			CreaNuovaTesseraAvantiButtonPressed();
 			RiepilogoTessera.setVisible(true);
+			
+			
+		}
+
+
+		public void VisualizzaClientiVisualizzaPuntiBottonePremuto() {
+
+			
 			
 			
 		}

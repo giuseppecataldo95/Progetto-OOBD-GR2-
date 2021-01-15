@@ -166,7 +166,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				
 				controller.RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed();
 				
 			}

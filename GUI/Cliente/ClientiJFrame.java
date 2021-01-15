@@ -107,7 +107,7 @@ public class ClientiJFrame extends JFrame {
 				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
 				
-					ControllerC.CompletaTabellaTessera();
+					
 				
 			}
 		});
