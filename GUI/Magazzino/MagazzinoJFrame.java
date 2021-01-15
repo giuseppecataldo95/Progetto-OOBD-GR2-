@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -21,22 +21,19 @@ import GUI.Cliente.ClientiJFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
 public class MagazzinoJFrame extends JFrame {
 
 	private JPanel MagazzinoPanel;
-	private ControllerMagazzino Controller;
+	private ControllerMagazzino ControllerM;
 	private ControllerPrincipale ControllerP;
 	private JButton MagazzinoButton;
 
 	
 	public  MagazzinoJFrame(ControllerMagazzino c, ControllerPrincipale c1) {
-		Controller = c;
+		ControllerM = c;
 		ControllerP = c1;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -92,7 +89,7 @@ public class MagazzinoJFrame extends JFrame {
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Nuovo Prodotto");
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraAggiungiProdotto();
+				ControllerM.MostraFinestraAggiungiProdotto();
 			}
 		});
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -104,7 +101,7 @@ public class MagazzinoJFrame extends JFrame {
 		JButton VisualizzaProdottoButton = new JButton("Visualizza Prodotti");
 		VisualizzaProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaProdotto();
+				ControllerM.MostraFinestraVisualizzaProdotto();
 			}
 		});
 		VisualizzaProdottoButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -137,9 +134,7 @@ public class MagazzinoJFrame extends JFrame {
 		JButton ClientiButton = new JButton("");
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.MagazzinoMenuLateraleClientiButtonPressed();
-				
+				ControllerP.MagazzinoMenuLateraleClientiBottonePremuto();
 			}
 		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
@@ -160,7 +155,7 @@ public class MagazzinoJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.MagazzinoMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));

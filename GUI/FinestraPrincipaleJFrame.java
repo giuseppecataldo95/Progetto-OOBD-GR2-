@@ -1,8 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,21 +8,15 @@ import Controller.ControllerCliente;
 import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
 
-import java.awt.Window.Type;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.border.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
@@ -35,13 +26,9 @@ public class FinestraPrincipaleJFrame extends JFrame {
 	private JPanel FinestraPrincipalePanel;
 	private JPanel ContainerBottoniPanel;
 	private ControllerPrincipale Controller;
-	private ControllerCliente ControllerC;
-	private ControllerMagazzino ControllerM;
 	
-	public FinestraPrincipaleJFrame(ControllerPrincipale P, ControllerCliente C, ControllerMagazzino M) {
+	public FinestraPrincipaleJFrame(ControllerPrincipale P) {
 		Controller = P;
-		ControllerC = C;
-		ControllerM = M;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -115,7 +102,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("Magazzino");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.FinestraPrincipaleMagazzinoButtonPressed();
+				P.FinestraPrincipaleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));

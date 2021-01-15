@@ -1,10 +1,9 @@
 package GUI.Cliente;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -13,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
@@ -21,10 +19,8 @@ import Controller.ControllerPrincipale;
 
 import java.awt.Font;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class RiepilogoTesseraJFrame extends JFrame {
@@ -153,8 +149,6 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
 				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
 				
 			}
@@ -166,7 +160,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				
 				controller.RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed();
 				
 			}

@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -20,10 +19,6 @@ import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import java.awt.event.MouseMotionAdapter;
-import java.sql.SQLException;
-import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -106,8 +101,7 @@ public class ClientiJFrame extends JFrame {
 				
 				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
-				
-					ControllerC.CompletaTabellaTessera();
+				ControllerC.CompletaTabellaTessera();
 				
 			}
 		});
@@ -141,7 +135,7 @@ public class ClientiJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.RicaricaClientiJFrame();
+				ControllerP.ClientiMenuLateraleClientiBottonePremuto();
 				
 				
 			}

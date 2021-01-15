@@ -1,14 +1,12 @@
 package GUI.Magazzino;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
 import Controller.ControllerMagazzino;
-
+import Controller.ControllerPrincipale;
 
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -17,16 +15,12 @@ import java.awt.Component;
 import javax.swing.Box;
 
 import java.awt.Dimension;
-import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -34,7 +28,8 @@ import javax.swing.JScrollPane;
 public class VisualizzaConfezionatiJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
-	private ControllerMagazzino Controller;
+	private ControllerMagazzino ControllerM;
+	private ControllerPrincipale ControllerP;
 	private JTable table;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Marca", "Lotto Lavorazione", "Data Scadenza", "Modalità Conservazione", "Peso", "Valore unitario", "Scorte"},0) {
 		 public boolean isCellEditable(int row, int column) {
@@ -45,9 +40,9 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 	
 
 	
-	public VisualizzaConfezionatiJFrame(ControllerMagazzino c) {
-		Controller = c;
-		
+	public VisualizzaConfezionatiJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
+		ControllerM = c;
+		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaProdottiPanel = new JPanel();
@@ -69,41 +64,46 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaConfezionatiMenuLateraleClientiBottonePremuto();
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("/Risorse/cliente.png"));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("/Risorse/vendite-menu.png"));
+		VenditeButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.VisualizzaConfezionatiMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("/Risorse/magazzino.png"));
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
 		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
 		MenùLateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("/Risorse/info-menu.png"));
+		InfoButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
@@ -122,7 +122,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto();
+				ControllerM.VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -131,8 +131,8 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_VisualizzaProdottoPercorsoBottonePremuto();
-				Controller.CompletaTabellaConfezionati();
+				ControllerM.VisualizzaConfezionati_VisualizzaProdottoPercorsoBottonePremuto();
+				ControllerM.CompletaTabellaConfezionati();
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -141,7 +141,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JButton VisualizzaConfezionatiPercorsoButton = new JButton("> Visualizza Confezionati");
 		VisualizzaConfezionatiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionati_VisualizzaConfezionatiPercorsoBottonePremuto();
+				ControllerM.VisualizzaConfezionati_VisualizzaConfezionatiPercorsoBottonePremuto();
 			}
 		});
 		VisualizzaConfezionatiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -157,7 +157,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaConfezionatiBottoneIndietroPremuto();
+				ControllerM.VisualizzaConfezionatiBottoneIndietroPremuto();
 			}
 		});
 		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));

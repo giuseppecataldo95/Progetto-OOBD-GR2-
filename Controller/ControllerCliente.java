@@ -1,5 +1,4 @@
 package Controller;
-import GUI.*;
 import GUI.Cliente.ClientiJFrame;
 import GUI.Cliente.CreaTesseraJFrame;
 import GUI.Cliente.DettagliClienteJDialog;
@@ -12,33 +11,19 @@ import GUI.Cliente.RiepilogoTesseraJFrame;
 import GUI.Cliente.TesseraEliminataJDialog;
 import GUI.Cliente.VisualizzaClientiJFrame;
 import GUI.Cliente.VisualizzaDettagliClienteJFrame;
-import GUI.Magazzino.InserimentoProdottoCompletatoJDialog;
 import ImplementazioniDAO.ClienteDAOPostgres;
-import ImplementazioniDAO.MagazzinoDAOPostgres;
+
 import App.CFGenerator;
 import App.ConvertiCBInData;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap.KeySetView;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-
-import com.sun.source.tree.CatchTree;
-
-import ConnessioneDB.*;
 import DAO.ClienteDAO;
 import Entità.Cliente;
-import Entità.Frutta;
 import Entità.Tessera;
 
 
@@ -68,9 +53,10 @@ public class ControllerCliente
 	
 	{
 	
+		
 		 ControllerP = P;
-		 Clienti = new ClientiJFrame(this,ControllerP);
-		 Clienti.setVisible(true);
+		 Clienti = new ClientiJFrame(this, ControllerP);
+		 DAO = new ClienteDAOPostgres(Conn);
 
 	}
 
@@ -172,6 +158,7 @@ public class ControllerCliente
 	
 	{
 
+		RiepilogoTessera.setVisible(false);
 		CreaTessera.setVisible(true);
 		
 	}
@@ -586,42 +573,13 @@ public class ControllerCliente
 
 		public void RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed() {
 			
+			RiepilogoTessera.setVisible(false);
 			RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
 			CreaNuovaTesseraAvantiButtonPressed();
 			RiepilogoTessera.setVisible(true);
 			
 			
 		}
-
-
-	
-
-
-		
-
-		
-
-
-
-
-		
-
-
-		
-
-
-		
-
-
-		
-
-		
-		
-
-
-		
-
-
 }
 		
 			

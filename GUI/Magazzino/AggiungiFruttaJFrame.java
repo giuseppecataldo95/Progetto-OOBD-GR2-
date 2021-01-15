@@ -1,18 +1,12 @@
 package GUI.Magazzino;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
 import javax.swing.Box;
 import javax.swing.DefaultComboBoxModel;
@@ -28,6 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
+import Controller.ControllerPrincipale;
 import GUI.Cliente.ClientiJFrame;
 
 public class AggiungiFruttaJFrame extends JFrame {
@@ -38,18 +33,19 @@ public class AggiungiFruttaJFrame extends JFrame {
 	private JTextField InserisciProvenienzaTB;
 	private JTextField InserisciValorekgTB;
 	private JTextField InserisciScorteTB;
-	private ControllerMagazzino Controller;
+	private ControllerMagazzino ControllerM;
 	private JComboBox InserisciGiornoCB;
 	private JComboBox InserisciMeseCB;
 	private JComboBox InserisciAnnoCB;
+	private ControllerPrincipale ControllerP;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public AggiungiFruttaJFrame(ControllerMagazzino c) {
-		Controller = c;
-		
+	public AggiungiFruttaJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
+		ControllerM = c;
+		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiFruttaPanel = new JPanel();
@@ -60,39 +56,43 @@ public class AggiungiFruttaJFrame extends JFrame {
 		AggiungiFruttaPanel.setLayout(null);
 	
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		AggiungiFruttaPanel.add(MenùLateraleTB, BorderLayout.WEST);
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBackground(new Color(255, 153, 51));
+		toolBar.setBorder(null);
+		toolBar.setFloatable(false);
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBounds(0, 0, 66, 563);
+		AggiungiFruttaPanel.add(toolBar);
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.AggiungiFruttaMenuLateraleClientiBottonePremuto();
+			}
+		});
+		toolBar.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
+		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
 		
 		
 		JButton MagazzinoButton = new JButton("");
+		toolBar.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.AggiungiFruttaMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
@@ -100,19 +100,19 @@ public class AggiungiFruttaJFrame extends JFrame {
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
 		
 		Component verticalStrut = Box.createVerticalStrut(280);
+		toolBar.add(verticalStrut);
 		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		MenùLateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
+		toolBar.add(InfoButton);
 		InfoButton.setBackground(new Color(255, 153, 51));
 		InfoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
+	
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -127,7 +127,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.Frutta_MagazzinoPercorsoBottonePremuto();
+				ControllerM.Frutta_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -136,7 +136,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.Frutta_AggiungiProdottoPercorsoBottonePremuto();
+				ControllerM.Frutta_AggiungiProdottoPercorsoBottonePremuto();
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -145,7 +145,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		JButton FruttaPercorsoButton = new JButton("> Frutta");
 		FruttaPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.Frutta_FruttaPercorsoBottonePremuto();
+				ControllerM.Frutta_FruttaPercorsoBottonePremuto();
 			}
 		});
 		FruttaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -269,7 +269,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-					Controller.FruttaBottoneAvantiPremuto();
+					ControllerM.FruttaBottoneAvantiPremuto();
 				
 			}
 		});
@@ -280,7 +280,7 @@ public class AggiungiFruttaJFrame extends JFrame {
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.FruttaBottoneIndietroPremuto();
+				ControllerM.FruttaBottoneIndietroPremuto();
 			}
 		});
 		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));

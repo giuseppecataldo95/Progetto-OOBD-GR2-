@@ -1,10 +1,8 @@
 package GUI.Cliente;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.Box;
@@ -25,12 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import Controller.ControllerCliente;
-import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class VisualizzaClientiJFrame extends JFrame {

@@ -7,25 +7,23 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import Controller.ControllerMagazzino;
+import Controller.ControllerPrincipale;
 import GUI.Cliente.ClientiJFrame;
 
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-
-import Controller.ControllerMagazzino;
 
 public class VisualizzaFruttaJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
-	private ControllerMagazzino Controller;
+	private ControllerMagazzino ControllerM;
+	private ControllerPrincipale ControllerP;
 	private JTable table;
 	private TableRowSorter<DefaultTableModel> sorter;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore al kg", "Scorte in kg"},0)
@@ -41,9 +39,9 @@ public class VisualizzaFruttaJFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaFruttaJFrame(ControllerMagazzino c) {
-		Controller = c;
-		
+	public VisualizzaFruttaJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
+		ControllerM = c;
+		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaProdottiPanel = new JPanel();
@@ -54,6 +52,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		VisualizzaProdottiPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBounds(0, 0, 65, 563);
 		VisualizzaProdottiPanel.add(MenùLateraleTB, BorderLayout.WEST);
 		MenùLateraleTB.setBorder(null);
 		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -65,12 +64,17 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaFruttaMenuLateraleClientiBottonePremuto();
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
 
-		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaFruttaJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
@@ -86,7 +90,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.VisualizzaFruttaMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
@@ -123,7 +127,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaFrutta_MagazzinoPercorsoBottonePremuto();
+				ControllerM.VisualizzaFrutta_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -132,7 +136,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaFrutta_VisualizzaProdottoPercorsoBottonePremuto();
+				ControllerM.VisualizzaFrutta_VisualizzaProdottoPercorsoBottonePremuto();
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -141,8 +145,8 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		JButton VisualizzaFruttaPercorsoButton = new JButton("> Visualizza Frutta\r\n\r\n");
 		VisualizzaFruttaPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto();
-				Controller.CompletaTabellaFrutta();
+				ControllerM.VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto();
+				ControllerM.CompletaTabellaFrutta();
 			}
 		});
 		VisualizzaFruttaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -164,7 +168,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaFruttaBottoneIndietroPremuto();
+				ControllerM.VisualizzaFruttaBottoneIndietroPremuto();
 			}
 		});
 		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -172,7 +176,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(IndietroButton);
 		
 		filterText = new JTextField();
-		filterText.setBounds(232, 41, 391, 20);
+		filterText.setBounds(355, 41, 268, 20);
 		VisualizzaProdottiPanel.add(filterText);
 		filterText.setColumns(10);
 		filterText.getDocument().addDocumentListener(
