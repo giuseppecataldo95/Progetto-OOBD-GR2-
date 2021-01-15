@@ -32,8 +32,7 @@ public class ClientiJFrame extends JFrame {
 	private JPanel ClientiPanel;
 	private ControllerCliente ControllerC;
 	private JButton MagazzinoButton;
-
-	ControllerPrincipale ControllerP;
+	private ControllerPrincipale ControllerP;
 	
 	
 	
@@ -138,6 +137,14 @@ public class ClientiJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RicaricaClientiJFrame();
+				
+				
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -158,6 +165,8 @@ public class ClientiJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 				
 			}
 		});

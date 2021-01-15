@@ -14,10 +14,15 @@ import ImplementazioniDAO.ClienteDAOPostgres;
 
 public class ControllerPrincipale {
 	
+	public FinestraPrincipaleJFrame getFinestraPrincipale() {
+		return FinestraPrincipale;
+	}
+
+	
+
 	private FinestraPrincipaleJFrame FinestraPrincipale;
 	private ClientiJFrame Clienti;
 	private CreaTesseraJFrame CreaTessera;
-	
 	private MagazzinoJFrame Magazzino;
 	private ControllerCliente ControllerC;
 	private ControllerMagazzino ControllerM;
@@ -53,8 +58,93 @@ public class ControllerPrincipale {
 		Clienti.setVisible(true);
  	}
 
+ 	public void RicaricaClientiJFrame() {
+
+ 		ControllerC.getClienti().setVisible(false);
+		Clienti = new ClientiJFrame(ControllerC, this);
+		Clienti.setVisible(true);
+		
+		
+	}
+ 	
+ 	public void CreaTesseraMenùLateraleMagazzinoButtonPressed() {
+
+ 		ControllerC.getCreaTessera().setVisible(false);
+ 		Magazzino = new MagazzinoJFrame(ControllerM, this);
+ 		Magazzino.setVisible(true);
+ 		
+	}
+ 	
+ 	public void RiepilogoTesseraMenuLateraleClientiButtonPressed() {
+		
+ 		ControllerC.getRiepilogoTessera().setVisible(false);	
+ 		Clienti = new ClientiJFrame(ControllerC, this);
+ 		Clienti.setVisible(true);
+ 	}
+ 	
+ 	public void RiepilogoTesseraMenuLateraleMagazzinoButtonPressed() {
+		
+ 		ControllerC.getRiepilogoTessera().setVisible(false);
+ 		Magazzino = new MagazzinoJFrame(ControllerM, this);
+ 		Magazzino.setVisible(true);
+ 		
+	}
+ 	
+ 	public void VisualizzaClientiMenuLateraleClientiButtonPressed() {
+		
+ 		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		Clienti = new ClientiJFrame(ControllerC, this);
+ 		Clienti.setVisible(true);
+ 		
+	}
+ 	
+ 	public void VisualizzaClientiMenuLateraleMagazzinoButtonPressed() {
+		
+ 		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		Magazzino = new MagazzinoJFrame(ControllerM, this);
+ 		Magazzino.setVisible(true);
+ 		
+	}
+ 	
+ 	
+
+ 	public void setFinestraPrincipale(FinestraPrincipaleJFrame finestraPrincipale) {
+		FinestraPrincipale = finestraPrincipale;
+	}
+
+	public ClientiJFrame getClienti() {
+		return Clienti;
+	}
+
+	public void setClienti(ClientiJFrame clienti) {
+		Clienti = clienti;
+	}
+
+	public CreaTesseraJFrame getCreaTessera() {
+		return CreaTessera;
+	}
+
+	public void setCreaTessera(CreaTesseraJFrame creaTessera) {
+		CreaTessera = creaTessera;
+	}
+
+	public MagazzinoJFrame getMagazzino() {
+		return Magazzino;
+	}
+
+	public void setMagazzino(MagazzinoJFrame magazzino) {
+		Magazzino = magazzino;
+	}
+
 	
 
+	
+
+	
+
+	
+
+	
 
  
  

@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Controller.ControllerCliente;
 import Controller.ControllerMagazzino;
+import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -31,6 +32,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 
 	private JPanel VisualizzaClientiPanel;
 	ControllerCliente controller;
+	ControllerPrincipale ControllerP;
 	private JTable table;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] {"Numero Tessera", "Punti Fedeltà",  "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
@@ -39,8 +41,9 @@ public class VisualizzaClientiJFrame extends JFrame {
 	};
 
 
-	public VisualizzaClientiJFrame(ControllerCliente c) {
+	public VisualizzaClientiJFrame(ControllerCliente c, ControllerPrincipale c1) {
 		controller = c;
+		ControllerP = c1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -72,7 +75,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				ControllerP.VisualizzaClientiMenuLateraleClientiButtonPressed();
 				
 			}
 		});

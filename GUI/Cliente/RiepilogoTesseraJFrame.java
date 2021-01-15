@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
 
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -39,13 +40,12 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		public JTextField RiepilogoCFTB;
 		public JTextField RiepilogoMeseNTB;
 		public JTextField RiepilogoAnnoNTB;
-
-	ControllerCliente controller;
+		ControllerCliente controller;
+		private ControllerPrincipale ControllerP;
 	
-	
 
-	public RiepilogoTesseraJFrame(ControllerCliente c) {
-		
+	public RiepilogoTesseraJFrame(ControllerCliente c, ControllerPrincipale c1) {
+		ControllerP = c1;
 		controller = c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -70,6 +70,13 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoTesseraPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RiepilogoTesseraMenuLateraleClientiButtonPressed();
+				
+			}
+		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
@@ -97,7 +104,13 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RiepilogoTesseraMenuLateraleMagazzinoButtonPressed();
+				
+			}
+		});
 		
 		Component verticalStrut = Box.createVerticalStrut(280);
 		verticalStrut.setBackground(Color.LIGHT_GRAY);

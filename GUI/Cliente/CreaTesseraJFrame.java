@@ -85,11 +85,7 @@ public class CreaTesseraJFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			
 			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
-			
-			
-			
-			
-			
+
 		}
 	});
 		
@@ -110,6 +106,13 @@ public class CreaTesseraJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.CreaTesseraMenùLateraleMagazzinoButtonPressed();
+
+			}
+		});
 		
 		Component VerticalStrut = Box.createVerticalStrut(280);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
@@ -146,6 +149,10 @@ public class CreaTesseraJFrame extends JFrame {
 		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
+		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		
