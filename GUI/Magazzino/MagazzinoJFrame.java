@@ -135,6 +135,13 @@ public class MagazzinoJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.MagazzinoMenuLateraleClientiButtonPressed();
+				
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);

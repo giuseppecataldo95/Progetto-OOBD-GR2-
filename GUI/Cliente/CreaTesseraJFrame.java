@@ -151,6 +151,10 @@ public class CreaTesseraJFrame extends JFrame {
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed();
+				
 			}
 		});
 		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));

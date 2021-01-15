@@ -14,10 +14,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import Controller.ControllerCliente;
 import Controller.ControllerMagazzino;
@@ -34,7 +39,9 @@ public class VisualizzaClientiJFrame extends JFrame {
 	ControllerCliente controller;
 	ControllerPrincipale ControllerP;
 	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"Numero Tessera", "Punti Fedeltà",  "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
+	private TableRowSorter<DefaultTableModel> sorter;
+	private JTextField filterText;
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"Numero Tessera", "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -146,15 +153,42 @@ public class VisualizzaClientiJFrame extends JFrame {
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(200, 116, 673, 385);
+		scrollPane.setBounds(192, 137, 770, 367);
 		VisualizzaClientiPanel.add(scrollPane);
 		table = new JTable(Model);
+		table.setFont(new Font("Arial", Font.PLAIN, 11));
+		sorter = new TableRowSorter<DefaultTableModel>(Model);
+		table.setRowSelectionAllowed(false);
+		table.setBackground(new Color(255, 204, 153));
+		table.setAutoCreateRowSorter(true);
+		table.setRowSorter(sorter);
+		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBar.setBounds(75, 153, 115, 316);
 		VisualizzaClientiPanel.add(toolBar);
+		
+
+		filterText = new JTextField();
+		filterText.setBounds(306, 75, 391, 20);
+		VisualizzaClientiPanel.add(filterText);
+		filterText.setColumns(10);
+		filterText.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void insertUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                });
+		
+	
 		
 		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
 		EliminaTesseraJButton.addActionListener(new ActionListener() {
@@ -184,8 +218,19 @@ public class VisualizzaClientiJFrame extends JFrame {
 
 	}
 	
-	public void setRigheTabella(int NTessera, int PuntiFedeltà, String CF, Date DataRilascio, Date DataScadenza ){
-		Model.addRow(new Object[] {NTessera, PuntiFedeltà, CF, DataRilascio, DataScadenza});
+	public void setRigheTabella(int NTessera, String CF, Date DataRilascio, Date DataScadenza ){
+		Model.addRow(new Object[] {NTessera, CF, DataRilascio, DataScadenza});
 		
 		}
+	
+	private void newFilter() {
+	    RowFilter<DefaultTableModel, Object> rf = null;
+	    try {
+	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),0);
+	    } catch (java.util.regex.PatternSyntaxException e) {
+	        return;
+	    }
+	    sorter.setRowFilter(rf);
+	}
+	
 }

@@ -26,9 +26,9 @@ public class ClienteDAOPostgres implements ClienteDAO {
 
 	public ClienteDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
-		getClienteByCF = connessione.prepareStatement("SELECT * FROM cliente WHERE cliente.CF = ?");
+		getClienteByCF = connessione.prepareStatement("SELECT cliente.nome, cliente.cognome, cliente.data_nascita, cliente.luogo_nascita, cliente.sesso, cliente.cf FROM cliente join tessera on cliente.cf = tessera.cf WHERE tessera.n_tessera = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
-		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE cf = ?");
+		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
 		
 	}
 	
@@ -42,6 +42,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		insertCliente.setString(4, luogoNascita.toUpperCase());
 		insertCliente.setDate(5, data_nascita);
 		insertCliente.setString(6, sesso.toUpperCase());
+		insertCliente.executeUpdate();
 		
 	}
 	
@@ -62,25 +63,44 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		return Tessera;
 		
 	}
+
+	
+//	public ArrayList<Cliente> getCliente() throws SQLException
+//	{
+//		Statement getCliente = connessione.createStatement();
+//		ResultSet rs = getCliente.executeQuery("SELECT nome, cognome FROM cliente, tessera WHERE tessera.cf = cliente.cf ");
+//		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
+//		while(rs.next()) 
+//			
+//		{
+//			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_fedeltà"),rs.getString("cf"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
+//			Tessera.add(c);
+//			
+//		}
+//	
+//		rs.close();
+//		return Tessera;
+//		
+//	}
 	
 	
-	
-	public  ArrayList<Cliente> getClienteByCF(String cf) throws SQLException 
+	public  Cliente getClienteByCF(int n_tessera) throws SQLException 
 	{
 	
-		getClienteByCF.setString(1, cf);
+		getClienteByCF.setInt(1, n_tessera);
 		ResultSet rs = getClienteByCF.executeQuery();
-		ArrayList<Cliente> Cliente = new ArrayList<Cliente>();
-
-				while(rs.next()) 
-		{
-		Cliente c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
+		Cliente c = null;
 		
+		if (rs.next()) {
+				
+		 c = new Cliente(rs.getString("nome"),rs.getString("cognome"),rs.getString("luogo_nascita"),rs.getString("sesso"), rs.getString("cf"), rs.getDate("data_nascita"));
 		
 		
 		
 		}
-		return Cliente;
+		rs.close();
+		return c;
+	
 	}
 
 	public int deleteTessera(int NTessera) throws SQLException  {

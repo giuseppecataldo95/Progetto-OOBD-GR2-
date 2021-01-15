@@ -41,6 +41,7 @@ public class TesseraEliminataJDialog extends JDialog {
 				
 				controller.TesseraEliminataOKButtonPressed();
 				controller.CompletaTabellaTessera();
+				controller.TesseraEliminataOKButtonPressedAggiornaVisualizzaClienti();
 
 				
 			}

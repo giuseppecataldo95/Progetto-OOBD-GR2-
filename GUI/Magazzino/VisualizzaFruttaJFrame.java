@@ -1,6 +1,11 @@
 package GUI.Magazzino;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 import Controller.ControllerMagazzino;
 import GUI.Cliente.ClientiJFrame;
 
@@ -17,6 +22,7 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 

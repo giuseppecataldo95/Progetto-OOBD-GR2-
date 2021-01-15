@@ -21,6 +21,16 @@ public class DettagliClienteJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField VisualizzaDettagliNTesseraTB;
+	public JTextField getVisualizzaDettagliNTesseraTB() {
+		return VisualizzaDettagliNTesseraTB;
+	}
+
+
+	public void setVisualizzaDettagliNTesseraTB(JTextField visualizzaDettagliNTesseraTB) {
+		VisualizzaDettagliNTesseraTB = visualizzaDettagliNTesseraTB;
+	}
+
+
 	private ControllerCliente controller;
 
 	
@@ -59,19 +69,23 @@ public class DettagliClienteJDialog extends JDialog {
 				VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 					
-						controller.CercaClienteByCF(VisualizzaDettagliNTesseraTB.getText());
-						controller.ApriVisualizzaDettagli();
+						setVisible(false);
+						int n_t = Integer.valueOf(VisualizzaDettagliNTesseraTB.getText());
+						controller.CercaClienteByCF(n_t);
+						
 						
 					}
 					
 				});
-				VisualizzaDettagliClienteDialogJButton.setFont(new Font("Arial", Font.PLAIN, 12));
-				VisualizzaDettagliClienteDialogJButton.setActionCommand("OK");
-				buttonPane.add(VisualizzaDettagliClienteDialogJButton);
-				getRootPane().setDefaultButton(VisualizzaDettagliClienteDialogJButton);
-			}
-			{
+				
 				JButton VisualizzaDettagliAnnullaJButton = new JButton("Annulla");
+				VisualizzaDettagliAnnullaJButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					
+					setVisible(false);
+					
+					}
+				});
 				VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.PLAIN, 12));
 				VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
 				buttonPane.add(VisualizzaDettagliAnnullaJButton);

@@ -163,6 +163,14 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		
 		JButton RiepilogoNuovaTesseraPercorsoButton = new JButton("> Riepilogo Nuova Tessera");
+		RiepilogoNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				controller.RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed();
+				
+			}
+		});
 		RiepilogoNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(RiepilogoNuovaTesseraPercorsoButton);
 		

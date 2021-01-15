@@ -27,15 +27,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 	private JPanel VisualizzaDettagliClientePanel;
 	private ControllerCliente controller;
 	public JTextField RiepilogoNomeTB;
-	private JTextField RiepilogoCognomeTB;
-	private JTextField RiepilogoSessoTB;
-	private JTextField RiepilogoLuogoNTB;
-	private JTextField RiepilogoGiornoNTB;
-	
-
-	private JTextField RiepilogoCFTB;
-	private JTextField RiepilogoMeseNTB;
-	private JTextField RiepilogoAnnoNTB;
+	public JTextField RiepilogoCognomeTB;
+	public JTextField RiepilogoSessoTB;
+	public JTextField RiepilogoLuogoNTB;
+	public JTextField RiepilogoGiornoNTB;
+	public JTextField RiepilogoCFTB;
+	public JTextField RiepilogoMeseNTB;
+	public JTextField RiepilogoAnnoNTB;
 	
 	public VisualizzaDettagliClienteJFrame(ControllerCliente c) {
 		controller = c;
@@ -118,7 +116,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				setVisible(false);
-				controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				controller.VisualizzaDettagliClienteClientiPercorsoButtonPressed();
 				
 			}
 		});
@@ -190,12 +188,12 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		
 		
 		
-		JButton VisualizzaDettagliClienteAvantiButton = new JButton("Avanti");
+		JButton VisualizzaDettagliClienteAvantiButton = new JButton("Chiudi");
 		VisualizzaDettagliClienteAvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-						
+						setVisible(false);
+						controller.VisualizzaDettagliClienteChiudiButtonPressed();
 				
 					
 				
@@ -251,10 +249,6 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoAnnoNTB.setColumns(10);
 		RiepilogoAnnoNTB.setBounds(581, 390, 65, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoAnnoNTB);
-		
-		JLabel SlashData1 = new JLabel("/");
-		SlashData1.setBounds(444, 393, 28, 13);
-		VisualizzaDettagliClientePanel.add(SlashData1);
 		
 		JLabel SlashData2 = new JLabel("/");
 		SlashData2.setBounds(571, 393, 28, 13);

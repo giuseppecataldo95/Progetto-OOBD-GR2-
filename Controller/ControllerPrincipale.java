@@ -106,6 +106,21 @@ public class ControllerPrincipale {
  		
 	}
  	
+ 	public void ClientiMenuLateraleMagazzinoButtonPressed() {
+
+ 		ControllerC.getClienti().setVisible(false);
+ 		Magazzino = new MagazzinoJFrame(ControllerM, this);
+ 		Magazzino.setVisible(true);
+	}
+ 	
+ 	public void MagazzinoMenuLateraleClientiButtonPressed() {
+
+ 		ControllerM.getMagazzino().setVisible(false);
+ 		Clienti = new ClientiJFrame(ControllerC, this);
+ 		Clienti.setVisible(true);
+		
+	}
+ 	
  	
 
  	public void setFinestraPrincipale(FinestraPrincipaleJFrame finestraPrincipale) {
@@ -135,6 +150,10 @@ public class ControllerPrincipale {
 	public void setMagazzino(MagazzinoJFrame magazzino) {
 		Magazzino = magazzino;
 	}
+
+	
+
+	
 
 	
 

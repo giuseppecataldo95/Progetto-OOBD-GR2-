@@ -1,5 +1,6 @@
 package Controller;
 
+import java.lang.ModuleLayer.Controller;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -57,10 +58,10 @@ public class ControllerMagazzino {
 	
 	public ControllerMagazzino(Connection Conn, ControllerPrincipale P) throws SQLException {
 		
+		ControllerP = P;
 		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);
 		DAO = new MagazzinoDAOPostgres(Conn);
-		ControllerP = P;
 		
 	}
 	
@@ -848,6 +849,7 @@ public class ControllerMagazzino {
     public void ErroreTabellaVuotaOkBottonePremuto(JFrame FinestraDaCuiApro) {
     	
     }
+
    
     
     
