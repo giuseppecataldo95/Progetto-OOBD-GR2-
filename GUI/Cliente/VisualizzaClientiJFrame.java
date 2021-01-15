@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -149,7 +150,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		percorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(192, 137, 770, 367);
+		scrollPane.setBounds(91, 125, 770, 367);
 		VisualizzaClientiPanel.add(scrollPane);
 		table = new JTable(Model);
 		table.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -162,13 +163,16 @@ public class VisualizzaClientiJFrame extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JToolBar toolBar = new JToolBar();
+		toolBar.setRollover(true);
+		toolBar.setFloatable(false);
+		toolBar.setBackground(new Color(255, 140, 0));
 		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(75, 153, 115, 316);
+		toolBar.setBounds(871, 257, 105, 65);
 		VisualizzaClientiPanel.add(toolBar);
 		
-
+		
 		filterText = new JTextField();
-		filterText.setBounds(306, 75, 391, 20);
+		filterText.setBounds(200, 73, 391, 20);
 		VisualizzaClientiPanel.add(filterText);
 		filterText.setColumns(10);
 		filterText.getDocument().addDocumentListener(
@@ -187,6 +191,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	
 		
 		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
+		EliminaTesseraJButton.setBackground(new Color(255, 140, 0));
 		EliminaTesseraJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -198,6 +203,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		toolBar.add(EliminaTesseraJButton);
 		
 		JButton VisualizzaDettagliClienteJButton = new JButton("Dettagli Cliente");
+		VisualizzaDettagliClienteJButton.setBackground(new Color(255, 140, 0));
 		VisualizzaDettagliClienteJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -208,6 +214,18 @@ public class VisualizzaClientiJFrame extends JFrame {
 		});
 		VisualizzaDettagliClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
 		toolBar.add(VisualizzaDettagliClienteJButton);
+		
+		JButton VisualizzaPuntiPerClienteJButton = new JButton("Visualizza Punti");
+		VisualizzaPuntiPerClienteJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.VisualizzaClientiVisualizzaPuntiBottonePremuto();
+				
+			}
+		});
+		VisualizzaPuntiPerClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		VisualizzaPuntiPerClienteJButton.setBackground(new Color(255, 140, 0));
+		toolBar.add(VisualizzaPuntiPerClienteJButton);
 
 		
 
@@ -228,5 +246,4 @@ public class VisualizzaClientiJFrame extends JFrame {
 	    }
 	    sorter.setRowFilter(rf);
 	}
-	
 }
