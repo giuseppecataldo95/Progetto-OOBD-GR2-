@@ -65,11 +65,11 @@ public class ControllerCliente
 	
 	{
 	
-		
+		 ControllerP = P;
 		 Clienti = new ClientiJFrame(this,ControllerP);
 		 Clienti.setVisible(true);
 		 DAO = new ClienteDAOPostgres(Conn);
-		 ControllerP = P;
+		 
 	}
 
 	
