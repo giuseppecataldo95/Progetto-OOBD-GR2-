@@ -57,7 +57,7 @@ public class ControllerMagazzino {
 	//COSTRUTTORE
 	
 	public ControllerMagazzino(Connection Conn, ControllerPrincipale P) throws SQLException {
-		
+
 		ControllerP = P;
 		Magazzino = new MagazzinoJFrame(this, ControllerP);
 		Magazzino.setVisible(true);

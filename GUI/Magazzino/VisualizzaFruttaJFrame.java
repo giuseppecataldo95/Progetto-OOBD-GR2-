@@ -9,13 +9,7 @@ import javax.swing.table.TableRowSorter;
 import Controller.ControllerMagazzino;
 import GUI.Cliente.ClientiJFrame;
 
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
 import java.awt.Component;
-import javax.swing.Box;
-
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.LayoutManager;
