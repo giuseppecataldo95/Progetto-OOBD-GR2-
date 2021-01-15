@@ -1,47 +1,36 @@
 package GUI.Magazzino;
-
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-
-import Controller.ControllerMagazzino;
-
-
-import javax.swing.JToolBar;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import java.awt.Component;
-import javax.swing.Box;
-
+import javax.swing.event.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Dimension;
-import javax.swing.UIManager;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
+import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Component;
+
+import Controller.ControllerMagazzino;
 
 public class VisualizzaFruttaJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino Controller;
 	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore al kg", "Scorte in kg"},0){
+	private TableRowSorter<DefaultTableModel> sorter;
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore al kg", "Scorte in kg"},0)
+	{
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
+		 
 	};
 	
+	 private JTextField filterText;
 
 	/**
 	 * Create the frame.
@@ -74,7 +63,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaFruttaJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton VenditeButton = new JButton("");
@@ -97,14 +86,6 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
 		
 		Component verticalStrut = Box.createVerticalStrut(200);
 		MenùLateraleTB.add(verticalStrut);
@@ -156,23 +137,44 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		percorsoTB.add(VisualizzaFruttaPercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 41, 867, 463);
+		scrollPane.setBounds(95, 85, 867, 419);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
 		table.setFont(new Font("Arial", Font.PLAIN, 11));
+		sorter = new TableRowSorter<DefaultTableModel>(Model);
 		table.setRowSelectionAllowed(false);
 		table.setBackground(new Color(255, 204, 153));
+		table.setAutoCreateRowSorter(true);
+		table.setRowSorter(sorter);
+		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaFrutta_VisualizzaFruttaPercorsoBottonePremuto();
+				Controller.VisualizzaFruttaBottoneIndietroPremuto();
 			}
 		});
 		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		IndietroButton.setBounds(852, 521, 110, 31);
 		VisualizzaProdottiPanel.add(IndietroButton);
+		
+		filterText = new JTextField();
+		filterText.setBounds(232, 41, 391, 20);
+		VisualizzaProdottiPanel.add(filterText);
+		filterText.setColumns(10);
+		filterText.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void insertUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        newFilter();
+                    }
+                });
 		
 	}
 	
@@ -180,4 +182,13 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		Model.addRow(new Object[]{ID_Prodotto, Nome, Provenienza, Lotto, Data, Valore, Peso});
 		}
 	
+	private void newFilter() {
+	    RowFilter<DefaultTableModel, Object> rf = null;
+	    try {
+	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),1);
+	    } catch (java.util.regex.PatternSyntaxException e) {
+	        return;
+	    }
+	    sorter.setRowFilter(rf);
+ }
 }

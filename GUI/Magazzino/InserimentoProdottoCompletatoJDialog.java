@@ -49,7 +49,7 @@ public class InserimentoProdottoCompletatoJDialog extends JDialog {
 				OkButton = new JButton("Ok");
 				OkButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Controller.OkBottonePremuto(FinestraDaCuiApro);
+						Controller.InserimentoCompletatoOkBottonePremuto(FinestraDaCuiApro);
 					}
 				});
 
@@ -61,10 +61,5 @@ public class InserimentoProdottoCompletatoJDialog extends JDialog {
 		}
 	}
 	
-	public void setError(String errore) {
-		JLabel ErroreLB = new JLabel(errore);
-		ErroreLB.setBounds(10, 11, 266, 58);
-		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 11));
-		contentPanel.add(ErroreLB);
-	}
+	
 }

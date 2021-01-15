@@ -1,7 +1,5 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -11,7 +9,7 @@ import javax.swing.JFrame;
 
 import App.ConvertiCBInData;
 import DAO.MagazzinoDAO;
-import GUI.Cliente.ClientiJFrame;
+
 import GUI.Magazzino.AggiungiConfezionatiJFrame;
 import GUI.Magazzino.AggiungiFarinaceiJFrame;
 import GUI.Magazzino.AggiungiFruttaJFrame;
@@ -51,7 +49,7 @@ public class ControllerMagazzino {
 	private VisualizzaLatticiniJFrame VisualizzaLatticini;
 	private MagazzinoDAO DAO;
 	private ConvertiCBInData Convertitore;
-	private ErroreAggiungiProdottoJDialog FinestraErrore;
+	private ErroreAggiungiProdottoJDialog ErroreAggiungi;
 	private ControllerPrincipale ControllerP;
 	private InserimentoProdottoCompletatoJDialog InserimentoCompletato;
 	
@@ -344,11 +342,10 @@ public class ControllerMagazzino {
 		try {
 			ProdottiUova = DAO.getUova();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	for(Uova u : ProdottiUova)
-    	VisualizzaUova.setRigheTabella(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
+		for(Uova u : ProdottiUova)
+			VisualizzaUova.setRigheTabella(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
     }
 	
 	public void VisualizzaUova_MagazzinoPercorsoBottonePremuto() {
@@ -455,14 +452,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
 		} catch (NumberFormatException e) {
 			Frutta.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Frutta);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 		
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Frutta);
-			FinestraErrore.setError(e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
+			ErroreAggiungi.setError(e.getMessage());
+			ErroreAggiungi.setVisible(true);
 		}
     }
     
@@ -522,14 +519,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
     	} catch (NumberFormatException e) {
 			Verdura.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Verdura);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 	
     	} catch (SQLException e) {
-    		FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Verdura);
-    		FinestraErrore.setError(e.getMessage());
-    		FinestraErrore.setVisible(true);
+    		ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
+    		ErroreAggiungi.setError(e.getMessage());
+    		ErroreAggiungi.setVisible(true);
     	}
     }
     
@@ -590,14 +587,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Farinacei.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Farinacei);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Farinacei);
-			FinestraErrore.setError(e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
+			ErroreAggiungi.setError(e.getMessage());
+			ErroreAggiungi.setVisible(true);
 		}
 		
 	}
@@ -665,14 +662,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Latticini.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Latticini);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Latticini);
-			FinestraErrore.setError(e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
+			ErroreAggiungi.setError(e.getMessage());
+			ErroreAggiungi.setVisible(true);
 		}
     	
     }
@@ -737,14 +734,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
     	} catch (NumberFormatException e) {
 			Uova.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 
     	} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
-			FinestraErrore.setError(e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi.setError(e.getMessage());
+			ErroreAggiungi.setVisible(true);
     	}
     	
     }
@@ -808,14 +805,14 @@ public class ControllerMagazzino {
     		InserimentoCompletato.setVisible(true);
 	    } catch (NumberFormatException e) {
 			Uova.setEnabled(false);
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
-			FinestraErrore.setError("ERRORE: "+e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
+			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
-			FinestraErrore = new ErroreAggiungiProdottoJDialog(this, Uova);
-			FinestraErrore.setError(e.getMessage());
-			FinestraErrore.setVisible(true);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi.setError(e.getMessage());
+			ErroreAggiungi.setVisible(true);
 		}
     	
     }
@@ -828,16 +825,20 @@ public class ControllerMagazzino {
     
     public void RiprovaBottonePremuto(JFrame FinestraDaCuiApro) {
     	FinestraDaCuiApro.setEnabled(true);
-    	FinestraErrore.setVisible(false);
+    	ErroreAggiungi.setVisible(false);
 		
 	}
     
-    public void OkBottonePremuto(JFrame FinestraDaCuiApro) {
+    public void InserimentoCompletatoOkBottonePremuto(JFrame FinestraDaCuiApro) {
     	FinestraDaCuiApro.setEnabled(true);
     	FinestraDaCuiApro.setVisible(false);
     	InserimentoCompletato.setVisible(false);
     	VisualizzaPr = new VisualizzaProdottiJFrame(this);
     	VisualizzaPr.setVisible(true);
+    }
+    
+    public void ErroreTabellaVuotaOkBottonePremuto(JFrame FinestraDaCuiApro) {
+    	
     }
    
     

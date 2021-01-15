@@ -40,6 +40,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
+		 
 	};
 	
 
@@ -157,6 +158,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		scrollPane.setBounds(95, 41, 867, 463);
 		VisualizzaProdottiPanel.add(scrollPane);
 		table = new JTable(Model);
+		table.setAutoCreateRowSorter(true);
 		scrollPane.setViewportView(table);
 		
 		JButton IndietroButton = new JButton("Indietro");

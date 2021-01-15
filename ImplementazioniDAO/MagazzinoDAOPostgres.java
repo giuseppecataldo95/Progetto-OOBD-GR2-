@@ -29,7 +29,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		inserisciLatticiniPS = connessione.prepareStatement("INSERT INTO latticino VALUES (?,?,?,?,?,DEFAULT,?,?)");
 	    inserisciUovaPS = connessione.prepareStatement("INSERT INTO uova VALUES (?,?,?,?,DEFAULT,?,?)");
 	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,DEFAULT,?,?)");
-	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_','?')");
+	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_',)");
 	}
 	
 	@Override
@@ -67,8 +67,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 
 	@Override
 	public ArrayList<Latticino> getLatticini() throws SQLException {
-		gestisciScadenze.setString(1, "latticino()");
-		gestisciScadenze.execute();
+		Statement gestisciScadenze = connessione.createStatement();
+		gestisciScadenze.execute("SELECT gestisci_scadenze_latticino()");
 		Statement getProd = connessione.createStatement();
 		ResultSet rs = getProd.executeQuery("SELECT * FROM latticino");
 		ArrayList<Latticino> ProdottiLatticini = new ArrayList<Latticino>();
@@ -85,8 +85,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 
 	@Override
 	public ArrayList<Confezionato> getConfezionati() throws SQLException {
-		gestisciScadenze.setString(1, "confezionato()");
-		gestisciScadenze.execute();
+		Statement gestisciScadenze = connessione.createStatement();
+		gestisciScadenze.execute("SELECT gestisci_scadenze_confezionato()");
 		Statement getProd = connessione.createStatement();
 		ResultSet rs = getProd.executeQuery("SELECT * FROM confezionato");
 		ArrayList<Confezionato> ProdottiConfezionati = new ArrayList<Confezionato>();
@@ -102,8 +102,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 
 	@Override
 	public ArrayList<Uova> getUova() throws SQLException {
-		gestisciScadenze.setString(1, "uova()");
-		gestisciScadenze.execute();
+		Statement gestisciScadenze = connessione.createStatement();
+		gestisciScadenze.execute("SELECT gestisci_scadenze_uova()");
 		Statement getProd = connessione.createStatement();
 		ResultSet rs = getProd.executeQuery("SELECT * FROM uova");
 		ArrayList<Uova> ProdottiUova = new ArrayList<Uova>();
@@ -119,8 +119,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 
 	@Override
 	public ArrayList<Farinaceo> getFarinacei() throws SQLException {
-		gestisciScadenze.setString(1, "farinaceo()");
-		gestisciScadenze.execute();
+		Statement gestisciScadenze = connessione.createStatement();
+		gestisciScadenze.execute("SELECT gestisci_scadenze_farinaceo()");
 		Statement getProd = connessione.createStatement();
 		ResultSet rs = getProd.executeQuery("SELECT * FROM farinaceo");
 		ArrayList<Farinaceo> ProdottiFarinacei = new ArrayList<Farinaceo>();
