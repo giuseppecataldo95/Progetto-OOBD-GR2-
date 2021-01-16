@@ -30,33 +30,33 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 
-public class VisualizzaClientiJFrame extends JFrame {
+public class VisualizzaPuntiJFrame extends JFrame {
 
-	private JPanel VisualizzaClientiPanel;
+	private JPanel VisualizzaPuntiPanel;
 	ControllerCliente controller;
 	ControllerPrincipale ControllerP;
 	private JTable table;
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Nome", "Cognome", "Data di Rilascio", "Data di Scadenza"},0) {
+	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Punti Frutta", "Punti Verdura", "Punti Confezionati", "Punti Uova", "Punti Latticini", "Punti Farinacei"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
 	};
 
 
-	public VisualizzaClientiJFrame(ControllerCliente c, ControllerPrincipale c1) {
+	public VisualizzaPuntiJFrame(ControllerCliente c, ControllerPrincipale c1) {
 		controller = c;
 		ControllerP = c1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
-		VisualizzaClientiPanel = new JPanel();
-		VisualizzaClientiPanel.setBackground(new Color(255, 228, 181));
-		VisualizzaClientiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		VisualizzaClientiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(VisualizzaClientiPanel);
-		VisualizzaClientiPanel.setLayout(null);
+		VisualizzaPuntiPanel = new JPanel();
+		VisualizzaPuntiPanel.setBackground(new Color(255, 228, 181));
+		VisualizzaPuntiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		VisualizzaPuntiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(VisualizzaPuntiPanel);
+		VisualizzaPuntiPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -67,14 +67,14 @@ public class VisualizzaClientiJFrame extends JFrame {
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
 		MenùLateraleTB.setBounds(0, 0, 65, 563);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		VisualizzaClientiPanel.add(MenùLateraleTB);
+		VisualizzaPuntiPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(VisualizzaClientiJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,7 +88,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(VisualizzaClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
@@ -99,7 +99,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(VisualizzaClientiJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
@@ -110,7 +110,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaClientiJFrame.class.getResource("/Risorse/info-menu.png")));
+		InfoButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
@@ -124,18 +124,18 @@ public class VisualizzaClientiJFrame extends JFrame {
 		percorsoTB.setBackground(new Color(255, 204, 153));
 		percorsoTB.setMaximumSize(new Dimension(100, 100));
 		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaClientiPanel.add(percorsoTB);
+		VisualizzaPuntiPanel.add(percorsoTB);
 		
-		JButton ClientiPercorsoButton = new JButton("> Clienti");
-		ClientiPercorsoButton.addActionListener(new ActionListener() {
+		JButton MagazzinoPercorsoButton = new JButton("> Clienti");
+		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				controller.VisualizzaClientiClientiPercorsoButtonPressed();
 				
 			}
 		});
-		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(ClientiPercorsoButton);
+		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Clienti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
@@ -151,7 +151,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(91, 125, 770, 367);
-		VisualizzaClientiPanel.add(scrollPane);
+		VisualizzaPuntiPanel.add(scrollPane);
 		table = new JTable(Model);
 		table.setFont(new Font("Arial", Font.PLAIN, 11));
 		sorter = new TableRowSorter<DefaultTableModel>(Model);
@@ -162,12 +162,18 @@ public class VisualizzaClientiJFrame extends JFrame {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
-		
+		JToolBar toolBar = new JToolBar();
+		toolBar.setRollover(true);
+		toolBar.setFloatable(false);
+		toolBar.setBackground(new Color(255, 140, 0));
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBounds(871, 257, 105, 75);
+		VisualizzaPuntiPanel.add(toolBar);
 		
 		
 		filterText = new JTextField();
 		filterText.setBounds(200, 73, 391, 20);
-		VisualizzaClientiPanel.add(filterText);
+		VisualizzaPuntiPanel.add(filterText);
 		filterText.setColumns(10);
 		filterText.getDocument().addDocumentListener(
                 new DocumentListener() {
@@ -182,60 +188,10 @@ public class VisualizzaClientiJFrame extends JFrame {
                     }
                 });
 		
-	
-		JToolBar toolBar = new JToolBar();
-		toolBar.setRollover(true);
-		toolBar.setFloatable(false);
-		toolBar.setBackground(new Color(255, 140, 0));
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(871, 257, 105, 75);
-		VisualizzaClientiPanel.add(toolBar);
-		
-		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
-		EliminaTesseraJButton.setBackground(new Color(255, 140, 0));
-		EliminaTesseraJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				controller.ApriEliminaTesseraByNTessera();
-				
-			}
-		});
-		EliminaTesseraJButton.setFont(new Font("Arial", Font.BOLD, 12));
-		toolBar.add(EliminaTesseraJButton);
-		
-		JButton VisualizzaDettagliClienteJButton = new JButton("Dettagli Cliente");
-		VisualizzaDettagliClienteJButton.setBackground(new Color(255, 140, 0));
-		VisualizzaDettagliClienteJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				controller.ApriDettagliClienteJDialog();
-				
-				
-			}
-		});
-		VisualizzaDettagliClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
-		toolBar.add(VisualizzaDettagliClienteJButton);
-		
-		JButton VisualizzaPuntiPerClienteJButton = new JButton("Visualizza Punti");
-		VisualizzaPuntiPerClienteJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				controller.VisualizzaClientiVisualizzaPuntiBottonePremuto();
-				controller.CompletaTabellaPunti();
-			}
-		});
-		VisualizzaPuntiPerClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
-		VisualizzaPuntiPerClienteJButton.setBackground(new Color(255, 140, 0));
-		toolBar.add(VisualizzaPuntiPerClienteJButton);
-
-		
-
-
 	}
 	
-	public void setRigheTabella(int NTessera, String CF, String Nome, String Cognome, Date DataRilascio, Date DataScadenza ){
-		Model.addRow(new Object[] {NTessera, CF, Nome, Cognome, DataRilascio, DataScadenza});
+	public void setRigheTabella(int NTessera, String CF, int PuntiFrutta, int PuntiVerdura, int PuntiConfezionati, int PuntiUova, int PuntiFarinacei, int PuntiLatticini ){
+		Model.addRow(new Object[] {NTessera, CF, PuntiFrutta, PuntiVerdura, PuntiConfezionati, PuntiUova, PuntiFarinacei, PuntiLatticini});
 		
 		}
 	

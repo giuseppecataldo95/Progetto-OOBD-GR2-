@@ -31,7 +31,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		getClienteByCF = connessione.prepareStatement("SELECT cliente.nome, cliente.cognome, cliente.data_nascita, cliente.luogo_nascita, cliente.sesso, cliente.cf FROM cliente join tessera on cliente.cf = tessera.cf WHERE tessera.n_tessera = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
-	
+		
 	}
 	
 	public void insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
@@ -48,16 +48,36 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 	}
 	
-	public ArrayList<Tessera>  getTessera() throws SQLException
+	public ArrayList<Tessera> getPuntiPerCategoria() throws SQLException{
+		
+		Statement PuntiPerCategoria = connessione.createStatement();
+		
+		ResultSet rs = PuntiPerCategoria.executeQuery("SELECT * FROM Visualizzaclienti");
+		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
+		
+		while(rs.next()) {
+			
+			Cliente c = new Cliente(rs.getString("cf"));
+			Tessera t = new Tessera (rs.getInt("n_tessera"), c, rs.getInt("punti_frutta"), rs.getInt("punti_verdura"), rs.getInt("punti_confezionati"), rs.getInt("punti_uova"), rs.getInt("punti_latticini"), rs.getInt("punti_farinacei"));
+			Tessera.add(t);
+		}
+		
+		rs.close();
+		return Tessera;
+		
+	}
+	
+	public ArrayList  getTessera() throws SQLException
 	{
 		Statement getTessera = connessione.createStatement();
 		ResultSet rs = getTessera.executeQuery("SELECT * FROM  VisualizzaClienti");
-		ArrayList<Tessera> Tessera = new ArrayList();
+		ArrayList Tessera = new ArrayList();
 		while(rs.next()) 
 			
 		{
-			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_totali"),rs.getString("cf"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
-			Tessera.add(c);
+			Cliente cliente = new Cliente (rs.getString("nome"), rs.getString("cognome"), rs.getString("cf"));
+			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_totali"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"), cliente);
+			
 			
 		}
 	

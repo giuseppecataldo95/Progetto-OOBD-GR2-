@@ -23,19 +23,20 @@ public class Cliente {
 		CF = cF;
 		Data_nascita = data_nascita;
 	}
-	
-	
-
-	
 
 
-
-	public Cliente() {
-		// TODO Auto-generated constructor stub
+	public Cliente(String nome, String cognome, String cF) {
+		super();
+		Nome = nome;
+		Cognome = cognome;
+		CF = cF;
 	}
 
-	
 
+	public Cliente(String cf) {
+		CF =cf;
+		
+	}
 
 	public String getNome() {
 		return Nome;
@@ -97,12 +98,6 @@ public class Cliente {
 	}
 
 
-	
-	@Override
-	public String toString() {
-		return "Cliente [Nome=" + Nome + ", Cognome=" + Cognome + ", Luogo_nascita=" + Luogo_nascita + ", Sesso="
-				+ Sesso + ", CF=" + CF + ", Data_nascita=" + Data_nascita + "]";
-	}
 	
 	
 

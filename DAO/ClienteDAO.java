@@ -17,6 +17,6 @@ import Entità.Tessera;
 	public int deleteTessera (int nTessera) throws SQLException;
 	public Cliente  getClienteByCF(int n_tessera) throws SQLException;
 //	public int getPuntiClienteFrutta(int NTessera);
-	
+	public ArrayList<Tessera> getPuntiPerCategoria() throws SQLException;
 	
 }

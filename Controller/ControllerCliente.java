@@ -11,6 +11,7 @@ import GUI.Cliente.RiepilogoTesseraJFrame;
 import GUI.Cliente.TesseraEliminataJDialog;
 import GUI.Cliente.VisualizzaClientiJFrame;
 import GUI.Cliente.VisualizzaDettagliClienteJFrame;
+import GUI.Cliente.VisualizzaPuntiJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
 
 import App.CFGenerator;
@@ -47,7 +48,7 @@ public class ControllerCliente
 	 private DettagliClienteJDialog DettagliClienteDialog;
 	 private VisualizzaDettagliClienteJFrame VisualizzaDettagli;
 	 private ErroreRicercaClienteByNTesseraJDialog ErroreRicercaCliente;
-	
+	private VisualizzaPuntiJFrame VisualizzaPunti;
 //	|-----Costruttore Controller-----|
 	public ControllerCliente(Connection Conn, ControllerPrincipale P) throws SQLException
 	
@@ -213,29 +214,46 @@ public class ControllerCliente
 
 		public void CompletaTabellaTessera()  
 		
-		
 		{
 	    	ArrayList<Tessera> Tessera=null;
-	    	ArrayList<Cliente> Cliente = null;
-	    	
-	    	
-	   
+	    
 			try {
 				Tessera = DAO.getTessera();
 				
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    	for(Tessera t : Tessera) {
 	    		
 	    	
-					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getCF(),  t.getDataRilascio(), t.getDataScadenza());
+					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getC().getCF(), t.getC().getNome(), t.getC().getCognome(),  t.getDataRilascio(), t.getDataScadenza());
+		
+	    	}
+	    		}	
+		
+		public void CompletaTabellaPunti() {
+			
+	    	ArrayList<Tessera> Tessera=null;
+	    	
+			try {
+				Tessera = DAO.getPuntiPerCategoria();
+				
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+	    	for(Tessera t : Tessera) {
+	    		
+				VisualizzaPunti.setRigheTabella(t.getNTessera(), t.getC().getCF(), t.getPuntiFrutta(), t.getPuntiVerdura(), t.getPuntiConfezionati(), t.getPuntiUova(), t.getPuntiLatticini(), t.getPuntiConfezionati());
 		
 	    
 	    	}
-	    		}	
+	    			
+		
+	}
+
 			
 
 
@@ -581,6 +599,16 @@ public class ControllerCliente
 			CreaNuovaTesseraAvantiButtonPressed();
 			RiepilogoTessera.setVisible(true);
 			
+			
+		}
+
+
+		
+
+		public void VisualizzaClientiVisualizzaPuntiBottonePremuto() {
+
+			VisualizzaPunti = new VisualizzaPuntiJFrame(this, ControllerP);
+			VisualizzaPunti.setVisible(true);
 			
 		}
 
