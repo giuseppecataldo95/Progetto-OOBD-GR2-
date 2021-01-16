@@ -6,10 +6,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Box;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -27,6 +29,8 @@ import Controller.ControllerCliente;
 import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 
@@ -38,6 +42,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	private JTable table;
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
+	private JTextField FiltraPerTB;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Nome", "Cognome", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
@@ -162,23 +167,41 @@ public class VisualizzaClientiJFrame extends JFrame {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
+		FiltraPerTB = new JTextField();
+		FiltraPerTB.setBounds(412, 41, 256, 20);
+		VisualizzaClientiPanel.add(FiltraPerTB);
+		FiltraPerTB.setColumns(10);
+		
+		JComboBox FiltraPerCB = new JComboBox();
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Nome", "Cognome", "Codice Fiscale", "Numero Tessera"}));
+		FiltraPerCB.setSelectedIndex(0);
+		FiltraPerCB.setBounds(316, 40, 86, 22);
+		VisualizzaClientiPanel.add(FiltraPerCB);
 		
 		
+		JLabel FiltraPerLB = new JLabel("Filtra per:");
+		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
+		FiltraPerLB.setBounds(256, 41, 65, 20);
+		VisualizzaClientiPanel.add(FiltraPerLB);
+		FiltraPerCB.addItemListener(new ItemListener() {
+			public void itemStateChanged (ItemEvent ie) {
+				if(ie.getStateChange() == ItemEvent.SELECTED) {
+				      FiltraPerLB.setText("");
+				   }
+			}
+			
+		});
 		
-		filterText = new JTextField();
-		filterText.setBounds(200, 73, 391, 20);
-		VisualizzaClientiPanel.add(filterText);
-		filterText.setColumns(10);
-		filterText.getDocument().addDocumentListener(
+		FiltraPerTB.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
-                        newFilter();
+                    	newFilter(FiltraPerCB.getSelectedIndex());
                     }
                     public void insertUpdate(DocumentEvent e) {
-                        newFilter();
+                        newFilter(FiltraPerCB.getSelectedIndex());
                     }
                     public void removeUpdate(DocumentEvent e) {
-                        newFilter();
+                        newFilter(FiltraPerCB.getSelectedIndex());
                     }
                 });
 		
@@ -239,13 +262,13 @@ public class VisualizzaClientiJFrame extends JFrame {
 		
 		}
 	
-	private void newFilter() {
+	private void newFilter(int IndiceColonna) {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),0);
+	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }
 	    sorter.setRowFilter(rf);
-	}
+ }
 }
