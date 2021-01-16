@@ -47,58 +47,36 @@ public class MagazzinoJFrame extends JFrame {
 		JPanel ContainerPanel = new JPanel();
 		ContainerPanel.setBackground(new Color(255, 228, 181));
 		ContainerPanel.setMinimumSize(new Dimension(310, 189));
-		ContainerPanel.setBounds(0, 50, 985, 512);
 		MagazzinoPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 204, 153));
-		MagazzinoPanel.add(panel);
-		panel.setLayout(null);
+		MagazzinoPanel.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(ContainerPanel);
-		ContainerPanel.setLayout(null);
-		
-		Component horizontalStrut = Box.createHorizontalStrut(20);
-		horizontalStrut.setBounds(0, 200, 200, 112);
-		horizontalStrut.setPreferredSize(new Dimension(200, 0));
-		horizontalStrut.setMinimumSize(new Dimension(150, 0));
-		horizontalStrut.setMaximumSize(new Dimension(300, 32767));
-		ContainerPanel.add(horizontalStrut);
-		
-		Component verticalStrut_1 = Box.createVerticalStrut(20);
-		verticalStrut_1.setBounds(0, 0, 985, 200);
-		verticalStrut_1.setPreferredSize(new Dimension(0, 200));
-		ContainerPanel.add(verticalStrut_1);
-		
-		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
-		horizontalStrut_1.setBounds(785, 200, 200, 112);
-		horizontalStrut_1.setPreferredSize(new Dimension(200, 0));
-		ContainerPanel.add(horizontalStrut_1);
-		
-		Component verticalStrut_2 = Box.createVerticalStrut(20);
-		verticalStrut_2.setBounds(0, 312, 985, 200);
-		verticalStrut_2.setPreferredSize(new Dimension(0, 200));
-		ContainerPanel.add(verticalStrut_2);
+		ContainerPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(200, 200, 585, 112);
 		panel_1.setBorder(null);
 		panel_1.setBackground(new Color(255, 228, 181));
 		ContainerPanel.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Nuovo Prodotto");
+		AggiungiProdottoButton.setBounds(199, 200, 186, 103);
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerM.MostraFinestraAggiungiProdotto();
 			}
 		});
+		panel_1.setLayout(null);
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		AggiungiProdottoButton.setBackground(new Color(255, 204, 153));
 		AggiungiProdottoButton.setMaximumSize(new Dimension(186, 102));
 		AggiungiProdottoButton.setPreferredSize(new Dimension(186, 102));
-		panel_1.add(AggiungiProdottoButton, BorderLayout.WEST);
+		panel_1.add(AggiungiProdottoButton);
 		
 		JButton VisualizzaProdottoButton = new JButton("Visualizza Prodotti");
+		VisualizzaProdottoButton.setBounds(529, 200, 186, 103);
 		VisualizzaProdottoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerM.MostraFinestraVisualizzaProdotto();
@@ -108,17 +86,16 @@ public class MagazzinoJFrame extends JFrame {
 		VisualizzaProdottoButton.setBackground(new Color(255, 204, 153));
 		VisualizzaProdottoButton.setMaximumSize(new Dimension(186, 102));
 		VisualizzaProdottoButton.setPreferredSize(new Dimension(186, 23));
-		panel_1.add(VisualizzaProdottoButton, BorderLayout.EAST);
+		panel_1.add(VisualizzaProdottoButton);
 		
 		JLabel lblNewLabel = new JLabel("Sezione Magazzino");
-		lblNewLabel.setBounds(0, 0, 985, 50);
 		lblNewLabel.setPreferredSize(new Dimension(90, 50));
 		lblNewLabel.setMinimumSize(new Dimension(90, 50));
 		lblNewLabel.setMaximumSize(new Dimension(90, 50));
 		lblNewLabel.setBackground(new Color(255, 204, 153));
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 22));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel);
+		panel.add(lblNewLabel, BorderLayout.NORTH);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MagazzinoPanel.add(MenùLateraleTB, BorderLayout.WEST);

@@ -14,6 +14,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
@@ -24,8 +26,6 @@ public class VisualizzaFruttaJFrame extends JFrame {
 	private JPanel VisualizzaProdottiPanel;
 	private ControllerMagazzino ControllerM;
 	private ControllerPrincipale ControllerP;
-	private JTable table;
-	private TableRowSorter<DefaultTableModel> sorter;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore al kg", "Scorte in kg"},0)
 	{
 		 public boolean isCellEditable(int row, int column) {
@@ -33,8 +33,9 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		    }
 		 
 	};
-	
-	 private JTextField filterText;
+	private JTable ProdottiTable;
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FiltraPerTB;
 
 	/**
 	 * Create the frame.
@@ -152,19 +153,6 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		VisualizzaFruttaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaFruttaPercorsoButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 85, 867, 419);
-		VisualizzaProdottiPanel.add(scrollPane);
-		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		sorter = new TableRowSorter<DefaultTableModel>(Model);
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
-		table.setAutoCreateRowSorter(true);
-		table.setRowSorter(sorter);
-		table.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(table);
-		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -175,20 +163,53 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		IndietroButton.setBounds(852, 521, 110, 31);
 		VisualizzaProdottiPanel.add(IndietroButton);
 		
-		filterText = new JTextField();
-		filterText.setBounds(355, 41, 268, 20);
-		VisualizzaProdottiPanel.add(filterText);
-		filterText.setColumns(10);
-		filterText.getDocument().addDocumentListener(
+		JScrollPane TabellaPanel = new JScrollPane();
+		TabellaPanel.setBounds(95, 85, 867, 419);
+		VisualizzaProdottiPanel.add(TabellaPanel);
+		ProdottiTable = new JTable(Model);
+		ProdottiTable.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		ProdottiTable.setRowSelectionAllowed(false);
+		ProdottiTable.setBackground(new Color(255, 204, 153));
+		ProdottiTable.setAutoCreateRowSorter(true);
+		ProdottiTable.setRowSorter(Sorter);
+		ProdottiTable.getTableHeader().setReorderingAllowed(false);
+		TabellaPanel.setViewportView(ProdottiTable);
+		
+		FiltraPerTB = new JTextField();
+		FiltraPerTB.setBounds(412, 41, 256, 20);
+		VisualizzaProdottiPanel.add(FiltraPerTB);
+		FiltraPerTB.setColumns(10);
+		
+		JComboBox FiltraPerCB = new JComboBox();
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data", "Valore", "Scorte (kg)"}));
+		FiltraPerCB.setSelectedIndex(0);
+		FiltraPerCB.setBounds(316, 40, 86, 22);
+		VisualizzaProdottiPanel.add(FiltraPerCB);
+		
+		JLabel FiltraPerLB = new JLabel("Filtra per:");
+		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
+		FiltraPerLB.setBounds(256, 41, 65, 20);
+		VisualizzaProdottiPanel.add(FiltraPerLB);
+		FiltraPerCB.addItemListener(new ItemListener() {
+			public void itemStateChanged (ItemEvent ie) {
+				if(ie.getStateChange() == ItemEvent.SELECTED) {
+				      FiltraPerTB.setText("");
+				   }
+			}
+			
+		});
+		
+		FiltraPerTB.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
-                        newFilter();
+                    	newFilter(FiltraPerCB.getSelectedIndex());
                     }
                     public void insertUpdate(DocumentEvent e) {
-                        newFilter();
+                        newFilter(FiltraPerCB.getSelectedIndex());
                     }
                     public void removeUpdate(DocumentEvent e) {
-                        newFilter();
+                        newFilter(FiltraPerCB.getSelectedIndex());
                     }
                 });
 		
@@ -198,13 +219,13 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		Model.addRow(new Object[]{ID_Prodotto, Nome, Provenienza, Lotto, Data, Valore, Peso});
 		}
 	
-	private void newFilter() {
+	private void newFilter(int IndiceColonna) {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),1);
+	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }
-	    sorter.setRowFilter(rf);
+	    Sorter.setRowFilter(rf);
  }
 }
