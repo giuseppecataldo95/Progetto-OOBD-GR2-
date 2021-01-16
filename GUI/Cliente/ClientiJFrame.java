@@ -99,10 +99,10 @@ public class ClientiJFrame extends JFrame {
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
 
 				ControllerC.CompletaTabellaTessera();
+				
 
 				
 			}
