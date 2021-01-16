@@ -126,28 +126,38 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		percorsoTB.setBounds(65, 0, 976, 30);
 		VisualizzaPuntiPanel.add(percorsoTB);
 		
-		JButton MagazzinoPercorsoButton = new JButton("> Clienti");
-		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
+		JButton ClientiPercorsoButton = new JButton("> Clienti");
+		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaClientiClientiPercorsoButtonPressed();
+				controller.VisualizzaPuntiClientiPercorsoButtonPressed();
 				
 			}
 		});
-		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(ClientiPercorsoButton);
 		
-		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Clienti");
-		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+		JButton VisualizzaClientiPercorsoButton = new JButton("> Visualizza Clienti");
+		VisualizzaClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-				controller.VisualizzaClientiVisualizzaClientiPercorsoButtonPressed();
+				controller.VisualizzaPuntiVisualizzaClientiPercorsoButtonPressed();
 				controller.CompletaTabellaTessera();
 			}
 		});
-		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		VisualizzaClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaClientiPercorsoButton);
+		
+		JButton VisualizzaPuntiJButton = new JButton("> Visualizza Punti");
+		VisualizzaPuntiJButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaPuntiJButton);
+		VisualizzaPuntiJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.VisualizzaPuntiVisualizzaPuntiPercorsoButtonPressed();
+				controller.CompletaTabellaPunti();
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(91, 125, 770, 367);
@@ -162,13 +172,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setRollover(true);
-		toolBar.setFloatable(false);
-		toolBar.setBackground(new Color(255, 140, 0));
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(871, 257, 105, 75);
-		VisualizzaPuntiPanel.add(toolBar);
+		
 		
 		
 		filterText = new JTextField();

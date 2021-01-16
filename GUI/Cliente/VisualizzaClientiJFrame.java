@@ -167,45 +167,6 @@ public class VisualizzaClientiJFrame extends JFrame {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
-		FiltraPerTB = new JTextField();
-		FiltraPerTB.setBounds(412, 41, 256, 20);
-		VisualizzaClientiPanel.add(FiltraPerTB);
-		FiltraPerTB.setColumns(10);
-		
-		JComboBox FiltraPerCB = new JComboBox();
-		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Nome", "Cognome", "Codice Fiscale", "Numero Tessera"}));
-		FiltraPerCB.setSelectedIndex(0);
-		FiltraPerCB.setBounds(316, 40, 86, 22);
-		VisualizzaClientiPanel.add(FiltraPerCB);
-		
-		
-		JLabel FiltraPerLB = new JLabel("Filtra per:");
-		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
-		FiltraPerLB.setBounds(256, 41, 65, 20);
-		VisualizzaClientiPanel.add(FiltraPerLB);
-		FiltraPerCB.addItemListener(new ItemListener() {
-			public void itemStateChanged (ItemEvent ie) {
-				if(ie.getStateChange() == ItemEvent.SELECTED) {
-				      FiltraPerLB.setText("");
-				   }
-			}
-			
-		});
-		
-		FiltraPerTB.getDocument().addDocumentListener(
-                new DocumentListener() {
-                    public void changedUpdate(DocumentEvent e) {
-                    	newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                    public void insertUpdate(DocumentEvent e) {
-                        newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                    public void removeUpdate(DocumentEvent e) {
-                        newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                });
-		
-	
 		JToolBar toolBar = new JToolBar();
 		toolBar.setRollover(true);
 		toolBar.setFloatable(false);
@@ -251,11 +212,48 @@ public class VisualizzaClientiJFrame extends JFrame {
 		VisualizzaPuntiPerClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
 		VisualizzaPuntiPerClienteJButton.setBackground(new Color(255, 140, 0));
 		toolBar.add(VisualizzaPuntiPerClienteJButton);
-
 		
+		FiltraPerTB = new JTextField();
+		FiltraPerTB.setBounds(412, 41, 256, 20);
+		VisualizzaClientiPanel.add(FiltraPerTB);
+		FiltraPerTB.setColumns(10);
+		
+		JComboBox FiltraPerCB = new JComboBox();
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Nome", "Cognome", "Codice Fiscale", "Numero Tessera"}));
+		FiltraPerCB.setSelectedIndex(0);
+		FiltraPerCB.setBounds(316, 40, 86, 22);
+		VisualizzaClientiPanel.add(FiltraPerCB);
+		
+		
+		JLabel FiltraPerLB = new JLabel("Filtra per:");
+		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
+		FiltraPerLB.setBounds(256, 41, 65, 20);
+		VisualizzaClientiPanel.add(FiltraPerLB);
+		FiltraPerCB.addItemListener(new ItemListener() {
+			public void itemStateChanged (ItemEvent ie) {
+				if(ie.getStateChange() == ItemEvent.SELECTED) {
+				      FiltraPerTB.setText("");
+				   }
+			}
+			
+		});
+		FiltraPerTB.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                    	newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                    public void insertUpdate(DocumentEvent e) {
+                        newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                });
 
 
 	}
+	
+	
 	
 	public void setRigheTabella(int NTessera, String CF, String Nome, String Cognome, Date DataRilascio, Date DataScadenza ){
 		Model.addRow(new Object[] {NTessera, CF, Nome, Cognome, DataRilascio, DataScadenza});

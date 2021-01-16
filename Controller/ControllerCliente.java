@@ -372,12 +372,15 @@ public class ControllerCliente
 									Date dataN = c.getData_nascita();
 									VisualizzaDettagli.setRiepilogoDataNTB(dataN.toString());
 									VisualizzaDettagli.setVisible(true);
+									DettagliClienteDialog.setVisible(false);
 				
 								}	
 		
 		
 				if(c == null)
 								{
+									
+									DettagliClienteDialog.setVisible(false);
 									ErroreRicercaCliente = new ErroreRicercaClienteByNTesseraJDialog(this);
 									ErroreRicercaCliente.setVisible(true);
 								}
@@ -386,6 +389,8 @@ public class ControllerCliente
 		
 		 catch (SQLException e)
 			{
+			 	
+				DettagliClienteDialog.setVisible(false);
 			 	ErroreNumeroTessera = new FormatoNTesseraErratoJDialog(this);
 			 	ErroreNumeroTessera.setVisible(true);
 			}
@@ -438,6 +443,7 @@ public class ControllerCliente
 		public void VisualizzaClientiVisualizzaPuntiBottonePremuto() 
 		
 		{
+			VisualizzaClienti.setVisible(false);
 			VisualizzaPunti = new VisualizzaPuntiJFrame(this, ControllerP);
 			VisualizzaPunti.setVisible(true);
 		}
@@ -545,6 +551,35 @@ public class ControllerCliente
 
 		public void setErroreNumeroTessera(FormatoNTesseraErratoJDialog erroreNumeroTessera) {
 			ErroreNumeroTessera = erroreNumeroTessera;
+		}
+
+
+		public void VisualizzaPuntiVisualizzaClientiPercorsoButtonPressed() {
+
+			VisualizzaPunti.setVisible(false);
+			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
+			VisualizzaClienti.setVisible(true);
+			
+			
+		}
+
+
+		public void VisualizzaPuntiClientiPercorsoButtonPressed() {
+
+			VisualizzaPunti.setVisible(false);
+			Clienti = new ClientiJFrame(this, ControllerP);
+			Clienti.setVisible(true);
+			
+		}
+
+
+		public void VisualizzaPuntiVisualizzaPuntiPercorsoButtonPressed() {
+
+			VisualizzaPunti.setVisible(false);
+			VisualizzaPunti = new VisualizzaPuntiJFrame(this, ControllerP);
+			VisualizzaPunti.setVisible(true);
+			
+			
 		}	
 }
 
