@@ -18,6 +18,8 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	private PreparedStatement getClienteByCF;
 	private PreparedStatement insertCliente;
 	private PreparedStatement deleteTessera;
+	private PreparedStatement getPuntiFrutta;
+	
 
 	
 	
@@ -29,7 +31,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		getClienteByCF = connessione.prepareStatement("SELECT cliente.nome, cliente.cognome, cliente.data_nascita, cliente.luogo_nascita, cliente.sesso, cliente.cf FROM cliente join tessera on cliente.cf = tessera.cf WHERE tessera.n_tessera = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
-		
+	
 	}
 	
 	public void insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
@@ -46,15 +48,15 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 	}
 	
-	public ArrayList<Tessera> getTessera() throws SQLException
+	public ArrayList<Tessera>  getTessera() throws SQLException
 	{
 		Statement getTessera = connessione.createStatement();
-		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera");
-		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
+		ResultSet rs = getTessera.executeQuery("SELECT * FROM  VisualizzaClienti");
+		ArrayList<Tessera> Tessera = new ArrayList();
 		while(rs.next()) 
 			
 		{
-			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_fedeltà"),rs.getString("cf"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
+			Tessera c = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_totali"),rs.getString("cf"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
 			Tessera.add(c);
 			
 		}
@@ -114,10 +116,39 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 	}
 
+	
+	public int getPuntiClienteFrutta(int NTessera) throws SQLException {
+
+		getPuntiFrutta.setInt(1, NTessera);
+		
+		ResultSet rs = getPuntiFrutta.executeQuery();
+		
+		int PuntiFrutta=0;
+		
+		if(rs.next()) 
+		{
+			
+			 PuntiFrutta = rs.getInt("punti_frutta");
+			
+		}
+		
+		
+		rs.close();
+		return PuntiFrutta;
+	}
+	
+	
+	
+		
+	}
+
+	
+	
+
 
 
 
 
 	
 	
-}
+

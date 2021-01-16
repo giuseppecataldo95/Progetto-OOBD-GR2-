@@ -34,15 +34,18 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 	public JTextField RiepilogoCFTB;
 	public JTextField RiepilogoMeseNTB;
 	public JTextField RiepilogoAnnoNTB;
+	private JTextField RiepilogoDataNTB;
 	
+	
+
 	public VisualizzaDettagliClienteJFrame(ControllerCliente c) {
 		controller = c;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaDettagliClientePanel = new JPanel();
 		VisualizzaDettagliClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		VisualizzaDettagliClientePanel.setLayout(new BorderLayout(0, 0));
 		setContentPane(VisualizzaDettagliClientePanel);
+		VisualizzaDettagliClientePanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -217,7 +220,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoSessoTB = new JTextField();
 		RiepilogoSessoTB.setEditable(false);
 		RiepilogoSessoTB.setColumns(10);
-		RiepilogoSessoTB.setBounds(399, 288, 215, 19);
+		RiepilogoSessoTB.setBounds(399, 288, 59, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoSessoTB);
 		
 		RiepilogoLuogoNTB = new JTextField();
@@ -226,11 +229,11 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoLuogoNTB.setBounds(399, 344, 215, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoLuogoNTB);
 		
-		RiepilogoGiornoNTB = new JTextField();
-		RiepilogoGiornoNTB.setEditable(false);
-		RiepilogoGiornoNTB.setColumns(10);
-		RiepilogoGiornoNTB.setBounds(399, 390, 35, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoGiornoNTB);
+		RiepilogoDataNTB = new JTextField();
+		RiepilogoDataNTB.setEditable(false);
+		RiepilogoDataNTB.setColumns(10);
+		RiepilogoDataNTB.setBounds(399, 390, 108, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoDataNTB);
 		
 		RiepilogoCFTB = new JTextField();
 		RiepilogoCFTB.setEditable(false);
@@ -238,20 +241,12 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoCFTB.setBounds(399, 439, 215, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoCFTB);
 		
-		RiepilogoMeseNTB = new JTextField();
-		RiepilogoMeseNTB.setEditable(false);
-		RiepilogoMeseNTB.setColumns(10);
-		RiepilogoMeseNTB.setBounds(454, 390, 107, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoMeseNTB);
+	
 		
-		RiepilogoAnnoNTB = new JTextField();
-		RiepilogoAnnoNTB.setEditable(false);
-		RiepilogoAnnoNTB.setColumns(10);
-		RiepilogoAnnoNTB.setBounds(581, 390, 65, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoAnnoNTB);
+		
 		
 		JLabel SlashData2 = new JLabel("/");
-		SlashData2.setBounds(571, 393, 28, 13);
+		SlashData2.setBounds(5, 5, 976, 553);
 		VisualizzaDettagliClientePanel.add(SlashData2);
 	}
 
@@ -311,6 +306,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoAnnoNTB = riepilogoAnnoNTB;
 	}
 
+	public JTextField getRiepilogoDataNTB() {
+		return RiepilogoDataNTB;
+	}
+
+	public void setRiepilogoDataNTB(String riepilogoDataNTB) {
+		RiepilogoDataNTB.setText(riepilogoDataNTB);
+	}
 
 }
 

@@ -23,6 +23,12 @@ public class Cliente {
 		CF = cF;
 		Data_nascita = data_nascita;
 	}
+	
+	
+
+	
+
+
 
 	public Cliente() {
 		// TODO Auto-generated constructor stub
