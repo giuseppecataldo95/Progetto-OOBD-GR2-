@@ -1,2 +1,4 @@
 /MagazzinoDAOPostgres.class
 /ClienteDAOPostgres.class
+/FruttaNonTrovataException.class
+/ProdottoNonTrovatoException.class

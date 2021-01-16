@@ -17,6 +17,7 @@ import GUI.Magazzino.AggiungiLatticiniJFrame;
 import GUI.Magazzino.AggiungiProdottoJFrame;
 import GUI.Magazzino.AggiungiUovaJFrame;
 import GUI.Magazzino.AggiungiVerduraJFrame;
+import GUI.Magazzino.EliminaProdottoByIDJDialog;
 import GUI.Magazzino.ErroreAggiungiProdottoJDialog;
 import GUI.Magazzino.InserimentoProdottoCompletatoJDialog;
 import GUI.Magazzino.MagazzinoJFrame;
@@ -28,6 +29,7 @@ import GUI.Magazzino.VisualizzaProdottiJFrame;
 import GUI.Magazzino.VisualizzaUovaJFrame;
 import GUI.Magazzino.VisualizzaVerduraJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
+import ImplementazioniDAO.ProdottoNonTrovatoException;
 import Entità.*
 ;
 public class ControllerMagazzino {
@@ -52,6 +54,7 @@ public class ControllerMagazzino {
 	private ErroreAggiungiProdottoJDialog ErroreAggiungi;
 	private ControllerPrincipale ControllerP;
 	private InserimentoProdottoCompletatoJDialog InserimentoCompletato;
+	private EliminaProdottoByIDJDialog EliminaProdotto;
 	
 	//COSTRUTTORE
 	
@@ -64,7 +67,8 @@ public class ControllerMagazzino {
 		
 	}
 	
-	// METODI
+	/*METODI*/
+	//VISUALIZZA PRODOTTO
 	
 	public void MostraFinestraVisualizzaProdotto() {
 		Magazzino.setVisible(false);
@@ -85,15 +89,7 @@ public class ControllerMagazzino {
 		VisualizzaPr.setVisible(true);
 	}
 	
-	// METODI PER LO SNODO 'VISUALIZZA PRODOTTO'
-	
-	public MagazzinoJFrame getMagazzino() {
-		return Magazzino;
-	}
-
-	public void setMagazzino(MagazzinoJFrame magazzino) {
-		Magazzino = magazzino;
-	}
+	//VISUALIZZA FRUTTA
 
 	public void MostraFinestraVisualizzaFrutta() {
 		VisualizzaPr.setVisible(false);
@@ -142,6 +138,10 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	
+	
+	//VISUALIZZA VERDURA
 	
 	public void MostraFinestraVisualizzaVerdura() {
 		VisualizzaPr.setVisible(false);
@@ -192,6 +192,8 @@ public class ControllerMagazzino {
     	VisualizzaPr.setVisible(true);
     }
 	
+	//VISUALIZZA FARINACEI
+	
 	public void MostraFinestraVisualizzaFarinacei() {
 		VisualizzaPr.setVisible(false);
 		VisualizzaFarinacei = new VisualizzaFarinaceiJFrame(this, ControllerP);
@@ -239,6 +241,8 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	//VISUALIZZA LATTICINI
 	
 	public void MostraFinestraVisualizzaLatticini() {
 		VisualizzaPr.setVisible(false);
@@ -289,6 +293,8 @@ public class ControllerMagazzino {
     	VisualizzaPr.setVisible(true);
     }
 	
+	//VISUALIZZA CONFEZIONATI
+	
 	public void MostraFinestraVisualizzaConfezionati() {
 		VisualizzaPr.setVisible(false);
 		VisualizzaConfezionati = new VisualizzaConfezionatiJFrame(this, ControllerP);
@@ -337,6 +343,34 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	public void VisualizzaConfezionatiEliminaBottonePremuto() {
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
+		EliminaProdotto.setVisible(true);
+	}
+	
+	public void EliminaBottonePremuto(JFrame FinestraDaCuiApro) {
+		String Tipo = FinestraDaCuiApro.getClass().toString();
+		if(Tipo.contains("Confezionati")) {
+			try {
+				DAO.eliminaConfezionatiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
+				EliminaProdotto.setVisible(true);
+			}
+		} if(Tipo.contains("Frutta")) {
+			try {
+				DAO.eliminaFruttaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
+				EliminaProdotto.setVisible(true);
+			}
+		}
+	}
+	
+	//VISUALIZZA UOVA
 	
 	public void MostraFinestraVisualizzaUova() {
 		VisualizzaPr.setVisible(false);
@@ -843,8 +877,23 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+    
+    //GETTERS PER CONTROLLER PRINCIPALE
 
-	public AggiungiConfezionatiJFrame getConfezionati() {
+    public MagazzinoJFrame getMagazzino() {
+		return Magazzino;
+	}
+
+	public void setMagazzino(MagazzinoJFrame magazzino) {
+		Magazzino = magazzino;
+	}
+	
+
+	public AggiungiProdottoJFrame getAggiungiPr() {
+		return AggiungiPr;
+	}
+    
+    public AggiungiConfezionatiJFrame getConfezionati() {
 		return Confezionati;
 	}
 
@@ -856,10 +905,6 @@ public class ControllerMagazzino {
 		return Frutta;
 	}
 
-	public AggiungiProdottoJFrame getAggiungiPr() {
-		return AggiungiPr;
-	}
-
 	public AggiungiUovaJFrame getUova() {
 		return Uova;
 	}
@@ -868,12 +913,12 @@ public class ControllerMagazzino {
 		return Verdura;
 	}
 
-	public VisualizzaProdottiJFrame getVisualizzaPr() {
-		return VisualizzaPr;
-	}
-
 	public AggiungiLatticiniJFrame getLatticini() {
 		return Latticini;
+	}
+	
+	public VisualizzaProdottiJFrame getVisualizzaPr() {
+		return VisualizzaPr;
 	}
 
 	public VisualizzaFruttaJFrame getVisualizzaFrutta() {

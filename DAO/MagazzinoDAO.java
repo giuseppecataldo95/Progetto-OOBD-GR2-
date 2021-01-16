@@ -9,6 +9,7 @@ import Entità.Frutta;
 import Entità.Latticino;
 import Entità.Uova;
 import Entità.Verdura;
+import ImplementazioniDAO.ProdottoNonTrovatoException;
 
 
 public interface MagazzinoDAO {
@@ -24,6 +25,11 @@ public interface MagazzinoDAO {
 	public void inserisciLatticini(String Nome, String PaeseMungitura, String PaeseLavorazione, Date DataMungitura, Date DataScadenza, float Peso, float Valore) throws SQLException;
 	public void inserisciConfezionati(String Nome, String Marca, String Lotto, String Conservazione, Date DataScadenza, int NConfezioni, float PesoConfezione, float Valore) throws SQLException;
 	public void inserisciUova(String Lotto, Date Data, String Provenienza, int NConfezioniUova, float Valore, int NPerConfezione) throws SQLException;
-	public int EliminaFrutta(int IDProdotto) throws SQLException;
+	public void eliminaFruttaConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
+	public void eliminaVerduraConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
+	public void eliminaFarinaceiConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
+	public void eliminaUovaConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
+	public void eliminaConfezionatiConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
+	public void eliminaLatticiniConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException;
 }
 

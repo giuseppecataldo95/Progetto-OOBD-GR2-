@@ -21,6 +21,11 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	private PreparedStatement inserisciFarinaceiPS;
 	private PreparedStatement gestisciScadenze;
 	private PreparedStatement eliminaFruttaPS;
+	private PreparedStatement eliminaLatticiniPS;
+	private PreparedStatement eliminaVerduraPS;
+	private PreparedStatement eliminaFarinaceiPS;
+	private PreparedStatement eliminaUovaPS;
+	private PreparedStatement eliminaConfezionatiPS;
 
 	public MagazzinoDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
@@ -32,6 +37,11 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,DEFAULT,?,?)");
 	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_',)");
 	    eliminaFruttaPS = connessione.prepareStatement("DELETE FROM frutta WHERE id_prodotto = ? ");
+	    eliminaLatticiniPS = connessione.prepareStatement("DELETE FROM latticino WHERE id_prodotto = ? ");
+		eliminaVerduraPS = connessione.prepareStatement("DELETE FROM verdura WHERE id_prodotto = ? ");
+		eliminaFarinaceiPS = connessione.prepareStatement("DELETE FROM farinaceo WHERE id_prodotto = ? ");
+		eliminaUovaPS = connessione.prepareStatement("DELETE FROM uova WHERE id_prodotto = ? ");
+		eliminaConfezionatiPS = connessione.prepareStatement("DELETE FROM confezionato WHERE id_prodotto = ? ");
 	}
 	
 	@Override
@@ -206,12 +216,63 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		
 	}
 	
-	public int EliminaFrutta(int IDProdotto) throws SQLException {
+	public void eliminaFruttaConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
 
 		eliminaFruttaPS.setInt(1, IDProdotto);
 		int row = eliminaFruttaPS.executeUpdate();
-		
-	
-		return row;
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
 	}
+	
+	public void eliminaVerduraConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
+
+		eliminaVerduraPS.setInt(1, IDProdotto);
+		int row = eliminaVerduraPS.executeUpdate();
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
+	}
+	
+	public void eliminaFarinaceiConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
+
+		eliminaFarinaceiPS.setInt(1, IDProdotto);
+		int row = eliminaFarinaceiPS.executeUpdate();
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
+	}
+	
+	public void eliminaLatticiniConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
+
+		eliminaLatticiniPS.setInt(1, IDProdotto);
+		int row = eliminaLatticiniPS.executeUpdate();
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
+	}public void eliminaUovaConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
+
+		eliminaUovaPS.setInt(1, IDProdotto);
+		int row = eliminaUovaPS.executeUpdate();
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
+	}
+	
+	public void eliminaConfezionatiConID(int IDProdotto) throws ProdottoNonTrovatoException, SQLException {
+
+		eliminaConfezionatiPS.setInt(1, IDProdotto);
+		int row = eliminaConfezionatiPS.executeUpdate();
+		if (row == 0) {
+			throw new ProdottoNonTrovatoException();
+		}
+
+	}
+	
+	
 }

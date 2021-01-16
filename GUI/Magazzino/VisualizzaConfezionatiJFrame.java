@@ -169,7 +169,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(IndietroButton);
 		
 		JScrollPane TabellaPanel = new JScrollPane();
-		TabellaPanel.setBounds(95, 85, 867, 419);
+		TabellaPanel.setBounds(95, 85, 789, 419);
 		VisualizzaProdottiPanel.add(TabellaPanel);
 		ProdottiTable = new JTable(Model);
 		ProdottiTable.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -196,6 +196,16 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
 		FiltraPerLB.setBounds(256, 41, 65, 20);
 		VisualizzaProdottiPanel.add(FiltraPerLB);
+		
+		JButton EliminaButton = new JButton("Elimina");
+		EliminaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerM.VisualizzaConfezionatiEliminaBottonePremuto();
+			}
+		});
+		EliminaButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		EliminaButton.setBounds(894, 85, 82, 30);
+		VisualizzaProdottiPanel.add(EliminaButton);
 		FiltraPerCB.addItemListener(new ItemListener() {
 			public void itemStateChanged (ItemEvent ie) {
 				if(ie.getStateChange() == ItemEvent.SELECTED) {
