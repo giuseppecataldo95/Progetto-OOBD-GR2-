@@ -20,6 +20,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	private PreparedStatement inserisciUovaPS;
 	private PreparedStatement inserisciFarinaceiPS;
 	private PreparedStatement gestisciScadenze;
+	private PreparedStatement eliminaFruttaPS;
 
 	public MagazzinoDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
@@ -30,6 +31,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	    inserisciUovaPS = connessione.prepareStatement("INSERT INTO uova VALUES (?,?,?,?,DEFAULT,?,?)");
 	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,DEFAULT,?,?)");
 	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_',)");
+	    eliminaFruttaPS = connessione.prepareStatement("DELETE FROM frutta WHERE id_prodotto = ? ");
 	}
 	
 	@Override
@@ -203,7 +205,13 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		inserisciUovaPS.executeUpdate();
 		
 	}
+	
+	public int EliminaFrutta(int IDProdotto) throws SQLException {
 
+		eliminaFruttaPS.setInt(1, IDProdotto);
+		int row = eliminaFruttaPS.executeUpdate();
+		
 	
-	
+		return row;
+	}
 }

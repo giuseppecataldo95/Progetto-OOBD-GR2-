@@ -216,21 +216,27 @@ public class ControllerCliente
 		
 		{
 	    	ArrayList<Tessera> Tessera=null;
+	    	ArrayList<Cliente> Cliente = null;
 	    	
 	    	
 	   
 			try {
 				Tessera = DAO.getTessera();
 				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	    	for(Tessera t : Tessera)
-				
+	    	for(Tessera t : Tessera) {
+	    		
+	    	
 					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getCF(),  t.getDataRilascio(), t.getDataScadenza());
-				
-	    }
+		
+	    
+	    	}
+	    		}	
+			
 
 
 		public void InserimentoNonAvvenuto()
@@ -388,12 +394,7 @@ public class ControllerCliente
 				VisualizzaDettagli.RiepilogoLuogoNTB.setText(c.getLuogo_nascita());
 				VisualizzaDettagli.RiepilogoSessoTB.setText(c.getSesso());
 				Date dataN = c.getData_nascita();
-				int giorno = dataN.getDay();
-				int mese = dataN.getMonth();
-				int anno = dataN.getYear();
-				VisualizzaDettagli.RiepilogoGiornoNTB.setText(String.valueOf(giorno));
-				VisualizzaDettagli.RiepilogoMeseNTB.setText(String.valueOf(mese));
-				VisualizzaDettagli.RiepilogoAnnoNTB.setText(String.valueOf(anno));
+				VisualizzaDettagli.setRiepilogoDataNTB(dataN.toString());
 				VisualizzaDettagli.setVisible(true);
 				
 				}	
@@ -584,12 +585,30 @@ public class ControllerCliente
 		}
 
 
-		public void VisualizzaClientiVisualizzaPuntiBottonePremuto() {
-
+//		public void VisualizzaClientiVisualizzaPuntiBottonePremuto() 
+//		{
+//
+//			try 
+//				{
+//				
+//					int PuntiFrutta = DAO.getPuntiClienteFrutta();
+//				
+//				}
+//			
+//			
+//			 catch (SQLException e) 
+//				{
+//				
+//				 	e.printStackTrace(); 
+//				
+//				}
+//			
+//			
+//		    	
+//		}		
 			
 			
-			
-		}
+}
 
 
 	
@@ -620,7 +639,7 @@ public class ControllerCliente
 		
 
 
-}
+
 		
 			
 	

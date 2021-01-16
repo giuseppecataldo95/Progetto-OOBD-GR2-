@@ -38,7 +38,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	private JTable table;
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"Numero Tessera", "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
+	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -167,7 +167,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		toolBar.setFloatable(false);
 		toolBar.setBackground(new Color(255, 140, 0));
 		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(871, 257, 105, 65);
+		toolBar.setBounds(871, 257, 105, 75);
 		VisualizzaClientiPanel.add(toolBar);
 		
 		
@@ -219,7 +219,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		VisualizzaPuntiPerClienteJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaClientiVisualizzaPuntiBottonePremuto();
+//				controller.VisualizzaClientiVisualizzaPuntiBottonePremuto();
 				
 			}
 		});
