@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entità.Cliente;
+import Entità.Comune;
 import Entità.Tessera;
 
 
@@ -18,5 +19,5 @@ import Entità.Tessera;
 	public Cliente  getClienteByCF(int n_tessera) throws SQLException;
 //	public int getPuntiClienteFrutta(int NTessera);
 	public ArrayList<Tessera> getPuntiPerCategoria() throws SQLException;
-	
+	public void insertComuni(Comune c) throws SQLException;
 }
