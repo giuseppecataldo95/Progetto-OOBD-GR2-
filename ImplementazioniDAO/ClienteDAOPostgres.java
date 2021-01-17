@@ -70,14 +70,14 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	public ArrayList  getTessera() throws SQLException
 	{
 		Statement getTessera = connessione.createStatement();
-		ResultSet rs = getTessera.executeQuery("SELECT * FROM  VisualizzaClienti");
+		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera");
 		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
 		while(rs.next()) 
 			
 		{
-			Cliente cliente = new Cliente (rs.getString("nome"), rs.getString("cognome"), rs.getString("cf"));
+			
 
-			Tessera t = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_totali"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"), cliente);
+			Tessera t = new Tessera(rs.getInt("n_tessera"), rs.getString("cf"), rs.getInt("punti_fedeltà"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
 			Tessera.add(t);
 			
 		}

@@ -195,9 +195,9 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		VisualizzaDettagliClienteAvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-						setVisible(false);
+						
 						controller.VisualizzaDettagliClienteChiudiButtonPressed();
-				
+						controller.CompletaTabellaTessera();
 					
 				
 			}

@@ -43,7 +43,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
 	private JTextField FiltraPerTB;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Nome", "Cognome", "Data di Rilascio", "Data di Scadenza"},0) {
+	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "PuntiTotali", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -100,6 +100,8 @@ public class VisualizzaClientiJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaClientiMenuLateraleMagazzinoButtonPressed();
 				
 			}
 		});
@@ -255,8 +257,8 @@ public class VisualizzaClientiJFrame extends JFrame {
 	
 	
 	
-	public void setRigheTabella(int NTessera, String CF, String Nome, String Cognome, Date DataRilascio, Date DataScadenza ){
-		Model.addRow(new Object[] {NTessera, CF, Nome, Cognome, DataRilascio, DataScadenza});
+	public void setRigheTabella(int NTessera, String CF, int PuntiTotali, Date DataRilascio, Date DataScadenza ){
+		Model.addRow(new Object[] {NTessera, CF, PuntiTotali, DataRilascio, DataScadenza});
 		
 		}
 	

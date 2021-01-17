@@ -79,7 +79,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.VisualizzaClientiMenuLateraleClientiButtonPressed();
+				ControllerP.VisualizzaPuntiMenuLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -95,6 +95,8 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaPuntiMenuLateraleMagazzinoBottonePremuto();
 				
 			}
 		});
