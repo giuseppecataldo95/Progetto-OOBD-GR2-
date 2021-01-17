@@ -1,4 +1,4 @@
-package App;
+package Risorse.App;
 /*
   * Descrizione: Classe incaricata al calcolo del codice fiscale */
   

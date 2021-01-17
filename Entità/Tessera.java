@@ -5,7 +5,6 @@ import java.sql.Date;
 public class Tessera {
 	
 	private int NTessera;
-	private String CF;
 	private int PuntiFedeltà;
 	private Date DataRilascio;
 	private Date DataScadenza;
@@ -20,25 +19,17 @@ public class Tessera {
 	
 
 
-	public Tessera(int nTessera, String cf, int puntiFedeltà, Date dataRilascio, Date dataScadenza) {
+	public Tessera(int nTessera, Cliente c, int puntiFedeltà, Date dataRilascio, Date dataScadenza) {
 		super();
 		NTessera = nTessera;
-		CF = cf;
+		this.c = c;
 		PuntiFedeltà = puntiFedeltà;
 		DataRilascio = dataRilascio;
 		DataScadenza = dataScadenza;
 		
 	}
-	
-	public String getCF() {
-		return CF;
-	}
 
-	public void setCF(String cF) {
-		CF = cF;
-	}
-
-	public Tessera(int nTessera,Cliente c,  int puntiFrutta, int puntiVerdura, int puntiConfezionati, int puntiUova,
+	public Tessera(int nTessera, Cliente c,  int puntiFrutta, int puntiVerdura, int puntiConfezionati, int puntiUova,
 			int puntiLatticini, int puntiFarinacei) {
 		super();
 		NTessera = nTessera;

@@ -13,10 +13,8 @@ import GUI.Cliente.VisualizzaClientiJFrame;
 import GUI.Cliente.VisualizzaDettagliClienteJFrame;
 import GUI.Cliente.VisualizzaPuntiJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
-
-import App.CFGenerator;
-import App.ConvertiCBInData;
-import App.CreaTabellaComuni;
+import Risorse.App.CFGenerator;
+import Risorse.App.ConvertiCBInData;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -26,7 +24,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import DAO.ClienteDAO;
 import Entità.Cliente;
-import Entità.Comune;
 import Entità.Tessera;
 
 
@@ -63,29 +60,6 @@ public class ControllerCliente
 
 	
 	// 	|-----Metodi Controller-----|
-	
-	public void PopolaComuni()
-	
-	{
-		ArrayList<Comune> Comuni = new ArrayList<Comune>();
-		ArrayList<Comune> Codici = new ArrayList<Comune>();
-		CreaTabellaComuni CreaTabellaComuni = new CreaTabellaComuni();
-		Comuni = CreaTabellaComuni.PrendiComuni();
-		Codici = CreaTabellaComuni.PrendiCodici();
-		
-		for(int i = 0 ; i < Comuni.size(); i++ ) {
-			
-			Comune c = new Comune(Comuni.get(i).getNome(), Codici.get(i).getCodice());
-			try {
-				DAO.insertComuni(c);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		
-	}
 	
 	
 	public void ClientiCreaNuovaTesseraButtonPressed()
@@ -242,7 +216,7 @@ public class ControllerCliente
 	    	
 			for(Tessera t : Tessera) 
 				{
-					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getCF(), t.getPuntiFedeltà() ,  t.getDataRilascio(), t.getDataScadenza());
+					VisualizzaClienti.setRigheTabella(t.getNTessera(),t.getC().getNome(),t.getC().getCognome(), t.getC().getCF(), t.getPuntiFedeltà() ,  t.getDataRilascio(), t.getDataScadenza());
 				}
 			
 		}	

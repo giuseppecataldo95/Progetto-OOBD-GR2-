@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import App.ConvertiCBInData;
 import DAO.MagazzinoDAO;
 
 import GUI.Magazzino.AggiungiConfezionatiJFrame;
@@ -30,7 +29,8 @@ import GUI.Magazzino.VisualizzaProdottiJFrame;
 import GUI.Magazzino.VisualizzaUovaJFrame;
 import GUI.Magazzino.VisualizzaVerduraJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
-import ImplementazioniDAO.ProdottoNonTrovatoException;
+import Risorse.App.ConvertiCBInData;
+import Risorse.MieEccezioni.ProdottoNonTrovatoException;
 import Entità.*
 ;
 public class ControllerMagazzino {

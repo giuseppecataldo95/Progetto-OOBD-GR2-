@@ -9,7 +9,7 @@ import Entità.Frutta;
 import Entità.Latticino;
 import Entità.Uova;
 import Entità.Verdura;
-import ImplementazioniDAO.ProdottoNonTrovatoException;
+import Risorse.MieEccezioni.ProdottoNonTrovatoException;
 
 
 public interface MagazzinoDAO {

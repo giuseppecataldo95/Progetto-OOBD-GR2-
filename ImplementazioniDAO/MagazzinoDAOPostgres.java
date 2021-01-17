@@ -10,6 +10,7 @@ import Entità.Frutta;
 import Entità.Latticino;
 import Entità.Uova;
 import Entità.Verdura;
+import Risorse.MieEccezioni.ProdottoNonTrovatoException;
 
 public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	private Connection connessione;

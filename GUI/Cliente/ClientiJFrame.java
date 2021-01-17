@@ -100,9 +100,8 @@ public class ClientiJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
-				ControllerC.PopolaComuni();
-
 				ControllerC.CompletaTabellaTessera();
+				
 				
 
 				

@@ -43,7 +43,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
 	private JTextField FiltraPerTB;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "PuntiTotali", "Data di Rilascio", "Data di Scadenza"},0) {
+	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Nome", "Cognome", "Codice Fiscale", "PuntiTotali", "Data di Rilascio", "Data di Scadenza"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -174,20 +174,8 @@ public class VisualizzaClientiJFrame extends JFrame {
 		toolBar.setFloatable(false);
 		toolBar.setBackground(new Color(255, 140, 0));
 		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(871, 257, 105, 75);
+		toolBar.setBounds(871, 125, 93, 118);
 		VisualizzaClientiPanel.add(toolBar);
-		
-		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
-		EliminaTesseraJButton.setBackground(new Color(255, 140, 0));
-		EliminaTesseraJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				controller.ApriEliminaTesseraByNTessera();
-				
-			}
-		});
-		EliminaTesseraJButton.setFont(new Font("Arial", Font.BOLD, 12));
-		toolBar.add(EliminaTesseraJButton);
 		
 		JButton VisualizzaDettagliClienteJButton = new JButton("Dettagli Cliente");
 		VisualizzaDettagliClienteJButton.setBackground(new Color(255, 140, 0));
@@ -199,7 +187,22 @@ public class VisualizzaClientiJFrame extends JFrame {
 				
 			}
 		});
-		VisualizzaDettagliClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		JButton EliminaTesseraJButton = new JButton("Elimina Tessera");
+		toolBar.add(EliminaTesseraJButton);
+		EliminaTesseraJButton.setBackground(new Color(255, 140, 0));
+		EliminaTesseraJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controller.ApriEliminaTesseraByNTessera();
+				
+			}
+		});
+		EliminaTesseraJButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		
+		Component verticalStrut_1 = Box.createVerticalStrut(20);
+		toolBar.add(verticalStrut_1);
+		VisualizzaDettagliClienteJButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		toolBar.add(VisualizzaDettagliClienteJButton);
 		
 		JButton VisualizzaPuntiPerClienteJButton = new JButton("Visualizza Punti");
@@ -211,7 +214,10 @@ public class VisualizzaClientiJFrame extends JFrame {
 				controller.CompletaTabellaPunti();
 			}
 		});
-		VisualizzaPuntiPerClienteJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		
+		Component verticalStrut_2 = Box.createVerticalStrut(20);
+		toolBar.add(verticalStrut_2);
+		VisualizzaPuntiPerClienteJButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		VisualizzaPuntiPerClienteJButton.setBackground(new Color(255, 140, 0));
 		toolBar.add(VisualizzaPuntiPerClienteJButton);
 		
@@ -221,15 +227,15 @@ public class VisualizzaClientiJFrame extends JFrame {
 		FiltraPerTB.setColumns(10);
 		
 		JComboBox FiltraPerCB = new JComboBox();
-		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Nome", "Cognome", "Codice Fiscale", "Numero Tessera"}));
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Numero Tessera", "Nome", "Cognome", "Codice Fiscale", "Punti Totali", "Data Rilascio", "Data Scadenza"}));
 		FiltraPerCB.setSelectedIndex(0);
-		FiltraPerCB.setBounds(316, 40, 86, 22);
+		FiltraPerCB.setBounds(271, 40, 131, 22);
 		VisualizzaClientiPanel.add(FiltraPerCB);
 		
 		
 		JLabel FiltraPerLB = new JLabel("Filtra per:");
 		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
-		FiltraPerLB.setBounds(256, 41, 65, 20);
+		FiltraPerLB.setBounds(207, 41, 65, 20);
 		VisualizzaClientiPanel.add(FiltraPerLB);
 		FiltraPerCB.addItemListener(new ItemListener() {
 			public void itemStateChanged (ItemEvent ie) {
@@ -257,8 +263,8 @@ public class VisualizzaClientiJFrame extends JFrame {
 	
 	
 	
-	public void setRigheTabella(int NTessera, String CF, int PuntiTotali, Date DataRilascio, Date DataScadenza ){
-		Model.addRow(new Object[] {NTessera, CF, PuntiTotali, DataRilascio, DataScadenza});
+	public void setRigheTabella(int NTessera, String Nome,String Cognome,String CF, int PuntiTotali, Date DataRilascio, Date DataScadenza ){
+		Model.addRow(new Object[] {NTessera, Nome, Cognome, CF, PuntiTotali, DataRilascio, DataScadenza});
 		
 		}
 	
