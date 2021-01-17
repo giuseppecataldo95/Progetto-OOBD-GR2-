@@ -189,12 +189,12 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		JComboBox FiltraPerCB = new JComboBox();
 		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"ID Prodotto", "Nome", "Marca", "Lotto", "Data Scadenza", "Mod. Conservazione", "Peso", "Valore", "Scorte (n)"}));
 		FiltraPerCB.setSelectedIndex(0);
-		FiltraPerCB.setBounds(316, 40, 86, 22);
+		FiltraPerCB.setBounds(283, 40, 119, 22);
 		VisualizzaProdottiPanel.add(FiltraPerCB);
 		
 		JLabel FiltraPerLB = new JLabel("Filtra per:");
 		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
-		FiltraPerLB.setBounds(256, 41, 65, 20);
+		FiltraPerLB.setBounds(226, 41, 65, 20);
 		VisualizzaProdottiPanel.add(FiltraPerLB);
 		
 		JButton EliminaButton = new JButton("Elimina");

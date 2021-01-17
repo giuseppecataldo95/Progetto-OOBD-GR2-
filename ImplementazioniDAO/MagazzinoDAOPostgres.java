@@ -34,7 +34,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	    inserisciConfezionatiPS = connessione.prepareStatement("INSERT INTO confezionato VALUES (?,?,?,?,?,DEFAULT,?,?,?)");
 		inserisciLatticiniPS = connessione.prepareStatement("INSERT INTO latticino VALUES (?,?,?,?,?,DEFAULT,?,?)");
 	    inserisciUovaPS = connessione.prepareStatement("INSERT INTO uova VALUES (?,?,?,?,DEFAULT,?,?)");
-	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO frutta VALUES (?,?,?,DEFAULT,?,?)");
+	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO farinaceo VALUES (?,?,?,DEFAULT,?,?)");
 	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_',)");
 	    eliminaFruttaPS = connessione.prepareStatement("DELETE FROM frutta WHERE id_prodotto = ? ");
 	    eliminaLatticiniPS = connessione.prepareStatement("DELETE FROM latticino WHERE id_prodotto = ? ");

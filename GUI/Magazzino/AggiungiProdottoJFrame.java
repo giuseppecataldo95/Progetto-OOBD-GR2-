@@ -157,7 +157,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 				ControllerM.MostraFinestraFarinacei();
 			}
 		});
-		LatticiniButton.setBounds(436, 11, 213, 145);
+		LatticiniButton.setBounds(10, 162, 213, 145);
 		ContainerPanel.add(LatticiniButton);
 		
 		JButton FarinaceiButton = new JButton("Latticini");
@@ -166,7 +166,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 				ControllerM.MostraFinestraLatticini();
 			}
 		});
-		FarinaceiButton.setBounds(10, 162, 213, 145);
+		FarinaceiButton.setBounds(436, 11, 213, 145);
 		ContainerPanel.add(FarinaceiButton);
 		
 		JButton ConfezionatiButton = new JButton("Confezionati");

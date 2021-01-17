@@ -21,6 +21,7 @@ import GUI.Magazzino.EliminaProdottoByIDJDialog;
 import GUI.Magazzino.ErroreAggiungiProdottoJDialog;
 import GUI.Magazzino.InserimentoProdottoCompletatoJDialog;
 import GUI.Magazzino.MagazzinoJFrame;
+import GUI.Magazzino.ProdottoEliminatoJDialog;
 import GUI.Magazzino.VisualizzaConfezionatiJFrame;
 import GUI.Magazzino.VisualizzaFarinaceiJFrame;
 import GUI.Magazzino.VisualizzaFruttaJFrame;
@@ -55,6 +56,7 @@ public class ControllerMagazzino {
 	private ControllerPrincipale ControllerP;
 	private InserimentoProdottoCompletatoJDialog InserimentoCompletato;
 	private EliminaProdottoByIDJDialog EliminaProdotto;
+	private ProdottoEliminatoJDialog ProdottoEliminato;
 	
 	//COSTRUTTORE
 	
@@ -139,7 +141,11 @@ public class ControllerMagazzino {
     	VisualizzaPr.setVisible(true);
     }
 	
-	
+	public void VisualizzaFruttaEliminaBottonePremuto() {
+		VisualizzaFrutta.setEnabled(false);
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaFrutta);
+		EliminaProdotto.setVisible(true);
+	}
 	
 	//VISUALIZZA VERDURA
 	
@@ -192,6 +198,12 @@ public class ControllerMagazzino {
     	VisualizzaPr.setVisible(true);
     }
 	
+	public void VisualizzaVerduraEliminaBottonePremuto() {
+		VisualizzaVerdura.setEnabled(false);
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaVerdura);
+		EliminaProdotto.setVisible(true);
+	}
+	
 	//VISUALIZZA FARINACEI
 	
 	public void MostraFinestraVisualizzaFarinacei() {
@@ -241,6 +253,12 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	public void VisualizzaFarinaceiEliminaBottonePremuto() {
+		VisualizzaFarinacei.setEnabled(false);
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaFarinacei);
+		EliminaProdotto.setVisible(true);
+	}
 	
 	//VISUALIZZA LATTICINI
 	
@@ -292,6 +310,12 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	public void VisualizzaLatticiniEliminaBottonePremuto() {
+		VisualizzaLatticini.setEnabled(false);
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaLatticini);
+		EliminaProdotto.setVisible(true);
+	}
 	
 	//VISUALIZZA CONFEZIONATI
 	
@@ -345,30 +369,12 @@ public class ControllerMagazzino {
     }
 	
 	public void VisualizzaConfezionatiEliminaBottonePremuto() {
+		VisualizzaConfezionati.setEnabled(false);
 		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
 		EliminaProdotto.setVisible(true);
 	}
 	
-	public void EliminaBottonePremuto(JFrame FinestraDaCuiApro) {
-		String Tipo = FinestraDaCuiApro.getClass().toString();
-		if(Tipo.contains("Confezionati")) {
-			try {
-				DAO.eliminaConfezionatiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
-			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
-				EliminaProdotto.setVisible(false);
-				EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
-				EliminaProdotto.setVisible(true);
-			}
-		} if(Tipo.contains("Frutta")) {
-			try {
-				DAO.eliminaFruttaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
-			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
-				EliminaProdotto.setVisible(false);
-				EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaConfezionati);
-				EliminaProdotto.setVisible(true);
-			}
-		}
-	}
+	
 	
 	//VISUALIZZA UOVA
 	
@@ -419,6 +425,107 @@ public class ControllerMagazzino {
     	VisualizzaPr = new VisualizzaProdottiJFrame(this,ControllerP);
     	VisualizzaPr.setVisible(true);
     }
+	
+	public void VisualizzaUovaEliminaBottonePremuto() {
+		VisualizzaUova.setEnabled(false);
+		EliminaProdotto = new EliminaProdottoByIDJDialog(this, VisualizzaUova);
+		EliminaProdotto.setVisible(true);
+	}
+	
+	//ELIMINA PRODOTTO
+	
+	public void EliminaBottonePremuto(JFrame FinestraDaCuiApro) {
+		String Tipo = FinestraDaCuiApro.getClass().toString();
+		if(Tipo.contains("Confezionati")) {
+			try {
+				DAO.eliminaConfezionatiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		} if(Tipo.contains("Frutta")) {
+			try {
+				DAO.eliminaFruttaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		} if(Tipo.contains("Verdura")) {
+			try {
+				DAO.eliminaVerduraConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		} if(Tipo.contains("Farinacei")) {
+			try {
+				DAO.eliminaFarinaceiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		} if(Tipo.contains("Latticini")) {
+			try {
+				DAO.eliminaLatticiniConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		} if(Tipo.contains("Uova")) {
+			try {
+				DAO.eliminaUovaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
+				EliminaProdotto.setVisible(false);
+				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
+				EliminaProdotto.setVisible(true);
+				return;
+			}
+		}
+		EliminaProdotto.setVisible(false);
+		ProdottoEliminato = new ProdottoEliminatoJDialog(this, FinestraDaCuiApro);
+		ProdottoEliminato.setVisible(true);
+	}
+	
+	public void EliminaIndietroBottonePremuto(JFrame FinestraDaCuiApro) {
+		FinestraDaCuiApro.setEnabled(true);
+		EliminaProdotto.setVisible(false);
+	}
+	
+	public void ProdottoEliminatoOkBottonePremuto(JFrame FinestraDaCuiApro) {
+		FinestraDaCuiApro.setEnabled(true);
+		FinestraDaCuiApro.setVisible(false);
+		String Tipo = FinestraDaCuiApro.getClass().toString();
+		if(Tipo.contains("Confezionati")) {
+			CompletaTabellaConfezionati();
+			MostraFinestraVisualizzaConfezionati();
+		} if(Tipo.contains("Frutta")) {
+			CompletaTabellaFrutta();
+			MostraFinestraVisualizzaFrutta();
+		} if(Tipo.contains("Verdura")) {
+			CompletaTabellaVerdura();
+			MostraFinestraVisualizzaVerdura();
+		} if(Tipo.contains("Farinacei")) {
+			CompletaTabellaFarinacei();
+			MostraFinestraVisualizzaFarinacei();
+		} if(Tipo.contains("Latticini")) {
+			CompletaTabellaLatticini();
+			MostraFinestraVisualizzaLatticini();
+		} if(Tipo.contains("Uova")) {
+			CompletaTabellaUova();
+			MostraFinestraVisualizzaUova();
+		}
+		ProdottoEliminato.setVisible(false);
+	}
 	
 	// METODI PER LO SNODO 'AGGIUNGI PRODOTTO'
 	
@@ -775,7 +882,7 @@ public class ControllerMagazzino {
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Confezionati);
     		InserimentoCompletato.setVisible(true);
     	} catch (NumberFormatException e) {
-			Uova.setEnabled(false);
+			Confezionati.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);

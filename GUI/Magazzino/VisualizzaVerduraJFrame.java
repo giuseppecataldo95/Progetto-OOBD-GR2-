@@ -169,7 +169,7 @@ public class VisualizzaVerduraJFrame extends JFrame {
 		VisualizzaProdottiPanel.add(IndietroButton);
 		
 		JScrollPane TabellaPanel = new JScrollPane();
-		TabellaPanel.setBounds(95, 85, 867, 419);
+		TabellaPanel.setBounds(95, 85, 789, 419);
 		VisualizzaProdottiPanel.add(TabellaPanel);
 		ProdottiTable = new JTable(Model);
 		ProdottiTable.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -189,13 +189,23 @@ public class VisualizzaVerduraJFrame extends JFrame {
 		JComboBox FiltraPerCB = new JComboBox();
 		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data Raccolta", "Valore", "Scorte (kg)"}));
 		FiltraPerCB.setSelectedIndex(0);
-		FiltraPerCB.setBounds(316, 40, 86, 22);
+		FiltraPerCB.setBounds(283, 40, 119, 22);
 		VisualizzaProdottiPanel.add(FiltraPerCB);
 		
 		JLabel FiltraPerLB = new JLabel("Filtra per:");
 		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
-		FiltraPerLB.setBounds(256, 41, 65, 20);
+		FiltraPerLB.setBounds(225, 41, 65, 20);
 		VisualizzaProdottiPanel.add(FiltraPerLB);
+		
+		JButton EliminaButton = new JButton("Elimina");
+		EliminaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerM.VisualizzaVerduraEliminaBottonePremuto();
+			}
+		});
+		EliminaButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		EliminaButton.setBounds(894, 82, 82, 30);
+		VisualizzaProdottiPanel.add(EliminaButton);
 		FiltraPerCB.addItemListener(new ItemListener() {
 			public void itemStateChanged (ItemEvent ie) {
 				if(ie.getStateChange() == ItemEvent.SELECTED) {

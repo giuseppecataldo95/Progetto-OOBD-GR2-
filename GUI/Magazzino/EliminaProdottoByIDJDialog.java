@@ -27,6 +27,7 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 	
 	public EliminaProdottoByIDJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) 
 	{
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		ControllerM = c;
 		
 		setBounds(100, 100, 450, 300);
@@ -56,15 +57,24 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Elimina Prodotto");
-				okButton.addActionListener(new ActionListener() {
+				JButton EliminaButton = new JButton("Elimina Prodotto");
+				EliminaButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ControllerM.EliminaBottonePremuto(FinestraDaCuiApro);
 					}
 				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				
+				JButton IndietroButton = new JButton("Indietro");
+				IndietroButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ControllerM.EliminaIndietroBottonePremuto(FinestraDaCuiApro);
+					}
+				});
+				IndietroButton.setActionCommand("OK");
+				buttonPane.add(IndietroButton);
+				EliminaButton.setActionCommand("OK");
+				buttonPane.add(EliminaButton);
+				getRootPane().setDefaultButton(EliminaButton);
 			}
 			{
 				

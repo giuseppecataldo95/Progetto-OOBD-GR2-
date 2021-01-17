@@ -56,8 +56,8 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 	
 	public void setError(String errore) {
 		JLabel ErroreLB = new JLabel(errore);
-		ErroreLB.setBounds(10, 11, 266, 58);
-		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 11));
+		ErroreLB.setBounds(10, 11, 338, 58);
+		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 10));
 		contentPanel.add(ErroreLB);
 	}
 
