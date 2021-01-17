@@ -38,9 +38,10 @@ public class TesseraEliminataJDialog extends JDialog {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 				controller.TesseraEliminataOKButtonPressed();
 				controller.CompletaTabellaTessera();
-				controller.TesseraEliminataOKButtonPressedAggiornaVisualizzaClienti();
+				
 
 				
 			}

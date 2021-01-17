@@ -16,6 +16,7 @@ import ImplementazioniDAO.ClienteDAOPostgres;
 
 import App.CFGenerator;
 import App.ConvertiCBInData;
+import App.CreaTabellaComuni;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import DAO.ClienteDAO;
 import Entità.Cliente;
+import Entità.Comune;
 import Entità.Tessera;
 
 
@@ -61,6 +63,30 @@ public class ControllerCliente
 
 	
 	// 	|-----Metodi Controller-----|
+	
+	public void PopolaComuni()
+	
+	{
+		ArrayList<Comune> Comuni = new ArrayList<Comune>();
+		ArrayList<Comune> Codici = new ArrayList<Comune>();
+		CreaTabellaComuni CreaTabellaComuni = new CreaTabellaComuni();
+		Comuni = CreaTabellaComuni.PrendiComuni();
+		Codici = CreaTabellaComuni.PrendiCodici();
+		
+		for(int i = 0 ; i < Comuni.size(); i++ ) {
+			
+			Comune c = new Comune(Comuni.get(i).getNome(), Codici.get(i).getCodice());
+			try {
+				DAO.insertComuni(c);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
 	
 	public void ClientiCreaNuovaTesseraButtonPressed()
 	
@@ -216,7 +242,7 @@ public class ControllerCliente
 	    	
 			for(Tessera t : Tessera) 
 				{
-					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getC().getCF(), t.getC().getNome(), t.getC().getCognome(),  t.getDataRilascio(), t.getDataScadenza());
+					VisualizzaClienti.setRigheTabella(t.getNTessera(), t.getCF(), t.getPuntiFedeltà() ,  t.getDataRilascio(), t.getDataScadenza());
 				}
 			
 		}	
@@ -256,7 +282,7 @@ public class ControllerCliente
 		public void ErroreTesseraRiprovaButtonPressed() 
 		
 		{
-			RiepilogoTessera.setEnabled(true);
+			
 			RiepilogoTessera.setVisible(false);
 			ErroreTessera.setVisible(false);
 			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
@@ -267,6 +293,7 @@ public class ControllerCliente
 
 		{
 			ClienteInserito.setVisible(false);
+			RiepilogoTessera.setVisible(false);
 			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 			CompletaTabellaTessera();
 			VisualizzaClienti.setVisible(true);
@@ -285,15 +312,27 @@ public class ControllerCliente
 		{
 
 			String N_tessera = this.getEliminaTessera().getNTesseraDaEliminareTB().getText();
-			int NTessera = Integer.parseInt(N_tessera);
-			EliminaTessera.setVisible(false);
 			
+			
+					
+		
 				try 
 					{
-						DAO.deleteTessera(NTessera);
-					 	ClienteInserito = new InserimentoClienteCompletatoJDialog(this);
-					 	ClienteInserito.setVisible(true);
-				
+						int NTessera = Integer.parseInt(N_tessera);
+						EliminaTessera.setVisible(false);
+						int RigaEliminata = DAO.deleteTessera(NTessera);
+						
+						if(RigaEliminata == 1) 
+							{
+								TesseraEliminata = new TesseraEliminataJDialog(this);
+								TesseraEliminata.setVisible(true);
+							}
+						else
+						{
+							ErroreNumeroTessera = new FormatoNTesseraErratoJDialog(this);
+							ErroreNumeroTessera.setVisible(true);
+						}	
+							
 					} 
 				
 				catch (NumberFormatException e) 
@@ -302,15 +341,13 @@ public class ControllerCliente
 					
 						ErroreNumeroTessera = new FormatoNTesseraErratoJDialog(this);
 						ErroreNumeroTessera.setVisible(true);
-						System.out.println("NFE");
-					
+
 					} 
 				
 				catch (SQLException e) 	
 					{
 						ErroreNumeroTessera = new FormatoNTesseraErratoJDialog(this);
 						ErroreNumeroTessera.setVisible(true);
-						e.printStackTrace();
 					}
 				
 		}
@@ -319,22 +356,21 @@ public class ControllerCliente
 		
 		{
 			ErroreNumeroTessera.setVisible(false);
-			EliminaTessera.setVisible(true);	
+			EliminaTessera.setVisible(false);
+			EliminaTessera = new EliminaTesseraByNTesseraJDialog(this);
+			EliminaTessera.setVisible(true);
 		}
 		
 		public void TesseraEliminataOKButtonPressed()
 
 		{
 			TesseraEliminata.setVisible(false);
-		}
-		
-		public void TesseraEliminataOKButtonPressedAggiornaVisualizzaClienti() 
-		
-		{
-			this.VisualizzaClienti.setVisible(false);
+			VisualizzaClienti.setVisible(false);
 			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
 			VisualizzaClienti.setVisible(true);
 		}
+		
+		
 		
 		public void VisualizzaClientiVisualizzaClientiPercorsoButtonPressed() 
 		
@@ -400,8 +436,59 @@ public class ControllerCliente
 		public void VisualizzaDettagliClienteChiudiButtonPressed()
 		
 		{
+			VisualizzaDettagli.setVisible(false);
 			VisualizzaClienti = new VisualizzaClientiJFrame(this, ControllerP);
-			VisualizzaClienti.setVisible(false);
+			VisualizzaClienti.setVisible(true);
+		}
+
+
+		public TesseraEliminataJDialog getTesseraEliminata() {
+			return TesseraEliminata;
+		}
+
+
+		public void setTesseraEliminata(TesseraEliminataJDialog tesseraEliminata) {
+			TesseraEliminata = tesseraEliminata;
+		}
+
+
+		public DettagliClienteJDialog getDettagliClienteDialog() {
+			return DettagliClienteDialog;
+		}
+
+
+		public void setDettagliClienteDialog(DettagliClienteJDialog dettagliClienteDialog) {
+			DettagliClienteDialog = dettagliClienteDialog;
+		}
+
+
+		public VisualizzaDettagliClienteJFrame getVisualizzaDettagli() {
+			return VisualizzaDettagli;
+		}
+
+
+		public void setVisualizzaDettagli(VisualizzaDettagliClienteJFrame visualizzaDettagli) {
+			VisualizzaDettagli = visualizzaDettagli;
+		}
+
+
+		public ErroreRicercaClienteByNTesseraJDialog getErroreRicercaCliente() {
+			return ErroreRicercaCliente;
+		}
+
+
+		public void setErroreRicercaCliente(ErroreRicercaClienteByNTesseraJDialog erroreRicercaCliente) {
+			ErroreRicercaCliente = erroreRicercaCliente;
+		}
+
+
+		public VisualizzaPuntiJFrame getVisualizzaPunti() {
+			return VisualizzaPunti;
+		}
+
+
+		public void setVisualizzaPunti(VisualizzaPuntiJFrame visualizzaPunti) {
+			VisualizzaPunti = visualizzaPunti;
 		}
 
 

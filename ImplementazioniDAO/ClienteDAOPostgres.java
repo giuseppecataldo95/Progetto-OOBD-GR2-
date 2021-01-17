@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import DAO.ClienteDAO;
 import Entità.Cliente;
+import Entità.Comune;
 import Entità.Tessera;
 
 public class ClienteDAOPostgres implements ClienteDAO {
@@ -19,6 +20,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	private PreparedStatement insertCliente;
 	private PreparedStatement deleteTessera;
 	private PreparedStatement getPuntiFrutta;
+	private PreparedStatement insertComuni;
 	
 
 	
@@ -31,7 +33,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		getClienteByCF = connessione.prepareStatement("SELECT cliente.nome, cliente.cognome, cliente.data_nascita, cliente.luogo_nascita, cliente.sesso, cliente.cf FROM cliente join tessera on cliente.cf = tessera.cf WHERE tessera.n_tessera = ?");
 		insertCliente = connessione.prepareStatement("INSERT INTO CLIENTE VALUES (?,?,?,?,?,?)");
 		deleteTessera = connessione.prepareStatement("DELETE FROM TESSERA WHERE n_tessera = ?");
-		
+		insertComuni = connessione.prepareStatement("INSERT INTO COMUNI VALUES (?,?)");
 	}
 	
 	public void insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date data_nascita) throws SQLException {
@@ -70,14 +72,14 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	public ArrayList  getTessera() throws SQLException
 	{
 		Statement getTessera = connessione.createStatement();
-		ResultSet rs = getTessera.executeQuery("SELECT * FROM  VisualizzaClienti");
+		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera");
 		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
 		while(rs.next()) 
 			
 		{
-			Cliente cliente = new Cliente (rs.getString("nome"), rs.getString("cognome"), rs.getString("cf"));
+			
 
-			Tessera t = new Tessera(rs.getInt("n_tessera"),rs.getInt("punti_totali"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"), cliente);
+			Tessera t = new Tessera(rs.getInt("n_tessera"), rs.getString("cf"), rs.getInt("punti_fedeltà"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
 			Tessera.add(t);
 			
 		}
@@ -156,6 +158,16 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 		rs.close();
 		return PuntiFrutta;
+	}
+
+	@Override
+	public void insertComuni(Comune c) throws SQLException {
+		
+		insertComuni.setString(1, c.getNome());
+		insertComuni.setString(2, c.getCodice());
+		insertComuni.executeUpdate();
+		
+		
 	}
 	
 	

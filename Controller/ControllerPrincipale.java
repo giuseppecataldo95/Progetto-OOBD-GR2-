@@ -94,8 +94,7 @@ public class ControllerPrincipale {
  	public void VisualizzaClientiMenuLateraleMagazzinoButtonPressed() {
 		
  		ControllerC.getVisualizzaClienti().setVisible(false);
- 		Magazzino = new MagazzinoJFrame(ControllerM, this);
- 		Magazzino.setVisible(true);
+ 		ControllerM.getMagazzino().setVisible(true);
  		
 	}
  	
@@ -287,6 +286,21 @@ public class ControllerPrincipale {
   	 	ControllerM.getVisualizzaLatticini().setVisible(false);
   	 	ControllerC.getClienti().setVisible(true);
   	 }
+
+	public void VisualizzaPuntiMenuLateraleClientiBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+		ControllerC.getClienti().setVisible(true);
+		
+	}
+
+	public void VisualizzaPuntiMenuLateraleMagazzinoBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
+		
+		
+	}
  
 
 }
