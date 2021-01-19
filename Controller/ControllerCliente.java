@@ -114,7 +114,7 @@ public class ControllerCliente
 	
 		RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
 		CreaTessera.setVisible(false);;
-		
+	
 		String Nome = CreaTessera.getNomeTB();
 		String Cognome = CreaTessera.getCognomeTB();
 		String Luogo_Nascita = CreaTessera.getLuogoNTB();
@@ -122,14 +122,77 @@ public class ControllerCliente
 		String Mese = CreaTessera.getMeseCB();
 		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
 		String Sesso = CreaTessera.getSessoCB();
-		if(Mese.equals("FEBBRAIO") && (Giorno.equals("30")) || (Giorno.equals("31")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31") || (Mese.equals("SETTEMBRE") && Giorno.equals("31") || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))))) {
-			
-			ErroreTessera = new ErroreTesseraJDialog(this);
-			ErroreTessera.setVisible(true);
-			
-		}
 		
-		else {
+		if(Anno%400==0 || Anno%4==0 || Anno%10==0)
+		{
+			if(Mese.equals("FEBBRAIO") && Giorno.equals("31")) 
+			{
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);	
+			}
+			
+			else
+				{
+				
+					if(Mese.equals("FEBBRAIO") && Giorno.equals("30")) 
+					{
+						ErroreTessera = new ErroreTesseraJDialog(this);
+						ErroreTessera.setVisible(true);	
+					}
+						
+					else
+						{
+						
+							if(Mese.equals("APRILE") && Giorno.equals("31"))
+							{
+								ErroreTessera = new ErroreTesseraJDialog(this);
+								ErroreTessera.setVisible(true);	
+							}
+							
+							else
+								{
+									if(Mese.equals("GIUGNO") && Giorno.equals("31"))
+									{
+										ErroreTessera = new ErroreTesseraJDialog(this);
+										ErroreTessera.setVisible(true);	
+									}
+									
+									else
+									{
+										if(Mese.equals("SETTEMBRE") && Giorno.equals("31"))
+										{
+											ErroreTessera = new ErroreTesseraJDialog(this);
+											ErroreTessera.setVisible(true);	
+										}
+										
+										else
+										{
+											if(Mese.equals("NOVEMBRE") && Giorno.equals("31"))
+											{
+												ErroreTessera = new ErroreTesseraJDialog(this);
+												ErroreTessera.setVisible(true);	
+											}
+											
+											else
+											{
+											
+												if(Mese.equals("FEBBRAIO") && Giorno.equals("31")) 
+												{
+													ErroreTessera = new ErroreTesseraJDialog(this);
+													ErroreTessera.setVisible(true);	
+												}
+								
+					}
+						
+										}
+									}
+								}
+						}
+				}
+		
+				
+									
+			
 		
 		CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
 		RiepilogoTessera.setRiepilogoNomeTB(Nome);
@@ -141,8 +204,64 @@ public class ControllerCliente
 		RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
 		RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
 		RiepilogoTessera.setVisible(true);
-		}
-	}
+		
+										}
+		
+		if(Anno%400==0 || Anno%4==0 || Anno%10==0)
+		{
+			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
+			{
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);	
+			}
+			
+			else
+			{
+			
+			
+			CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
+			RiepilogoTessera.setRiepilogoNomeTB(Nome);
+			RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
+			RiepilogoTessera.setRiepilogoCFTB(cf.getCodiceFiscale());
+			RiepilogoTessera.setRiepilogoSessoTB(Sesso);
+			RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
+			RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
+			RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
+			RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
+			RiepilogoTessera.setVisible(true);									
+			}			
+		
+		}	
+		
+		if(Anno%400!=0 || Anno%4!=0 || Anno%10!=0)
+		{
+			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("FEBBRAIO") && Giorno.equals("29")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
+			{
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);	
+			}
+			
+			else
+			{
+			
+			
+			CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
+			RiepilogoTessera.setRiepilogoNomeTB(Nome);
+			RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
+			RiepilogoTessera.setRiepilogoCFTB(cf.getCodiceFiscale());
+			RiepilogoTessera.setRiepilogoSessoTB(Sesso);
+			RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
+			RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
+			RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
+			RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
+			RiepilogoTessera.setVisible(true);									
+			}		
+		
+		}	
+		
+}
+		
+	
 
 	public void RiepilogoTesseraIndietroButtonPressed() 
 	
