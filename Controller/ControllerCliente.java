@@ -115,42 +115,83 @@ public class ControllerCliente
 	{
 	
 		RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
-		CreaTessera.setVisible(false);;
-		
+		CreaTessera.setVisible(false);
+	
 		String Nome = CreaTessera.getNomeTB();
 		String Cognome = CreaTessera.getCognomeTB();
 		String Luogo_Nascita = CreaTessera.getLuogoNTB();
 		String Giorno = (CreaTessera.getGiornoCB());
 		String Mese = CreaTessera.getMeseCB();
 		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
-		String Sesso = CreaTessera.getSessoCB();
-
-		if(Mese.equals("FEBBRAIO") && (Giorno.equals("30")) || (Giorno.equals("31")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31") || (Mese.equals("SETTEMBRE") && Giorno.equals("31") || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))))) {
-			
-			ErroreTessera = new ErroreTesseraJDialog(this);
-			ErroreTessera.setVisible(true);
-			
-		}
+		String Sesso = CreaTessera.getSessoCB();								
 		
-		else {
-			CF.setNome(Nome);
-			CF.setCognome(Cognome);
-			CF.setComune(Luogo_Nascita);
-			CF.setSesso(Sesso);
-			CF.setGiorno(Giorno);
-			CF.setM(Mese);
-			CF.setAnno(Anno);
-		RiepilogoTessera.setRiepilogoNomeTB(Nome);
-		RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
-		RiepilogoTessera.setRiepilogoCFTB(CF.getCodiceFiscale());
-		RiepilogoTessera.setRiepilogoSessoTB(Sesso);
-		RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
-		RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
-		RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
-		RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
-		RiepilogoTessera.setVisible(true);
-		}
-	}
+		if(Anno%400==0 || Anno%4==0 || Anno%10==0)
+		{
+			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
+			{
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);	
+			}
+			
+			else
+			{
+
+                                CF.setNome(Nome);
+				CF.setCognome(Cognome);
+				CF.setComune(Luogo_Nascita);
+				CF.setSesso(Sesso);
+				CF.setGiorno(Giorno);
+				CF.setM(Mese);
+				CF.setAnno(Anno);
+				RiepilogoTessera.setRiepilogoNomeTB(Nome);
+				RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
+				RiepilogoTessera.setRiepilogoCFTB(CF.getCodiceFiscale());
+				RiepilogoTessera.setRiepilogoSessoTB(Sesso);
+				RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
+				RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
+				RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
+				RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
+				RiepilogoTessera.setVisible(true);
+
+				}			
+		
+		}	
+		
+		if(Anno%400!=0 || Anno%4!=0 || Anno%10!=0)
+		{
+			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("FEBBRAIO") && Giorno.equals("29")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
+			{
+				ErroreTessera = new ErroreTesseraJDialog(this);
+				ErroreTessera.setVisible(true);	
+			}
+			
+			else
+			{
+			
+			
+				CF.setNome(Nome);
+				CF.setCognome(Cognome);
+				CF.setComune(Luogo_Nascita);
+				CF.setSesso(Sesso);
+				CF.setGiorno(Giorno);
+				CF.setM(Mese);
+				CF.setAnno(Anno);
+				RiepilogoTessera.setRiepilogoNomeTB(Nome);
+				RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
+				RiepilogoTessera.setRiepilogoCFTB(CF.getCodiceFiscale());
+				RiepilogoTessera.setRiepilogoSessoTB(Sesso);
+				RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
+				RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
+				RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
+				RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
+				RiepilogoTessera.setVisible(true);						
+			}		
+		
+		}	
+		
+}
+		
+	
 
 	public void RiepilogoTesseraIndietroButtonPressed() 
 	
