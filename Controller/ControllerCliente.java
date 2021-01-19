@@ -122,6 +122,15 @@ public class ControllerCliente
 		String Mese = CreaTessera.getMeseCB();
 		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
 		String Sesso = CreaTessera.getSessoCB();
+		if(Mese.equals("FEBBRAIO") && (Giorno.equals("30")) || (Giorno.equals("31")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31") || (Mese.equals("SETTEMBRE") && Giorno.equals("31") || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))))) {
+			
+			ErroreTessera = new ErroreTesseraJDialog(this);
+			ErroreTessera.setVisible(true);
+			
+		}
+		
+		else {
+		
 		CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
 		RiepilogoTessera.setRiepilogoNomeTB(Nome);
 		RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
@@ -132,7 +141,7 @@ public class ControllerCliente
 		RiepilogoTessera.setRiepilogoMeseNTB(String.valueOf(Mese));
 		RiepilogoTessera.setRiepilogoAnnoNTB(String.valueOf(Anno));
 		RiepilogoTessera.setVisible(true);
-		
+		}
 	}
 
 	public void RiepilogoTesseraIndietroButtonPressed() 
