@@ -40,6 +40,7 @@ public class ControllerCliente
 	 private InserimentoClienteCompletatoJDialog ClienteInserito;
 	 private ConvertiCBInData Convertitore;
 	 private ClienteDAO DAO;
+	 private CFGenerator CF;
 	 private ControllerPrincipale ControllerP;
 	 private EliminaTesseraByNTesseraJDialog EliminaTessera;
 	 private FormatoNTesseraErratoJDialog ErroreNumeroTessera;
@@ -47,7 +48,7 @@ public class ControllerCliente
 	 private DettagliClienteJDialog DettagliClienteDialog;
 	 private VisualizzaDettagliClienteJFrame VisualizzaDettagli;
 	 private ErroreRicercaClienteByNTesseraJDialog ErroreRicercaCliente;
-	private VisualizzaPuntiJFrame VisualizzaPunti;
+	 private VisualizzaPuntiJFrame VisualizzaPunti;
 
 	//	|-----Costruttore Controller-----|
 	public ControllerCliente(Connection Conn, ControllerPrincipale P) throws SQLException
@@ -56,6 +57,7 @@ public class ControllerCliente
 		 ControllerP = P;
 		 Clienti = new ClientiJFrame(this, ControllerP);
 		 DAO = new ClienteDAOPostgres(Conn);
+		 CF = new CFGenerator(Conn);
 	}
 
 	
@@ -122,10 +124,16 @@ public class ControllerCliente
 		String Mese = CreaTessera.getMeseCB();
 		int Anno = Integer.parseInt(CreaTessera.getAnnoCB());
 		String Sesso = CreaTessera.getSessoCB();
-		CFGenerator cf = new CFGenerator(Nome, Cognome, Luogo_Nascita, Mese, Anno, Giorno , Sesso);
+		CF.setNome(Nome);
+		CF.setCognome(Cognome);
+		CF.setComune(Luogo_Nascita);
+		CF.setSesso(Sesso);
+		CF.setGiorno(Giorno);
+		CF.setM(Mese);
+		CF.setAnno(Anno);
 		RiepilogoTessera.setRiepilogoNomeTB(Nome);
 		RiepilogoTessera.setRiepilogoCognomeTB(Cognome);
-		RiepilogoTessera.setRiepilogoCFTB(cf.getCodiceFiscale());
+		RiepilogoTessera.setRiepilogoCFTB(CF.getCodiceFiscale());
 		RiepilogoTessera.setRiepilogoSessoTB(Sesso);
 		RiepilogoTessera.setRiepilogoLuogoNTB(Luogo_Nascita);
 		RiepilogoTessera.setRiepilogoGiornoNTB(String.valueOf(Giorno));
@@ -180,8 +188,6 @@ public class ControllerCliente
 			
 			catch (NumberFormatException NFE) 
 				{
-				
-					NFE.printStackTrace();
 					ErroreTessera = new ErroreTesseraJDialog(this);
 					ErroreTessera.setVisible(true);
 				
@@ -190,7 +196,6 @@ public class ControllerCliente
 			catch (SQLException e) 
 			
 				{
-					e.printStackTrace();
 					ErroreTessera = new ErroreTesseraJDialog(this);
 					ErroreTessera.setVisible(true);
 				
