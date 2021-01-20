@@ -1,12 +1,11 @@
 package GUI.Magazzino;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
+import Controller.ControllerPrincipale;
 
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -15,27 +14,26 @@ import java.awt.Component;
 import javax.swing.Box;
 
 import java.awt.Dimension;
-import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
+
 
 public class VisualizzaProdottiJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
-	private ControllerMagazzino Controller;
+	private ControllerMagazzino ControllerM;
+	private ControllerPrincipale ControllerP;
 
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaProdottiJFrame(ControllerMagazzino c) {
-		Controller = c;
-		
+	public VisualizzaProdottiJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
+		ControllerM = c;
+		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaProdottiPanel = new JPanel();
@@ -45,64 +43,62 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		setContentPane(VisualizzaProdottiPanel);
 		VisualizzaProdottiPanel.setLayout(null);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 563);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		VisualizzaProdottiPanel.add(MenùLateraleTB);
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBackground(new Color(255, 153, 51));
+		toolBar.setBorder(null);
+		toolBar.setFloatable(false);
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBounds(0, 0, 66, 563);
+		VisualizzaProdottiPanel.add(toolBar);
+		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaProdottiMenuLateraleClientiBottonePremuto();
+			}
+		});
+		toolBar.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
+		
 		JButton VenditeButton = new JButton("");
+		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
+		
 		
 		JButton MagazzinoButton = new JButton("");
+		toolBar.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.VisualizzaProdottiMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
 		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
-		
-		Component verticalStrut = Box.createVerticalStrut(200);
-		MenùLateraleTB.add(verticalStrut);
+		Component verticalStrut = Box.createVerticalStrut(280);
+		toolBar.add(verticalStrut);
+		verticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
 		JButton InfoButton = new JButton("");
+		toolBar.add(InfoButton);
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
+		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -117,7 +113,7 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaProdotti_MagazzinoPercorsoBottonePremuto();
+				ControllerM.VisualizzaProdotti_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -126,7 +122,7 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaProdotti_VisualizzaProdottiPercorsoBottonePremuto();
+				ControllerM.VisualizzaProdotti_VisualizzaProdottiPercorsoBottonePremuto();
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -141,8 +137,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton FruttaButton = new JButton("Frutta");
 		FruttaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaFrutta();
-				Controller.CompletaTabellaFrutta();
+				ControllerM.MostraFinestraVisualizzaFrutta();
+				ControllerM.CompletaTabellaFrutta();
 			}
 		});
 		FruttaButton.setBounds(10, 11, 213, 145);
@@ -151,8 +147,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton VerduraButton = new JButton("Verdura");
 		VerduraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaVerdura();
-				Controller.CompletaTabellaVerdura();
+				ControllerM.MostraFinestraVisualizzaVerdura();
+				ControllerM.CompletaTabellaVerdura();
 				
 			}
 		});
@@ -162,8 +158,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton LatticiniButton = new JButton("Latticini");
 		LatticiniButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaLatticini();
-				Controller.CompletaTabellaLatticini();
+				ControllerM.MostraFinestraVisualizzaLatticini();
+				ControllerM.CompletaTabellaLatticini();
 				
 			}
 		});
@@ -173,8 +169,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton FarinaceiButton = new JButton("Farinacei");
 		FarinaceiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaFarinacei();
-				Controller.CompletaTabellaFarinacei();
+				ControllerM.MostraFinestraVisualizzaFarinacei();
+				ControllerM.CompletaTabellaFarinacei();
 				
 			}
 		});
@@ -184,8 +180,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton ConfezionatiButton = new JButton("Confezionati");
 		ConfezionatiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaConfezionati();
-				Controller.CompletaTabellaConfezionati();
+				ControllerM.MostraFinestraVisualizzaConfezionati();
+				ControllerM.CompletaTabellaConfezionati();
 				
 			}
 		});
@@ -195,8 +191,8 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		JButton UovaButton = new JButton("Uova");
 		UovaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.MostraFinestraVisualizzaUova();
-				Controller.CompletaTabellaUova();
+				ControllerM.MostraFinestraVisualizzaUova();
+				ControllerM.CompletaTabellaUova();
 				
 			}
 		});

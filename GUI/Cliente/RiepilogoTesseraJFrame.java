@@ -1,10 +1,9 @@
 package GUI.Cliente;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -13,17 +12,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
 
 import java.awt.Font;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class RiepilogoTesseraJFrame extends JFrame {
@@ -39,13 +36,12 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		public JTextField RiepilogoCFTB;
 		public JTextField RiepilogoMeseNTB;
 		public JTextField RiepilogoAnnoNTB;
-
-	ControllerCliente controller;
+		ControllerCliente controller;
+		private ControllerPrincipale ControllerP;
 	
-	
 
-	public RiepilogoTesseraJFrame(ControllerCliente c) {
-		
+	public RiepilogoTesseraJFrame(ControllerCliente c, ControllerPrincipale c1) {
+		ControllerP = c1;
 		controller = c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -70,12 +66,19 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		RiepilogoTesseraPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RiepilogoTesseraMenuLateraleClientiButtonPressed();
+				
+			}
+		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
-		ClientiButton.setIcon(null);
+		ClientiButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
@@ -85,17 +88,8 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
-		VenditeButton.setIcon(null);
+		VenditeButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setIcon(null);
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
@@ -104,11 +98,17 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setIcon(null);
+		MagazzinoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RiepilogoTesseraMenuLateraleMagazzinoButtonPressed();
+				
+			}
+		});
 		
-		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
 		verticalStrut.setBackground(Color.LIGHT_GRAY);
 
 		MenùLateraleTB.add(verticalStrut);
@@ -120,7 +120,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
-		InfoButton.setIcon(null);
+		InfoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 
@@ -149,8 +149,6 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
 				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
 				
 			}
@@ -159,6 +157,14 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		
 		JButton RiepilogoNuovaTesseraPercorsoButton = new JButton("> Riepilogo Nuova Tessera");
+		RiepilogoNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				controller.RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed();
+				
+			}
+		});
 		RiepilogoNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(RiepilogoNuovaTesseraPercorsoButton);
 		

@@ -1,10 +1,8 @@
 package GUI.Cliente;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -13,20 +11,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
 import Controller.ControllerPrincipale;
 
 import java.awt.Font;
-import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -73,23 +66,19 @@ public class CreaTesseraJFrame extends JFrame {
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
 		CreaTesseraPanel.add(MenùLateraleTB);
 		
-		JButton ClientiButton = new JButton("C:\\Users\\simon\\OneDrive\\Desktop\\customer_person_people_man_you_1625.png");
+		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
-		ClientiButton.setIcon(null);
+		ClientiButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
 			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
-			
-			
-			
-			
-			
+
 		}
 	});
 		
@@ -99,17 +88,8 @@ public class CreaTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
-		VenditeButton.setIcon(null);
+		VenditeButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setIcon(null);
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -117,10 +97,17 @@ public class CreaTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setIcon(null);
+		MagazzinoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.CreaTesseraMenùLateraleMagazzinoButtonPressed();
+
+			}
+		});
 		
-		Component VerticalStrut = Box.createVerticalStrut(200);
+		Component VerticalStrut = Box.createVerticalStrut(280);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
 		MenùLateraleTB.add(VerticalStrut);
 		
@@ -130,7 +117,7 @@ public class CreaTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
-		InfoButton.setIcon(null);
+		InfoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 
 		JToolBar PercorsoTB = new JToolBar();
@@ -155,6 +142,14 @@ public class CreaTesseraJFrame extends JFrame {
 		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
+		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed();
+				
+			}
+		});
 		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		

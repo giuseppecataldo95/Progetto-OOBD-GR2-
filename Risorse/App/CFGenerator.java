@@ -1,4 +1,4 @@
-package App;
+package Risorse.App;
 /*
   * Descrizione: Classe incaricata al calcolo del codice fiscale */
   
@@ -6,14 +6,17 @@ package App;
 
 
 import java.util.Arrays;
-import java.util.Scanner;
-import java.io.File;
+import DAO.ComuniDAO;
+import ImplementazioniDAO.ComuniDAOPostgres;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class CFGenerator {
   // Variabili di istanza
   // -------------------------------------------------------------------------------------------------------------------------------------------------------------
   private String nome, cognome, comune, m, sesso, giorno;
   private int anno;
+  private ComuniDAO DAO;
   
   // Array statici
   private final char[] elencoPari = {'0','1','2','3','4','5','6','7','8','9','A','B',
@@ -44,6 +47,10 @@ public class CFGenerator {
   
   // Inizializza le variabili di istanza della classe
   // --------------------------------------------------------------------------------------------------------------------------------------------------------------
+  public CFGenerator(Connection c) throws SQLException {
+	  DAO = new ComuniDAOPostgres(c);
+  }
+  
   public CFGenerator(String nome, String cognome, String comune, String m, int anno, String giorno,String sesso) {
     this.nome = nome;
     this.cognome = cognome;
@@ -108,12 +115,41 @@ public class CFGenerator {
   }
 
   
-  String getComune() {
+  String getComune() throws SQLException {
     return elaboraCodiceComune();
   }
-  String getCodice() {
+  String getCodice() throws SQLException, NullPointerException {
     return calcolaCodice();
   }
+  
+  public void setNome(String nome) {
+	this.nome = nome;
+  }
+
+  public void setCognome(String cognome) {
+	this.cognome = cognome;
+  }
+
+  public void setComune(String comune) {
+	this.comune = comune;
+  }
+
+  public void setM(String m) {
+	this.m = m;
+  }
+
+  public void setSesso(String sesso) {
+	this.sesso = sesso;
+  }
+
+  public void setGiorno(String giorno) {
+	this.giorno = giorno;
+  }
+
+  public void setAnno(int anno) {
+	this.anno = anno;
+  }
+
   public String getCodiceFiscale() {
     return toString();
   }
@@ -216,29 +252,14 @@ public class CFGenerator {
   
   // Elabora codice del comune
   // ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String elaboraCodiceComune() {
-  String cc="";
-    try {
-      Scanner scanner = new Scanner(new File("Comuni.txt"));
-      scanner.useDelimiter("\r\n");
-      
-      while(scanner.hasNext()) {
-        String s1 = scanner.nextLine();
-        String s2 = s1.substring(0,s1.indexOf('-')-1);
-        if(s2.equalsIgnoreCase(comune)) {
-          cc = s1.substring(s1.lastIndexOf(' ')+1);
-        }
-      }
-      
-      scanner.close();
-    } catch(Exception e) {e.printStackTrace();}
-    return cc;
+  private String elaboraCodiceComune() throws SQLException,NullPointerException  {
+	  return DAO.getCodiceComuneByNome(comune.toUpperCase());
   }
   // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
   // Calcolo del Codice di Controllo
   // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String calcolaCodice() {
+  private String calcolaCodice() throws SQLException, NullPointerException {
     String str = getCognome().toUpperCase()+getNome().toUpperCase()+getAnno()+getMese()+getGiorno()+getComune();
     int pari=0,dispari=0;
     
@@ -263,8 +284,14 @@ public class CFGenerator {
   // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Viene richiamato per una stampa
-  public String toString() {
-    return getCognome().toUpperCase()+getNome().toUpperCase()+getAnno()+getMese()+getGiorno()+getComune()+getCodice();
+  public String toString(){
+   
+	try {
+		return getCognome().toUpperCase()+getNome().toUpperCase()+getAnno()+getMese()+getGiorno()+getComune()+getCodice();
+	} catch (SQLException | NullPointerException e) {
+		return "COMUNE NON VALIDO";
+	}
+	
   }
   
 }

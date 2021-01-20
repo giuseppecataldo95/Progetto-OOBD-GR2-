@@ -15,14 +15,15 @@ import Controller.ControllerMagazzino;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
-public class ErroreAggiungiProdottoJDialog extends JDialog {
+public class InserimentoProdottoCompletatoJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private ControllerMagazzino Controller;
-	private JButton riprovaButton;
+	private JButton OkButton;
 	
-	public ErroreAggiungiProdottoJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) {
+	public InserimentoProdottoCompletatoJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		
 		Controller = c;
@@ -33,35 +34,32 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
+		
+		JLabel lblIlProdotto = new JLabel("Il Prodotto \u00E8 stato inserito con successo!");
+		lblIlProdotto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIlProdotto.setFont(new Font("Arial", Font.BOLD, 14));
+		lblIlProdotto.setBounds(0, 39, 361, 47);
+		contentPanel.add(lblIlProdotto);
 	
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				riprovaButton = new JButton("Riprova");
-				riprovaButton.addActionListener(new ActionListener() {
+				OkButton = new JButton("Ok");
+				OkButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Controller.RiprovaBottonePremuto(FinestraDaCuiApro);
+						Controller.InserimentoCompletatoOkBottonePremuto(FinestraDaCuiApro);
 					}
 				});
 
 				
-				riprovaButton.setActionCommand("OK");
-				buttonPane.add(riprovaButton);
-				getRootPane().setDefaultButton(riprovaButton);
+				OkButton.setActionCommand("OK");
+				buttonPane.add(OkButton);
+				getRootPane().setDefaultButton(OkButton);
 			}
 		}
 	}
 	
-	public void setError(String errore) {
-		JLabel ErroreLB = new JLabel(errore);
-		ErroreLB.setBounds(10, 11, 338, 58);
-		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 10));
-		contentPanel.add(ErroreLB);
-	}
-
-
 	
-
 }

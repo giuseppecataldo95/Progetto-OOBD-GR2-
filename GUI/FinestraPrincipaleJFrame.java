@@ -1,8 +1,5 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,21 +8,15 @@ import Controller.ControllerCliente;
 import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
 
-import java.awt.Window.Type;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.border.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
@@ -35,13 +26,9 @@ public class FinestraPrincipaleJFrame extends JFrame {
 	private JPanel FinestraPrincipalePanel;
 	private JPanel ContainerBottoniPanel;
 	private ControllerPrincipale Controller;
-	private ControllerCliente ControllerC;
-	private ControllerMagazzino ControllerM;
 	
-	public FinestraPrincipaleJFrame(ControllerPrincipale P, ControllerCliente C, ControllerMagazzino M) {
+	public FinestraPrincipaleJFrame(ControllerPrincipale P) {
 		Controller = P;
-		ControllerC = C;
-		ControllerM = M;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
@@ -88,7 +75,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ClientiButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		ClientiButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Downloads\\icons8-gruppo-di-utenti-90.png"));
+		ClientiButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(ClientiButton);
 		
@@ -103,7 +90,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		VenditeButton.setIconTextGap(10);
 		VenditeButton.setHorizontalTextPosition(SwingConstants.CENTER);
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 25));
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setBackground(new Color(255, 255, 153));
 		ContainerBottoniPanel.add(VenditeButton);
 		
@@ -115,12 +102,12 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("Magazzino");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.FinestraPrincipaleMagazzinoButtonPressed();
+				P.FinestraPrincipaleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));
 		MagazzinoButton.setHorizontalTextPosition(SwingConstants.CENTER);
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(FinestraPrincipaleJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setIconTextGap(10);
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 25));
 		MagazzinoButton.setVerticalTextPosition(SwingConstants.BOTTOM);
