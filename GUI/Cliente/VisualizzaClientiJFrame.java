@@ -90,6 +90,13 @@ public class VisualizzaClientiJFrame extends JFrame {
 		});
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaClientiMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);

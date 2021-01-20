@@ -428,7 +428,7 @@ public class ControllerCliente
 								{
 					
 									VisualizzaClienti.setVisible(false);
-									VisualizzaDettagli = new VisualizzaDettagliClienteJFrame(this);	
+									VisualizzaDettagli = new VisualizzaDettagliClienteJFrame(this, ControllerP);	
 									VisualizzaDettagli.RiepilogoNomeTB.setText(c.getNome());
 									VisualizzaDettagli.RiepilogoCognomeTB.setText(c.getCognome());
 									VisualizzaDettagli.RiepilogoCFTB.setText(c.getCF());

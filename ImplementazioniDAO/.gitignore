@@ -3,3 +3,4 @@
 /FruttaNonTrovataException.class
 /ProdottoNonTrovatoException.class
 /ComuniDAOPostgres.class
+/VenditeDAOPostgres.class

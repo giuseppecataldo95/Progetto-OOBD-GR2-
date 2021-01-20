@@ -1,4 +1,4 @@
-package GUI.Cliente;
+package GUI.Vendite;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,43 +16,44 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
 import Controller.ControllerPrincipale;
+import Controller.ControllerVendite;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-public class ClientiJFrame extends JFrame {
+public class VenditeJFrame extends JFrame {
 
-	private JPanel ClientiPanel;
-	private ControllerCliente ControllerC;
+	private JPanel VenditePanel;
 	private JButton MagazzinoButton;
 	private ControllerPrincipale ControllerP;
+	private ControllerVendite ControllerV;
 	
 	
 	
-	public  ClientiJFrame(ControllerCliente CC, ControllerPrincipale CP) {
-		ControllerC = CC;
+	public  VenditeJFrame(ControllerVendite CV, ControllerPrincipale CP) {
+		ControllerV = CV;
 		ControllerP = CP;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		setResizable(false);
-		ClientiPanel = new JPanel();
-		ClientiPanel.setBackground(new Color(255, 222, 173));
-		ClientiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		ClientiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(ClientiPanel);
+		VenditePanel = new JPanel();
+		VenditePanel.setBackground(new Color(255, 222, 173));
+		VenditePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		VenditePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(VenditePanel);
 		
 		JPanel ContainerPanel = new JPanel();
 		ContainerPanel.setBackground(new Color(255, 228, 181));
 		ContainerPanel.setMinimumSize(new Dimension(310, 189));
 		ContainerPanel.setBounds(290, 219, 490, 108);
-		ClientiPanel.setLayout(new BorderLayout(0, 0));
+		VenditePanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 204, 153));
-		ClientiPanel.add(panel);
+		VenditePanel.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(ContainerPanel, BorderLayout.CENTER);
 		ContainerPanel.setLayout(new BorderLayout(0, 0));
@@ -81,49 +82,39 @@ public class ClientiJFrame extends JFrame {
 		ContainerPanel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JButton AggiungiTesseraButton = new JButton("Aggiungi Nuova Tessera");
-		AggiungiTesseraButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
-				ControllerC.ClientiCreaNuovaTesseraButtonPressed();
-			}
-		});
-		AggiungiTesseraButton.setFont(new Font("Arial", Font.BOLD, 12));
-		AggiungiTesseraButton.setBackground(new Color(255, 204, 153));
-		AggiungiTesseraButton.setMaximumSize(new Dimension(186, 102));
-		AggiungiTesseraButton.setPreferredSize(new Dimension(186, 102));
-		panel_1.add(AggiungiTesseraButton, BorderLayout.WEST);
+		JButton CreaNuovoCarrelloJButton = new JButton("Crea Nuovo Carrello");
+		CreaNuovoCarrelloJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		CreaNuovoCarrelloJButton.setBackground(new Color(255, 204, 153));
+		CreaNuovoCarrelloJButton.setMaximumSize(new Dimension(186, 102));
+		CreaNuovoCarrelloJButton.setPreferredSize(new Dimension(186, 102));
+		panel_1.add(CreaNuovoCarrelloJButton, BorderLayout.WEST);
 		
-		JButton VisualizzaClientiButton = new JButton("Visualizza Clienti");
-		VisualizzaClientiButton.addActionListener(new ActionListener() {
+		JButton VisualizzaCronologiaVenditeJButton = new JButton(" Cronologia Vendite");
+		VisualizzaCronologiaVenditeJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerC.ClientiVisualizzaClientiButtonPressed();
-				ControllerC.CompletaTabellaTessera();
-				
-				
-
+				ControllerV.CompletaTabellaFatture();
+				ControllerV.VenditeCronologiaVenditeBottonePremuto();
 				
 			}
 		});
-		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));
-		VisualizzaClientiButton.setBackground(new Color(255, 204, 153));
-		VisualizzaClientiButton.setMaximumSize(new Dimension(186, 102));
-		VisualizzaClientiButton.setPreferredSize(new Dimension(186, 23));
-		panel_1.add(VisualizzaClientiButton, BorderLayout.EAST);
+		VisualizzaCronologiaVenditeJButton.setFont(new Font("Arial", Font.BOLD, 12));
+		VisualizzaCronologiaVenditeJButton.setBackground(new Color(255, 204, 153));
+		VisualizzaCronologiaVenditeJButton.setMaximumSize(new Dimension(186, 102));
+		VisualizzaCronologiaVenditeJButton.setPreferredSize(new Dimension(186, 23));
+		panel_1.add(VisualizzaCronologiaVenditeJButton, BorderLayout.EAST);
 		
-		JLabel lblNewLabel = new JLabel("Sezione Clienti");
-		lblNewLabel.setPreferredSize(new Dimension(90, 50));
-		lblNewLabel.setMinimumSize(new Dimension(90, 50));
-		lblNewLabel.setMaximumSize(new Dimension(90, 50));
-		lblNewLabel.setBackground(new Color(255, 204, 153));
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 22));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel, BorderLayout.NORTH);
+		JLabel SezioneVenditeLB = new JLabel("Sezione Vendite");
+		SezioneVenditeLB.setPreferredSize(new Dimension(90, 50));
+		SezioneVenditeLB.setMinimumSize(new Dimension(90, 50));
+		SezioneVenditeLB.setMaximumSize(new Dimension(90, 50));
+		SezioneVenditeLB.setBackground(new Color(255, 204, 153));
+		SezioneVenditeLB.setFont(new Font("Arial", Font.PLAIN, 22));
+		SezioneVenditeLB.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(SezioneVenditeLB, BorderLayout.NORTH);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
-		ClientiPanel.add(MenùLateraleTB, BorderLayout.WEST);
+		VenditePanel.add(MenùLateraleTB, BorderLayout.WEST);
 		MenùLateraleTB.setBorder(null);
 		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
 		MenùLateraleTB.setBorderPainted(false);
@@ -134,48 +125,26 @@ public class ClientiJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
-		ClientiButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.ClientiMenuLateraleClientiBottonePremuto();
-				
-				
-			}
-		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VenditeJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
-		VenditeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.ClientiMenuLateraleVenditeBottonoPremuto();
-				
-			}
-		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setIcon(new ImageIcon(VenditeJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		MagazzinoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.ClientiMenuLateraleMagazzinoButtonPressed();
-				
-			}
-		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setIcon(new ImageIcon(VenditeJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
@@ -187,7 +156,7 @@ public class ClientiJFrame extends JFrame {
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/info-menu.png")));
+		InfoButton.setIcon(new ImageIcon(VenditeJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));

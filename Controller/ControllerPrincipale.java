@@ -23,6 +23,7 @@ public class ControllerPrincipale {
 	private MagazzinoJFrame Magazzino;
 	private ControllerCliente ControllerC;
 	private ControllerMagazzino ControllerM;
+	private ControllerVendite ControllerV;
 	private Connection Connessione;
 	
 	public ControllerPrincipale(Connection Conn) throws SQLException {
@@ -30,9 +31,12 @@ public class ControllerPrincipale {
 		 Connessione= Conn;
 		 ControllerM = new ControllerMagazzino(Conn,this);
 		 ControllerC = new ControllerCliente(Conn,this);
+		 ControllerV= new ControllerVendite(Conn, this);
 		 FinestraPrincipale = new FinestraPrincipaleJFrame(this);
 		 FinestraPrincipale.setVisible(true);
 	}
+
+
 	
 	//SNODO SE CLICCO CLIENTI
 
@@ -299,6 +303,65 @@ public class ControllerPrincipale {
 		ControllerC.getVisualizzaPunti().setVisible(false);
 		ControllerM.getMagazzino().setVisible(true);
 		
+		
+	}
+	
+	
+	//SNODO SE CLICCO VENDITE
+
+	public void FinestraPrincipaleVenduteBottonePremuto() {
+
+		ControllerV.getVendite().setVisible(true);
+		FinestraPrincipale.setVisible(false);
+		
+	}
+
+	public void ClientiMenuLateraleVenditeBottonoPremuto() {
+		
+		ControllerC.getClienti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+
+	}
+
+
+	public void CreaTesseraMenùLateraleVenditeBottonePremuto() {
+		
+		ControllerC.getCreaTessera().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+	public void RiepilogoTesseraMenùLateraleVenditeBottonePremuto() {
+		
+		ControllerC.getRiepilogoTessera().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaClientiMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaDettagliClienteMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaDettagli().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaPuntiMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
 		
 	}
  

@@ -83,6 +83,13 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.RiepilogoTesseraMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(VenditeButton);

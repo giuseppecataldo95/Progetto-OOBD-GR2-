@@ -85,6 +85,13 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ContainerBottoniPanel.add(horizontalStrut_1);
 		
 		JButton VenditeButton = new JButton("Vendite");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Controller.FinestraPrincipaleVenduteBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setMaximumSize(new Dimension(170, 150));
 		VenditeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		VenditeButton.setIconTextGap(10);

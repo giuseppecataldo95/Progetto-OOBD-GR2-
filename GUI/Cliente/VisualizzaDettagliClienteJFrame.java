@@ -20,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
+
 import javax.swing.ImageIcon;
 
 public class VisualizzaDettagliClienteJFrame extends JFrame {
@@ -35,11 +37,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 	public JTextField RiepilogoMeseNTB;
 	public JTextField RiepilogoAnnoNTB;
 	private JTextField RiepilogoDataNTB;
+	private ControllerPrincipale ControllerP;
 	
 	
 
-	public VisualizzaDettagliClienteJFrame(ControllerCliente c) {
+	public VisualizzaDettagliClienteJFrame(ControllerCliente c, ControllerPrincipale c1) {
 		controller = c;
+		ControllerP = c1;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaDettagliClientePanel = new JPanel();
@@ -69,6 +73,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaDettagliClienteMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(VenditeButton);
