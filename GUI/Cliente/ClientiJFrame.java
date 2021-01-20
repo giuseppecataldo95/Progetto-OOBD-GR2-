@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -20,10 +19,6 @@ import Controller.ControllerPrincipale;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
-import java.awt.event.MouseMotionAdapter;
-import java.sql.SQLException;
-import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -32,8 +27,7 @@ public class ClientiJFrame extends JFrame {
 	private JPanel ClientiPanel;
 	private ControllerCliente ControllerC;
 	private JButton MagazzinoButton;
-
-	ControllerPrincipale ControllerP;
+	private ControllerPrincipale ControllerP;
 	
 	
 	
@@ -91,6 +85,7 @@ public class ClientiJFrame extends JFrame {
 		AggiungiTesseraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				setVisible(false);
 				ControllerC.ClientiCreaNuovaTesseraButtonPressed();
 			}
 		});
@@ -104,10 +99,11 @@ public class ClientiJFrame extends JFrame {
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
+				ControllerC.CompletaTabellaTessera();
 				
-					ControllerC.CompletaTabellaTessera();
+				
+
 				
 			}
 		});
@@ -138,11 +134,19 @@ public class ClientiJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.ClientiMenuLateraleClientiBottonePremuto();
+				
+				
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\simon\\OneDrive\\Desktop\\customer_person_people_man_you_1625.png"));
+		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
@@ -150,7 +154,7 @@ public class ClientiJFrame extends JFrame {
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		
@@ -159,22 +163,24 @@ public class ClientiJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				ControllerP.ClientiMenuLateraleMagazzinoButtonPressed();
+				
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
 		verticalStrut.setMaximumSize(new Dimension(32767, 300));
 		MenùLateraleTB.add(verticalStrut);
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
+		InfoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));

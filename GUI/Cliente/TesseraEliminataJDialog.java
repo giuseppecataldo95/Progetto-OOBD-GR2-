@@ -1,7 +1,6 @@
 package GUI.Cliente;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -39,8 +38,10 @@ public class TesseraEliminataJDialog extends JDialog {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 				controller.TesseraEliminataOKButtonPressed();
 				controller.CompletaTabellaTessera();
+				
 
 				
 			}

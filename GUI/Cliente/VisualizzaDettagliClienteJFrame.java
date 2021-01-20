@@ -20,30 +20,32 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import javax.swing.ImageIcon;
 
 public class VisualizzaDettagliClienteJFrame extends JFrame {
 
 	private JPanel VisualizzaDettagliClientePanel;
 	private ControllerCliente controller;
 	public JTextField RiepilogoNomeTB;
-	private JTextField RiepilogoCognomeTB;
-	private JTextField RiepilogoSessoTB;
-	private JTextField RiepilogoLuogoNTB;
-	private JTextField RiepilogoGiornoNTB;
+	public JTextField RiepilogoCognomeTB;
+	public JTextField RiepilogoSessoTB;
+	public JTextField RiepilogoLuogoNTB;
+	public JTextField RiepilogoGiornoNTB;
+	public JTextField RiepilogoCFTB;
+	public JTextField RiepilogoMeseNTB;
+	public JTextField RiepilogoAnnoNTB;
+	private JTextField RiepilogoDataNTB;
+	
 	
 
-	private JTextField RiepilogoCFTB;
-	private JTextField RiepilogoMeseNTB;
-	private JTextField RiepilogoAnnoNTB;
-	
 	public VisualizzaDettagliClienteJFrame(ControllerCliente c) {
 		controller = c;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaDettagliClientePanel = new JPanel();
 		VisualizzaDettagliClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		VisualizzaDettagliClientePanel.setLayout(new BorderLayout(0, 0));
 		setContentPane(VisualizzaDettagliClientePanel);
+		VisualizzaDettagliClientePanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -62,7 +64,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
-		ClientiButton.setIcon(null);
+		ClientiButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
@@ -72,17 +74,8 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
-		VenditeButton.setIcon(null);
+		VenditeButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(DipendentiButton);
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setIcon(null);
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
@@ -91,11 +84,11 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setIcon(null);
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
 		
-		Component verticalStrut = Box.createVerticalStrut(200);
+		Component verticalStrut = Box.createVerticalStrut(280);
 		verticalStrut.setBackground(Color.LIGHT_GRAY);
 
 		MenùLateraleTB.add(verticalStrut);
@@ -107,7 +100,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(InfoButton);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setBorder(null);
-		InfoButton.setIcon(null);
+		InfoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 
@@ -126,7 +119,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				setVisible(false);
-				controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				controller.VisualizzaDettagliClienteClientiPercorsoButtonPressed();
 				
 			}
 		});
@@ -198,13 +191,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		
 		
 		
-		JButton VisualizzaDettagliClienteAvantiButton = new JButton("Avanti");
+		JButton VisualizzaDettagliClienteAvantiButton = new JButton("Chiudi");
 		VisualizzaDettagliClienteAvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 						
-				
+						controller.VisualizzaDettagliClienteChiudiButtonPressed();
+						controller.CompletaTabellaTessera();
 					
 				
 			}
@@ -227,7 +220,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoSessoTB = new JTextField();
 		RiepilogoSessoTB.setEditable(false);
 		RiepilogoSessoTB.setColumns(10);
-		RiepilogoSessoTB.setBounds(399, 288, 215, 19);
+		RiepilogoSessoTB.setBounds(399, 288, 59, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoSessoTB);
 		
 		RiepilogoLuogoNTB = new JTextField();
@@ -236,11 +229,11 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoLuogoNTB.setBounds(399, 344, 215, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoLuogoNTB);
 		
-		RiepilogoGiornoNTB = new JTextField();
-		RiepilogoGiornoNTB.setEditable(false);
-		RiepilogoGiornoNTB.setColumns(10);
-		RiepilogoGiornoNTB.setBounds(399, 390, 35, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoGiornoNTB);
+		RiepilogoDataNTB = new JTextField();
+		RiepilogoDataNTB.setEditable(false);
+		RiepilogoDataNTB.setColumns(10);
+		RiepilogoDataNTB.setBounds(399, 390, 108, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoDataNTB);
 		
 		RiepilogoCFTB = new JTextField();
 		RiepilogoCFTB.setEditable(false);
@@ -248,24 +241,12 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoCFTB.setBounds(399, 439, 215, 19);
 		VisualizzaDettagliClientePanel.add(RiepilogoCFTB);
 		
-		RiepilogoMeseNTB = new JTextField();
-		RiepilogoMeseNTB.setEditable(false);
-		RiepilogoMeseNTB.setColumns(10);
-		RiepilogoMeseNTB.setBounds(454, 390, 107, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoMeseNTB);
+	
 		
-		RiepilogoAnnoNTB = new JTextField();
-		RiepilogoAnnoNTB.setEditable(false);
-		RiepilogoAnnoNTB.setColumns(10);
-		RiepilogoAnnoNTB.setBounds(581, 390, 65, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoAnnoNTB);
 		
-		JLabel SlashData1 = new JLabel("/");
-		SlashData1.setBounds(444, 393, 28, 13);
-		VisualizzaDettagliClientePanel.add(SlashData1);
 		
 		JLabel SlashData2 = new JLabel("/");
-		SlashData2.setBounds(571, 393, 28, 13);
+		SlashData2.setBounds(5, 5, 976, 553);
 		VisualizzaDettagliClientePanel.add(SlashData2);
 	}
 
@@ -325,6 +306,13 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		RiepilogoAnnoNTB = riepilogoAnnoNTB;
 	}
 
+	public JTextField getRiepilogoDataNTB() {
+		return RiepilogoDataNTB;
+	}
+
+	public void setRiepilogoDataNTB(String riepilogoDataNTB) {
+		RiepilogoDataNTB.setText(riepilogoDataNTB);
+	}
 
 }
 

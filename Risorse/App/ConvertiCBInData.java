@@ -1,4 +1,4 @@
-package App;
+package Risorse.App;
 
 import java.sql.Date;
 

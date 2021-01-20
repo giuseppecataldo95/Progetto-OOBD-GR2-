@@ -1,54 +1,59 @@
 package GUI.Magazzino;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Controller.ControllerMagazzino;
-
+import Controller.ControllerPrincipale;
 
 import javax.swing.JToolBar;
+import javax.swing.RowFilter;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import javax.swing.Box;
+import javax.swing.DefaultComboBoxModel;
 
 import java.awt.Dimension;
-import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
-import java.awt.BorderLayout;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JScrollPane;
 
 public class VisualizzaUovaJFrame extends JFrame {
 
 	private JPanel VisualizzaProdottiPanel;
-	private ControllerMagazzino Controller;
-	private JTable table;
-	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "N. In Singola Confezione", "Provenienza", "Lotto Lavorazione", "Data Scadenza", "Valore al kg", "Scorte in kg"},0){
+	private ControllerMagazzino ControllerM;
+	private ControllerPrincipale ControllerP;
+	private JTable ProdottiTable;
+	private DefaultTableModel Model = new DefaultTableModel(new String[] {"ID Prodotto", "N. In Singola Confezione", "Provenienza", "Lotto Lavorazione", "Data Scadenza", "Valore unitario", "Scorte"},0){
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
 	};
-	
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FiltraPerTB;
 
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaUovaJFrame(ControllerMagazzino c) {
-		Controller = c;
-		
+	public VisualizzaUovaJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
+		ControllerM = c;
+		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaProdottiPanel = new JPanel();
@@ -58,64 +63,62 @@ public class VisualizzaUovaJFrame extends JFrame {
 		setContentPane(VisualizzaProdottiPanel);
 		VisualizzaProdottiPanel.setLayout(null);
 		
-		JToolBar MenùLateraleTB = new JToolBar();
-		MenùLateraleTB.setBorder(null);
-		MenùLateraleTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		MenùLateraleTB.setBorderPainted(false);
-		MenùLateraleTB.setFloatable(false);
-		MenùLateraleTB.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
-		MenùLateraleTB.setBounds(0, 0, 65, 563);
-		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		VisualizzaProdottiPanel.add(MenùLateraleTB);
+		JToolBar toolBar = new JToolBar();
+		toolBar.setBackground(new Color(255, 153, 51));
+		toolBar.setBorder(null);
+		toolBar.setFloatable(false);
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBounds(0, 0, 66, 563);
+		VisualizzaProdottiPanel.add(toolBar);
+		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaUovaMenuLateraleClientiBottonePremuto();
+			}
+		});
+		toolBar.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\clientiii.png"));
+		ClientiButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
+		
 		JButton VenditeButton = new JButton("");
+		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\cassaaaa.png"));
+		VenditeButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
+		
 		
 		JButton MagazzinoButton = new JButton("");
+		toolBar.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerP.VisualizzaUovaMenuLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\scatolaaaa.png"));
+		MagazzinoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(MagazzinoButton);
 		
-		JButton DipendentiButton = new JButton("");
-		DipendentiButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\dipendentee.png"));
-		DipendentiButton.setBorderPainted(false);
-		DipendentiButton.setBorder(null);
-		DipendentiButton.setBackground(new Color(255, 153, 51));
-		DipendentiButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(DipendentiButton);
-		
-		Component verticalStrut = Box.createVerticalStrut(200);
-		MenùLateraleTB.add(verticalStrut);
+		Component verticalStrut = Box.createVerticalStrut(280);
+		toolBar.add(verticalStrut);
+		verticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
 		JButton InfoButton = new JButton("");
+		toolBar.add(InfoButton);
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon("C:\\Users\\enzos\\Desktop\\Progetto\\infoo.png"));
+		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -130,7 +133,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaUova_MagazzinoPercorsoBottonePremuto();
+				ControllerM.VisualizzaUova_MagazzinoPercorsoBottonePremuto();
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -139,7 +142,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaUova_VisualizzaProdottoPercorsoBottonePremuto();
+				ControllerM.VisualizzaUova_VisualizzaProdottoPercorsoBottonePremuto();
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -148,28 +151,83 @@ public class VisualizzaUovaJFrame extends JFrame {
 		JButton VisualizzaUovaPercorsoButton = new JButton("> Visualizza Uova");
 		VisualizzaUovaPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaUova_VisualizzaUovaPercorsoBottonePremuto();
-				Controller.CompletaTabellaUova();
+				ControllerM.VisualizzaUova_VisualizzaUovaPercorsoBottonePremuto();
+				ControllerM.CompletaTabellaUova();
 			}
 		});
 		VisualizzaUovaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaUovaPercorsoButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(95, 41, 867, 463);
-		VisualizzaProdottiPanel.add(scrollPane);
-		table = new JTable(Model);
-		scrollPane.setViewportView(table);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.VisualizzaUovaBottoneIndietroPremuto();
+				ControllerM.VisualizzaUovaBottoneIndietroPremuto();
 			}
 		});
 		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		IndietroButton.setBounds(852, 521, 110, 31);
 		VisualizzaProdottiPanel.add(IndietroButton);
+		
+		JScrollPane TabellaPanel = new JScrollPane();
+		TabellaPanel.setBounds(95, 85, 789, 419);
+		VisualizzaProdottiPanel.add(TabellaPanel);
+		ProdottiTable = new JTable(Model);
+		ProdottiTable.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		ProdottiTable.setRowSelectionAllowed(false);
+		ProdottiTable.setBackground(new Color(255, 204, 153));
+		ProdottiTable.setAutoCreateRowSorter(true);
+		ProdottiTable.setRowSorter(Sorter);
+		ProdottiTable.getTableHeader().setReorderingAllowed(false);
+		TabellaPanel.setViewportView(ProdottiTable);
+		
+		FiltraPerTB = new JTextField();
+		FiltraPerTB.setBounds(412, 41, 256, 20);
+		VisualizzaProdottiPanel.add(FiltraPerTB);
+		FiltraPerTB.setColumns(10);
+		
+		JComboBox FiltraPerCB = new JComboBox();
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"ID Prodotto", "N per Confezione", "Provenienza", "Lotto Lavorazione ", "Data Scadenza ", "Valore", "Scorte (n)"}));
+		FiltraPerCB.setSelectedIndex(0);
+		FiltraPerCB.setBounds(283, 40, 119, 22);
+		VisualizzaProdottiPanel.add(FiltraPerCB);
+		
+		JLabel FiltraPerLB = new JLabel("Filtra per:");
+		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
+		FiltraPerLB.setBounds(219, 41, 65, 20);
+		VisualizzaProdottiPanel.add(FiltraPerLB);
+		
+		JButton EliminaButton = new JButton("Elimina");
+		EliminaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerM.VisualizzaUovaEliminaBottonePremuto();
+			}
+		});
+		EliminaButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		EliminaButton.setBounds(894, 82, 82, 30);
+		VisualizzaProdottiPanel.add(EliminaButton);
+		FiltraPerCB.addItemListener(new ItemListener() {
+			public void itemStateChanged (ItemEvent ie) {
+				if(ie.getStateChange() == ItemEvent.SELECTED) {
+				      FiltraPerTB.setText("");
+				   }
+			}
+			
+		});
+		
+		FiltraPerTB.getDocument().addDocumentListener(
+                new DocumentListener() {
+                    public void changedUpdate(DocumentEvent e) {
+                    	newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                    public void insertUpdate(DocumentEvent e) {
+                        newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                    public void removeUpdate(DocumentEvent e) {
+                        newFilter(FiltraPerCB.getSelectedIndex());
+                    }
+                });
 		
 	}
 	
@@ -177,4 +235,13 @@ public class VisualizzaUovaJFrame extends JFrame {
 		Model.addRow(new Object[]{ID_Prodotto, NinConfezione, Provenienza, Lotto, Data, Valore, Scorte});
 		}
 	
+	private void newFilter(int IndiceColonna) {
+	    RowFilter<DefaultTableModel, Object> rf = null;
+	    try {
+	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
+	    } catch (java.util.regex.PatternSyntaxException e) {
+	        return;
+	    }
+	    Sorter.setRowFilter(rf);
+ }
 }
