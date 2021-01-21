@@ -4,13 +4,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
+import DAO.MagazzinoDAO;
 import DAO.VenditeDAO;
+import Entità.Confezionato;
+import Entità.Farinaceo;
 import Entità.Fattura;
+import Entità.Frutta;
+import Entità.Latticino;
 import Entità.Tessera;
+import Entità.Uova;
+import Entità.Verdura;
 import GUI.Cliente.FormatoNTesseraErratoJDialog;
 import GUI.Cliente.TesseraEliminataJDialog;
+import GUI.Vendite.CreaCarrelloJFrame;
 import GUI.Vendite.IDCarrelloRicercaCarrelloJDialog;
 import GUI.Vendite.VenditeJFrame;
 import GUI.Vendite.VisualizzaCarrelloJFrame;
@@ -28,6 +34,8 @@ public class ControllerVendite {
 	 private VisualizzaCarrelloJFrame VisualizzaCarrello;
 	 private IDCarrelloRicercaCarrelloJDialog RicercaCarrelloDialog;
 	 private VenditeDAO DAO;
+	 private MagazzinoDAO DAOM;
+	 private CreaCarrelloJFrame CreaCarrello;
 	 
 
 
@@ -39,6 +47,7 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
 		 ControllerP = P;
 		 Vendite = new VenditeJFrame(this, ControllerP);
 		 DAO = new VenditeDAOPostgres(Conn);
+		 DAOM = new MagazzinoDAOPostgres(Conn);
 		
 	}
 	public VenditeJFrame getVendite() {
@@ -84,6 +93,89 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
 
 		RicercaCarrelloDialog = new IDCarrelloRicercaCarrelloJDialog(this);
 		RicercaCarrelloDialog.setVisible(true);
+	}
+	
+	public void VenditeCreaCarrelloBottonePremuto() {
+		Vendite.setVisible(false);
+		CreaCarrello = new CreaCarrelloJFrame(this, ControllerP);
+		CreaCarrello.setVisible(true);
+	}
+	
+	public void CompletaTabellaFrutta() {
+    	ArrayList<Frutta> ProdottiFrutta = null;
+		try {
+			ProdottiFrutta = DAOM.getFrutta();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	for(Frutta f : ProdottiFrutta)
+    		CreaCarrello.setRigheTabellaFrutta(f.getID_Prodotto(), f.getNome(), f.getProvenienza(), f.getLotto_lavorazione(), f.getData_raccolta(), f.getValore(), f.getScorte_kg());
+    }
+	
+	public void CompletaTabellaUova() {
+    	ArrayList<Uova> ProdottiUova = null;
+		try {
+			ProdottiUova = DAOM.getUova();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for(Uova u : ProdottiUova)
+			CreaCarrello.setRigheTabellaUova(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
+    }
+	
+	public void CompletaTabellaVerdura() {
+    	ArrayList<Verdura> ProdottiVerdura = null;
+		try {
+			ProdottiVerdura = DAOM.getVerdura();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+    	for(Verdura v : ProdottiVerdura)
+    		CreaCarrello.setRigheTabellaVerdura(v.getID_Prodotto(), v.getNome(), v.getProvenienza(), v.getLotto_lavorazione(), v.getData_raccolta(), v.getValore(), v.getScorte_kg());
+    }
+	
+	public void CompletaTabellaFarinacei() {
+    	ArrayList<Farinaceo> ProdottiFarinacei = null;
+		try {
+			ProdottiFarinacei = DAOM.getFarinacei();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	for(Farinaceo f : ProdottiFarinacei)
+    		CreaCarrello.setRigheTabellaFarinacei(f.getID_Prodotto(), f.getNome(),f.getLotto_lavorazione(),f.getData_scadenza(),f.getValore(),f.getScorte_kg());
+	}
+	
+	public void CompletaTabellaLatticini() {
+    	ArrayList<Latticino> ProdottiLatticini = null;
+		try {
+			ProdottiLatticini = DAOM.getLatticini();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	for(Latticino l : ProdottiLatticini)
+    		CreaCarrello.setRigheTabellaLatticini(l.getID_Prodotto(), l.getNome(), l.getPaese_mungitura(), l.getPaese_lavorazione(), l.getData_mungitura(),l.getData_scadenza(), l.getValore(), l.getScorte_kg());
+    }
+	
+	public void CompletaTabellaConfezionati() {
+    	ArrayList<Confezionato> ProdottiConfezionati = null;
+		try {
+			ProdottiConfezionati = DAOM.getConfezionati();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	for(Confezionato c : ProdottiConfezionati)
+    		CreaCarrello.setRigheTabellaConfezionati(c.getID_Prodotto(), c.getNome(), c.getMarca(), c.getLotto_lavorazione(), c.getData_scadenza(), c.getModalità_conservazione(),c.getPeso(), c.getValore(), c.getScorte());
+    }
+	
+	public void AggiungiAlCarrello() {
+		int ID = CreaCarrello.getIDProdotto();
+		String Categoria = CreaCarrello.getCategoria();
+		if(Categoria == "Frutta"||Categoria == "Verdura"||Categoria == "Farinacei"||Categoria == "Latticini") {
+			
+		}
 	}
 //	public void RicercaCarrelloPerIDCarrelloAvantiBottonePremuto() {
 //

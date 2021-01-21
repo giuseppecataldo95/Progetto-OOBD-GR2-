@@ -83,6 +83,11 @@ public class VenditeJFrame extends JFrame {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JButton CreaNuovoCarrelloJButton = new JButton("Crea Nuovo Carrello");
+		CreaNuovoCarrelloJButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerV.VenditeCreaCarrelloBottonePremuto();
+			}
+		});
 		CreaNuovoCarrelloJButton.setFont(new Font("Arial", Font.BOLD, 12));
 		CreaNuovoCarrelloJButton.setBackground(new Color(255, 204, 153));
 		CreaNuovoCarrelloJButton.setMaximumSize(new Dimension(186, 102));
