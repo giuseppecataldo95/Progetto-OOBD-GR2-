@@ -55,6 +55,10 @@ public class CreaCarrelloJFrame extends JFrame {
 	private JTextField InserisciIDProdottoTB;
 	private JComboBox<String> SelezionaCategoriaCB;
 	private JTextField InserisciScorteTB;
+	private Timer TimerErrore;
+	private Timer TimerProdottoAggiunto;
+	private JLabel ProdottoAggiuntoLB;
+	private JLabel ErroreLB;
 
 	
 	
@@ -257,28 +261,43 @@ public class CreaCarrelloJFrame extends JFrame {
 		AggiungiPanel.add(InserisciIDProdottoTB);
 		InserisciIDProdottoTB.setColumns(10);
 		
-		JLabel ProdottoAggiuntoLB = new JLabel("Prodotto aggiunto al Carrello");
+		ProdottoAggiuntoLB = new JLabel("Prodotto aggiunto al Carrello");
 		ProdottoAggiuntoLB.setForeground(new Color(50, 205, 50));
 		ProdottoAggiuntoLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		ProdottoAggiuntoLB.setBounds(821, 415, 165, 30);
 		ProdottoAggiuntoLB.setVisible(false);
 		CreaTesseraPanel.add(ProdottoAggiuntoLB);
 		
-		Timer t = new Timer(5000, new ActionListener() {
+		ErroreLB = new JLabel("Errore!");
+		ErroreLB.setForeground(new Color(255, 0, 0));
+		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 12));
+		ErroreLB.setBounds(873, 415, 42, 30);
+		ErroreLB.setVisible(false);
+		CreaTesseraPanel.add(ErroreLB);
+		
+		TimerProdottoAggiunto = new Timer(5000, new ActionListener() {
 
 			@Override
 		public void actionPerformed(ActionEvent e) {
 				ProdottoAggiuntoLB.setVisible(false);
 			}
 		});
-		t.setRepeats(false);
+		TimerProdottoAggiunto.setRepeats(false);
+		
+		TimerErrore = new Timer(5000, new ActionListener() {
+
+			@Override
+		public void actionPerformed(ActionEvent e) {
+				ErroreLB.setVisible(false);
+			}
+		});
+		TimerErrore.setRepeats(false);
 		
 		
 		JButton AggiungiButton = new JButton("+");
 		AggiungiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ProdottoAggiuntoLB.setVisible(true);
-				t.start();
+				ControllerV.AggiungiAlCarrello();
 			}
 		});
 		AggiungiButton.setBounds(55, 126, 41, 23);
@@ -476,4 +495,15 @@ public class CreaCarrelloJFrame extends JFrame {
 	 public String getQuantità() {
 		 return InserisciScorteTB.getText();
 	 }
+	 
+	 public void ProdottoAggiunto() {
+		 ProdottoAggiuntoLB.setVisible(true);
+		 TimerProdottoAggiunto.start();
+	 }
+	 
+	 public void ErroreProdottoAggiunto() {
+		 ErroreLB.setVisible(true);
+		 TimerErrore.start();
+	 }
+	 
 }

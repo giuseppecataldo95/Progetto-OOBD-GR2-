@@ -46,9 +46,25 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		
 	}
 	
-	public void inserisciCompCarelloKG(int ID, float quantità) {
-//		Statement inserisci = connessione.createStatement();
-//		inserisci.executeUpdate("INSERT INTO comp_carrello_kg VALUES ("+ID+",")
+	public void inserisciCarrello() throws SQLException {
+		Statement creaCarrello = connessione.createStatement();
+		creaCarrello.executeUpdate("INSERT INTO Carrello VALUES (DEFAULT,0,0,0,0,0,0,0)");
+	}
+	
+	public int getUltimoIDCarrello() throws SQLException {
+		Statement getCarrello = connessione.createStatement();
+		ResultSet rs = getCarrello.executeQuery("SELECT id_carrello FROM Carrello ORDER BY id_carrello DESC LIMIT 1");
+		return rs.getInt("id_carrello");
+	}
+	
+	public void inserisciCompCarelloKG(int IDCarrello, int IDProdotto, float quantità) throws SQLException {
+		Statement inserisci = connessione.createStatement();
+		inserisci.executeUpdate("INSERT INTO comp_carrello_kg VALUES ("+IDCarrello+","+IDProdotto+","+quantità+")");
+	}
+	
+	public void inserisciCompCarelloN(int IDCarrello, int IDProdotto, int quantità) throws SQLException {
+		Statement inserisci = connessione.createStatement();
+		inserisci.executeUpdate("INSERT INTO comp_carrello_n VALUES ("+IDCarrello+","+IDProdotto+","+quantità+")");
 	}
 
 

@@ -36,12 +36,13 @@ public class ControllerVendite {
 	 private VenditeDAO DAO;
 	 private MagazzinoDAO DAOM;
 	 private CreaCarrelloJFrame CreaCarrello;
+	 private int IDCarrello;
 	 
 
 
 
 
-public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLException
+	 public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLException
 	
 	{
 		 ControllerP = P;
@@ -99,6 +100,12 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
 		Vendite.setVisible(false);
 		CreaCarrello = new CreaCarrelloJFrame(this, ControllerP);
 		CreaCarrello.setVisible(true);
+		try {
+			DAO.inserisciCarrello();
+			IDCarrello = DAO.getUltimoIDCarrello();
+		} catch (SQLException e) {
+			
+		}
 	}
 	
 	public void CompletaTabellaFrutta() {
@@ -171,10 +178,21 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
     }
 	
 	public void AggiungiAlCarrello() {
-		int ID = CreaCarrello.getIDProdotto();
+		int IDProdotto = CreaCarrello.getIDProdotto();
 		String Categoria = CreaCarrello.getCategoria();
-		if(Categoria == "Frutta"||Categoria == "Verdura"||Categoria == "Farinacei"||Categoria == "Latticini") {
-			
+		try {
+			if(Categoria == "Frutta"||Categoria == "Verdura"||Categoria == "Farinacei"||Categoria == "Latticini") {
+				float Quantit‡KG = Float.parseFloat(CreaCarrello.getQuantit‡());
+				DAO.inserisciCompCarelloKG(IDCarrello, IDProdotto, Quantit‡KG);
+				CreaCarrello.ProdottoAggiunto();
+			} else {
+				int Quantit‡N = Integer.parseInt(CreaCarrello.getQuantit‡());
+				DAO.inserisciCompCarelloN(IDCarrello, IDProdotto, Quantit‡N);
+				CreaCarrello.ProdottoAggiunto();
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			CreaCarrello.ErroreProdottoAggiunto();
 		}
 	}
 //	public void RicercaCarrelloPerIDCarrelloAvantiBottonePremuto() {
