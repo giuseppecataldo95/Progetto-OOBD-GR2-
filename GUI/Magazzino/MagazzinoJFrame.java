@@ -121,6 +121,13 @@ public class MagazzinoJFrame extends JFrame {
 		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.MagazzinoMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);

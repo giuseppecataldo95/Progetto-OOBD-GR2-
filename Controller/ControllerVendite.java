@@ -41,8 +41,13 @@ public class ControllerVendite {
 
 
 
-
-	 public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLException
+public VisualizzaCarrelloJFrame getVisualizzaCarrello() {
+		return VisualizzaCarrello;
+	}
+	public void setVisualizzaCarrello(VisualizzaCarrelloJFrame visualizzaCarrello) {
+		VisualizzaCarrello = visualizzaCarrello;
+	}
+public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLException
 	
 	{
 		 ControllerP = P;
@@ -236,4 +241,18 @@ public class ControllerVendite {
 //		
 //		
 //	}
+	public void VisualizzaCarrelloPercorsoVenditeBottonePremuto() {
+		
+		VisualizzaCarrello.setVisible(false);
+		Vendite = new VenditeJFrame(this, ControllerP);
+		Vendite.setVisible(true);
+		
+	}
+	public void VisualizzaCarrelloPercorsoVisualizzaVenditeBottonePremuto() {
+		
+		VisualizzaCarrello.setVisible(false);
+		VisualizzaCarrello = new VisualizzaCarrelloJFrame(this, ControllerP);
+		VisualizzaCarrello.setVisible(true);
+		
+	}
 }

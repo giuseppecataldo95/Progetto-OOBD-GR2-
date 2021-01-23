@@ -84,8 +84,8 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				 DA FARE
+			
+				ControllerP.VisualizzaCarrelloMenùLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -104,21 +104,28 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VenditeButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
-		
-		JButton MagazzinoButton = new JButton("");
-		MagazzinoButton.addActionListener(new ActionListener() {
+		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				 DA FARE
+			
+				ControllerP.VisualizzaCarrelloMenùLateraleVenditeBottonePremuto();
 				
 			}
 		});
+		
+		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				ControllerP.VisualizzaCarrelloMenùLateraleMagazzinoBottonePremuto();
+				
+			}
+		});
 		
 		Component verticalStrut = Box.createVerticalStrut(280);
 		MenùLateraleTB.add(verticalStrut);
@@ -141,26 +148,28 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		percorsoTB.setBounds(65, 0, 976, 30);
 		VisualizzaFatturePanel.add(percorsoTB);
 		
-		JButton ClientiPercorsoButton = new JButton("> Clienti");
-		ClientiPercorsoButton.addActionListener(new ActionListener() {
+		JButton VenditePercorsoButton = new JButton("> Vendite");
+		VenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-//				 DA FARE
+				ControllerV.VisualizzaCarrelloPercorsoVenditeBottonePremuto();
 				
 			}
 		});
-		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(ClientiPercorsoButton);
+		VenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VenditePercorsoButton);
 		
-		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Clienti");
-		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
+		JButton VisualizzaVenditePercorsoButton = new JButton("> Visualizza Vendite");
+		VisualizzaVenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				 DA FARE
+				
+				ControllerV.VisualizzaCarrelloPercorsoVisualizzaVenditeBottonePremuto();
+				
+				
 			}
 		});
-		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		VisualizzaVenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaVenditePercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(97, 125, 722, 367);
