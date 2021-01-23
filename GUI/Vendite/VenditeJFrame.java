@@ -125,6 +125,13 @@ public class VenditeJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VenditeMenùLateraleClientiBottonePremuto();
+				
+			}
+		});
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -134,6 +141,13 @@ public class VenditeJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VenditeMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -143,6 +157,13 @@ public class VenditeJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VenditeMenùLateraleMagazzinoBottonePremuto();
+				
+			}
+		});
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon(VenditeJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);

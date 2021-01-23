@@ -123,6 +123,13 @@ public class ControllerPrincipale {
  		ControllerM.getMagazzino().setVisible(true);
  	}
  	
+ 	public void MagazzinoMenùLateraleVenditeBottonePremuto() {
+
+		ControllerM.getMagazzino().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
+		
+	}
+ 	
  	//TOOLBAR AGGIUNGI PRODOTTO
  	
  	public void AggiungiProdottoMenuLateraleMagazzinoBottonePremuto() {
@@ -364,6 +371,64 @@ public class ControllerPrincipale {
  		ControllerV.getVendite().setVisible(true);
 		
 	}
+
+
+
+	public void VenditeMenùLateraleClientiBottonePremuto() {
+	
+ 		ControllerV.getVendite().setVisible(false);
+ 		ControllerC.getClienti().setVisible(true);
+		
+	}
+
+
+
+	public void VenditeMenùLateraleVenditeBottonePremuto() {
+			
+		ControllerV.getVendite().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VenditeMenùLateraleMagazzinoBottonePremuto() {
+		
+		ControllerV.getVendite().setVisible(false);
+ 		ControllerM.getMagazzino().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaCarrelloMenùLateraleClientiBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello().setVisible(false);
+ 		ControllerC.getClienti().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaCarrelloMenùLateraleMagazzinoBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaCarrelloMenùLateraleVenditeBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	
  
 
 }
