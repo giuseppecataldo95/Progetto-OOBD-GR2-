@@ -152,7 +152,6 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
 				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed();
 				
 			}

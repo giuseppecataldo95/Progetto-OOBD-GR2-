@@ -45,6 +45,11 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		
 		
 	}
+	
+	public void inserisciCompCarelloKG(int ID, float quantità) {
+//		Statement inserisci = connessione.createStatement();
+//		inserisci.executeUpdate("INSERT INTO comp_carrello_kg VALUES ("+ID+",")
+	}
 
 
 //	public void getCarrelloByIDCarrello(String iDCarrello) {

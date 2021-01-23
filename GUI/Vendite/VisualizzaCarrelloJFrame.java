@@ -172,7 +172,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		percorsoTB.add(VisualizzaVenditePercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(91, 125, 722, 367);
+		scrollPane.setBounds(97, 125, 722, 367);
 		VisualizzaFatturePanel.add(scrollPane);
 		table = new JTable(Model);
 		table.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -202,7 +202,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VisualizzaFatturePanel.add(FiltraPerLB);
 		
 		JButton DettagliClienteJButton = new JButton("Dettagli Carrello");
-		DettagliClienteJButton.setBounds(823, 277, 143, 19);
+		DettagliClienteJButton.setBounds(858, 125, 118, 35);
 		VisualizzaFatturePanel.add(DettagliClienteJButton);
 		DettagliClienteJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
