@@ -5,14 +5,14 @@ import java.sql.Date;
 public class Fattura {
 	
 	private int NTessera;
-	private int PuntiTotali;
-	private int PrezzoTotale;
+	private float PuntiTotali;
+	private float PrezzoTotale;
 	private int IDFattura;
 	private Date DataEmissione;
 	private int IDCarrello;
 	
 	
-	public Fattura(int nTessera, int puntiTotali, int prezzoTotale, int iDFattura, Date dataEmissione, int iDCarrello) {
+	public Fattura(int nTessera, float puntiTotali, float prezzoTotale, int iDFattura, Date dataEmissione, int iDCarrello) {
 		super();
 		NTessera = nTessera;
 		PuntiTotali = puntiTotali;
@@ -33,22 +33,22 @@ public class Fattura {
 	}
 
 
-	public int getPuntiTotali() {
+	public float getPuntiTotali() {
 		return PuntiTotali;
 	}
 
 
-	public void setPuntiTotali(int puntiTotali) {
+	public void setPuntiTotali(float puntiTotali) {
 		PuntiTotali = puntiTotali;
 	}
 
 
-	public int getPrezzoTotale() {
+	public float getPrezzoTotale() {
 		return PrezzoTotale;
 	}
 
 
-	public void setPrezzoTotale(int prezzoTotale) {
+	public void setPrezzoTotale(float prezzoTotale) {
 		PrezzoTotale = prezzoTotale;
 	}
 

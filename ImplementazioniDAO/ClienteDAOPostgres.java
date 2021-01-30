@@ -59,7 +59,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		while(rs.next()) {
 			
 			Cliente c = new Cliente(rs.getString("cf"));
-			Tessera t = new Tessera (rs.getInt("n_tessera"), c, rs.getInt("punti_frutta"), rs.getInt("punti_verdura"), rs.getInt("punti_confezionati"), rs.getInt("punti_uova"), rs.getInt("punti_latticini"), rs.getInt("punti_farinacei"));
+			Tessera t = new Tessera (rs.getInt("n_tessera"), c, rs.getFloat("punti_frutta"), rs.getFloat("punti_verdura"), rs.getFloat("punti_confezionati"), rs.getFloat("punti_uova"), rs.getFloat("punti_latticini"), rs.getFloat("punti_farinacei"));
 			Tessera.add(t);
 		}
 		
@@ -78,7 +78,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		{
 			
 			Cliente c = new Cliente(rs.getString("nome"), rs.getString("cognome"), rs.getString("cf"));
-			Tessera t = new Tessera(rs.getInt("n_tessera"), c, rs.getInt("punti_fedeltà"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
+			Tessera t = new Tessera(rs.getInt("n_tessera"), c, rs.getFloat("punti_fedeltà"),rs.getDate("data_rilascio"), rs.getDate("data_scadenza"));
 			Tessera.add(t);
 			
 		}
@@ -139,18 +139,18 @@ public class ClienteDAOPostgres implements ClienteDAO {
 	}
 
 	
-	public int getPuntiClienteFrutta(int NTessera) throws SQLException {
+	public float getPuntiClienteFrutta(int NTessera) throws SQLException {
 
 		getPuntiFrutta.setInt(1, NTessera);
 		
 		ResultSet rs = getPuntiFrutta.executeQuery();
 		
-		int PuntiFrutta=0;
+		float PuntiFrutta=0;
 		
 		if(rs.next()) 
 		{
 			
-			 PuntiFrutta = rs.getInt("punti_frutta");
+			 PuntiFrutta = rs.getFloat("punti_frutta");
 			
 		}
 		

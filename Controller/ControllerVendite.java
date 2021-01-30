@@ -196,8 +196,7 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
 				CreaCarrello.ProdottoAggiunto();
 			}
 		} catch(SQLException e) {
-			e.printStackTrace();
-			CreaCarrello.ErroreProdottoAggiunto();
+			CreaCarrello.ErroreProdottoAggiunto("<html>"+e.getMessage()+"<html>");
 		}
 	}
 //	public void RicercaCarrelloPerIDCarrelloAvantiBottonePremuto() {

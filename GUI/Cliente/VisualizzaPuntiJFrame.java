@@ -203,7 +203,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		
 	}
 	
-	public void setRigheTabella(int NTessera, String CF, int PuntiFrutta, int PuntiVerdura, int PuntiConfezionati, int PuntiUova, int PuntiFarinacei, int PuntiLatticini ){
+	public void setRigheTabella(int NTessera, String CF, float PuntiFrutta, float PuntiVerdura, float PuntiConfezionati, float PuntiUova, float PuntiFarinacei, float PuntiLatticini ){
 		Model.addRow(new Object[] {NTessera, CF, PuntiFrutta, PuntiVerdura, PuntiConfezionati, PuntiUova, PuntiFarinacei, PuntiLatticini});
 		
 		}

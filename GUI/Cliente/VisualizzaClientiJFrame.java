@@ -270,7 +270,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 	
 	
 	
-	public void setRigheTabella(int NTessera, String Nome,String Cognome,String CF, int PuntiTotali, Date DataRilascio, Date DataScadenza ){
+	public void setRigheTabella(int NTessera, String Nome,String Cognome,String CF, float PuntiTotali, Date DataRilascio, Date DataScadenza ){
 		Model.addRow(new Object[] {NTessera, Nome, Cognome, CF, PuntiTotali, DataRilascio, DataScadenza});
 		
 		}

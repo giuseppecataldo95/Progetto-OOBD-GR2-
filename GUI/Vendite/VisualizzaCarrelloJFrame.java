@@ -239,7 +239,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 	
 	
 	
-	public static  void setRigheTabella(int NTessera, int IDFattura, int IDCarrello, int PrezzoTotale, int PuntiTotali, Date DataEmissione){
+	public static  void setRigheTabella(int NTessera, int IDFattura, int IDCarrello, float PrezzoTotale, float PuntiTotali, Date DataEmissione){
 		Model.addRow(new Object[] {NTessera, IDFattura, IDCarrello, PrezzoTotale, PuntiTotali, DataEmissione});
 		
 		}

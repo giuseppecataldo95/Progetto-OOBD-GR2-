@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import DAO.VenditeDAO;
+import Entità.Carrello;
 import Entità.Cliente;
 import Entità.Fattura;
 import Entità.Tessera;
@@ -35,7 +36,7 @@ public class VenditeDAOPostgres implements VenditeDAO{
 			
 		{
 			
-			Fattura f = new Fattura(rs.getInt("n_tessera"), rs.getInt("punti_acquisto"), rs.getInt("prezzo_totale"), rs.getInt("id_fattura"), rs.getDate("data_emissione"), rs.getInt("id_carrello"));
+			Fattura f = new Fattura(rs.getInt("n_tessera"), rs.getFloat("punti_acquisto"), rs.getFloat("prezzo_totale"), rs.getInt("id_fattura"), rs.getDate("data_emissione"), rs.getInt("id_carrello"));
 			Fattura.add(f);
 			
 		}
@@ -52,9 +53,14 @@ public class VenditeDAOPostgres implements VenditeDAO{
 	}
 	
 	public int getUltimoIDCarrello() throws SQLException {
+		Carrello c = null;
 		Statement getCarrello = connessione.createStatement();
-		ResultSet rs = getCarrello.executeQuery("SELECT id_carrello FROM Carrello ORDER BY id_carrello DESC LIMIT 1");
-		return rs.getInt("id_carrello");
+		ResultSet rs = getCarrello.executeQuery("SELECT * FROM carrello ORDER BY id_carrello DESC LIMIT 1");
+		while(rs.next()) {
+			 c = new Carrello(rs.getInt("id_carrello"));
+		}
+		rs.close();
+		return c.getIDCarrello();
 	}
 	
 	public void inserisciCompCarelloKG(int IDCarrello, int IDProdotto, float quantità) throws SQLException {

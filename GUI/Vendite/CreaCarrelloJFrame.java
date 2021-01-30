@@ -221,7 +221,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		
 		SelezionaCategoriaCB = new JComboBox<String>();
 		SelezionaCategoriaCB.setModel(new DefaultComboBoxModel<String>(new String[] {"Frutta", "Verdura", "Latticini", "Uova", "Farinacei", "Confezionati"}));
-		SelezionaCategoriaCB.setBounds(390, 97, 139, 22);
+		SelezionaCategoriaCB.setBounds(392, 97, 139, 22);
 		SelezionaCategoriaCB.setSelectedIndex(-1);
 		CreaTesseraPanel.add(SelezionaCategoriaCB);
 		
@@ -268,10 +268,10 @@ public class CreaCarrelloJFrame extends JFrame {
 		ProdottoAggiuntoLB.setVisible(false);
 		CreaTesseraPanel.add(ProdottoAggiuntoLB);
 		
-		ErroreLB = new JLabel("Errore!");
+		ErroreLB = new JLabel("");
 		ErroreLB.setForeground(new Color(255, 0, 0));
 		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 12));
-		ErroreLB.setBounds(873, 415, 42, 30);
+		ErroreLB.setBounds(821, 415, 155, 89);
 		ErroreLB.setVisible(false);
 		CreaTesseraPanel.add(ErroreLB);
 		
@@ -316,7 +316,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		JLabel Specifica3LB = new JLabel("IN ALTO A SINISTRA");
 		Specifica3LB.setForeground(new Color(255, 0, 0));
 		Specifica3LB.setFont(new Font("Arial", Font.PLAIN, 8));
-		Specifica3LB.setBounds(40, 178, 86, 14);
+		Specifica3LB.setBounds(40, 176, 86, 10);
 		AggiungiPanel.add(Specifica3LB);
 		
 		JLabel Aggiungi3LB = new JLabel("Inserisci il numero di unit\u00E0");
@@ -337,7 +337,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		InserisciScorteTB = new JTextField();
 		InserisciScorteTB.setForeground(Color.BLACK);
 		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(50, 96, 96, 20);
+		InserisciScorteTB.setBounds(50, 96, 76, 20);
 		AggiungiPanel.add(InserisciScorteTB);
 		
 		
@@ -501,7 +501,8 @@ public class CreaCarrelloJFrame extends JFrame {
 		 TimerProdottoAggiunto.start();
 	 }
 	 
-	 public void ErroreProdottoAggiunto() {
+	 public void ErroreProdottoAggiunto(String Errore) {
+		 ErroreLB.setText(Errore);
 		 ErroreLB.setVisible(true);
 		 TimerErrore.start();
 	 }
