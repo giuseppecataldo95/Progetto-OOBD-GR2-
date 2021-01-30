@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entità.Fattura;
+import Entità.Prodotto_kg;
+import Entità.Prodotto_unitario;
 
 public interface VenditeDAO {
 
@@ -13,7 +15,7 @@ public interface VenditeDAO {
 	public void inserisciCompCarelloKG(int IDCarrello, int IDProdotto, float quantità) throws SQLException;
 	public void inserisciCompCarelloN(int IDCarrello, int IDProdotto, int quantità) throws SQLException;
 //	public void getCarrelloByIDCarrello(String iDCarrello);
-	
-	
+	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException;
+	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException;
 
 }

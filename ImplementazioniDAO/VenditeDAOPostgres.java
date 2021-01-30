@@ -10,6 +10,8 @@ import DAO.VenditeDAO;
 import Entità.Carrello;
 import Entità.Cliente;
 import Entità.Fattura;
+import Entità.Prodotto_kg;
+import Entità.Prodotto_unitario;
 import Entità.Tessera;
 
 public class VenditeDAOPostgres implements VenditeDAO{
@@ -71,6 +73,30 @@ public class VenditeDAOPostgres implements VenditeDAO{
 	public void inserisciCompCarelloN(int IDCarrello, int IDProdotto, int quantità) throws SQLException {
 		Statement inserisci = connessione.createStatement();
 		inserisci.executeUpdate("INSERT INTO comp_carrello_n VALUES ("+IDCarrello+","+IDProdotto+","+quantità+")");
+	}
+	
+	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException {
+		Statement getCarrello = connessione.createStatement();
+		ResultSet rs = getCarrello.executeQuery("SELECT * FROM comp_carrello_kg WHERE id_carrello="+IDCarrello);
+		ArrayList<Prodotto_kg> Prodotti = new ArrayList<Prodotto_kg>();
+		while(rs.next()) {
+			Prodotto_kg pr = new Prodotto_kg(rs.getInt("id_prodotto"),rs.getFloat("quantità_kg"));
+			Prodotti.add(pr);
+		}
+		rs.close();
+		return Prodotti;
+	}
+	
+	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException {
+		Statement getCarrello = connessione.createStatement();
+		ResultSet rs = getCarrello.executeQuery("SELECT * FROM comp_carrello_n WHERE id_carrello="+IDCarrello);
+		ArrayList<Prodotto_unitario> Prodotti = new ArrayList<Prodotto_unitario>();
+		while(rs.next()) {
+			Prodotto_unitario pr = new Prodotto_unitario(rs.getInt("id_prodotto"),rs.getInt("n_articoli"));
+			Prodotti.add(pr);
+		}
+		rs.close();
+		return Prodotti;
 	}
 
 

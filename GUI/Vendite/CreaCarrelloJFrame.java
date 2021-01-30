@@ -163,7 +163,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		VenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				ControllerV.CreaCarrello_VenditePercorsoBottonePremuto();
 				
 			}
 		});
@@ -173,7 +173,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		JButton CreaNuovoCarrelloButton = new JButton("> Crea Nuovo Carrello");
 		CreaNuovoCarrelloButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerV.CreaCarrello_CreaCarrelloPercorsoBottonePremuto();
 				
 			}
 		});
@@ -199,18 +199,20 @@ public class CreaCarrelloJFrame extends JFrame {
 				
 			}
 		});
-		IndietroButton.setBounds(760, 521, 103, 31);
+		IndietroButton.setBounds(735, 521, 103, 31);
 		CreaTesseraPanel.add(IndietroButton);
 		
-		JButton AvantiButton = new JButton("Avanti");	
+		JButton AvantiButton = new JButton("Visualizza Carrello");	
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ControllerV.CompletaTabellaCarrelloKG();
+				ControllerV.CompletaTabellaCarrelloN();
+				ControllerV.CreaCarrello_VisualizzaCarrelloBottonePremuto();
 				
 				
 			}
 		});
-		AvantiButton.setBounds(873, 521, 103, 31);
+		AvantiButton.setBounds(848, 521, 128, 31);
 		CreaTesseraPanel.add(AvantiButton);
 		
 		JScrollPane TabellaPanel = new JScrollPane();
@@ -498,6 +500,7 @@ public class CreaCarrelloJFrame extends JFrame {
 	 
 	 public void ProdottoAggiunto() {
 		 ProdottoAggiuntoLB.setVisible(true);
+		 
 		 TimerProdottoAggiunto.start();
 	 }
 	 
@@ -506,5 +509,4 @@ public class CreaCarrelloJFrame extends JFrame {
 		 ErroreLB.setVisible(true);
 		 TimerErrore.start();
 	 }
-	 
 }
