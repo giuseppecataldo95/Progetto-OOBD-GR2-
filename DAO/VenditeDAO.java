@@ -3,6 +3,7 @@ package DAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Entità.Carrello;
 import Entità.Fattura;
 import Entità.Prodotto_kg;
 import Entità.Prodotto_unitario;
@@ -17,5 +18,5 @@ public interface VenditeDAO {
 //	public void getCarrelloByIDCarrello(String iDCarrello);
 	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException;
 	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException;
-
+	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException;
 }

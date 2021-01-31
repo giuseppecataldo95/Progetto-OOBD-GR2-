@@ -91,6 +91,12 @@ public class Carrello {
 		PrezzoParziale = prezzoParziale;
 	}
 	
+	public float CalcolaPuntiParziali() {
+		float PuntiParziali = PuntiFrutta + PuntiVerdura + PuntiLatticini + PuntiFarinacei + PuntiUova + PuntiConfezionati;
+		return PuntiParziali;
+	}
+	
+	
 	
 
 }

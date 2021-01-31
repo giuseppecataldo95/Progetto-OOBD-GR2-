@@ -102,6 +102,7 @@ public class ControllerVendite {
 		Vendite.setVisible(false);
 		CreaCarrello = new CreaCarrelloJFrame(this, ControllerP);
 		CreaCarrello.setVisible(true);
+		CreaCarrello.AbilitaBottoneVisualizzaCarrello();
 		try {
 			DAO.inserisciCarrello();
 			CarrelloDaCreare = new Carrello(DAO.getUltimoIDCarrello());
@@ -202,6 +203,16 @@ public class ControllerVendite {
 	public void CreaCarrello_VenditePercorsoBottonePremuto() {
 		
     	CreaCarrello.setEnabled(false);
+    	CarrelloAttuale.setVisible(false);
+    	Salvataggio = new SalvataggioCarrelloJDialog(this);
+    	Salvataggio.setVisible(true);
+	
+	}
+	
+	public void CreaCarrelloIndietroBottonePremuto() {
+		
+    	CreaCarrello.setEnabled(false);
+    	CarrelloAttuale.setVisible(false);
     	Salvataggio = new SalvataggioCarrelloJDialog(this);
     	Salvataggio.setVisible(true);
 	
@@ -293,7 +304,7 @@ public class ControllerVendite {
 	
 	public void CompletaTabellaCarrelloN() {
     	ArrayList<Prodotto_unitario> CarrelloN = null;
-		try {
+    	try {
 			CarrelloN = DAO.getCarrelloNByID(CarrelloDaCreare.getIDCarrello());
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -302,8 +313,26 @@ public class ControllerVendite {
     		CarrelloAttuale.setRigheTabellaN(p.getID_Prodotto(),p.getScorte());
     }
 	
+	public void setPuntiEPrezzo() {
+    	Carrello CarrelloCorrente = null;
+    	try {
+    		CarrelloCorrente = DAO.getPrezzoEPuntiByID(CarrelloDaCreare.getIDCarrello());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	CarrelloAttuale.setPrezzoParziale(CarrelloCorrente.getPrezzoParziale());
+    	CarrelloAttuale.setPuntiParziali(CarrelloCorrente.CalcolaPuntiParziali());
+    }
+	
+	public void CarrelloAttualeAggiornaBottonePremuto() {
+		CarrelloAttuale.setVisible(false);
+		CarrelloAttuale = new CarrelloAttualeJFrame(this);
+		CarrelloAttuale.setVisible(true);
+	}
+	
 	public void CreaCarrello_VisualizzaCarrelloBottonePremuto() {
 		CarrelloAttuale.setVisible(true);
+		CreaCarrello.DisabilitaBottoneVisualizzaCarrello();
 	}
 	
 	public CreaCarrelloJFrame getCreaCarrello() {

@@ -40,7 +40,7 @@ import javax.swing.JTable;
 public class CreaCarrelloJFrame extends JFrame {
 
 
-	private JPanel CreaTesseraPanel;
+	private JPanel CreaCarrelloPanel;
 	
 	 
 
@@ -59,6 +59,7 @@ public class CreaCarrelloJFrame extends JFrame {
 	private Timer TimerProdottoAggiunto;
 	private JLabel ProdottoAggiuntoLB;
 	private JLabel ErroreLB;
+	private JButton VisualizzaCarrelloButton;
 
 	
 	
@@ -69,13 +70,13 @@ public class CreaCarrelloJFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
-		CreaTesseraPanel = new JPanel();
-		CreaTesseraPanel.setFont(new Font("Arial", Font.BOLD, 11));
-		CreaTesseraPanel.setBackground(new Color(255, 228, 181));
-		CreaTesseraPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-		CreaTesseraPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(CreaTesseraPanel);
-		CreaTesseraPanel.setLayout(null);
+		CreaCarrelloPanel = new JPanel();
+		CreaCarrelloPanel.setFont(new Font("Arial", Font.BOLD, 11));
+		CreaCarrelloPanel.setBackground(new Color(255, 228, 181));
+		CreaCarrelloPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		CreaCarrelloPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(CreaCarrelloPanel);
+		CreaCarrelloPanel.setLayout(null);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MenùLateraleTB.setBorder(null);
@@ -86,7 +87,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		MenùLateraleTB.setMaximumSize(new Dimension(100, 100));
 		MenùLateraleTB.setBounds(0, 0, 65, 574);
 		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
-		CreaTesseraPanel.add(MenùLateraleTB);
+		CreaCarrelloPanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -157,7 +158,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		PercorsoTB.setBackground(new Color(255, 204, 153));
 		PercorsoTB.setMaximumSize(new Dimension(100, 100));
 		PercorsoTB.setBounds(65, 0, 976, 30);
-		CreaTesseraPanel.add(PercorsoTB);
+		CreaCarrelloPanel.add(PercorsoTB);
 		
 		JButton VenditePercorsoButton = new JButton("> Vendite");
 		VenditePercorsoButton.addActionListener(new ActionListener() {
@@ -184,55 +185,56 @@ public class CreaCarrelloJFrame extends JFrame {
 		CreazioneCarrello1LB.setFont(new Font("Arial", Font.BOLD, 14));
 		CreazioneCarrello1LB.setHorizontalAlignment(SwingConstants.CENTER);
 		CreazioneCarrello1LB.setBounds(212, 41, 562, 45);
-		CreaTesseraPanel.add(CreazioneCarrello1LB);
+		CreaCarrelloPanel.add(CreazioneCarrello1LB);
 		
 		JLabel CreazioneCarrello2LB = new JLabel("Seleziona il tipo di prodotto da inserire nel carrello:");
 		CreazioneCarrello2LB.setFont(new Font("Arial", Font.PLAIN, 13));
 		CreazioneCarrello2LB.setBounds(95, 99, 301, 16);
-		CreaTesseraPanel.add(CreazioneCarrello2LB);
+		CreaCarrelloPanel.add(CreazioneCarrello2LB);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				ControllerV.CreaCarrelloIndietroBottonePremuto();
 				
 			}
 		});
-		IndietroButton.setBounds(735, 521, 103, 31);
-		CreaTesseraPanel.add(IndietroButton);
+		IndietroButton.setBounds(749, 521, 103, 31);
+		CreaCarrelloPanel.add(IndietroButton);
 		
-		JButton AvantiButton = new JButton("Visualizza Carrello");	
-		AvantiButton.addActionListener(new ActionListener() {
+		VisualizzaCarrelloButton = new JButton("Carrello");	
+		VisualizzaCarrelloButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerV.CompletaTabellaCarrelloKG();
 				ControllerV.CompletaTabellaCarrelloN();
+				ControllerV.setPuntiEPrezzo();
 				ControllerV.CreaCarrello_VisualizzaCarrelloBottonePremuto();
 				
 				
 			}
 		});
-		AvantiButton.setBounds(848, 521, 128, 31);
-		CreaTesseraPanel.add(AvantiButton);
+		VisualizzaCarrelloButton.setBounds(862, 521, 114, 31);
+		CreaCarrelloPanel.add(VisualizzaCarrelloButton);
 		
 		JScrollPane TabellaPanel = new JScrollPane();
 		TabellaPanel.setVisible(false);
 		TabellaPanel.setBounds(95, 125, 716, 379);
-		CreaTesseraPanel.add(TabellaPanel);
+		CreaCarrelloPanel.add(TabellaPanel);
 		
 		
 		SelezionaCategoriaCB = new JComboBox<String>();
 		SelezionaCategoriaCB.setModel(new DefaultComboBoxModel<String>(new String[] {"Frutta", "Verdura", "Latticini", "Uova", "Farinacei", "Confezionati"}));
 		SelezionaCategoriaCB.setBounds(392, 97, 139, 22);
 		SelezionaCategoriaCB.setSelectedIndex(-1);
-		CreaTesseraPanel.add(SelezionaCategoriaCB);
+		CreaCarrelloPanel.add(SelezionaCategoriaCB);
 		
 		JPanel FiltraPanel = new JPanel();
 		FiltraPanel.setVisible(false);
 		FiltraPanel.setBorder(null);
 		FiltraPanel.setBackground(new Color(255, 228, 181));
 		FiltraPanel.setBounds(563, 89, 413, 30);
-		CreaTesseraPanel.add(FiltraPanel);
+		CreaCarrelloPanel.add(FiltraPanel);
 		
 		JLabel FiltraPerLB = new JLabel("Filtra per:");
 		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
@@ -244,7 +246,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		AggiungiPanel.setVisible(false);
 		AggiungiPanel.setBorder(null);
 		AggiungiPanel.setBounds(821, 218, 156, 196);
-		CreaTesseraPanel.add(AggiungiPanel);
+		CreaCarrelloPanel.add(AggiungiPanel);
 		AggiungiPanel.setLayout(null);
 		
 		JLabel Aggiungi1LB = new JLabel("Inserisci l'ID del prodotto da");
@@ -268,14 +270,14 @@ public class CreaCarrelloJFrame extends JFrame {
 		ProdottoAggiuntoLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		ProdottoAggiuntoLB.setBounds(821, 415, 165, 30);
 		ProdottoAggiuntoLB.setVisible(false);
-		CreaTesseraPanel.add(ProdottoAggiuntoLB);
+		CreaCarrelloPanel.add(ProdottoAggiuntoLB);
 		
 		ErroreLB = new JLabel("");
 		ErroreLB.setForeground(new Color(255, 0, 0));
 		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		ErroreLB.setBounds(821, 415, 155, 89);
 		ErroreLB.setVisible(false);
-		CreaTesseraPanel.add(ErroreLB);
+		CreaCarrelloPanel.add(ErroreLB);
 		
 		TimerProdottoAggiunto = new Timer(5000, new ActionListener() {
 
@@ -508,5 +510,13 @@ public class CreaCarrelloJFrame extends JFrame {
 		 ErroreLB.setText(Errore);
 		 ErroreLB.setVisible(true);
 		 TimerErrore.start();
+	 }
+	 
+	 public void DisabilitaBottoneVisualizzaCarrello() {
+		 VisualizzaCarrelloButton.setVisible(false);
+	 }
+	 
+	 public void AbilitaBottoneVisualizzaCarrello() {
+		 VisualizzaCarrelloButton.setVisible(true);
 	 }
 }

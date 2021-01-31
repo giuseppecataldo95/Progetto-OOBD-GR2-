@@ -98,6 +98,24 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		rs.close();
 		return Prodotti;
 	}
+	
+	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException {
+		Carrello CarrelloCorrente = null;
+		Statement getCarrello = connessione.createStatement();
+		ResultSet rs = getCarrello.executeQuery("SELECT * FROM carrello WHERE id_carrello="+IDCarrello);
+		while(rs.next()) {
+			CarrelloCorrente = new Carrello(rs.getInt("id_carrello"));
+			CarrelloCorrente.setPrezzoParziale(rs.getFloat("prezzo_parziale"));
+			CarrelloCorrente.setPuntiConfezionati(rs.getFloat("punti_confezionati"));
+			CarrelloCorrente.setPuntiFarinacei(rs.getFloat("punti_farinacei"));
+			CarrelloCorrente.setPuntiFrutta(rs.getFloat("punti_frutta"));
+			CarrelloCorrente.setPuntiLatticini(rs.getFloat("punti_latticini"));
+			CarrelloCorrente.setPuntiUova(rs.getFloat("punti_uova"));
+			CarrelloCorrente.setPuntiVerdura(rs.getFloat("punti_verdura"));
+		}
+		rs.close();
+		return CarrelloCorrente;
+	}
 
 
 //	public void getCarrelloByIDCarrello(String iDCarrello) {

@@ -49,6 +49,8 @@ public class CarrelloAttualeJFrame extends JFrame {
 	};
 	private JTable ProdottiKGTable;
 	private JTable ProdottiNTable;
+	private JLabel PrezzoParzialeLB;
+	private JLabel PuntiParzialiLB;
 
 	
 	
@@ -105,12 +107,30 @@ public class CarrelloAttualeJFrame extends JFrame {
 		TabellaNPanel.setViewportView(ProdottiNTable);
 		
 		JButton AggiornaButton = new JButton("Aggiorna");
+		AggiornaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerV.CarrelloAttualeAggiornaBottonePremuto();
+				ControllerV.CompletaTabellaCarrelloKG();
+				ControllerV.CompletaTabellaCarrelloN();
+				ControllerV.setPuntiEPrezzo();
+			}
+		});
 		AggiornaButton.setBounds(274, 461, 89, 23);
 		VenditePanel.add(AggiornaButton);
 		
 		JButton FatturaButton = new JButton("Genera Fattura");
 		FatturaButton.setBounds(373, 461, 107, 23);
 		VenditePanel.add(FatturaButton);
+		
+		PrezzoParzialeLB = new JLabel("");
+		PrezzoParzialeLB.setFont(new Font("Arial", Font.BOLD, 13));
+		PrezzoParzialeLB.setBounds(406, 385, 54, 14);
+		VenditePanel.add(PrezzoParzialeLB);
+		
+		PuntiParzialiLB = new JLabel("");
+		PuntiParzialiLB.setFont(new Font("Arial", Font.BOLD, 13));
+		PuntiParzialiLB.setBounds(406, 410, 54, 14);
+		VenditePanel.add(PuntiParzialiLB);
 	}
 	
 	public void setRigheTabellaKG(int ID_Prodotto, float Quantità) {
@@ -120,4 +140,12 @@ public class CarrelloAttualeJFrame extends JFrame {
 	public void setRigheTabellaN(int ID_Prodotto, int Quantità) {
 		ModelN.addRow(new Object[]{ID_Prodotto, Quantità});
 		}
+	
+	public void setPuntiParziali(float Punti) {
+		PuntiParzialiLB.setText(String.valueOf(Punti));
+	}
+	
+	public void setPrezzoParziale(float Prezzo) {
+		PrezzoParzialeLB.setText(String.valueOf(Prezzo)+"€");
+	}
 }
