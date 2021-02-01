@@ -19,14 +19,15 @@ public class VenditeDAOPostgres implements VenditeDAO{
 
 	private Connection connessione;
 	private PreparedStatement creaCarrello;
-
+	
+	
+	
 
 
 	public VenditeDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
 		creaCarrello = connessione.prepareStatement("INSERT INTO CARRELLO VALUES(DEFAULT,0,0,0,0,0,0,0)");
-
-
+		
 
 }
 
@@ -52,17 +53,6 @@ public class VenditeDAOPostgres implements VenditeDAO{
 
 	}
 
-
-
-
-
-
-
-
-	public void inserisciCompCarelloKG(int ID, float quantità) {
-//		Statement inserisci = connessione.createStatement();
-//		inserisci.executeUpdate("INSERT INTO comp_carrello_kg VALUES ("+ID+",")
-=======
 	public void inserisciCarrello() throws SQLException {
 		Statement creaCarrello = connessione.createStatement();
 		creaCarrello.executeUpdate("INSERT INTO Carrello VALUES (DEFAULT,0,0,0,0,0,0,0)");
@@ -132,23 +122,29 @@ public class VenditeDAOPostgres implements VenditeDAO{
 
 	}
 
+	public Carrello getCarrello(int IDCarrello) throws SQLException {
+		
+		Carrello CarrelloCorrente = null;
+		Statement getCarrello = connessione.createStatement();
+		ResultSet rs = getCarrello.executeQuery("SELECT punti_frutta, punti_verdura, punti_confezionati, punti_uova, punti_farinacei, punti_latticini, id_fattura FROM fattura JOIN carrello on fattura.ID_Carrello = carrello.ID_Carrello WHERE fattura.id_carrello ="+IDCarrello);
+		while(rs.next()) {
+		CarrelloCorrente = new Carrello(rs.getFloat("punti_frutta"), rs.getFloat("punti_verdura"), rs.getFloat("punti_confezionati"), rs.getFloat("punti_uova"), rs.getFloat("punti_farinacei"), rs.getFloat("punti_latticini"));
+		}
+		return CarrelloCorrente;
+	}
 
-//	public void getCarrelloByIDCarrello(String iDCarrello) {
-//
-//		Statement CarrelloPerIDCarrello = connessione.createStatement();
-//
-//		ResultSet rs = CarrelloPerIDCarrello.executeQuery("SELECT * FROM Visualizzaclienti");
-//		ArrayList<Tessera> Tessera = new ArrayList<Tessera>();
-//
-//		while(rs.next()) {
-//
-//			Cliente c = new Cliente(rs.getString("cf"));
-//			Tessera t = new Tessera (rs.getInt("n_tessera"), c, rs.getInt("punti_frutta"), rs.getInt("punti_verdura"), rs.getInt("punti_confezionati"), rs.getInt("punti_uova"), rs.getInt("punti_latticini"), rs.getInt("punti_farinacei"));
-//			Tessera.add(t);
-//		}
-//
-//		rs.close();
-//		return Tessera;
-//
-//	}
+	public int getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException {
+		
+			int IDCarrello = 0;
+			Statement getIDCarrello = connessione.createStatement();
+			ResultSet rs = getIDCarrello.executeQuery("SELECT fattura.id_carrello FROM fattura WHERE id_fattura = "+idFatturaTB);
+			while(rs.next()) {
+				
+				IDCarrello = rs.getInt("id_carrello");
+				
+			}
+			return IDCarrello;	
+		
+	}
+	
 }

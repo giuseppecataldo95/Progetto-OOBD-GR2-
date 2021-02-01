@@ -19,4 +19,6 @@ public interface VenditeDAO {
 	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException;
 	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException;
 	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException;
+	public Carrello getCarrello(int parseInt)throws SQLException;
+	public int getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException;
 }

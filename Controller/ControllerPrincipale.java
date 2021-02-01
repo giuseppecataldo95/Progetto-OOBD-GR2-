@@ -7,6 +7,7 @@ import GUI.FinestraPrincipaleJFrame;
 import GUI.Cliente.CreaTesseraJFrame;
 import GUI.Cliente.ClientiJFrame;
 import GUI.Magazzino.MagazzinoJFrame;
+import GUI.Vendite.VenditeJFrame;
 
 
 public class ControllerPrincipale {
@@ -19,6 +20,7 @@ public class ControllerPrincipale {
 
 	private FinestraPrincipaleJFrame FinestraPrincipale;
 	private ClientiJFrame Clienti;
+	private VenditeJFrame Vendite;
 	private CreaTesseraJFrame CreaTessera;
 	private MagazzinoJFrame Magazzino;
 	private ControllerCliente ControllerC;
@@ -423,6 +425,32 @@ public class ControllerPrincipale {
 
 		ControllerV.getVisualizzaCarrello().setVisible(false);
 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaCarrello1MenùLateraleClientiBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello1().setVisible(false);
+		ControllerC.getClienti().setVisible(true);
+	}
+
+
+
+	public void VisualizzaCarrello1MenùLateraleVenditeBottonePremuto() {
+		
+		ControllerV.getVisualizzaCarrello1().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaCarrello1MenùLateraleMagazzinoBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello1().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
 		
 	}
 

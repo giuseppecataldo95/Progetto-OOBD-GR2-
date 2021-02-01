@@ -10,9 +10,8 @@ public class Carrello {
 	private float PuntiLatticini;
 	private float PrezzoParziale;
 	
-	public Carrello(int IDCarrello) {
-		this.IDCarrello = IDCarrello;
-	}
+	
+	
 
 	public Carrello(int iDCarrello, float puntiFrutta, float puntiVerdura, float puntiConfezionati, float puntiUova,
 			float puntiFarinacei, float puntiLatticini, float prezzoParziale) {
@@ -25,6 +24,22 @@ public class Carrello {
 		PuntiFarinacei = puntiFarinacei;
 		PuntiLatticini = puntiLatticini;
 		PrezzoParziale = prezzoParziale;
+	}
+	
+	public Carrello(float puntiFrutta, float puntiVerdura, float puntiConfezionati, float puntiUova,
+			float puntiFarinacei, float puntiLatticini) {
+		super();
+		PuntiFrutta = puntiFrutta;
+		PuntiVerdura = puntiVerdura;
+		PuntiConfezionati = puntiConfezionati;
+		PuntiUova = puntiUova;
+		PuntiFarinacei = puntiFarinacei;
+		PuntiLatticini = puntiLatticini;
+		
+	}
+
+	public Carrello(int IDCarrello) {
+		this.IDCarrello = IDCarrello;
 	}
 
 	public int getIDCarrello() {

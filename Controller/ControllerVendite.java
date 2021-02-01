@@ -16,18 +16,19 @@ import Entità.Prodotto_kg;
 import Entità.Prodotto_unitario;
 import Entità.Uova;
 import Entità.Verdura;
-<<<<<<< HEAD
+
 import GUI.Cliente.ErroreTesseraJDialog;
 import GUI.Cliente.FormatoNTesseraErratoJDialog;
 import GUI.Cliente.InserimentoClienteCompletatoJDialog;
 import GUI.Cliente.TesseraEliminataJDialog;
-=======
+
 import GUI.Vendite.CarrelloAttualeJFrame;
->>>>>>> f9d48d8761d1aaaca0ad00ce1cfd7f2cc1a648b0
+
 import GUI.Vendite.CreaCarrelloJFrame;
 import GUI.Vendite.IDCarrelloRicercaCarrelloJDialog;
 import GUI.Vendite.SalvataggioCarrelloJDialog;
 import GUI.Vendite.VenditeJFrame;
+import GUI.Vendite.VisualizzaCarrelloJFrame;
 import GUI.Vendite.VisualizzaFattureJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import ImplementazioniDAO.VenditeDAOPostgres;
@@ -38,9 +39,11 @@ import ImplementazioniDAO.VenditeDAOPostgres;
 public class ControllerVendite {
 
 
-	 private ControllerPrincipale ControllerP;
+	
+	private ControllerPrincipale ControllerP;
 	 private VenditeJFrame Vendite;
 	 private VisualizzaFattureJFrame VisualizzaCarrello;
+	 private VisualizzaCarrelloJFrame VisualizzaCarrello1;
 	 private IDCarrelloRicercaCarrelloJDialog RicercaCarrelloDialog;
 	 private VenditeDAO DAO;
 	 private MagazzinoDAO DAOM;
@@ -86,7 +89,7 @@ public class ControllerVendite {
 		
     	for(Fattura f : Fattura) 
     	{
-			VisualizzaFattureJFrame.setRigheTabella(f.getNTessera(), f.getIDFattura(), f.getIDCarrello(), f.getPrezzoTotale(), f.getPuntiTotali(), f.getDataEmissione());
+			VisualizzaFattureJFrame.setRigheTabella(f.getNTessera(), f.getIDFattura(), f.getPrezzoTotale(), f.getPuntiTotali(), f.getDataEmissione());
     	}
     			
 	
@@ -297,16 +300,7 @@ public class ControllerVendite {
 		VisualizzaCarrello.setVisible(true);
 		
 	}
-<<<<<<< HEAD
-	public void CreaCarrello() {
-		
-		
 
-		
-	
-
-	}
-=======
 	
 	public void CompletaTabellaCarrelloKG() {
 		ArrayList<Prodotto_kg> CarrelloKG = null;
@@ -358,9 +352,53 @@ public class ControllerVendite {
 	public VisualizzaFattureJFrame getVisualizzaCarrello() {
 		return VisualizzaCarrello;
 	}
+	public void CreaCarrello() {
+		
+	}
+	public void CompletaTabellaFattura() {
+		
+		Carrello Carrello = null;
+		try {
+			
+			 Carrello = DAO.getCarrello(DAO.getIDCarrelloByIDFattura(RicercaCarrelloDialog.getIDFatturaTB()));
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		VisualizzaCarrello1.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
+		
+	}
+	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
+
+		VisualizzaCarrello.setVisible(false);
+		RicercaCarrelloDialog.setVisible(false);
+		VisualizzaCarrello1 = new VisualizzaCarrelloJFrame(this, ControllerP);
+		VisualizzaCarrello1.setVisible(true);
+		
+	}
+	public void VisualizzaCarrello1VenditePercorsoBottonePremuto() {
+
+		VisualizzaCarrello.setVisible(false);
+		Vendite = new VenditeJFrame(this, ControllerP);
+		Vendite.setVisible(true);
+		
+	}
+	public void VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto() {
+
+		VisualizzaCarrello1.setVisible(false);
+		VisualizzaCarrello = new VisualizzaFattureJFrame(this,ControllerP);
+		VisualizzaCarrello.setVisible(true);
+		
+	}
+	public VisualizzaCarrelloJFrame getVisualizzaCarrello1() {
+		return VisualizzaCarrello1;
+	}
+	public void setVisualizzaCarrello1(VisualizzaCarrelloJFrame visualizzaCarrello1) {
+		VisualizzaCarrello1 = visualizzaCarrello1;
+	}
 	
 	
-	
-	
->>>>>>> f9d48d8761d1aaaca0ad00ce1cfd7f2cc1a648b0
+
 }

@@ -35,7 +35,7 @@ import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 
-public class VisualizzaFattureJFrame extends JFrame {
+public class VisualizzaCarrelloJFrame extends JFrame {
 
 	private JPanel VisualizzaFatturePanel;
 	ControllerVendite ControllerV;
@@ -43,15 +43,14 @@ public class VisualizzaFattureJFrame extends JFrame {
 	private JTable table;
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
-	private JTextField FiltraPerTB;
-	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"},0) {
+	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Punti Frutta", "Punti Verdura", "Punti Confezionati", "Punti Farinacei", "Punti Uova", "Punti Latticini", },0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
 	};
 
 
-	public VisualizzaFattureJFrame(ControllerVendite c, ControllerPrincipale c1) {
+	public VisualizzaCarrelloJFrame(ControllerVendite c, ControllerPrincipale c1) {
 		ControllerV = c;
 		ControllerP = c1;
 		
@@ -80,28 +79,21 @@ public class VisualizzaFattureJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleClientiBottonePremuto();
+				ControllerP.VisualizzaCarrello1MenùLateraleClientiBottonePremuto();
 				
 			}
 		});
 		
 		JButton VenditeButton = new JButton("");
-		VenditeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.VisualizzaClientiMenùLateraleVenditeBottonePremuto();
-				
-			}
-		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.addActionListener(new ActionListener() {
@@ -114,7 +106,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
@@ -122,7 +114,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleMagazzinoBottonePremuto();
+				ControllerP.VisualizzaCarrello1MenùLateraleMagazzinoBottonePremuto();
 				
 			}
 		});
@@ -132,7 +124,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/info-menu.png")));
+		InfoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
@@ -152,7 +144,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloPercorsoVenditeBottonePremuto();
+				ControllerV.VisualizzaCarrello1VenditePercorsoBottonePremuto();
 				
 			}
 		});
@@ -163,13 +155,18 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VisualizzaVenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloPercorsoVisualizzaVenditeBottonePremuto();
+				
+				ControllerV.VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto();
 				
 				
 			}
 		});
 		VisualizzaVenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaVenditePercorsoButton);
+		
+		JButton VisualizzaDettagliPercorsoButton = new JButton("> Visualizza Dettagli Fattura");
+		VisualizzaDettagliPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		percorsoTB.add(VisualizzaDettagliPercorsoButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(97, 125, 722, 367);
@@ -184,73 +181,21 @@ public class VisualizzaFattureJFrame extends JFrame {
 		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		
-		FiltraPerTB = new JTextField();
-		FiltraPerTB.setBounds(412, 41, 256, 20);
-		VisualizzaFatturePanel.add(FiltraPerTB);
-		FiltraPerTB.setColumns(10);
-		
-		JComboBox FiltraPerCB = new JComboBox();
-		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Numero Tessera","ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"}));
-		FiltraPerCB.setSelectedIndex(0);	
-		FiltraPerCB.setBounds(271, 40, 131, 22);
-		VisualizzaFatturePanel.add(FiltraPerCB);
-		
-		
-		JLabel FiltraPerLB = new JLabel("Filtra per:");
-		FiltraPerLB.setFont(new Font("Arial", Font.PLAIN, 13));
-		FiltraPerLB.setBounds(207, 41, 65, 20);
-		VisualizzaFatturePanel.add(FiltraPerLB);
-		
-		JButton DettagliClienteJButton = new JButton("Dettagli Carrello");
-		DettagliClienteJButton.setBounds(858, 125, 118, 35);
-		VisualizzaFatturePanel.add(DettagliClienteJButton);
-		DettagliClienteJButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				ControllerV.VisualizzaFattureDettagliCarrelloBottonePremuto();
-
-			}
-		});
-		DettagliClienteJButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		DettagliClienteJButton.setBackground(new Color(255, 140, 0));
-		FiltraPerCB.addItemListener(new ItemListener() {
-			public void itemStateChanged (ItemEvent ie) {
-				if(ie.getStateChange() == ItemEvent.SELECTED) {
-				      FiltraPerTB.setText("");
-				   }
-			}
-			
-		});
-		FiltraPerTB.getDocument().addDocumentListener(
-                new DocumentListener() {
-                    public void changedUpdate(DocumentEvent e) {
-                    	newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                    public void insertUpdate(DocumentEvent e) {
-                        newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                    public void removeUpdate(DocumentEvent e) {
-                        newFilter(FiltraPerCB.getSelectedIndex());
-                    }
-                });
+		JLabel lblNewLabel = new JLabel("Ecco l'elenco dei punti associati alla Fattura Ricercata");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		lblNewLabel.setBounds(284, 55, 416, 30);
+		VisualizzaFatturePanel.add(lblNewLabel);
 
 
 	}
 	
 	
 	
-	public static  void setRigheTabella(int NTessera, int IDFattura, float PrezzoTotale, float PuntiTotali, Date DataEmissione){
-		Model.addRow(new Object[] {NTessera, IDFattura, PrezzoTotale, PuntiTotali, DataEmissione});
+	public static  void setRigheTabella(float PuntiFrutta, float PuntiVerdura, float PuntiConfezionati, float PuntiFarinacei, float PuntiUova, float PuntiLatticini){
+		Model.addRow(new Object[] {PuntiFrutta, PuntiVerdura, PuntiConfezionati, PuntiFarinacei, PuntiUova, PuntiLatticini});
 		
 		}
 	
-	private void newFilter(int IndiceColonna) {
-	    RowFilter<DefaultTableModel, Object> rf = null;
-	    try {
-	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
-	    } catch (java.util.regex.PatternSyntaxException e) {
-	        return;
-	    }
-	    sorter.setRowFilter(rf);
- }
+	
 }
