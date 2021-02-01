@@ -77,7 +77,7 @@ public class CreaTesseraJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			
-			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
+			ControllerP.CreaTesseraMenùLateraleClientiBottonePremuto();
 
 		}
 	});
@@ -109,7 +109,7 @@ public class CreaTesseraJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.CreaTesseraMenùLateraleMagazzinoButtonPressed();
+				ControllerP.CreaTesseraMenùLateraleMagazzinoBottonePremuto();
 
 			}
 		});

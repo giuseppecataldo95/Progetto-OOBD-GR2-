@@ -88,6 +88,11 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaLatticiniMenuLateraleVenditeBottonePremuto();
+			}
+		});
 		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);

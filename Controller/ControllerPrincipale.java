@@ -12,25 +12,15 @@ import GUI.Vendite.VenditeJFrame;
 
 public class ControllerPrincipale {
 	
-	public FinestraPrincipaleJFrame getFinestraPrincipale() {
-		return FinestraPrincipale;
-	}
-
-	
-
 	private FinestraPrincipaleJFrame FinestraPrincipale;
 	private ClientiJFrame Clienti;
-	private VenditeJFrame Vendite;
-	private CreaTesseraJFrame CreaTessera;
 	private MagazzinoJFrame Magazzino;
 	private ControllerCliente ControllerC;
 	private ControllerMagazzino ControllerM;
 	private ControllerVendite ControllerV;
-	private Connection Connessione;
+
 	
 	public ControllerPrincipale(Connection Conn) throws SQLException {
-		
-		 Connessione= Conn;
 		 ControllerM = new ControllerMagazzino(Conn,this);
 		 ControllerC = new ControllerCliente(Conn,this);
 		 ControllerV= new ControllerVendite(Conn, this);
@@ -42,12 +32,14 @@ public class ControllerPrincipale {
 	
 	//SNODO SE CLICCO CLIENTI
 
-	public void FinestraPrincipaleClientiButtonPressed(){
+	public void FinestraPrincipaleClientiBottonePremuto(){
 		ControllerC.getClienti().setVisible(true);
 		FinestraPrincipale.setVisible(false);
 	}
 	
-	public void ClientiMenuLateraleMagazzinoButtonPressed() {
+	//TOOLBAR CLIENTI
+	
+	public void ClientiMenuLateraleMagazzinoBottonePremuto() {
 
  		ControllerC.getClienti().setVisible(false);
  		ControllerM.getMagazzino().setVisible(true);
@@ -61,27 +53,91 @@ public class ControllerPrincipale {
 		
 	}
 	
-	public void CreaTesseraMenùLateraleClientiButtonPressed() {
+	public void ClientiMenuLateraleVenditeBottonoPremuto() {
+		
+		ControllerC.getClienti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+
+	}
+	
+	//TOOLBAR CREA TESSERA
+	
+	public void CreaTesseraMenùLateraleClientiBottonePremuto() {
 		ControllerC.getCreaTessera().setVisible(false);
 		ControllerC.getClienti().setVisible(true);
  	}
 
- 	public void CreaTesseraMenùLateraleMagazzinoButtonPressed() {
+ 	public void CreaTesseraMenùLateraleMagazzinoBottonePremuto() {
 
  		ControllerC.getCreaTessera().setVisible(false);
  		Magazzino = new MagazzinoJFrame(ControllerM, this);
  		Magazzino.setVisible(true);
+ 	}
+ 	
+ 	public void CreaTesseraMenùLateraleVenditeBottonePremuto() {
+		
+		ControllerC.getCreaTessera().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+	}
+ 	
+ 	//TOOLBAR VISUALIZZA CLIENTI
+ 	
+ 	public void VisualizzaClientiMenuLateraleClientiBottonePremuto() {
+		
+ 		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		Clienti = new ClientiJFrame(ControllerC, this);
+ 		Clienti.setVisible(true);
  		
 	}
  	
- 	public void RiepilogoTesseraMenuLateraleClientiButtonPressed() {
+ 	public void VisualizzaClientiMenuLateraleMagazzinoBottonePremuto() {
+		
+ 		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		ControllerM.getMagazzino().setVisible(true);
+ 		
+	}
+ 	
+ 	public void VisualizzaClientiMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaClienti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+ 	//TOOLBAR VISUALIZZA PUNTI
+ 	
+ 	public void VisualizzaPuntiMenuLateraleClientiBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+		ControllerC.getClienti().setVisible(true);
+		
+	}
+
+	public void VisualizzaPuntiMenuLateraleMagazzinoBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
+		
+		
+	}
+
+	public void VisualizzaPuntiMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaPunti().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+	
+	//TOOLBAR RIEPILOGO TESSERA
+	
+	public void RiepilogoTesseraMenuLateraleClientiBottonePremuto() {
 		
  		ControllerC.getRiepilogoTessera().setVisible(false);	
  		Clienti = new ClientiJFrame(ControllerC, this);
  		Clienti.setVisible(true);
  	}
  	
- 	public void RiepilogoTesseraMenuLateraleMagazzinoButtonPressed() {
+ 	public void RiepilogoTesseraMenuLateraleMagazzinoBottonePremuto() {
 		
  		ControllerC.getRiepilogoTessera().setVisible(false);
  		Magazzino = new MagazzinoJFrame(ControllerM, this);
@@ -89,20 +145,25 @@ public class ControllerPrincipale {
  		
 	}
  	
- 	public void VisualizzaClientiMenuLateraleClientiButtonPressed() {
+ 	public void RiepilogoTesseraMenùLateraleVenditeBottonePremuto() {
 		
- 		ControllerC.getVisualizzaClienti().setVisible(false);
- 		Clienti = new ClientiJFrame(ControllerC, this);
- 		Clienti.setVisible(true);
- 		
-	}
- 	
- 	public void VisualizzaClientiMenuLateraleMagazzinoButtonPressed() {
+		ControllerC.getRiepilogoTessera().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
 		
- 		ControllerC.getVisualizzaClienti().setVisible(false);
- 		ControllerM.getMagazzino().setVisible(true);
- 		
 	}
+
+ 	//TOOLBAR VISUALIZZA DETTAGLI
+
+ 	public void VisualizzaDettagliClienteMenùLateraleVenditeBottonePremuto() {
+
+		ControllerC.getVisualizzaDettagli().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+		
+	}
+
+ 	//MANCANO METODIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+	
  	
  	//SNODO PER MAGAZZINO
  	
@@ -144,6 +205,11 @@ public class ControllerPrincipale {
  		ControllerC.getClienti().setVisible(true);
  	}
  	
+ 	public void AggiungiProdottoMenuLateraleVenditeBottonePremuto() {
+ 		ControllerM.getAggiungiPr().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
+ 	}
+ 	
  	//TOOLBAR AGGIUNGI FRUTTA
  	
  	public void AggiungiFruttaMenuLateraleMagazzinoBottonePremuto() {
@@ -154,6 +220,11 @@ public class ControllerPrincipale {
  	public void AggiungiFruttaMenuLateraleClientiBottonePremuto() {
  		ControllerM.getFrutta().setVisible(false);
  		ControllerC.getClienti().setVisible(true);
+ 	}
+ 	
+ 	public void AggiungiFruttaMenuLateraleVenditeBottonePremuto() {
+ 		ControllerM.getFrutta().setVisible(false);
+ 		ControllerV.getVendite().setVisible(true);
  	}
  	
  	//TOOLBAR AGGIUNGI VERDURA
@@ -168,6 +239,11 @@ public class ControllerPrincipale {
  	 	ControllerC.getClienti().setVisible(true);
  	}
  	
+ 	public void AggiungiVerduraMenuLateraleVenditeBottonePremuto() {
+ 		ControllerM.getVerdura().setVisible(false);
+ 	 	ControllerV.getVendite().setVisible(true);
+ 	}
+ 	
  	//TOOLBAR AGGIUNGI UOVA
  	
  	public void AggiungiUovaMenuLateraleMagazzinoBottonePremuto() {
@@ -178,6 +254,11 @@ public class ControllerPrincipale {
  	public void AggiungiUovaMenuLateraleClientiBottonePremuto() {
  	 	ControllerM.getUova().setVisible(false);
  	  	ControllerC.getClienti().setVisible(true);
+ 	}
+ 	
+ 	public void AggiungiUovaMenuLateraleVenditeBottonePremuto() {
+ 	 	ControllerM.getUova().setVisible(false);
+ 	  	ControllerV.getVendite().setVisible(true);
  	}
  	
  	//TOOLBAR AGGIUNGI FARINACEI
@@ -192,16 +273,26 @@ public class ControllerPrincipale {
  	  	ControllerC.getClienti().setVisible(true);
  	}
  	
+ 	public void AggiungiFarinaceiMenuLateraleVenditeBottonePremuto() {
+ 	 	ControllerM.getFarinacei().setVisible(false);
+ 	  	ControllerV.getVendite().setVisible(true);
+ 	}
+ 	
  	//TOOLBAR AGGIUNGI CONFEZIONATI
  	
  	 public void AggiungiConfezionatiMenuLateraleMagazzinoBottonePremuto() {
  	 	ControllerM.getConfezionati().setVisible(false);
- 	 	 ControllerM.getMagazzino().setVisible(true); 
+ 	 	ControllerM.getMagazzino().setVisible(true); 
  	 }
  	 	 	 	
  	 public void AggiungiConfezionatiMenuLateraleClientiBottonePremuto() {
  	 	ControllerM.getConfezionati().setVisible(false);
  	 	ControllerC.getClienti().setVisible(true);
+ 	 }
+ 	 
+ 	public void AggiungiConfezionatiMenuLateraleVenditeBottonePremuto() {
+ 	 	ControllerM.getConfezionati().setVisible(false);
+ 	 	ControllerV.getVendite().setVisible(true);
  	 }
  	 
  	//TOOLBAR AGGIUNGI LATTICINO
@@ -216,6 +307,11 @@ public class ControllerPrincipale {
  	 	ControllerC.getClienti().setVisible(true);
  	 }
  	 
+ 	public void AggiungiLatticiniMenuLateraleVenditeBottonePremuto() {
+ 	 	ControllerM.getLatticini().setVisible(false);
+ 	 	ControllerV.getVendite().setVisible(true);
+ 	 }
+ 	 
  	//TOOLBAR VISUALIZZA PRODOTTI
   	
   	public void VisualizzaProdottiMenuLateraleMagazzinoBottonePremuto() {
@@ -226,6 +322,11 @@ public class ControllerPrincipale {
   	public void VisualizzaProdottiMenuLateraleClientiBottonePremuto() {
   		ControllerM.getVisualizzaPr().setVisible(false);
   		ControllerC.getClienti().setVisible(true);
+  	}
+  	
+  	public void VisualizzaProdottiMenuLateraleVenditeBottonePremuto() {
+  		ControllerM.getVisualizzaPr().setVisible(false);
+  		ControllerV.getVendite().setVisible(true);
   	}
   	
   	//TOOLBAR AGGIUNGI FRUTTA
@@ -240,6 +341,11 @@ public class ControllerPrincipale {
   		ControllerC.getClienti().setVisible(true);
   	}
   	
+  	public void VisualizzaFruttaMenuLateraleVenditeBottonePremuto() {
+  		ControllerM.getVisualizzaFrutta().setVisible(false);
+  		ControllerV.getVendite().setVisible(true);
+  	}
+  	
   	//TOOLBAR AGGIUNGI VERDURA
   	
  	public void VisualizzaVerduraMenuLateraleMagazzinoBottonePremuto() {
@@ -250,6 +356,11 @@ public class ControllerPrincipale {
   	public void VisualizzaVerduraMenuLateraleClientiBottonePremuto() {
   		ControllerM.getVisualizzaVerdura().setVisible(false);
   	 	ControllerC.getClienti().setVisible(true);
+  	}
+  	
+  	public void VisualizzaVerduraMenuLateraleVenditeBottonePremuto() {
+  		ControllerM.getVisualizzaVerdura().setVisible(false);
+  	 	ControllerV.getVendite().setVisible(true);
   	}
   	
   	//TOOLBAR AGGIUNGI UOVA
@@ -264,6 +375,11 @@ public class ControllerPrincipale {
   	  	ControllerC.getClienti().setVisible(true);
   	}
   	
+  	public void VisualizzaUovaMenuLateraleVenditeBottonePremuto() {
+  	 	ControllerM.getVisualizzaUova().setVisible(false);
+  	  	ControllerV.getVendite().setVisible(true);
+  	}
+  	
   	//TOOLBAR AGGIUNGI FARINACEI
   	
   	public void VisualizzaFarinaceiMenuLateraleMagazzinoBottonePremuto() {
@@ -274,6 +390,11 @@ public class ControllerPrincipale {
   	public void VisualizzaFarinaceiMenuLateraleClientiBottonePremuto() {
   	 	ControllerM.getVisualizzaFarinacei().setVisible(false);
   	  	ControllerC.getClienti().setVisible(true);
+  	}
+  	
+  	public void VisualizzaFarinaceiMenuLateraleVenditeBottonePremuto() {
+  	 	ControllerM.getVisualizzaFarinacei().setVisible(false);
+  	  	ControllerV.getVendite().setVisible(true);
   	}
   	
   	//TOOLBAR AGGIUNGI CONFEZIONATI
@@ -288,6 +409,11 @@ public class ControllerPrincipale {
   	 	ControllerC.getClienti().setVisible(true);
   	 }
   	 
+  	 public void VisualizzaConfezionatiMenuLateraleVenditeBottonePremuto() {
+  	 	ControllerM.getVisualizzaConfezionati().setVisible(false);
+  	 	ControllerV.getVendite().setVisible(true);
+  	 }
+  	 
   	//TOOLBAR AGGIUNGI LATTICINO
    	
   	 public void VisualizzaLatticiniMenuLateraleMagazzinoBottonePremuto() {
@@ -299,24 +425,13 @@ public class ControllerPrincipale {
   	 	ControllerM.getVisualizzaLatticini().setVisible(false);
   	 	ControllerC.getClienti().setVisible(true);
   	 }
-
-	public void VisualizzaPuntiMenuLateraleClientiBottonePremuto() {
-
-		ControllerC.getVisualizzaPunti().setVisible(false);
-		ControllerC.getClienti().setVisible(true);
-		
-	}
-
-	public void VisualizzaPuntiMenuLateraleMagazzinoBottonePremuto() {
-
-		ControllerC.getVisualizzaPunti().setVisible(false);
-		ControllerM.getMagazzino().setVisible(true);
-		
-		
-	}
+  	 
+  	 public void VisualizzaLatticiniMenuLateraleVenditeBottonePremuto() {
+  	 	ControllerM.getVisualizzaLatticini().setVisible(false);
+  	 	ControllerV.getVendite().setVisible(true);
+  	 }
 	
-	
-	//SNODO SE CLICCO VENDITE
+  	//SNODO VENDITE
 
 	public void FinestraPrincipaleVenduteBottonePremuto() {
 
@@ -324,75 +439,20 @@ public class ControllerPrincipale {
 		FinestraPrincipale.setVisible(false);
 		
 	}
-
-	public void ClientiMenuLateraleVenditeBottonoPremuto() {
-		
-		ControllerC.getClienti().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-
-	}
-
-
-	public void CreaTesseraMenùLateraleVenditeBottonePremuto() {
-		
-		ControllerC.getCreaTessera().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-	public void RiepilogoTesseraMenùLateraleVenditeBottonePremuto() {
-		
-		ControllerC.getRiepilogoTessera().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
-	public void VisualizzaClientiMenùLateraleVenditeBottonePremuto() {
-
-		ControllerC.getVisualizzaClienti().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
-	public void VisualizzaDettagliClienteMenùLateraleVenditeBottonePremuto() {
-
-		ControllerC.getVisualizzaDettagli().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
-	public void VisualizzaPuntiMenùLateraleVenditeBottonePremuto() {
-
-		ControllerC.getVisualizzaPunti().setVisible(false);
- 		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
+	
+	//TOOLBAR VENDITE
+	
 	public void VenditeMenùLateraleClientiBottonePremuto() {
 	
  		ControllerV.getVendite().setVisible(false);
  		ControllerC.getClienti().setVisible(true);
-		
 	}
-
-
 
 	public void VenditeMenùLateraleVenditeBottonePremuto() {
 			
 		ControllerV.getVendite().setVisible(false);
  		ControllerV.getVendite().setVisible(true);
-		
 	}
-
-
 
 	public void VenditeMenùLateraleMagazzinoBottonePremuto() {
 		
@@ -401,7 +461,24 @@ public class ControllerPrincipale {
 		
 	}
 
-
+	//TOOLBAR CREA CARRELLO
+	
+	public void CreaCarrelloMenùLateraleClientiBottonePremuto() {
+		ControllerV.getCreaCarrello().setVisible(false);
+		ControllerC.getClienti().setVisible(true);
+	}
+	
+	public void CreaCarrelloMenùLateraleVenditeBottonePremuto() {
+		ControllerV.getCreaCarrello().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
+	}
+	
+	public void CreaCarrelloMenùLateraleMagazzinoBottonePremuto() {
+		ControllerV.getCreaCarrello().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
+	}
+	
+	//TOOLBAR ????
 
 	public void VisualizzaCarrelloMenùLateraleClientiBottonePremuto() {
 

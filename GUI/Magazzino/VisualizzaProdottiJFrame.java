@@ -67,6 +67,11 @@ public class VisualizzaProdottiJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaProdottiMenuLateraleVenditeBottonePremuto();
+			}
+		});
 		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);

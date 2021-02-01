@@ -280,6 +280,11 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.AggiungiConfezionatiMenuLateraleVenditeBottonePremuto();
+			}
+		});
 		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);

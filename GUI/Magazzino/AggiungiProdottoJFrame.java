@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
+import Controller.ControllerVendite;
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -65,6 +67,11 @@ public class AggiungiProdottoJFrame extends JFrame {
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.AggiungiProdottoMenuLateraleVenditeBottonePremuto();
+			}
+		});
 		toolBar.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);

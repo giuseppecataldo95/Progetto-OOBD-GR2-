@@ -989,12 +989,7 @@ public class ControllerMagazzino {
 
     public MagazzinoJFrame getMagazzino() {
 		return Magazzino;
-	}
-
-	public void setMagazzino(MagazzinoJFrame magazzino) {
-		Magazzino = magazzino;
-	}
-	
+	}	
 
 	public AggiungiProdottoJFrame getAggiungiPr() {
 		return AggiungiPr;

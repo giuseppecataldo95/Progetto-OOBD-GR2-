@@ -88,6 +88,11 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaConfezionatiMenuLateraleVenditeBottonePremuto();
+			}
+		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);

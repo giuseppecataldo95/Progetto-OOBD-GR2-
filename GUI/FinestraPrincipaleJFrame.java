@@ -65,7 +65,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 			
 			{
 				
-				Controller.FinestraPrincipaleClientiButtonPressed();
+				Controller.FinestraPrincipaleClientiBottonePremuto();
 				
 			}
 			
@@ -109,7 +109,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("Magazzino");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				P.FinestraPrincipaleMagazzinoBottonePremuto();
+				Controller.FinestraPrincipaleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));

@@ -63,6 +63,10 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		VisualizzaDettagliClientePanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
@@ -90,6 +94,10 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(MagazzinoButton);

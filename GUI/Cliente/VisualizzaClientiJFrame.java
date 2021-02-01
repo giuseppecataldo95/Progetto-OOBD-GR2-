@@ -84,7 +84,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.VisualizzaClientiMenuLateraleClientiButtonPressed();
+				ControllerP.VisualizzaClientiMenuLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -108,7 +108,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.VisualizzaClientiMenuLateraleMagazzinoButtonPressed();
+				ControllerP.VisualizzaClientiMenuLateraleMagazzinoBottonePremuto();
 				
 			}
 		});

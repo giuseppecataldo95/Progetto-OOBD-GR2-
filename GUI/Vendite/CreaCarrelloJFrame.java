@@ -99,9 +99,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			
-			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
-
+			ControllerP.CreaCarrelloMenùLateraleClientiBottonePremuto();
 		}
 	});
 		
@@ -109,7 +107,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.CreaTesseraMenùLateraleVenditeBottonePremuto();
+				ControllerP.CreaCarrelloMenùLateraleVenditeBottonePremuto();
 				
 			}
 		});
@@ -131,10 +129,8 @@ public class CreaCarrelloJFrame extends JFrame {
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ControllerP.CreaTesseraMenùLateraleMagazzinoButtonPressed();
-
-			}
+				ControllerP.CreaCarrelloMenùLateraleMagazzinoBottonePremuto();
+				}
 		});
 		
 		Component VerticalStrut = Box.createVerticalStrut(280);

@@ -170,7 +170,7 @@ public class ClientiJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.ClientiMenuLateraleMagazzinoButtonPressed();
+				ControllerP.ClientiMenuLateraleMagazzinoBottonePremuto();
 				
 			}
 		});

@@ -69,7 +69,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.RiepilogoTesseraMenuLateraleClientiButtonPressed();
+				ControllerP.RiepilogoTesseraMenuLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -110,7 +110,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.RiepilogoTesseraMenuLateraleMagazzinoButtonPressed();
+				ControllerP.RiepilogoTesseraMenuLateraleMagazzinoBottonePremuto();
 				
 			}
 		});
