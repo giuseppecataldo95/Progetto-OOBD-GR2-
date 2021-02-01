@@ -5,6 +5,9 @@ public class Prodotto {
 	private float Valore;
 	
 	
+	public Prodotto(int ID_Prodotto) {
+		this.ID_Prodotto = ID_Prodotto;
+	}
 	
 	public Prodotto(int iD_Prodotto, float valore) {
 		super();

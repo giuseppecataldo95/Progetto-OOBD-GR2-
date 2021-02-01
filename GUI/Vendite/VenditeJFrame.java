@@ -29,6 +29,7 @@ public class VenditeJFrame extends JFrame {
 	private JButton MagazzinoButton;
 	private ControllerPrincipale ControllerP;
 	private ControllerVendite ControllerV;
+
 	
 	
 	

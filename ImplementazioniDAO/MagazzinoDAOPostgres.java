@@ -199,8 +199,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		inserisciConfezionatiPS.setString(4, Marca.toUpperCase());
 		inserisciConfezionatiPS.setString(5, Conservazione.toUpperCase());
 		inserisciConfezionatiPS.setInt(6, NConfezioni);
-		inserisciConfezionatiPS.setFloat(7, Valore);
-		inserisciConfezionatiPS.setFloat(8, PesoConfezione);
+		inserisciConfezionatiPS.setFloat(7, PesoConfezione);
+		inserisciConfezionatiPS.setFloat(8, Valore);
 		inserisciConfezionatiPS.executeUpdate();
 		
 		

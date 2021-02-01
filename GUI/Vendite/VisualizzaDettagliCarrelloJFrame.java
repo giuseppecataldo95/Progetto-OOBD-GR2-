@@ -198,7 +198,7 @@ public class VisualizzaDettagliCarrelloJFrame extends JFrame {
 		DettagliClienteJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloDettagliCarrelloBottonePremuto();
+				ControllerV.VisualizzaFattureDettagliCarrelloBottonePremuto();
 
 			}
 		});

@@ -35,7 +35,7 @@ import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 
-public class VisualizzaCarrelloJFrame extends JFrame {
+public class VisualizzaFattureJFrame extends JFrame {
 
 	private JPanel VisualizzaFatturePanel;
 	ControllerVendite ControllerV;
@@ -51,7 +51,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 	};
 
 
-	public VisualizzaCarrelloJFrame(ControllerVendite c, ControllerPrincipale c1) {
+	public VisualizzaFattureJFrame(ControllerVendite c, ControllerPrincipale c1) {
 		ControllerV = c;
 		ControllerP = c1;
 		
@@ -80,7 +80,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,7 +101,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.addActionListener(new ActionListener() {
@@ -114,7 +114,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
@@ -132,7 +132,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/info-menu.png")));
+		InfoButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
@@ -207,7 +207,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		DettagliClienteJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloDettagliCarrelloBottonePremuto();
+				ControllerV.VisualizzaFattureDettagliCarrelloBottonePremuto();
 
 			}
 		});
@@ -239,7 +239,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 	
 	
 	
-	public static  void setRigheTabella(int NTessera, int IDFattura, int IDCarrello, int PrezzoTotale, int PuntiTotali, Date DataEmissione){
+	public static  void setRigheTabella(int NTessera, int IDFattura, int IDCarrello, float PrezzoTotale, float PuntiTotali, Date DataEmissione){
 		Model.addRow(new Object[] {NTessera, IDFattura, IDCarrello, PrezzoTotale, PuntiTotali, DataEmissione});
 		
 		}
