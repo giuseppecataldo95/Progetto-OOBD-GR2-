@@ -22,4 +22,7 @@ public interface VenditeDAO {
 	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException;
 	public void getTesserabyNTessera(int NTessera) throws TesseraNonTrovataException,SQLException;
 	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException;
+	public Carrello getCarrello(int parseInt)throws SQLException;
+	public int getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException;
+
 }

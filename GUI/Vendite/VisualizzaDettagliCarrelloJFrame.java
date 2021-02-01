@@ -44,7 +44,7 @@ public class VisualizzaDettagliCarrelloJFrame extends JFrame {
 	private TableRowSorter<DefaultTableModel> sorter;
 	private JTextField filterText;
 	private JTextField FiltraPerTB;
-	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "ID Fattura", "ID Carrello", "Prezzo Totale", "PuntiTotali", "Data di Emissione"},0) {
+	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
@@ -181,7 +181,7 @@ public class VisualizzaDettagliCarrelloJFrame extends JFrame {
 		FiltraPerTB.setColumns(10);
 		
 		JComboBox FiltraPerCB = new JComboBox();
-		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Numero Tessera","ID Fattura", "ID Carrello", "Prezzo Totale", "PuntiTotali", "Data di Emissione"}));
+		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Numero Tessera","ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"}));
 		FiltraPerCB.setSelectedIndex(0);	
 		FiltraPerCB.setBounds(271, 40, 131, 22);
 		VisualizzaFatturePanel.add(FiltraPerCB);
@@ -230,8 +230,8 @@ public class VisualizzaDettagliCarrelloJFrame extends JFrame {
 	
 	
 	
-	public static  void setRigheTabella(int NTessera, int IDFattura, int IDCarrello, int PrezzoTotale, int PuntiTotali, Date DataEmissione){
-		Model.addRow(new Object[] {NTessera, IDFattura, IDCarrello, PrezzoTotale, PuntiTotali, DataEmissione});
+	public static  void setRigheTabella(int NTessera, int IDFattura, int PrezzoTotale, int PuntiTotali, Date DataEmissione){
+		Model.addRow(new Object[] {NTessera, IDFattura, PrezzoTotale, PuntiTotali, DataEmissione});
 		
 		}
 	

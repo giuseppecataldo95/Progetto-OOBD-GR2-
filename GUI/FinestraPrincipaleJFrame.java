@@ -45,7 +45,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		
 		JLabel SelezionaLB = new JLabel("Seleziona l'area tematica:");
 		SelezionaLB.setFont(new Font("Arial", Font.PLAIN, 30));
-		SelezionaLB.setBounds(315, 74, 345, 36);
+		SelezionaLB.setBounds(321, 74, 394, 36);
 		FinestraPrincipalePanel.add(SelezionaLB);
 		
 		ContainerBottoniPanel = new JPanel();

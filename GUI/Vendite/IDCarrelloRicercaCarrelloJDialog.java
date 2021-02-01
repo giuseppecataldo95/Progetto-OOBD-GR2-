@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField IDCarrelloTB;
+	private JTextField IDFatturaTB;
 	private ControllerVendite ControllerV;
 	
 	
@@ -37,29 +37,30 @@ public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Inserisci L' ID Carrello");
+		JLabel lblNewLabel = new JLabel("Inserisci L' ID Fattura");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 12));
 		lblNewLabel.setBounds(3, 26, 286, 33);
 		contentPanel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ID Carrello : ");
+		JLabel lblNewLabel_1 = new JLabel("ID Fattura : ");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(80, 87, 79, 22);
 		contentPanel.add(lblNewLabel_1);
 		
-		IDCarrelloTB = new JTextField();
-		IDCarrelloTB.setBounds(159, 89, 55, 19);
-		contentPanel.add(IDCarrelloTB);
-		IDCarrelloTB.setColumns(10);
+		IDFatturaTB = new JTextField();
+		IDFatturaTB.setBounds(159, 89, 55, 19);
+		contentPanel.add(IDFatturaTB);
+		IDFatturaTB.setColumns(10);
 		
 		JButton AvantiButton = new JButton("Avanti");
 		AvantiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-//				ControllerV.RicercaCarrelloPerIDCarrelloAvantiBottonePremuto();
+				ControllerV.CompletaTabellaFattura();
+				ControllerV.IDCarrelloRicercaFatturaAvantiBottonePremuto();
 				
 			}
 		});
@@ -67,12 +68,12 @@ public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 		contentPanel.add(AvantiButton);
 	}
 	
-	public String getIDCarrelloTB() {
-		return IDCarrelloTB.getText();
+	public String getIDFatturaTB() {
+		return IDFatturaTB.getText();
 	}
 
 
-	public void setIDCarrelloTB(JTextField iDCarrelloTB) {
-		IDCarrelloTB = iDCarrelloTB;
+	public void setIDCarrelloTB(JTextField iDFatturaTB) {
+		IDFatturaTB = iDFatturaTB;
 	}
 }
