@@ -1,4 +1,4 @@
-package GUI.Magazzino;
+package GUI.Vendite;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -11,24 +11,25 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
+import Controller.ControllerVendite;
 
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ErroreAggiungiProdottoJDialog extends JDialog {
+public class ErroreInserisciTesseraJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private ControllerMagazzino Controller;
+	private ControllerVendite Controller;
 	private JButton riprovaButton;
 	
-	public ErroreAggiungiProdottoJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) {
+	public ErroreInserisciTesseraJDialog(ControllerVendite v) {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		
-		Controller = c;
+		Controller = v;
 		setAlwaysOnTop(true);
 		
-		setBounds(500, 500, 372, 202);
+		setBounds(300, 300, 372, 202);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -42,7 +43,7 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 				riprovaButton = new JButton("Riprova");
 				riprovaButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Controller.RiprovaBottonePremuto(FinestraDaCuiApro);
+						Controller.ErroreTesseraRiprovaBottonePremuto();
 					}
 				});
 

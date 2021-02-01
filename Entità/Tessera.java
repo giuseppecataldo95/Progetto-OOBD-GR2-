@@ -18,7 +18,10 @@ public class Tessera {
 	
 	
 
-
+	public Tessera(int NTessera) {
+		this.NTessera = NTessera;
+	}
+	
 	public Tessera(int nTessera, Cliente c, float puntiFedeltà, Date dataRilascio, Date dataScadenza) {
 		super();
 		NTessera = nTessera;

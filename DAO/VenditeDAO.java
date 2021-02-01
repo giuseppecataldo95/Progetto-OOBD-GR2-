@@ -7,6 +7,7 @@ import Entità.Carrello;
 import Entità.Fattura;
 import Entità.Prodotto_kg;
 import Entità.Prodotto_unitario;
+import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 public interface VenditeDAO {
 
@@ -19,4 +20,6 @@ public interface VenditeDAO {
 	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException;
 	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException;
 	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException;
+	public void getTesserabyNTessera(int NTessera) throws TesseraNonTrovataException,SQLException;
+	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException;
 }

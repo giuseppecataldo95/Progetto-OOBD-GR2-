@@ -11,6 +11,10 @@ public class Fattura {
 	private Date DataEmissione;
 	private int IDCarrello;
 	
+	public Fattura(int nTessera) {
+		NTessera = nTessera;
+	}
+	
 	
 	public Fattura(int nTessera, float puntiTotali, float prezzoTotale, int iDFattura, Date dataEmissione, int iDCarrello) {
 		super();

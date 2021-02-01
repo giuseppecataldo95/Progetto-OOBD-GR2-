@@ -14,16 +14,21 @@ import Entità.Frutta;
 import Entità.Latticino;
 import Entità.Prodotto_kg;
 import Entità.Prodotto_unitario;
+import Entità.Tessera;
 import Entità.Uova;
 import Entità.Verdura;
 import GUI.Vendite.CarrelloAttualeJFrame;
 import GUI.Vendite.CreaCarrelloJFrame;
+import GUI.Vendite.ErroreInserisciTesseraJDialog;
+import GUI.Vendite.GenerazioneFatturaCompletataJDialog;
 import GUI.Vendite.IDCarrelloRicercaCarrelloJDialog;
+import GUI.Vendite.InserisciNTesseraJDialog;
 import GUI.Vendite.SalvataggioCarrelloJDialog;
 import GUI.Vendite.VenditeJFrame;
 import GUI.Vendite.VisualizzaFattureJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import ImplementazioniDAO.VenditeDAOPostgres;
+import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 
 
@@ -41,6 +46,9 @@ public class ControllerVendite {
 	 private Carrello CarrelloDaCreare;
 	 private SalvataggioCarrelloJDialog Salvataggio;
 	 private CarrelloAttualeJFrame CarrelloAttuale = new CarrelloAttualeJFrame(this);
+	 private InserisciNTesseraJDialog InserisciTessera;
+	 private ErroreInserisciTesseraJDialog ErroreTessera;
+	 private GenerazioneFatturaCompletataJDialog GenerazioneCompletata;
 
 
 
@@ -202,7 +210,7 @@ public class ControllerVendite {
 	
 	public void CreaCarrello_VenditePercorsoBottonePremuto() {
 		
-    	CreaCarrello.setEnabled(false);
+		CreaCarrello.setEnabled(false);
     	CarrelloAttuale.setVisible(false);
     	Salvataggio = new SalvataggioCarrelloJDialog(this);
     	Salvataggio.setVisible(true);
@@ -211,7 +219,7 @@ public class ControllerVendite {
 	
 	public void CreaCarrelloIndietroBottonePremuto() {
 		
-    	CreaCarrello.setEnabled(false);
+		CreaCarrello.setEnabled(false);
     	CarrelloAttuale.setVisible(false);
     	Salvataggio = new SalvataggioCarrelloJDialog(this);
     	Salvataggio.setVisible(true);
@@ -227,6 +235,7 @@ public class ControllerVendite {
 	
 	public void SalvataggioBottoneIndietroPremuto() {
 		CreaCarrello.setEnabled(true);
+		CreaCarrello.AbilitaBottoneVisualizzaCarrello();
 		Salvataggio.setVisible(false);
 		
 	}
@@ -314,15 +323,14 @@ public class ControllerVendite {
     }
 	
 	public void setPuntiEPrezzo() {
-    	Carrello CarrelloCorrente = null;
     	try {
-    		CarrelloCorrente = DAO.getPrezzoEPuntiByID(CarrelloDaCreare.getIDCarrello());
+    		CarrelloDaCreare = DAO.getPrezzoEPuntiByID(CarrelloDaCreare.getIDCarrello());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	CarrelloAttuale.setPrezzoParziale(CarrelloCorrente.getPrezzoParziale());
-    	CarrelloAttuale.setPuntiParziali(CarrelloCorrente.CalcolaPuntiParziali());
-    }
+    	CarrelloAttuale.setPrezzoParziale(CarrelloDaCreare.getPrezzoParziale());
+    	CarrelloAttuale.setPuntiParziali(CarrelloDaCreare.CalcolaPuntiParziali());
+	}
 	
 	public void CarrelloAttualeAggiornaBottonePremuto() {
 		CarrelloAttuale.setVisible(false);
@@ -330,9 +338,64 @@ public class ControllerVendite {
 		CarrelloAttuale.setVisible(true);
 	}
 	
-	public void CreaCarrello_VisualizzaCarrelloBottonePremuto() {
+	public void CreaCarrelloVisualizzaCarrelloBottonePremuto() {
+		CarrelloAttuale = new CarrelloAttualeJFrame(this);
+		CompletaTabellaCarrelloKG();
+		CompletaTabellaCarrelloN();
+		setPuntiEPrezzo();
 		CarrelloAttuale.setVisible(true);
 		CreaCarrello.DisabilitaBottoneVisualizzaCarrello();
+	}
+	
+	public void CarrelloAttualeGeneraFatturaBottonePremuto() {
+		CarrelloAttuale.setEnabled(false);
+		CreaCarrello.setEnabled(false);
+		InserisciTessera = new InserisciNTesseraJDialog(this);
+		InserisciTessera.setVisible(true);
+	}
+	
+	public void InserisciNTesseraGeneraBottonePremuto() {
+		Tessera Compratore = new Tessera(Integer.parseInt(InserisciTessera.getNTessera()));
+		
+		try {
+			DAO.getTesserabyNTessera(Compratore.getNTessera());
+			Fattura FatturaDaGenerare = new Fattura(Compratore.getNTessera());
+			FatturaDaGenerare.setIDCarrello(CarrelloDaCreare.getIDCarrello());
+			FatturaDaGenerare.setPrezzoTotale(CarrelloDaCreare.getPrezzoParziale());
+			FatturaDaGenerare.setPuntiTotali(CarrelloDaCreare.CalcolaPuntiParziali());
+			DAO.inserisciFattura(FatturaDaGenerare);
+			CarrelloAttuale.setEnabled(true);
+			CarrelloAttuale.setVisible(false);
+			GenerazioneCompletata = new GenerazioneFatturaCompletataJDialog(this);
+			InserisciTessera.setVisible(false);
+			GenerazioneCompletata.setVisible(true);
+			
+		} catch (NumberFormatException|TesseraNonTrovataException|SQLException e) {
+			InserisciTessera.setEnabled(false);
+			ErroreTessera = new ErroreInserisciTesseraJDialog(this);
+			ErroreTessera.setError(e.getMessage());
+			ErroreTessera.setVisible(true);
+			
+		} 
+		
+	}
+	
+	public void ErroreTesseraRiprovaBottonePremuto() {
+		InserisciTessera.setEnabled(true);
+		ErroreTessera.setVisible(false);
+	}
+	
+	public void InserisciNTesseraIndietroBottonePremuto() {
+		CarrelloAttuale.setEnabled(true);
+		CreaCarrello.setEnabled(true);
+		InserisciTessera.setVisible(false);
+	}
+	
+	public void GenerazioneFatturaCompletataOkBottonePremuto(){
+		GenerazioneCompletata.setVisible(false);
+		CreaCarrello.setEnabled(true);
+		CreaCarrello.setVisible(false);
+		Vendite.setVisible(true);
 	}
 	
 	public CreaCarrelloJFrame getCreaCarrello() {

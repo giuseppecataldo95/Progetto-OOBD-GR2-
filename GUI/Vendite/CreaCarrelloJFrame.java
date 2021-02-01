@@ -206,10 +206,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		VisualizzaCarrelloButton = new JButton("Carrello");	
 		VisualizzaCarrelloButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControllerV.CompletaTabellaCarrelloKG();
-				ControllerV.CompletaTabellaCarrelloN();
-				ControllerV.setPuntiEPrezzo();
-				ControllerV.CreaCarrello_VisualizzaCarrelloBottonePremuto();
+				ControllerV.CreaCarrelloVisualizzaCarrelloBottonePremuto();
 				
 				
 			}

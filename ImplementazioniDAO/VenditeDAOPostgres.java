@@ -13,6 +13,7 @@ import Entità.Fattura;
 import Entità.Prodotto_kg;
 import Entità.Prodotto_unitario;
 import Entità.Tessera;
+import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 public class VenditeDAOPostgres implements VenditeDAO{
 	
@@ -115,6 +116,21 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		}
 		rs.close();
 		return CarrelloCorrente;
+	}
+	
+	public void getTesserabyNTessera(int NTessera) throws TesseraNonTrovataException,SQLException {
+		Statement getTessera = connessione.createStatement();
+		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera WHERE n_tessera="+NTessera);
+		while(rs.next()) {
+			if(rs.getRow()==0) {
+				throw new TesseraNonTrovataException();
+			}
+		}
+	}
+	
+	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException {
+		Statement InserisciFattura = connessione.createStatement();
+		InserisciFattura.executeUpdate("INSERT INTO fattura VALUES ("+FatturaDaGenerare.getNTessera()+","+FatturaDaGenerare.getPuntiTotali()+",DEFAULT,CURRENT_DATE,"+FatturaDaGenerare.getIDCarrello()+","+FatturaDaGenerare.getPrezzoTotale()+")");
 	}
 
 

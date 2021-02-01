@@ -119,6 +119,11 @@ public class CarrelloAttualeJFrame extends JFrame {
 		VenditePanel.add(AggiornaButton);
 		
 		JButton FatturaButton = new JButton("Genera Fattura");
+		FatturaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerV.CarrelloAttualeGeneraFatturaBottonePremuto();
+			}
+		});
 		FatturaButton.setBounds(373, 461, 107, 23);
 		VenditePanel.add(FatturaButton);
 		
