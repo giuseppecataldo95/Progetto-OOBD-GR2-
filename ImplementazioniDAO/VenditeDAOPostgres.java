@@ -1,6 +1,7 @@
 package ImplementazioniDAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,11 +15,13 @@ import Entità.Tessera;
 public class VenditeDAOPostgres implements VenditeDAO{
 	
 	private Connection connessione;
+	private PreparedStatement creaCarrello;
 	
 
 
 	public VenditeDAOPostgres(Connection connessione) throws SQLException {
 		this.connessione = connessione;
+		creaCarrello = connessione.prepareStatement("INSERT INTO CARRELLO VALUES(DEFAULT,0,0,0,0,0,0,0)");
 	
 	
 
@@ -45,6 +48,18 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		
 		
 	}
+	
+	public void creaCarrello() throws SQLException {
+		
+		Statement creaCarrello = connessione.createStatement();
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	public void inserisciCompCarelloKG(int ID, float quantità) {
 //		Statement inserisci = connessione.createStatement();

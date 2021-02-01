@@ -14,7 +14,9 @@ import Entità.Latticino;
 import Entità.Tessera;
 import Entità.Uova;
 import Entità.Verdura;
+import GUI.Cliente.ErroreTesseraJDialog;
 import GUI.Cliente.FormatoNTesseraErratoJDialog;
+import GUI.Cliente.InserimentoClienteCompletatoJDialog;
 import GUI.Cliente.TesseraEliminataJDialog;
 import GUI.Vendite.CreaCarrelloJFrame;
 import GUI.Vendite.IDCarrelloRicercaCarrelloJDialog;
@@ -237,5 +239,13 @@ public ControllerVendite(Connection Conn, ControllerPrincipale P) throws SQLExce
 		VisualizzaCarrello = new VisualizzaCarrelloJFrame(this, ControllerP);
 		VisualizzaCarrello.setVisible(true);
 		
+	}
+	public void CreaCarrello() {
+		
+		
+
+		
+	
+
 	}
 }
