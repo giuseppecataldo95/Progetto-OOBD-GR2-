@@ -115,7 +115,7 @@ public class CarrelloAttualeJFrame extends JFrame {
 				ControllerV.setPuntiEPrezzo();
 			}
 		});
-		AggiornaButton.setBounds(274, 461, 89, 23);
+		AggiornaButton.setBounds(248, 461, 89, 23);
 		VenditePanel.add(AggiornaButton);
 		
 		JButton FatturaButton = new JButton("Genera Fattura");
@@ -124,7 +124,7 @@ public class CarrelloAttualeJFrame extends JFrame {
 				ControllerV.CarrelloAttualeGeneraFatturaBottonePremuto();
 			}
 		});
-		FatturaButton.setBounds(373, 461, 107, 23);
+		FatturaButton.setBounds(342, 461, 138, 23);
 		VenditePanel.add(FatturaButton);
 		
 		PrezzoParzialeLB = new JLabel("");
