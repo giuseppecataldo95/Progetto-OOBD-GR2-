@@ -479,6 +479,17 @@ public class ControllerPrincipale {
 		ControllerM.getMagazzino().setVisible(true);
 	}
 	
+	//COLLEGAMENTO CARRELLO E TESSERE
+	
+	public void VisualizzaClientiNTessera() {
+		ControllerC.ClientiVisualizzaClientiButtonPressed();
+		ControllerC.CompletaTabellaTessera();
+	}
+	
+	public void NascondiVisualizzaClientiNTessera() {
+		ControllerC.getVisualizzaClienti().setVisible(false);
+	}
+	
 	//TOOLBAR ????
 
 	public void VisualizzaCarrelloMenùLateraleClientiBottonePremuto() {

@@ -254,6 +254,7 @@ public class ControllerVendite {
 		CreaCarrello.setEnabled(false);
 		InserisciTessera = new InserisciNTesseraJDialog(this);
 		InserisciTessera.setVisible(true);
+		ControllerP.VisualizzaClientiNTessera();
 	}
 	
 	public void InserisciNTesseraGeneraBottonePremuto() {
@@ -270,10 +271,12 @@ public class ControllerVendite {
 			CarrelloAttuale.setVisible(false);
 			GenerazioneCompletata = new GenerazioneFatturaCompletataJDialog(this);
 			InserisciTessera.setVisible(false);
+			ControllerP.NascondiVisualizzaClientiNTessera();
 			GenerazioneCompletata.setVisible(true);
 			
 		} catch (NumberFormatException|TesseraNonTrovataException|SQLException e) {
 			InserisciTessera.setEnabled(false);
+			ControllerP.NascondiVisualizzaClientiNTessera();
 			ErroreTessera = new ErroreInserisciTesseraJDialog(this);
 			ErroreTessera.setError(e.getMessage());
 			ErroreTessera.setVisible(true);
