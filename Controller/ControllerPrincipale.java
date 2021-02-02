@@ -86,8 +86,7 @@ public class ControllerPrincipale {
  	public void VisualizzaClientiMenuLateraleClientiBottonePremuto() {
 		
  		ControllerC.getVisualizzaClienti().setVisible(false);
- 		Clienti = new ClientiJFrame(ControllerC, this);
- 		Clienti.setVisible(true);
+ 		ControllerC.getClienti().setVisible(true);
  		
 	}
  	
