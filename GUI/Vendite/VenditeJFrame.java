@@ -101,9 +101,9 @@ public class VenditeJFrame extends JFrame {
 		VisualizzaCronologiaVenditeJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.CompletaTabellaFatture();
-				ControllerV.VenditeCronologiaVenditeBottonePremuto();
 				
+				ControllerV.VenditeCronologiaVenditeBottonePremuto();
+				ControllerV.CompletaTabellaFatture();
 			}
 		});
 		VisualizzaCronologiaVenditeJButton.setFont(new Font("Arial", Font.BOLD, 12));

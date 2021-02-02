@@ -99,7 +99,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleVenditeBottonePremuto();
+				ControllerP.VisualizzaCarrello1MenùLateraleVenditeBottonePremuto();
 				
 			}
 		});
