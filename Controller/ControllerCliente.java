@@ -106,6 +106,7 @@ public class ControllerCliente
 	{
 		
 		VisualizzaClienti.setVisible(false);
+		Clienti = new ClientiJFrame(this, ControllerP);
 		Clienti.setVisible(true);
 		
 	}

@@ -29,6 +29,7 @@ import Controller.ControllerPrincipale;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class VisualizzaPuntiJFrame extends JFrame {
 
@@ -185,9 +186,15 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		
 		
 		filterText = new JTextField();
-		filterText.setBounds(200, 73, 391, 20);
+		filterText.setBounds(269, 73, 157, 20);
 		VisualizzaPuntiPanel.add(filterText);
 		filterText.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Cerca per n\u00B0 Tessera : ");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(126, 76, 140, 13);
+		VisualizzaPuntiPanel.add(lblNewLabel);
 		filterText.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {

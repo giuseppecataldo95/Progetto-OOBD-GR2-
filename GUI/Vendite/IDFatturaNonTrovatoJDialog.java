@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class IDFatturaNonTrovatoJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	ControllerVendite ControllerV;
+	private ControllerVendite ControllerV;
 
 	public IDFatturaNonTrovatoJDialog(ControllerVendite ControllerVendite) {
 		ControllerV = ControllerVendite;
