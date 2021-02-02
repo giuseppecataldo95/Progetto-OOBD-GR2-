@@ -94,7 +94,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.VisualizzaClientiMenùLateraleVenditeBottonePremuto();
+				ControllerP.VisualizzaFattureMenùLateraleVenditeBottonePremuto();
 				
 			}
 		});

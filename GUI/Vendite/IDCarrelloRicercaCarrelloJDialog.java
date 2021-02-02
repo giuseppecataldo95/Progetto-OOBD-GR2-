@@ -60,7 +60,7 @@ public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				
 				ControllerV.CompletaTabellaFattura();
-				ControllerV.IDCarrelloRicercaFatturaAvantiBottonePremuto();
+				
 				
 			}
 		});

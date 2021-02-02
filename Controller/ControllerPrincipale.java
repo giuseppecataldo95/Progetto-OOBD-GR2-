@@ -15,6 +15,7 @@ public class ControllerPrincipale {
 	private FinestraPrincipaleJFrame FinestraPrincipale;
 	private ClientiJFrame Clienti;
 	private MagazzinoJFrame Magazzino;
+	private VenditeJFrame Vendite;
 	private ControllerCliente ControllerC;
 	private ControllerMagazzino ControllerM;
 	private ControllerVendite ControllerV;
@@ -528,6 +529,17 @@ public class ControllerPrincipale {
 
 		ControllerV.getVisualizzaCarrello1().setVisible(false);
 		ControllerM.getMagazzino().setVisible(true);
+		
+	}
+
+
+
+	public void VisualizzaFattureMenùLateraleVenditeBottonePremuto() {
+
+		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
+		
+		
 		
 	}
 

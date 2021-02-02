@@ -29,6 +29,7 @@ import GUI.Vendite.CreaCarrelloJFrame;
 import GUI.Vendite.ErroreInserisciTesseraJDialog;
 import GUI.Vendite.GenerazioneFatturaCompletataJDialog;
 import GUI.Vendite.IDCarrelloRicercaCarrelloJDialog;
+import GUI.Vendite.IDFatturaNonTrovatoJDialog;
 import GUI.Vendite.InserisciNTesseraJDialog;
 import GUI.Vendite.SalvataggioCarrelloJDialog;
 import GUI.Vendite.VenditeJFrame;
@@ -59,6 +60,7 @@ public class ControllerVendite {
 	 private InserisciNTesseraJDialog InserisciTessera;
 	 private ErroreInserisciTesseraJDialog ErroreTessera;
 	 private GenerazioneFatturaCompletataJDialog GenerazioneCompletata;
+	 private IDFatturaNonTrovatoJDialog IDFatturaNonTrovato;
 
 
 	 //COSTRUTTORE
@@ -374,7 +376,6 @@ public class ControllerVendite {
 	public void VisualizzaCarrelloPercorsoVenditeBottonePremuto() {
 		
 		VisualizzaCarrello.setVisible(false);
-		Vendite = new VenditeJFrame(this, ControllerP);
 		Vendite.setVisible(true);
 		
 	}
@@ -421,11 +422,17 @@ public class ControllerVendite {
 		
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			
 		}
-		
+		if(Carrello == null) {
+		IDFatturaNonTrovato = new IDFatturaNonTrovatoJDialog(this);
+		IDFatturaNonTrovato.setVisible(true);
+		}
+		else
+		{
 		VisualizzaCarrello1.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
-		
+		VisualizzaCarrello1.setVisible(true);
+		}
 	}
 	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
 
@@ -445,7 +452,6 @@ public class ControllerVendite {
 	public void VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto() {
 
 		VisualizzaCarrello1.setVisible(false);
-		VisualizzaCarrello = new VisualizzaFattureJFrame(this,ControllerP);
 		VisualizzaCarrello.setVisible(true);
 		
 	}
