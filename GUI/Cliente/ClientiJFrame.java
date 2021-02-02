@@ -101,10 +101,6 @@ public class ClientiJFrame extends JFrame {
 				
 				ControllerC.ClientiVisualizzaClientiButtonPressed();
 				ControllerC.CompletaTabellaTessera();
-				
-				
-
-				
 			}
 		});
 		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));

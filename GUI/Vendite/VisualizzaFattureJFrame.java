@@ -239,7 +239,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 	
 	
 	
-	public static  void setRigheTabella(int NTessera, int IDFattura, float PrezzoTotale, float PuntiTotali, Date DataEmissione){
+	public void setRigheTabella(int NTessera, int IDFattura, float PrezzoTotale, float PuntiTotali, Date DataEmissione){
 		Model.addRow(new Object[] {NTessera, IDFattura, PrezzoTotale, PuntiTotali, DataEmissione});
 		
 		}
@@ -252,5 +252,15 @@ public class VisualizzaFattureJFrame extends JFrame {
 	        return;
 	    }
 	    sorter.setRowFilter(rf);
- }
+	}
+	
+	public void PulisciDatiTabella() {
+		
+		int count = Model.getRowCount();
+		if(Model.getRowCount()>0) {
+			for(int i=0; i < count; i++) {
+				Model.removeRow(0);
+			}
+		}
+	}
 }

@@ -48,7 +48,6 @@ public class ControllerVendite {
 	
 	 private ControllerPrincipale ControllerP;
 	 private VenditeJFrame Vendite;
-	 private VisualizzaFattureJFrame VisualizzaCarrello;
 	 private VisualizzaCarrelloJFrame VisualizzaCarrello1;
 	 private IDCarrelloRicercaCarrelloJDialog RicercaCarrelloDialog;
 	 private VenditeDAO DAO;
@@ -57,6 +56,7 @@ public class ControllerVendite {
 	 private Carrello CarrelloDaCreare;
 	 private SalvataggioCarrelloJDialog Salvataggio;
 	 private CarrelloAttualeJFrame CarrelloAttuale = new CarrelloAttualeJFrame(this);
+	 private VisualizzaFattureJFrame VisualizzaFatture = new VisualizzaFattureJFrame(this,ControllerP);
 	 private InserisciNTesseraJDialog InserisciTessera;
 	 private ErroreInserisciTesseraJDialog ErroreTessera;
 	 private GenerazioneFatturaCompletataJDialog GenerazioneCompletata;
@@ -90,8 +90,10 @@ public class ControllerVendite {
 	public void VenditeCronologiaVenditeBottonePremuto() {
 
 		Vendite.setVisible(false);
-		VisualizzaCarrello = new VisualizzaFattureJFrame (this, ControllerP);
-		VisualizzaCarrello.setVisible(true);
+		VisualizzaFatture = new VisualizzaFattureJFrame (this, ControllerP);
+		VisualizzaFatture.PulisciDatiTabella();
+		CompletaTabellaFatture();
+		VisualizzaFatture.setVisible(true);
 	}
 
 	//FINESTRA CREA CARRELLO
@@ -364,7 +366,7 @@ public class ControllerVendite {
 		
     	for(Fattura f : Fattura) 
     	{
-			VisualizzaFattureJFrame.setRigheTabella(f.getNTessera(), f.getIDFattura(), f.getPrezzoTotale(), f.getPuntiTotali(), f.getDataEmissione());
+			VisualizzaFatture.setRigheTabella(f.getNTessera(), f.getIDFattura(), f.getPrezzoTotale(), f.getPuntiTotali(), f.getDataEmissione());
     	}
     			
 	
@@ -378,15 +380,15 @@ public class ControllerVendite {
 	
 	public void VisualizzaCarrelloPercorsoVenditeBottonePremuto() {
 		
-		VisualizzaCarrello.setVisible(false);
+		VisualizzaFatture.setVisible(false);
 		Vendite.setVisible(true);
 		
 	}
 	public void VisualizzaCarrelloPercorsoVisualizzaVenditeBottonePremuto() {
 		
-		VisualizzaCarrello.setVisible(false);
-		VisualizzaCarrello = new VisualizzaFattureJFrame(this, ControllerP);
-		VisualizzaCarrello.setVisible(true);
+		VisualizzaFatture.setVisible(false);
+		VisualizzaFatture = new VisualizzaFattureJFrame(this, ControllerP);
+		VisualizzaFatture.setVisible(true);
 		
 	}
 
@@ -439,7 +441,7 @@ public class ControllerVendite {
 	}
 	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
 
-		VisualizzaCarrello.setVisible(false);
+		VisualizzaFatture.setVisible(false);
 		RicercaCarrelloDialog.setVisible(false);
 		VisualizzaCarrello1 = new VisualizzaCarrelloJFrame(this, ControllerP);
 		VisualizzaCarrello1.setVisible(true);
@@ -447,7 +449,7 @@ public class ControllerVendite {
 	}
 	public void VisualizzaCarrello1VenditePercorsoBottonePremuto() {
 
-		VisualizzaCarrello.setVisible(false);
+		VisualizzaFatture.setVisible(false);
 		Vendite = new VenditeJFrame(this, ControllerP);
 		Vendite.setVisible(true);
 		
@@ -455,7 +457,7 @@ public class ControllerVendite {
 	public void VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto() {
 
 		VisualizzaCarrello1.setVisible(false);
-		VisualizzaCarrello.setVisible(true);
+		VisualizzaFatture.setVisible(true);
 		
 	}
 	
@@ -474,7 +476,7 @@ public class ControllerVendite {
 	}
 	
 	public VisualizzaFattureJFrame getVisualizzaCarrello() {
-		return VisualizzaCarrello;
+		return VisualizzaFatture;
 	}
 	
 	

@@ -192,7 +192,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 	
 	
 	
-	public static  void setRigheTabella(float PuntiFrutta, float PuntiVerdura, float PuntiConfezionati, float PuntiFarinacei, float PuntiUova, float PuntiLatticini){
+	public void setRigheTabella(float PuntiFrutta, float PuntiVerdura, float PuntiConfezionati, float PuntiFarinacei, float PuntiUova, float PuntiLatticini){
 		Model.addRow(new Object[] {PuntiFrutta, PuntiVerdura, PuntiConfezionati, PuntiFarinacei, PuntiUova, PuntiLatticini});
 		
 		}
