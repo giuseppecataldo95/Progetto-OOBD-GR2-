@@ -390,9 +390,31 @@ public class ControllerVendite {
 			IDFatturaNonTrovato = new IDFatturaNonTrovatoJDialog(this);
 			IDFatturaNonTrovato.setVisible(true);
 		} else {
+			VisualizzaDettagliFattura = new VisualizzaDettagliFatturaJFrame(this, ControllerP);
 			VisualizzaDettagliFattura.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
 			VisualizzaDettagliFattura.setVisible(true);
-		}
+		} 
+	}
+	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
+
+		VisualizzaFatture.setVisible(false);
+		RicercaCarrello.setVisible(false);
+		VisualizzaDettagliFattura = new VisualizzaDettagliFatturaJFrame(this, ControllerP);
+		VisualizzaDettagliFattura.setVisible(true);
+		
+	}
+	public void VisualizzaCarrello1VenditePercorsoBottonePremuto() {
+
+		VisualizzaFatture.setVisible(false);
+		Vendite = new VenditeJFrame(this, ControllerP);
+		Vendite.setVisible(true);
+		
+	}
+	public void VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto() {
+
+		VisualizzaDettagliFattura.setVisible(false);
+		VisualizzaFatture.setVisible(true);
+	
 	}
 	
 	//GETTERS
