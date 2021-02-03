@@ -30,7 +30,7 @@ import GUI.Magazzino.VisualizzaUovaJFrame;
 import GUI.Magazzino.VisualizzaVerduraJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import Risorse.App.ConvertiCBInData;
-import Risorse.MieEccezioni.MyDataFormatException;
+import Risorse.MieEccezioni.FormatoDataException;
 import Risorse.MieEccezioni.ProdottoNonTrovatoException;
 import Entità.*
 ;
@@ -606,7 +606,7 @@ public class ControllerMagazzino {
     		Frutta.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Frutta);
     		InserimentoCompletato.setVisible(true);
-		} catch (MyDataFormatException e) {
+		} catch (FormatoDataException e) {
 			Frutta.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");
@@ -681,7 +681,7 @@ public class ControllerMagazzino {
     		Verdura.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Verdura);
     		InserimentoCompletato.setVisible(true);
-    	} catch (MyDataFormatException e) {
+    	} catch (FormatoDataException e) {
 			Verdura.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");
@@ -757,7 +757,7 @@ public class ControllerMagazzino {
 	    	Farinacei.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Farinacei);
     		InserimentoCompletato.setVisible(true);
-	    } catch (MyDataFormatException e) {
+	    } catch (FormatoDataException e) {
 			Farinacei.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");
@@ -841,7 +841,7 @@ public class ControllerMagazzino {
 	    	Latticini.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Latticini);
     		InserimentoCompletato.setVisible(true);
-	    } catch (MyDataFormatException e) {
+	    } catch (FormatoDataException e) {
 			Latticini.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");
@@ -921,7 +921,7 @@ public class ControllerMagazzino {
 	    	Confezionati.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Confezionati);
     		InserimentoCompletato.setVisible(true);
-    	} catch (MyDataFormatException e) {
+    	} catch (FormatoDataException e) {
 			Confezionati.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Confezionati);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");
@@ -998,7 +998,7 @@ public class ControllerMagazzino {
 	    	Uova.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Uova);
     		InserimentoCompletato.setVisible(true);
-	    } catch (MyDataFormatException e) {
+	    } catch (FormatoDataException e) {
 			Uova.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
 			ErroreAggiungi.setError("ERRORE: Data non corretta");

@@ -2,8 +2,7 @@ package Risorse.App;
 
 import java.sql.Date;
 
-import GUI.Cliente.ErroreTesseraJDialog;
-import Risorse.MieEccezioni.MyDataFormatException;
+import Risorse.MieEccezioni.FormatoDataException;
 
 public class ConvertiCBInData {
 	
@@ -18,16 +17,16 @@ public class ConvertiCBInData {
 	}
 	
 	
-	public void ControllaData() throws MyDataFormatException {
+	public void ControllaData() throws FormatoDataException {
 		if(Integer.parseInt(Anno)%400==0 || Integer.parseInt(Anno)%4==0 || Integer.parseInt(Anno)%10==0) {
 			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
 			{
-				throw new MyDataFormatException();
+				throw new FormatoDataException();
 			}
 		}else {
 			if((Mese.equals("FEBBRAIO") && Giorno.equals("31")) || (Mese.equals("FEBBRAIO") && Giorno.equals("30")) || (Mese.equals("FEBBRAIO") && Giorno.equals("29")) || (Mese.equals("APRILE") && Giorno.equals("31")) || (Mese.equals("GIUGNO") && Giorno.equals("31")) || (Mese.equals("SETTEMBRE") && Giorno.equals("31")) || (Mese.equals("NOVEMBRE") && Giorno.equals("31"))) 
 			{
-				throw new MyDataFormatException();
+				throw new FormatoDataException();
 			}
 		}
 	}

@@ -28,9 +28,9 @@ public class CreaTesseraJFrame extends JFrame {
 
 
 	private JPanel CreaTesseraPanel;
-	private	JTextField InserisciNomeTB;
-	private	JTextField InserisciCognomeTB;
-	private	JTextField InserisciLuogoNTB;
+	private	JTextField InserisciNomeTF;
+	private	JTextField InserisciCognomeTF;
+	private	JTextField InserisciLuogoNTF;
 	private JComboBox  InserisciSessoCB;
 	private JComboBox  InserisciGiornoCB;
 	private JComboBox  InserisciMeseCB;
@@ -193,15 +193,15 @@ public class CreaTesseraJFrame extends JFrame {
 		InserisciLuogoNLB.setBounds(129, 362, 152, 20);
 		CreaTesseraPanel.add(InserisciLuogoNLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setBounds(316, 172, 190, 19);
-		CreaTesseraPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNomeTF = new JTextField();
+		InserisciNomeTF.setBounds(316, 172, 190, 19);
+		CreaTesseraPanel.add(InserisciNomeTF);
+		InserisciNomeTF.setColumns(10);
 		
-		InserisciCognomeTB = new JTextField();
-		InserisciCognomeTB.setBounds(316, 223, 190, 19);
-		CreaTesseraPanel.add(InserisciCognomeTB);
-		InserisciCognomeTB.setColumns(10);
+		InserisciCognomeTF = new JTextField();
+		InserisciCognomeTF.setBounds(316, 223, 190, 19);
+		CreaTesseraPanel.add(InserisciCognomeTF);
+		InserisciCognomeTF.setColumns(10);
 		
 		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -221,11 +221,11 @@ public class CreaTesseraJFrame extends JFrame {
 		InserisciAnnoCB.setBounds(481, 317, 66, 21);
 		CreaTesseraPanel.add(InserisciAnnoCB);
 		
-		InserisciLuogoNTB = new JTextField();
-		InserisciLuogoNTB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciLuogoNTB.setBounds(316, 362, 190, 19);
-		CreaTesseraPanel.add(InserisciLuogoNTB);
-		InserisciLuogoNTB.setColumns(10);
+		InserisciLuogoNTF = new JTextField();
+		InserisciLuogoNTF.setFont(new Font("Arial", Font.PLAIN, 12));
+		InserisciLuogoNTF.setBounds(316, 362, 190, 19);
+		CreaTesseraPanel.add(InserisciLuogoNTF);
+		InserisciLuogoNTF.setColumns(10);
 		
 
 		InserisciSessoCB = new JComboBox();
@@ -260,18 +260,18 @@ public class CreaTesseraJFrame extends JFrame {
 	}
 
 
-	public String getNomeTB() {
-		return InserisciNomeTB.getText();
+	public String getNomeTF() {
+		return InserisciNomeTF.getText();
 	}
 
 
-	public String getCognomeTB() {
-		return InserisciCognomeTB.getText();
+	public String getCognomeTF() {
+		return InserisciCognomeTF.getText();
 	}
 
 
-	public String getLuogoNTB() {
-		return InserisciLuogoNTB.getText();
+	public String getLuogoNTF() {
+		return InserisciLuogoNTF.getText();
 	}
 
 

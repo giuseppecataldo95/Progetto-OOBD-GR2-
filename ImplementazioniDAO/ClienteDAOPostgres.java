@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import DAO.ClienteDAO;
 import Entità.Cliente;
-import Entità.Comune;
 import Entità.Tessera;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
@@ -69,7 +68,7 @@ public class ClienteDAOPostgres implements ClienteDAO {
 		
 	}
 	
-	public ArrayList  getTessera() throws SQLException
+	public ArrayList<Tessera>getTessera() throws SQLException
 	{
 		Statement getTessera = connessione.createStatement();
 		ResultSet rs = getTessera.executeQuery("SELECT * FROM tessera JOIN cliente ON tessera.cf = cliente.cf");

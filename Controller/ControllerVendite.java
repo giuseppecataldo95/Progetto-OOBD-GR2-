@@ -422,7 +422,7 @@ public class ControllerVendite {
 		
 
 	}
-	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
+	public void RicercaFatturaAvantiBottonePremuto() {
 
 		VisualizzaFatture.setEnabled(true);
 		VisualizzaFatture.setVisible(false);

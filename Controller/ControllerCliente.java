@@ -15,7 +15,7 @@ import GUI.Cliente.VisualizzaPuntiJFrame;
 import ImplementazioniDAO.ClienteDAOPostgres;
 import Risorse.App.CFGenerator;
 import Risorse.App.ConvertiCBInData;
-import Risorse.MieEccezioni.MyDataFormatException;
+import Risorse.MieEccezioni.FormatoDataException;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 import java.sql.Connection;
@@ -107,9 +107,9 @@ public class ControllerCliente
 		RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
 		CreaTessera.setVisible(false);
 	
-		String Nome = CreaTessera.getNomeTB();
-		String Cognome = CreaTessera.getCognomeTB();
-		String Luogo_Nascita = CreaTessera.getLuogoNTB();
+		String Nome = CreaTessera.getNomeTF();
+		String Cognome = CreaTessera.getCognomeTF();
+		String Luogo_Nascita = CreaTessera.getLuogoNTF();
 		String Giorno = (CreaTessera.getGiornoCB());
 		String Mese = CreaTessera.getMeseCB();
 		ConvertiCBInData Controllore = new ConvertiCBInData(Giorno,Mese,CreaTessera.getAnnoCB());
@@ -117,7 +117,7 @@ public class ControllerCliente
 		String Sesso = CreaTessera.getSessoCB();								
 		try {
 			Controllore.ControllaData();
-		}catch(MyDataFormatException e){
+		}catch(FormatoDataException e){
 			ErroreTessera = new ErroreTesseraJDialog(this);
 			ErroreTessera.setVisible(true);
 		}
@@ -270,6 +270,14 @@ public class ControllerCliente
 			EliminaTessera = new EliminaTesseraByNTesseraJDialog(this);
 			VisualizzaClienti.setEnabled(false);
 			EliminaTessera.setVisible(true);
+	}
+	
+	public void EliminaTesseraIndietroBottonePremuto() {
+
+		EliminaTessera.setVisible(false);
+		VisualizzaClienti.setEnabled(true);
+		VisualizzaClienti.setVisible(true);
+		
 	}
 
 	public void EliminaTesseraByNTessera() {
@@ -454,13 +462,7 @@ public class ControllerCliente
 	}
 
 
-	public void EliminaTesseraIndietroBottonePremuto() {
-
-		EliminaTessera.setVisible(false);
-		VisualizzaClienti.setEnabled(true);
-		VisualizzaClienti.setVisible(true);
-		
-	}
+	
 
 
 			

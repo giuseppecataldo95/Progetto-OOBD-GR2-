@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entità.Cliente;
-import Entità.Comune;
 import Entità.Tessera;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
