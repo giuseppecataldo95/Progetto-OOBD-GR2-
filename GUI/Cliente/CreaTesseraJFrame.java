@@ -48,6 +48,8 @@ public class CreaTesseraJFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		CreaTesseraPanel = new JPanel();
 		CreaTesseraPanel.setBackground(new Color(255, 228, 181));
 		CreaTesseraPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -117,15 +119,6 @@ public class CreaTesseraJFrame extends JFrame {
 		Component VerticalStrut = Box.createVerticalStrut(280);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
 		MenùLateraleTB.add(VerticalStrut);
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 
 		JToolBar PercorsoTB = new JToolBar();
 		PercorsoTB.setBorder(null);

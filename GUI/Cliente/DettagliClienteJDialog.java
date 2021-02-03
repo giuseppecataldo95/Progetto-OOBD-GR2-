@@ -21,22 +21,21 @@ public class DettagliClienteJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField VisualizzaDettagliNTesseraTB;
-	public JTextField getVisualizzaDettagliNTesseraTB() {
-		return VisualizzaDettagliNTesseraTB;
-	}
+	
 
 
-	public void setVisualizzaDettagliNTesseraTB(JTextField visualizzaDettagliNTesseraTB) {
-		VisualizzaDettagliNTesseraTB = visualizzaDettagliNTesseraTB;
-	}
+	
 
 
 	private ControllerCliente controller;
 
 	
 	public DettagliClienteJDialog(ControllerCliente c) {
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		controller = c;
 		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -68,21 +67,39 @@ public class DettagliClienteJDialog extends JDialog {
 		JButton VisualizzaDettagliAnnullaJButton = new JButton("Annulla");
 		VisualizzaDettagliAnnullaJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});	
-		VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
-		buttonPane.add(VisualizzaDettagliAnnullaJButton);	
 				
-		JButton VisualizzaDettagliClienteDialogJButton = new JButton("Visualizza Dettagli");
-		VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			int n_t = Integer.valueOf(VisualizzaDettagliNTesseraTB.getText());
-			controller.CercaClienteByCF(n_t);
-			}
-		});
-		buttonPane.add(VisualizzaDettagliClienteDialogJButton);
+					controller.VisualizzaDettagliJDialogAnnullaBottonePremuto();
+					
+					}
+				});
+				VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.BOLD, 12));
+				VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
+				buttonPane.add(VisualizzaDettagliAnnullaJButton);	
+				
+				JButton VisualizzaDettagliClienteDialogJButton = new JButton("Visualizza Dettagli");
+				VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							
+							
+							
+							controller.CercaClienteByNTessera();
+								
+						}
+							
+				});
+				buttonPane.add(VisualizzaDettagliClienteDialogJButton);
 	}
-}
+	
+	public String getVisualizzaDettagliNTesseraTB()
+	{
+		
+		
+		return VisualizzaDettagliNTesseraTB.getText();
+	}
+	
+}	
+	
+	
+
 	
 

@@ -29,7 +29,8 @@ public class GenerazioneFatturaCompletataJDialog extends JDialog {
 		
 		Controller = v;
 		setAlwaysOnTop(true);
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(500, 500, 372, 202);
 		getContentPane().setLayout(new BorderLayout());
 		FatturaPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -54,7 +54,8 @@ public class VisualizzaFattureJFrame extends JFrame {
 	public VisualizzaFattureJFrame(ControllerVendite c, ControllerPrincipale c1) {
 		ControllerV = c;
 		ControllerP = c1;
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaFatturePanel = new JPanel();
@@ -129,14 +130,6 @@ public class VisualizzaFattureJFrame extends JFrame {
 		
 		Component verticalStrut = Box.createVerticalStrut(280);
 		MenùLateraleTB.add(verticalStrut);
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaFattureJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);

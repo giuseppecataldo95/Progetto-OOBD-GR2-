@@ -22,13 +22,15 @@ public class IDFatturaNonTrovatoJDialog extends JDialog {
 	private ControllerVendite ControllerV;
 
 	public IDFatturaNonTrovatoJDialog(ControllerVendite ControllerVendite) {
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		ControllerV = ControllerVendite;
 		setBounds(100, 100, 450, 229);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		JLabel lblNewLabel = new JLabel("Il numero della fattura inserito non \u00E8 corretto");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -39,7 +41,7 @@ public class IDFatturaNonTrovatoJDialog extends JDialog {
 		RiprovaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				ControllerV.IDFatturaNonTrovatoRiprovaBottonePremuto();
 				
 			}
 		});

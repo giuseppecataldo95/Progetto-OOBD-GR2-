@@ -3,3 +3,5 @@
 /TesseraNonTrovataException.class
 /DataFormatException.class
 /MyDataFormatException.class
+/CarrelloNonTrovatoException.class
+/CarrelloVuotoException.class

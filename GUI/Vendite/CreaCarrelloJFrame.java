@@ -67,9 +67,10 @@ public class CreaCarrelloJFrame extends JFrame {
 	public CreaCarrelloJFrame(ControllerVendite v, ControllerPrincipale p) {
 		ControllerV = v;
 		ControllerP = p;
-		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setTitle("ProgettoOOBD2020");
 		CreaCarrelloPanel = new JPanel();
 		CreaCarrelloPanel.setFont(new Font("Arial", Font.BOLD, 11));
 		CreaCarrelloPanel.setBackground(new Color(255, 228, 181));
@@ -136,15 +137,6 @@ public class CreaCarrelloJFrame extends JFrame {
 		Component VerticalStrut = Box.createVerticalStrut(280);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
 		MenùLateraleTB.add(VerticalStrut);
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(CreaCarrelloJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 
 		JToolBar PercorsoTB = new JToolBar();
 		PercorsoTB.setBorder(null);
@@ -485,8 +477,8 @@ public class CreaCarrelloJFrame extends JFrame {
 		 return SelezionaCategoriaCB.getSelectedItem().toString();
 	 }
 	 
-	 public int getIDProdotto() {
-		 return Integer.parseInt(InserisciIDProdottoTB.getText());
+	 public String getIDProdotto() {
+		 return InserisciIDProdottoTB.getText();
 	 }
 	 
 	 public String getQuantità() {

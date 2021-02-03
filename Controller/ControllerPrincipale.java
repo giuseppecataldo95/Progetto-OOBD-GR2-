@@ -350,7 +350,7 @@ public class ControllerPrincipale {
   	//TOOLBAR AGGIUNGI VERDURA
   	
  	public void VisualizzaVerduraMenuLateraleMagazzinoBottonePremuto() {
- 		ControllerM.getVerdura().setVisible(false);
+ 		ControllerM.getVisualizzaVerdura().setVisible(false);
    		ControllerM.getMagazzino().setVisible(true); 
   	}
   	 	

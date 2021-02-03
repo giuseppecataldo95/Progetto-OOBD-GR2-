@@ -23,7 +23,7 @@ import GUI.Vendite.CarrelloAttualeJFrame;
 import GUI.Vendite.CreaCarrelloJFrame;
 import GUI.Vendite.ErroreInserisciTesseraJDialog;
 import GUI.Vendite.GenerazioneFatturaCompletataJDialog;
-import GUI.Vendite.IDFatturaRicercaCarrelloJDialog;
+import GUI.Vendite.RicercaFatturaJDialog;
 import GUI.Vendite.IDFatturaNonTrovatoJDialog;
 import GUI.Vendite.InserisciNTesseraJDialog;
 import GUI.Vendite.SalvataggioCarrelloJDialog;
@@ -32,6 +32,8 @@ import GUI.Vendite.VisualizzaDettagliFatturaJFrame;
 import GUI.Vendite.VisualizzaFattureJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import ImplementazioniDAO.VenditeDAOPostgres;
+import Risorse.MieEccezioni.CarrelloNonTrovatoException;
+import Risorse.MieEccezioni.CarrelloVuotoException;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 
@@ -44,7 +46,7 @@ public class ControllerVendite {
 	 private ControllerPrincipale ControllerP;
 	 private VenditeJFrame Vendite;
 	 private VisualizzaDettagliFatturaJFrame VisualizzaDettagliFattura;
-	 private IDFatturaRicercaCarrelloJDialog RicercaCarrello;
+	 private RicercaFatturaJDialog RicercaFattura;
 	 private VenditeDAO DAO;
 	 private MagazzinoDAO DAOM;
 	 private CreaCarrelloJFrame CreaCarrello;
@@ -177,9 +179,11 @@ public class ControllerVendite {
     }
 
 	public void AggiungiAlCarrello() {
-		int IDProdotto = CreaCarrello.getIDProdotto();
-		String Categoria = CreaCarrello.getCategoria();
+		
+		
 		try {
+			int IDProdotto = Integer.parseInt(CreaCarrello.getIDProdotto());
+			String Categoria = CreaCarrello.getCategoria();
 			if(Categoria == "Frutta"||Categoria == "Verdura"||Categoria == "Farinacei"||Categoria == "Latticini") {
 				float Quantit‡KG = Float.parseFloat(CreaCarrello.getQuantit‡());
 				DAO.inserisciCompCarelloKG(CarrelloDaCreare.getIDCarrello(), IDProdotto, Quantit‡KG);
@@ -191,7 +195,10 @@ public class ControllerVendite {
 				
 				
 			}
-		} catch(SQLException e) {
+		
+		}
+		
+		catch(SQLException|NumberFormatException e) {
 			CreaCarrello.ErroreProdottoAggiunto("<html>"+e.getMessage()+"<html>");
 		}
 	}
@@ -277,9 +284,10 @@ public class ControllerVendite {
 	}
 	
 	public void InserisciNTesseraGeneraBottonePremuto() {
-		Tessera Compratore = new Tessera(Integer.parseInt(InserisciTessera.getNTessera()));
+		
 		
 		try {
+			Tessera Compratore = new Tessera(Integer.parseInt(InserisciTessera.getNTessera()));
 			DAO.getTesserabyNTessera(Compratore.getNTessera());
 			Fattura FatturaDaGenerare = new Fattura(Compratore.getNTessera());
 			FatturaDaGenerare.setIDCarrello(CarrelloDaCreare.getIDCarrello());
@@ -293,7 +301,7 @@ public class ControllerVendite {
 			ControllerP.NascondiVisualizzaClientiNTessera();
 			GenerazioneCompletata.setVisible(true);
 			
-		} catch (NumberFormatException|TesseraNonTrovataException|SQLException e) {
+		} catch (NumberFormatException|TesseraNonTrovataException|SQLException|CarrelloVuotoException e) {
 			InserisciTessera.setEnabled(false);
 			ControllerP.NascondiVisualizzaClientiNTessera();
 			ErroreTessera = new ErroreInserisciTesseraJDialog(this);
@@ -307,11 +315,13 @@ public class ControllerVendite {
 	public void InserisciNTesseraIndietroBottonePremuto() {
 		CarrelloAttuale.setEnabled(true);
 		CreaCarrello.setEnabled(true);
+		ControllerP.NascondiVisualizzaClientiNTessera();
 		InserisciTessera.setVisible(false);
 	}
 
 	public void ErroreTesseraRiprovaBottonePremuto() {
 		InserisciTessera.setEnabled(true);
+		ControllerP.VisualizzaClientiNTessera();
 		ErroreTessera.setVisible(false);
 	}
 	
@@ -355,24 +365,35 @@ public class ControllerVendite {
 	
 	public void VisualizzaFattureDettagliCarrelloBottonePremuto() {
 
-		RicercaCarrello = new IDFatturaRicercaCarrelloJDialog(this);
-		RicercaCarrello.setVisible(true);
+		VisualizzaFatture.setEnabled(false);
+		RicercaFattura = new RicercaFatturaJDialog(this);
+		RicercaFattura.setVisible(true);
 	}
 	
 	//FINESTRA VISUALIZZA DETTAGLI FATTURA
 	
-	public void VisualizzaDettagliFatturaVenditePercorsoBottonePremuto() {
+	
+	
+	public void VisualizzaDettagliFatturaVisualizzaFatturePercorsoBottonePremuto() {
 
-		VisualizzaFatture.setVisible(false);
-		Vendite = new VenditeJFrame(this, ControllerP);
-		Vendite.setVisible(true);
+		VisualizzaDettagliFattura.setVisible(false);
+		VisualizzaFatture.setEnabled(true);
+		VisualizzaFatture.setVisible(true);
 		
 	}
 	
-	public void VisualizzaDettagliFatturaVisualizzaCarrelloPercorsoBottonePremuto() {
+	public void VisualizzaDettagliFatturaVisualizzaDettagliPercorsoBottonePremuto() {
 
 		VisualizzaDettagliFattura.setVisible(false);
-		VisualizzaFatture.setVisible(true);
+		VisualizzaDettagliFattura.setVisible(true);
+		
+	}
+	
+	public void VisualizzaDettagliFatturaVenditePercorsoBottonePremuto() {
+
+		VisualizzaDettagliFattura.setVisible(false);
+		Vendite = new VenditeJFrame(this, ControllerP);
+		Vendite.setVisible(true);
 		
 	}
 	
@@ -380,45 +401,53 @@ public class ControllerVendite {
 		
 		Carrello Carrello = null;
 		try {
-			
-			 Carrello = DAO.getCarrello(DAO.getIDCarrelloByIDFattura(RicercaCarrello.getIDFatturaTB()));
+			 Carrello = DAO.getIDCarrelloByIDFattura(RicercaFattura.getIDFatturaTB());
+			 Carrello = DAO.getCarrello(Carrello.getIDCarrello());
+			 RicercaFattura.setVisible(false);
+			 VisualizzaFatture.setVisible(false);
+			 VisualizzaDettagliFattura = new VisualizzaDettagliFatturaJFrame(this, ControllerP);
+			 VisualizzaDettagliFattura.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
+			 VisualizzaDettagliFattura.setVisible(true);
+			 
+		}  
 		
-		} catch (SQLException e) {
+		catch (SQLException|CarrelloNonTrovatoException|NumberFormatException e) {
 			
-		}
-		if(Carrello == null) {
-
+			RicercaFattura.setVisible(false);
 			IDFatturaNonTrovato = new IDFatturaNonTrovatoJDialog(this);
 			IDFatturaNonTrovato.setVisible(true);
 			
-		} else 
-		{
-			VisualizzaDettagliFattura = new VisualizzaDettagliFatturaJFrame(this, ControllerP);
-			VisualizzaDettagliFattura.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
-			VisualizzaDettagliFattura.setVisible(true);
 		} 
+			
+		
 
 	}
 	public void IDCarrelloRicercaFatturaAvantiBottonePremuto() {
 
+		VisualizzaFatture.setEnabled(true);
 		VisualizzaFatture.setVisible(false);
-		RicercaCarrello.setVisible(false);
+		RicercaFattura.setVisible(false);
 		VisualizzaDettagliFattura = new VisualizzaDettagliFatturaJFrame(this, ControllerP);
 		VisualizzaDettagliFattura.setVisible(true);
+
 		
 	}
-	public void VisualizzaCarrello1VenditePercorsoBottonePremuto() {
-
-		VisualizzaCarrello1.setVisible(false);
-		Vendite = new VenditeJFrame(this, ControllerP);
-		Vendite.setVisible(true);
-		
-	}
-	public void VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto() {
-
-		VisualizzaDettagliFattura.setVisible(false);
-		VisualizzaFatture.setVisible(true);
 	
+	
+	
+	public void RicercaFatturaIndietroBottonePremuto() {
+
+		RicercaFattura.setVisible(false);
+		VisualizzaFatture.setEnabled(true);
+		VisualizzaFatture.setVisible(true);
+	}
+	
+	public void IDFatturaNonTrovatoRiprovaBottonePremuto() {
+
+		IDFatturaNonTrovato.setVisible(false);
+		VisualizzaFatture.setEnabled(true);
+		VisualizzaFatture.setVisible(true);
+		
 	}
 	
 	//GETTERS
@@ -439,12 +468,11 @@ public class ControllerVendite {
 		return VisualizzaFatture;
 	}
 
-	public void VisualizzaCarrello1VisualizzaDettagliPercorsoBottonePremuto() {
+	
 
-		VisualizzaCarrello1.setVisible(false);
-		VisualizzaCarrello1.setVisible(true);
-		
-	}
+	
+
+	
 
 	
 	

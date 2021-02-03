@@ -29,7 +29,8 @@ public class SalvataggioCarrelloJDialog extends JDialog {
 		
 		Controller = c;
 		setAlwaysOnTop(true);
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(500, 500, 372, 202);
 		getContentPane().setLayout(new BorderLayout());
 		SalvataggioPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

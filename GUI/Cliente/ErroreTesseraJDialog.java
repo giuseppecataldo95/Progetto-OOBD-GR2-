@@ -20,7 +20,9 @@ public class ErroreTesseraJDialog extends JDialog {
 	ControllerCliente controller;
 	
 	public ErroreTesseraJDialog(ControllerCliente c) {
-		
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		controller = c;
 		setAlwaysOnTop(true);
 		

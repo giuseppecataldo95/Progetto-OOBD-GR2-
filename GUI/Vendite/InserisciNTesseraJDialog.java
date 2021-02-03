@@ -31,7 +31,8 @@ public class InserisciNTesseraJDialog extends JDialog {
 		
 		Controller = c;
 		setAlwaysOnTop(true);
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(500, 300, 372, 202);
 		getContentPane().setLayout(new BorderLayout());
 		InserisciNTesseraPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

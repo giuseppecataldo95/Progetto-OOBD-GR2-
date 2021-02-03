@@ -23,6 +23,8 @@ public class ProdottoEliminatoJDialog extends JDialog {
 	
 	public ProdottoEliminatoJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) {
 		ControllerM = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
