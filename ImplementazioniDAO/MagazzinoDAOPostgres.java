@@ -20,7 +20,6 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	private PreparedStatement inserisciLatticiniPS;
 	private PreparedStatement inserisciUovaPS;
 	private PreparedStatement inserisciFarinaceiPS;
-	private PreparedStatement gestisciScadenze;
 	private PreparedStatement eliminaFruttaPS;
 	private PreparedStatement eliminaLatticiniPS;
 	private PreparedStatement eliminaVerduraPS;
@@ -36,7 +35,6 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		inserisciLatticiniPS = connessione.prepareStatement("INSERT INTO latticino VALUES (?,?,?,?,?,DEFAULT,?,?)");
 	    inserisciUovaPS = connessione.prepareStatement("INSERT INTO uova VALUES (?,?,?,?,DEFAULT,?,?)");
 	    inserisciFarinaceiPS = connessione.prepareStatement("INSERT INTO farinaceo VALUES (?,?,?,DEFAULT,?,?)");
-	    gestisciScadenze = connessione.prepareStatement("SELECT CONCAT ('gestisci_scadenze_',)");
 	    eliminaFruttaPS = connessione.prepareStatement("DELETE FROM frutta WHERE id_prodotto = ? ");
 	    eliminaLatticiniPS = connessione.prepareStatement("DELETE FROM latticino WHERE id_prodotto = ? ");
 		eliminaVerduraPS = connessione.prepareStatement("DELETE FROM verdura WHERE id_prodotto = ? ");
@@ -53,8 +51,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		while(rs.next()) {
 			
 			Frutta f = new Frutta(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"));
-			f.setData_raccolta(rs.getDate("data_raccolta"));
-			f.setLotto_lavorazione(rs.getString("lotto_di_lavorazione"));
+			f.setDataRaccolta(rs.getDate("data_raccolta"));
+			f.setLottoLavorazione(rs.getString("lotto_di_lavorazione"));
 			f.setProvenienza(rs.getString("provenienza"));
 			ProdottiFrutta.add(f);
 		}
@@ -69,8 +67,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		ArrayList<Verdura> ProdottiVerdura = new ArrayList<Verdura>();
 		while(rs.next()) {
 			Verdura v = new Verdura(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"));
-			v.setData_raccolta(rs.getDate("data_raccolta"));
-			v.setLotto_lavorazione(rs.getString("lotto_di_lavorazione"));
+			v.setDataRaccolta(rs.getDate("data_raccolta"));
+			v.setLottoLavorazione(rs.getString("lotto_di_lavorazione"));
 			v.setProvenienza(rs.getString("provenienza"));
 			ProdottiVerdura.add(v);
 		}
@@ -87,9 +85,9 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		ArrayList<Latticino> ProdottiLatticini = new ArrayList<Latticino>();
 		while(rs.next()) {
 			Latticino l = new Latticino(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"), rs.getDate("data_scadenza"));
-			l.setData_mungitura(rs.getDate("data_mungitura"));
-			l.setPaese_mungitura(rs.getString("paese_mungitura"));
-			l.setPaese_lavorazione(rs.getString("paese_lavorazione"));
+			l.setDataMungitura(rs.getDate("data_mungitura"));
+			l.setPaeseMungitura(rs.getString("paese_mungitura"));
+			l.setPaeseLavorazione(rs.getString("paese_lavorazione"));
 			ProdottiLatticini.add(l);
 		}
 		rs.close();
@@ -105,8 +103,8 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		ArrayList<Confezionato> ProdottiConfezionati = new ArrayList<Confezionato>();
 		while(rs.next()) {
 			Confezionato c = new Confezionato(rs.getInt("id_prodotto"), rs.getString("nome"),  rs.getFloat("valore_unitario"), rs.getInt("scorte"), rs.getDate("data_scadenza"), rs.getString("marca"), rs.getFloat("peso"));
-			c.setLotto_lavorazione(rs.getString("lotto_di_lavorazione"));
-			c.setModalit‡_conservazione(rs.getString("modalit‡_conservazione"));
+			c.setLottoLavorazione(rs.getString("lotto_di_lavorazione"));
+			c.setModalit‡Conservazione(rs.getString("modalit‡_conservazione"));
 			ProdottiConfezionati.add(c);
 		}
 		rs.close();
@@ -122,7 +120,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		ArrayList<Uova> ProdottiUova = new ArrayList<Uova>();
 		while(rs.next()) {
 			Uova u = new Uova(rs.getInt("id_prodotto"), rs.getFloat("valore_unitario"), rs.getInt("scorte"), rs.getDate("data_scadenza"), rs.getInt("n_perconfezione"));
-			u.setLotto_lavorazione(rs.getString("lotto_di_lavorazione"));
+			u.setLottoLavorazione(rs.getString("lotto_di_lavorazione"));
 			u.setProvenienza(rs.getString("provenienza"));
 			ProdottiUova.add(u);
 		}
@@ -139,7 +137,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		ArrayList<Farinaceo> ProdottiFarinacei = new ArrayList<Farinaceo>();
 		while(rs.next()) {
 			Farinaceo f = new Farinaceo(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"), rs.getDate("data_scadenza"));
-			f.setLotto_lavorazione(rs.getString("lotto_di_lavorazione"));
+			f.setLottoLavorazione(rs.getString("lotto_di_lavorazione"));
 			ProdottiFarinacei.add(f);
 		}
 		rs.close();

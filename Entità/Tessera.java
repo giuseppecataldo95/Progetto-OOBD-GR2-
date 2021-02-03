@@ -14,7 +14,7 @@ public class Tessera {
 	private float PuntiUova;
 	private float PuntiLatticini;
 	private float PuntiFarinacei;
-	private Cliente c;
+	private Cliente Possessore;
 	
 	
 
@@ -25,7 +25,7 @@ public class Tessera {
 	public Tessera(int nTessera, Cliente c, float puntiFedeltà, Date dataRilascio, Date dataScadenza) {
 		super();
 		NTessera = nTessera;
-		this.c = c;
+		this.Possessore = c;
 		PuntiFedeltà = puntiFedeltà;
 		DataRilascio = dataRilascio;
 		DataScadenza = dataScadenza;
@@ -36,7 +36,7 @@ public class Tessera {
 			float puntiLatticini, float puntiFarinacei) {
 		super();
 		NTessera = nTessera;
-		this.c = c;
+		this.Possessore = c;
 		PuntiFrutta = puntiFrutta;
 		PuntiVerdura = puntiVerdura;
 		PuntiConfezionati = puntiConfezionati;
@@ -46,8 +46,8 @@ public class Tessera {
 	}
 
 
-	public void setC(Cliente c) {
-		this.c = c;
+	public void setPossessore(Cliente c) {
+		this.Possessore = c;
 	}
 
 
@@ -148,8 +148,8 @@ public class Tessera {
 		DataScadenza = dataScadenza;
 	}
 	
-	public Cliente getC() {
-		return c;
+	public Cliente getPossessore() {
+		return Possessore;
 	}
 	
 	

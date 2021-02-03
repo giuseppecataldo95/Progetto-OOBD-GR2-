@@ -85,7 +85,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleClientiBottonePremuto();
+				ControllerP.VisualizzaFattureMenùLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -107,7 +107,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleVenditeBottonePremuto();
+				ControllerP.VisualizzaFattureMenùLateraleVenditeBottonePremuto();
 				
 			}
 		});
@@ -122,7 +122,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrelloMenùLateraleMagazzinoBottonePremuto();
+				ControllerP.VisualizzaFattureMenùLateraleMagazzinoBottonePremuto();
 				
 			}
 		});
@@ -152,7 +152,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloPercorsoVenditeBottonePremuto();
+				ControllerV.VisualizzaFatturePercorsoVenditeBottonePremuto();
 				
 			}
 		});
@@ -163,7 +163,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 		VisualizzaVenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrelloPercorsoVisualizzaVenditeBottonePremuto();
+				ControllerV.VisualizzaFatturePercorsoVisualizzaVenditeBottonePremuto();
 				
 				
 			}

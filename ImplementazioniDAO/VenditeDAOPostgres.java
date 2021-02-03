@@ -12,7 +12,7 @@ import Entità.Carrello;
 import Entità.Cliente;
 import Entità.Fattura;
 import Entità.Prodotto_kg;
-import Entità.Prodotto_unitario;
+import Entità.ProdottoUnitario;
 import Entità.Tessera;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
@@ -92,12 +92,12 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		return Prodotti;
 	}
 
-	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException {
+	public ArrayList<ProdottoUnitario> getCarrelloNByID(int IDCarrello) throws SQLException {
 		Statement getCarrello = connessione.createStatement();
 		ResultSet rs = getCarrello.executeQuery("SELECT * FROM comp_carrello_n WHERE id_carrello="+IDCarrello);
-		ArrayList<Prodotto_unitario> Prodotti = new ArrayList<Prodotto_unitario>();
+		ArrayList<ProdottoUnitario> Prodotti = new ArrayList<ProdottoUnitario>();
 		while(rs.next()) {
-			Prodotto_unitario pr = new Prodotto_unitario(rs.getInt("id_prodotto"),rs.getInt("n_articoli"));
+			ProdottoUnitario pr = new ProdottoUnitario(rs.getInt("id_prodotto"),rs.getInt("n_articoli"));
 			Prodotti.add(pr);
 		}
 		rs.close();

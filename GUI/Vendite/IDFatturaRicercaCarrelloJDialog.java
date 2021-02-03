@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
+public class IDFatturaRicercaCarrelloJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField IDFatturaTB;
@@ -27,7 +27,7 @@ public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 	
 
 
-	public IDCarrelloRicercaCarrelloJDialog(ControllerVendite cv) {
+	public IDFatturaRicercaCarrelloJDialog(ControllerVendite cv) {
 		
 		ControllerV = cv;
 		
@@ -59,7 +59,7 @@ public class IDCarrelloRicercaCarrelloJDialog extends JDialog {
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.CompletaTabellaFattura();
+				ControllerV.CompletaTabellaDettagliFattura();
 				
 				
 			}

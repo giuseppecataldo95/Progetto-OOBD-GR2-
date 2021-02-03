@@ -65,6 +65,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		JButton ClientiButton = new JButton("");
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaDettagliClienteMenùLateraleClientiBottonePremuto();
 			}
 		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -96,6 +97,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaDettagliClienteMenùLateraleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -137,20 +139,17 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				controller.VisualizzaDettagliClienteClientiPercorsoButtonPressed();
+				
+				controller.VisualizzaDettagliClienteClientiPercorsoBottonePremuto();
 				
 			}
 		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(ClientiPercorsoButton);
 		
-		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
+		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Visualizza Clienti");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
-				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
 				
 			}
 		});
@@ -215,7 +214,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 						
-						controller.VisualizzaDettagliClienteChiudiButtonPressed();
+						controller.VisualizzaDettagliClienteChiudiBottonePremuto();
 						controller.CompletaTabellaTessera();
 					
 				

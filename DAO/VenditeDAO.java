@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import Entità.Carrello;
 import Entità.Fattura;
 import Entità.Prodotto_kg;
-import Entità.Prodotto_unitario;
+import Entità.ProdottoUnitario;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 public interface VenditeDAO {
@@ -16,13 +16,12 @@ public interface VenditeDAO {
 	public int getUltimoIDCarrello() throws SQLException;
 	public void inserisciCompCarelloKG(int IDCarrello, int IDProdotto, float quantità) throws SQLException;
 	public void inserisciCompCarelloN(int IDCarrello, int IDProdotto, int quantità) throws SQLException;
-//	public void getCarrelloByIDCarrello(String iDCarrello);
 	public ArrayList<Prodotto_kg> getCarrelloKGByID(int IDCarrello) throws SQLException;
-	public ArrayList<Prodotto_unitario> getCarrelloNByID(int IDCarrello) throws SQLException;
+	public ArrayList<ProdottoUnitario> getCarrelloNByID(int IDCarrello) throws SQLException;
 	public Carrello getPrezzoEPuntiByID(int IDCarrello) throws SQLException;
 	public void getTesserabyNTessera(int NTessera) throws TesseraNonTrovataException,SQLException;
 	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException;
-	public Carrello getCarrello(int parseInt)throws SQLException;
-	public int getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException;
+	public Carrello getCarrello(int IDCarrello)throws SQLException;
+	public int getIDCarrelloByIDFattura(String idFattura)throws SQLException;
 
 }

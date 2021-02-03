@@ -86,8 +86,6 @@ public class VenditeJFrame extends JFrame {
 		JButton CreaNuovoCarrelloJButton = new JButton("Crea Nuovo Carrello");
 		CreaNuovoCarrelloJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ControllerV.CreaCarrello();
 				ControllerV.VenditeCreaCarrelloBottonePremuto();
 			}
 		});

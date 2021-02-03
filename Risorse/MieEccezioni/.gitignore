@@ -1,3 +1,5 @@
 /ProdottoNonTrovatoException.class
 /ComuniException.class
 /TesseraNonTrovataException.class
+/DataFormatException.class
+/MyDataFormatException.class

@@ -145,8 +145,6 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
 				
 			}
 		});
@@ -156,7 +154,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
+				controller.RiepilogoTesseraNuovaTesseraPercorsoBottonePremuto();
 				
 			}
 		});
@@ -168,7 +166,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				controller.RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed();
+				controller.RiepilogoTesseraRiepilogoTesseraPercorsoBottonePremuto();
 				
 			}
 		});
@@ -228,7 +226,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.RiepilogoTesseraIndietroButtonPressed();
+				controller.RiepilogoTesseraIndietroBottonePremuto();
 				
 				
 			}
@@ -241,7 +239,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-					controller.RiepilogoTesseraAvantiButtonPressed();
+					controller.RiepilogoTesseraAvantiBottonePremuto();
 						
 				
 					

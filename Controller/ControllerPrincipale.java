@@ -4,18 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import GUI.FinestraPrincipaleJFrame;
-import GUI.Cliente.CreaTesseraJFrame;
-import GUI.Cliente.ClientiJFrame;
-import GUI.Magazzino.MagazzinoJFrame;
-import GUI.Vendite.VenditeJFrame;
-
 
 public class ControllerPrincipale {
 	
 	private FinestraPrincipaleJFrame FinestraPrincipale;
-	private ClientiJFrame Clienti;
-	private MagazzinoJFrame Magazzino;
-	private VenditeJFrame Vendite;
+	
 	private ControllerCliente ControllerC;
 	private ControllerMagazzino ControllerM;
 	private ControllerVendite ControllerV;
@@ -71,8 +64,7 @@ public class ControllerPrincipale {
  	public void CreaTesseraMenùLateraleMagazzinoBottonePremuto() {
 
  		ControllerC.getCreaTessera().setVisible(false);
- 		Magazzino = new MagazzinoJFrame(ControllerM, this);
- 		Magazzino.setVisible(true);
+ 		ControllerM.getMagazzino().setVisible(true); 	
  	}
  	
  	public void CreaTesseraMenùLateraleVenditeBottonePremuto() {
@@ -133,15 +125,13 @@ public class ControllerPrincipale {
 	public void RiepilogoTesseraMenuLateraleClientiBottonePremuto() {
 		
  		ControllerC.getRiepilogoTessera().setVisible(false);	
- 		Clienti = new ClientiJFrame(ControllerC, this);
- 		Clienti.setVisible(true);
+ 		ControllerC.getClienti().setVisible(true);
  	}
  	
  	public void RiepilogoTesseraMenuLateraleMagazzinoBottonePremuto() {
 		
  		ControllerC.getRiepilogoTessera().setVisible(false);
- 		Magazzino = new MagazzinoJFrame(ControllerM, this);
- 		Magazzino.setVisible(true);
+ 		ControllerM.getMagazzino().setVisible(true);
  		
 	}
  	
@@ -160,9 +150,20 @@ public class ControllerPrincipale {
  		ControllerV.getVendite().setVisible(true);
 		
 	}
+ 	
+ 	public void VisualizzaDettagliClienteMenùLateraleMagazzinoBottonePremuto() {
 
- 	//MANCANO METODIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+		ControllerC.getVisualizzaDettagli().setVisible(false);
+ 		ControllerM.getMagazzino().setVisible(true);
+		
+	}
 
+ 	public void VisualizzaDettagliClienteMenùLateraleClientiBottonePremuto() {
+
+		ControllerC.getVisualizzaDettagli().setVisible(false);
+ 		ControllerC.getClienti().setVisible(true);
+		
+	}
 	
  	
  	//SNODO PER MAGAZZINO
@@ -481,7 +482,7 @@ public class ControllerPrincipale {
 	//COLLEGAMENTO CARRELLO E TESSERE
 	
 	public void VisualizzaClientiNTessera() {
-		ControllerC.ClientiVisualizzaClientiButtonPressed();
+		ControllerC.ClientiVisualizzaClientiBottonePremuto();
 		ControllerC.CompletaTabellaTessera();
 	}
 	
@@ -489,73 +490,47 @@ public class ControllerPrincipale {
 		ControllerC.getVisualizzaClienti().setVisible(false);
 	}
 	
-	//TOOLBAR ????
+	//TOOLBAR VISUALIZZA FATTURE
 
-	public void VisualizzaCarrelloMenùLateraleClientiBottonePremuto() {
+	public void VisualizzaFattureMenùLateraleClientiBottonePremuto() {
 
-		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerV.getVisualizzaFatture().setVisible(false);
  		ControllerC.getClienti().setVisible(true);
 		
 	}
 
+	public void VisualizzaFattureMenùLateraleMagazzinoBottonePremuto() {
 
-
-	public void VisualizzaCarrelloMenùLateraleMagazzinoBottonePremuto() {
-
-		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerV.getVisualizzaFatture().setVisible(false);
 		ControllerM.getMagazzino().setVisible(true);
 		
 	}
-
-
-
-	public void VisualizzaCarrelloMenùLateraleVenditeBottonePremuto() {
-
-		ControllerV.getVisualizzaCarrello().setVisible(false);
-		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
-	public void VisualizzaCarrello1MenùLateraleClientiBottonePremuto() {
-
-		ControllerV.getVisualizzaCarrello1().setVisible(false);
-		ControllerC.getClienti().setVisible(true);
-	}
-
-
-
-	public void VisualizzaCarrello1MenùLateraleVenditeBottonePremuto() {
-		
-		ControllerV.getVisualizzaCarrello1().setVisible(false);
-		ControllerV.getVendite().setVisible(true);
-		
-	}
-
-
-
-	public void VisualizzaCarrello1MenùLateraleMagazzinoBottonePremuto() {
-
-		ControllerV.getVisualizzaCarrello1().setVisible(false);
-		ControllerM.getMagazzino().setVisible(true);
-		
-	}
-
-
 
 	public void VisualizzaFattureMenùLateraleVenditeBottonePremuto() {
 
-		ControllerV.getVisualizzaCarrello().setVisible(false);
+		ControllerV.getVisualizzaFatture().setVisible(false);
 		ControllerV.getVendite().setVisible(true);
+	}
+
+	//TOOLBAR VISUALIZZA DETTAGLI FATTURA
+
+	public void VisualizzaDettagliFatturaMenùLateraleClientiBottonePremuto() {
+
+		ControllerV.getVisualizzaDettagliFattura().setVisible(false);
+		ControllerC.getClienti().setVisible(true);
+	}
+
+	public void VisualizzaDettagliFatturaMenùLateraleVenditeBottonePremuto() {
 		
-		
+		ControllerV.getVisualizzaDettagliFattura().setVisible(false);
+		ControllerV.getVendite().setVisible(true);
 		
 	}
 
+	public void VisualizzaDettagliFatturaMenùLateraleMagazzinoBottonePremuto() {
 
-
-	
- 
-
+		ControllerV.getVisualizzaDettagliFattura().setVisible(false);
+		ControllerM.getMagazzino().setVisible(true);
+		
+	}
 }

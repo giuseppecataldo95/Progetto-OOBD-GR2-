@@ -2,34 +2,34 @@ package Entità;
 import java.sql.Date;
 
 public class Farinaceo extends Prodotto_kg {
-	private Date Data_scadenza;
-	private String Lotto_lavorazione;
+	private Date DataScadenza;
+	private String LottoLavorazione;
 	
 	public Farinaceo(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza) {
 		super(iD_Prodotto, nome, valore, scorte_kg);
-		Data_scadenza = data_scadenza;
+		DataScadenza = data_scadenza;
 	}
 	
 	
 	public Farinaceo(int iD_Prodotto, String nome, float valore, float scorte_kg, Date data_scadenza,
 			String lotto_lavorazione) {
 		super(iD_Prodotto, nome, valore, scorte_kg);
-		Data_scadenza = data_scadenza;
-		Lotto_lavorazione = lotto_lavorazione;
+		DataScadenza = data_scadenza;
+		LottoLavorazione = lotto_lavorazione;
 	}
 
 
-	public Date getData_scadenza() {
-		return Data_scadenza;
+	public Date getDataScadenza() {
+		return DataScadenza;
 	}
-	public void setData_scadenza(Date data_scadenza) {
-		Data_scadenza = data_scadenza;
+	public void setDataScadenza(Date data_scadenza) {
+		DataScadenza = data_scadenza;
 	}
-	public String getLotto_lavorazione() {
-		return Lotto_lavorazione;
+	public String getLottoLavorazione() {
+		return LottoLavorazione;
 	}
-	public void setLotto_lavorazione(String lotto_lavorazione) {
-		Lotto_lavorazione = lotto_lavorazione;
+	public void setLottoLavorazione(String lotto_lavorazione) {
+		LottoLavorazione = lotto_lavorazione;
 	}
 	
 	

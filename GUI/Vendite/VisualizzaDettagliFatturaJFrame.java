@@ -35,7 +35,7 @@ import java.awt.event.ItemListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 
-public class VisualizzaCarrelloJFrame extends JFrame {
+public class VisualizzaDettagliFatturaJFrame extends JFrame {
 
 	private JPanel VisualizzaFatturePanel;
 	ControllerVendite ControllerV;
@@ -50,7 +50,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 	};
 
 
-	public VisualizzaCarrelloJFrame(ControllerVendite c, ControllerPrincipale c1) {
+	public VisualizzaDettagliFatturaJFrame(ControllerVendite c, ControllerPrincipale c1) {
 		ControllerV = c;
 		ControllerP = c1;
 		
@@ -79,12 +79,12 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrello1MenùLateraleClientiBottonePremuto();
+				ControllerP.VisualizzaDettagliFatturaMenùLateraleClientiBottonePremuto();
 				
 			}
 		});
@@ -93,20 +93,20 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrello1MenùLateraleVenditeBottonePremuto();
+				ControllerP.VisualizzaDettagliFatturaMenùLateraleVenditeBottonePremuto();
 				
 			}
 		});
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
@@ -114,7 +114,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				ControllerP.VisualizzaCarrello1MenùLateraleMagazzinoBottonePremuto();
+				ControllerP.VisualizzaDettagliFatturaMenùLateraleMagazzinoBottonePremuto();
 				
 			}
 		});
@@ -124,7 +124,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		
 		JButton InfoButton = new JButton("");
 		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaCarrelloJFrame.class.getResource("/Risorse/info-menu.png")));
+		InfoButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/info-menu.png")));
 		InfoButton.setBorder(null);
 		InfoButton.setBorderPainted(false);
 		InfoButton.setMaximumSize(new Dimension(65, 70));
@@ -144,7 +144,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		VenditePercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrello1VenditePercorsoBottonePremuto();
+				ControllerV.VisualizzaDettagliFatturaVenditePercorsoBottonePremuto();
 				
 			}
 		});
@@ -156,7 +156,7 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				ControllerV.VisualizzaCarrelloVisualizzaCarrelloPercorsoBottonePremuto();
+				ControllerV.VisualizzaDettagliFatturaVisualizzaCarrelloPercorsoBottonePremuto();
 				
 				
 			}

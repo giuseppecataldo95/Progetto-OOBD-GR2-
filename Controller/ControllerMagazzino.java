@@ -30,6 +30,7 @@ import GUI.Magazzino.VisualizzaUovaJFrame;
 import GUI.Magazzino.VisualizzaVerduraJFrame;
 import ImplementazioniDAO.MagazzinoDAOPostgres;
 import Risorse.App.ConvertiCBInData;
+import Risorse.MieEccezioni.MyDataFormatException;
 import Risorse.MieEccezioni.ProdottoNonTrovatoException;
 import Entit‡.*
 ;
@@ -108,7 +109,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
     	for(Frutta f : ProdottiFrutta)
-    		VisualizzaFrutta.setRigheTabella(f.getID_Prodotto(), f.getNome(), f.getProvenienza(), f.getLotto_lavorazione(), f.getData_raccolta(), f.getValore(), f.getScorte_kg());
+    		VisualizzaFrutta.setRigheTabella(f.getIDProdotto(), f.getNome(), f.getProvenienza(), f.getLottoLavorazione(), f.getDataRaccolta(), f.getValore(), f.getScorte_kg());
     }
 	
 	public void VisualizzaFrutta_MagazzinoPercorsoBottonePremuto() {
@@ -165,7 +166,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
     	for(Verdura v : ProdottiVerdura)
-    		VisualizzaVerdura.setRigheTabella(v.getID_Prodotto(), v.getNome(), v.getProvenienza(), v.getLotto_lavorazione(), v.getData_raccolta(), v.getValore(), v.getScorte_kg());
+    		VisualizzaVerdura.setRigheTabella(v.getIDProdotto(), v.getNome(), v.getProvenienza(), v.getLottoLavorazione(), v.getDataRaccolta(), v.getValore(), v.getScorte_kg());
     }
 	
 	public void VisualizzaVerdura_MagazzinoPercorsoBottonePremuto() {
@@ -221,7 +222,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
     	for(Farinaceo f : ProdottiFarinacei)
-	    	VisualizzaFarinacei.setRigheTabella(f.getID_Prodotto(), f.getNome(),f.getLotto_lavorazione(),f.getData_scadenza(),f.getValore(),f.getScorte_kg());
+	    	VisualizzaFarinacei.setRigheTabella(f.getIDProdotto(), f.getNome(),f.getLottoLavorazione(),f.getDataScadenza(),f.getValore(),f.getScorte_kg());
 	}
 	
 	public void VisualizzaFarinacei_MagazzinoPercorsoBottonePremuto() {
@@ -278,7 +279,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
     	for(Latticino l : ProdottiLatticini)
-    		VisualizzaLatticini.setRigheTabella(l.getID_Prodotto(), l.getNome(), l.getPaese_mungitura(), l.getPaese_lavorazione(), l.getData_mungitura(),l.getData_scadenza(), l.getValore(), l.getScorte_kg());
+    		VisualizzaLatticini.setRigheTabella(l.getIDProdotto(), l.getNome(), l.getPaeseMungitura(), l.getPaeseLavorazione(), l.getDataMungitura(),l.getDataScadenza(), l.getValore(), l.getScorte_kg());
     }
 	
 	public void VisualizzaLatticini_MagazzinoPercorsoBottonePremuto() {
@@ -335,7 +336,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
     	for(Confezionato c : ProdottiConfezionati)
-    	VisualizzaConfezionati.setRigheTabella(c.getID_Prodotto(), c.getNome(), c.getMarca(), c.getLotto_lavorazione(), c.getData_scadenza(), c.getModalit‡_conservazione(),c.getPeso(), c.getValore(), c.getScorte());
+    	VisualizzaConfezionati.setRigheTabella(c.getIDProdotto(), c.getNome(), c.getMarca(), c.getLottoLavorazione(), c.getDataScadenza(), c.getModalit‡Conservazione(),c.getPeso(), c.getValore(), c.getScorte());
     }
 	
 	public void VisualizzaConfezionati_MagazzinoPercorsoBottonePremuto() {
@@ -393,7 +394,7 @@ public class ControllerMagazzino {
 			e.printStackTrace();
 		}
 		for(Uova u : ProdottiUova)
-			VisualizzaUova.setRigheTabella(u.getID_Prodotto(), u.getN_perConfezione(), u.getProvenienza(), u.getLotto_lavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
+			VisualizzaUova.setRigheTabella(u.getIDProdotto(), u.getNPerConfezione(), u.getProvenienza(), u.getLottoLavorazione(), u.getData_scadenza(), u.getValore(), u.getScorte());
     }
 	
 	public void VisualizzaUova_MagazzinoPercorsoBottonePremuto() {
@@ -594,18 +595,26 @@ public class ControllerMagazzino {
     		String Mese = Frutta.getInserisciMeseCB();
     		String Anno = Frutta.getInserisciAnnoCB();
     		Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+    		Convertitore.ControllaData();
     		Date Data_Raccolta = Convertitore.Converti();
     		DAO.inserisciFrutta(Nome,Lotto,Provenienza,Data_Raccolta,Scorte,Valore);
     		Frutta.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Frutta);
     		InserimentoCompletato.setVisible(true);
-		} catch (NumberFormatException e) {
+		} catch (MyDataFormatException e) {
+			Frutta.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		}catch (NumberFormatException e) {
 			Frutta.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 		
 		} catch (SQLException e) {
+			Frutta.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Frutta);
 			ErroreAggiungi.setError(e.getMessage());
 			ErroreAggiungi.setVisible(true);
@@ -661,18 +670,26 @@ public class ControllerMagazzino {
     		String Mese = Verdura.getInserisciMeseCB();
     		String Anno = Verdura.getInserisciAnnoCB();
     		Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+    		Convertitore.ControllaData();
     		Date Data_Raccolta = Convertitore.Converti();
     		DAO.inserisciVerdura(Nome,Lotto,Provenienza,Data_Raccolta,Scorte,Valore);
     		Verdura.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Verdura);
     		InserimentoCompletato.setVisible(true);
-    	} catch (NumberFormatException e) {
+    	} catch (MyDataFormatException e) {
+			Verdura.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		} catch (NumberFormatException e) {
 			Verdura.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 	
     	} catch (SQLException e) {
+    		Verdura.setEnabled(false);
     		ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Verdura);
     		ErroreAggiungi.setError(e.getMessage());
     		ErroreAggiungi.setVisible(true);
@@ -729,18 +746,26 @@ public class ControllerMagazzino {
 	    	String Mese = Farinacei.getInserisciMeseCB();
 	    	String Anno = Farinacei.getInserisciAnnoCB();
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+	    	Convertitore.ControllaData();
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciFarinacei(Nome,Lotto,Data_Scadenza,Scorte,Valore);
 	    	Farinacei.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Farinacei);
     		InserimentoCompletato.setVisible(true);
-	    } catch (NumberFormatException e) {
+	    } catch (MyDataFormatException e) {
+			Farinacei.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		}catch (NumberFormatException e) {
 			Farinacei.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
+			Farinacei.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Farinacei);
 			ErroreAggiungi.setError(e.getMessage());
 			ErroreAggiungi.setVisible(true);
@@ -802,20 +827,29 @@ public class ControllerMagazzino {
 	    	String MeseS = Latticini.getInserisciMeseScadenzaCB();
 	    	String AnnoS = Latticini.getInserisciAnnoScadenzaCB();
 	    	Convertitore = new ConvertiCBInData(GiornoM,MeseM,AnnoM);
+	    	Convertitore.ControllaData();
 	    	Date Data_Mungitura = Convertitore.Converti();
 	    	Convertitore = new ConvertiCBInData(GiornoS,MeseS,AnnoS);
+	    	Convertitore.ControllaData();
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciLatticini(Nome,Paese_Mungitura,Paese_Lavorazione,Data_Mungitura,Data_Scadenza,Scorte,Valore);
 	    	Latticini.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Latticini);
     		InserimentoCompletato.setVisible(true);
-	    } catch (NumberFormatException e) {
+	    } catch (MyDataFormatException e) {
+			Latticini.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		}catch (NumberFormatException e) {
 			Latticini.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
+			Latticini.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Latticini);
 			ErroreAggiungi.setError(e.getMessage());
 			ErroreAggiungi.setVisible(true);
@@ -876,19 +910,26 @@ public class ControllerMagazzino {
 	    	String Mese = Confezionati.getInserisciMeseCB();
 	    	String Anno = Confezionati.getInserisciAnnoCB();
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+	    	Convertitore.ControllaData();
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciConfezionati(Nome, Marca, Lotto, Mod_Conservazione, Data_Scadenza, Scorte, Peso_Confezione, Valore);
 	    	Confezionati.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Confezionati);
     		InserimentoCompletato.setVisible(true);
-    	} catch (NumberFormatException e) {
+    	} catch (MyDataFormatException e) {
 			Confezionati.setEnabled(false);
-			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Confezionati);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		}catch (NumberFormatException e) {
+			Confezionati.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Confezionati);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 
     	} catch (SQLException e) {
-			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Confezionati);
 			ErroreAggiungi.setError(e.getMessage());
 			ErroreAggiungi.setVisible(true);
     	}
@@ -946,18 +987,26 @@ public class ControllerMagazzino {
 	    	String Anno = Uova.getInserisciAnnoScadenzaCB();
 	    	int NPerConfezione = Integer.parseInt(Uova.getInserisciNPerConfezione());
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
+	    	Convertitore.ControllaData();
 	    	Date Data_Scadenza = Convertitore.Converti();
 	    	DAO.inserisciUova(Lotto,Data_Scadenza,Provenienza,Scorte,Valore,NPerConfezione);
 	    	Uova.setEnabled(false);
     		InserimentoCompletato = new InserimentoProdottoCompletatoJDialog(this, Uova);
     		InserimentoCompletato.setVisible(true);
-	    } catch (NumberFormatException e) {
+	    } catch (MyDataFormatException e) {
+			Uova.setEnabled(false);
+			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
+			ErroreAggiungi.setError("ERRORE: Data non corretta");
+			ErroreAggiungi.setVisible(true);
+		
+		}catch (NumberFormatException e) {
 			Uova.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
 			ErroreAggiungi.setError("ERRORE: "+e.getMessage());
 			ErroreAggiungi.setVisible(true);
 	
 		} catch (SQLException e) {
+			Uova.setEnabled(false);
 			ErroreAggiungi = new ErroreAggiungiProdottoJDialog(this, Uova);
 			ErroreAggiungi.setError(e.getMessage());
 			ErroreAggiungi.setVisible(true);
