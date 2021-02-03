@@ -19,15 +19,17 @@ import java.awt.event.ActionEvent;
 public class EliminaTesseraByNTesseraJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private ControllerCliente controller;
-	 JTextField NTesseraDaEliminareTB;
+	private ControllerCliente ControllerC;
+	private JTextField NTesseraDaEliminareTB;
 	
 	
 	
 	public EliminaTesseraByNTesseraJDialog(ControllerCliente c) 
 	{
-		controller = c;
-		
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		ControllerC = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,10 +61,20 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
-						controller.EliminaTesseraByNTessera();
+						ControllerC.EliminaTesseraByNTessera();
 						
 					}
 				});
+				
+				JButton IndietroButton = new JButton("Indietro");
+				IndietroButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+						ControllerC.EliminaTesseraIndietroBottonePremuto();
+						
+					}
+				});
+				buttonPane.add(IndietroButton);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -75,13 +87,26 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 
 
 
-	public JTextField getNTesseraDaEliminareTB() {
-		return NTesseraDaEliminareTB;
+	public String getNTesseraDaEliminareTB() {
+		return NTesseraDaEliminareTB.getText();
 	}
 
 
 
-	public void setNTesseraDaEliminareTB(JTextField nTesseraDaEliminareTB) {
-		NTesseraDaEliminareTB = nTesseraDaEliminareTB;
-	}
+	
+
+
+	
+
+
+
+	
+
+
+
+	
+
+
+
+	
 }

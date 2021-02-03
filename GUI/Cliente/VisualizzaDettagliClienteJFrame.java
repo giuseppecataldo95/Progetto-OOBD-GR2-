@@ -45,6 +45,8 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		controller = c;
 		ControllerP = c1;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(150, 80, 1000, 600);
 		VisualizzaDettagliClientePanel = new JPanel();
 		VisualizzaDettagliClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,16 +116,6 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 
 		MenùLateraleTB.add(verticalStrut);
 		
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		
 
 		JToolBar PercorsoTB = new JToolBar();
 		PercorsoTB.setBorder(null);
@@ -151,12 +143,21 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				controller.VisualizzaDettagliClienteVisualizzaClientiPercorsoBottonePremuto();
+				
 			}
 		});
 		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		
 		JButton RiepilogoNuovaTesseraPercorsoButton = new JButton("> Riepilogo Nuova Tessera");
+		RiepilogoNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				controller.VisualizzaDettagliClienteVisualizzaDettagliClientePercorsoBottonePremuto();	
+			}
+		});
 		RiepilogoNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(RiepilogoNuovaTesseraPercorsoButton);
 		

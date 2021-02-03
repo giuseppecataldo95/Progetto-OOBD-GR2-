@@ -36,6 +36,8 @@ public class AggiungiProdottoJFrame extends JFrame {
 		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		AggiungiNuovoProdottoPanel = new JPanel();
 		AggiungiNuovoProdottoPanel.setBackground(new Color(255, 228, 181));
 		AggiungiNuovoProdottoPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -96,14 +98,6 @@ public class AggiungiProdottoJFrame extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(280);
 		toolBar.add(verticalStrut);
 		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		
-		JButton InfoButton = new JButton("");
-		toolBar.add(InfoButton);
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
@@ -197,7 +191,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		
 		JLabel SelezionaCategoriaLB = new JLabel("Seleziona la categoria in cui vuoi inserire un nuovo prodotto");
 		SelezionaCategoriaLB.setFont(new Font("Arial", Font.BOLD, 20));
-		SelezionaCategoriaLB.setBounds(236, 66, 570, 66);
+		SelezionaCategoriaLB.setBounds(229, 61, 685, 66);
 		AggiungiNuovoProdottoPanel.add(SelezionaCategoriaLB);
 	}
 }

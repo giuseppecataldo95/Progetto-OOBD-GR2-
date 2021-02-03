@@ -24,7 +24,10 @@ public class InserimentoClienteCompletatoJDialog extends JDialog {
 	public InserimentoClienteCompletatoJDialog(ControllerCliente c)
 	
 	{
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		controller = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		InserimentoClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));

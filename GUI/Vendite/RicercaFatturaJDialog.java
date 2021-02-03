@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class IDFatturaRicercaCarrelloJDialog extends JDialog {
+public class RicercaFatturaJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField IDFatturaTB;
@@ -27,10 +27,12 @@ public class IDFatturaRicercaCarrelloJDialog extends JDialog {
 	
 
 
-	public IDFatturaRicercaCarrelloJDialog(ControllerVendite cv) {
+	public RicercaFatturaJDialog(ControllerVendite cv) {
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		
 		ControllerV = cv;
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 306, 211);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,6 +68,18 @@ public class IDFatturaRicercaCarrelloJDialog extends JDialog {
 		});
 		AvantiButton.setBounds(197, 143, 85, 21);
 		contentPanel.add(AvantiButton);
+		
+		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerV.RicercaFatturaIndietroBottonePremuto();
+				
+			}
+		});
+		IndietroButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		IndietroButton.setBounds(100, 143, 85, 21);
+		contentPanel.add(IndietroButton);
 	}
 	
 	public String getIDFatturaTB() {

@@ -56,6 +56,8 @@ public class VisualizzaClientiJFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		VisualizzaClientiPanel = new JPanel();
 		VisualizzaClientiPanel.setBackground(new Color(255, 228, 181));
 		VisualizzaClientiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -122,14 +124,6 @@ public class VisualizzaClientiJFrame extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(280);
 		MenùLateraleTB.add(verticalStrut);
 		
-		JButton InfoButton = new JButton("");
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaClientiJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
-		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
 		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -181,7 +175,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		toolBar.setFloatable(false);
 		toolBar.setBackground(new Color(255, 140, 0));
 		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(871, 125, 93, 118);
+		toolBar.setBounds(871, 125, 105, 118);
 		VisualizzaClientiPanel.add(toolBar);
 		
 		JButton VisualizzaDettagliClienteJButton = new JButton("Dettagli Cliente");

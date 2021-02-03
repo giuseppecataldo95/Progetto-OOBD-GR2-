@@ -31,6 +31,8 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 		ControllerM = c;
 		
 		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

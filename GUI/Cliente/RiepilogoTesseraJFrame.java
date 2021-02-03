@@ -45,7 +45,8 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		controller = c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
-
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		RiepilogoTesseraPanel = new JPanel();
 		RiepilogoTesseraPanel.setBackground(new Color(255, 228, 181));
 		RiepilogoTesseraPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -120,16 +121,6 @@ public class RiepilogoTesseraJFrame extends JFrame {
 
 		MenùLateraleTB.add(verticalStrut);
 		
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		
 
 		JToolBar PercorsoTB = new JToolBar();
 		PercorsoTB.setBorder(null);
@@ -145,13 +136,14 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				controller.RiepilogoTesseraClientiPercorsoBottonePremuto();
 				
 			}
 		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(ClientiPercorsoButton);
 		
-		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
+		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.RiepilogoTesseraNuovaTesseraPercorsoBottonePremuto();

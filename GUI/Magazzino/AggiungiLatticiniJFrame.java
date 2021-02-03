@@ -54,6 +54,8 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiLatticiniPanel = new JPanel();
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		AggiungiLatticiniPanel.setBackground(new Color(255, 228, 181));
 		AggiungiLatticiniPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		AggiungiLatticiniPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -113,14 +115,6 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(280);
 		toolBar.add(verticalStrut);
 		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		
-		JButton InfoButton = new JButton("");
-		toolBar.add(InfoButton);
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);

@@ -20,7 +20,10 @@ public class ErroreRicercaClienteByNTesseraJDialog extends JDialog {
 	private ControllerCliente ControllerC;
 	
 	public ErroreRicercaClienteByNTesseraJDialog(ControllerCliente c) {
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		ControllerC = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 375, 181);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,7 +42,7 @@ public class ErroreRicercaClienteByNTesseraJDialog extends JDialog {
 			}
 		});
 		RiprovaJButton.setActionCommand("Cancel");
-		RiprovaJButton.setBounds(149, 80, 67, 21);
+		RiprovaJButton.setBounds(127, 80, 107, 21);
 		contentPanel.add(RiprovaJButton);
 		
 		JLabel ErroreRicercaClienteLB = new JLabel("Il numero della Tessera inserito non \u00E8 stato trovato \r\n");

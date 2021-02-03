@@ -507,23 +507,28 @@ public class ControllerMagazzino {
 		FinestraDaCuiApro.setVisible(false);
 		String Tipo = FinestraDaCuiApro.getClass().toString();
 		if(Tipo.contains("Confezionati")) {
-			CompletaTabellaConfezionati();
 			MostraFinestraVisualizzaConfezionati();
+			CompletaTabellaConfezionati();
+
 		} if(Tipo.contains("Frutta")) {
-			CompletaTabellaFrutta();
 			MostraFinestraVisualizzaFrutta();
+			CompletaTabellaFrutta();
+
 		} if(Tipo.contains("Verdura")) {
-			CompletaTabellaVerdura();
 			MostraFinestraVisualizzaVerdura();
+			CompletaTabellaVerdura();
+
 		} if(Tipo.contains("Farinacei")) {
+			MostraFinestraVisualizzaFarinacei();	
 			CompletaTabellaFarinacei();
-			MostraFinestraVisualizzaFarinacei();
+
 		} if(Tipo.contains("Latticini")) {
-			CompletaTabellaLatticini();
 			MostraFinestraVisualizzaLatticini();
+			CompletaTabellaLatticini();
+
 		} if(Tipo.contains("Uova")) {
-			CompletaTabellaUova();
 			MostraFinestraVisualizzaUova();
+			CompletaTabellaUova();
 		}
 		ProdottoEliminato.setVisible(false);
 	}

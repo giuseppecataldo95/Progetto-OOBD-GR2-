@@ -53,9 +53,10 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 	public VisualizzaDettagliFatturaJFrame(ControllerVendite c, ControllerPrincipale c1) {
 		ControllerV = c;
 		ControllerP = c1;
-		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setTitle("ProgettoOOBD2020");
 		VisualizzaFatturePanel = new JPanel();
 		VisualizzaFatturePanel.setBackground(new Color(255, 228, 181));
 		VisualizzaFatturePanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -122,14 +123,6 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(280);
 		MenùLateraleTB.add(verticalStrut);
 		
-		JButton InfoButton = new JButton("");
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
-		
 		JToolBar percorsoTB = new JToolBar();
 		percorsoTB.setBorder(null);
 		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -156,7 +149,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				ControllerV.VisualizzaDettagliFatturaVisualizzaCarrelloPercorsoBottonePremuto();
+				ControllerV.VisualizzaDettagliFatturaVisualizzaFatturePercorsoBottonePremuto();
 				
 				
 			}
@@ -168,7 +161,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 		VisualizzaDettagliPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerV.VisualizzaCarrello1VisualizzaDettagliPercorsoBottonePremuto();
+				ControllerV.VisualizzaDettagliFatturaVisualizzaDettagliPercorsoBottonePremuto();
 				
 			}
 		});

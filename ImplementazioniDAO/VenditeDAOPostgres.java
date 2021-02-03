@@ -14,6 +14,8 @@ import Entità.Fattura;
 import Entità.Prodotto_kg;
 import Entità.ProdottoUnitario;
 import Entità.Tessera;
+import Risorse.MieEccezioni.CarrelloNonTrovatoException;
+import Risorse.MieEccezioni.CarrelloVuotoException;
 import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 public class VenditeDAOPostgres implements VenditeDAO{
@@ -133,9 +135,21 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		}
 	}
 	
-	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException {
+	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException, CarrelloVuotoException {
+		
+		if(FatturaDaGenerare.getPrezzoTotale() == 0.0) {
+		
+			throw new CarrelloVuotoException();
+			
+		}
+		
+		else {
+			
+		
 		Statement InserisciFattura = connessione.createStatement();
 		InserisciFattura.executeUpdate("INSERT INTO fattura VALUES ("+FatturaDaGenerare.getNTessera()+","+FatturaDaGenerare.getPuntiTotali()+",DEFAULT,CURRENT_DATE,"+FatturaDaGenerare.getIDCarrello()+","+FatturaDaGenerare.getPrezzoTotale()+")");
+		
+		}
 	}
 
 	public Carrello getCarrello(int IDCarrello) throws SQLException {
@@ -146,20 +160,29 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		while(rs.next()) {
 		CarrelloCorrente = new Carrello(rs.getFloat("punti_frutta"), rs.getFloat("punti_verdura"), rs.getFloat("punti_confezionati"), rs.getFloat("punti_uova"), rs.getFloat("punti_farinacei"), rs.getFloat("punti_latticini"));
 		}
+		
 		return CarrelloCorrente;
 	}
 
-	public int getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException {
+	public Carrello getIDCarrelloByIDFattura(String idFatturaTB)throws SQLException, CarrelloNonTrovatoException {
 		
-			int IDCarrello = 0;
+			
+			Carrello c = null;
 			Statement getIDCarrello = connessione.createStatement();
 			ResultSet rs = getIDCarrello.executeQuery("SELECT fattura.id_carrello FROM fattura WHERE id_fattura = "+idFatturaTB);
 			while(rs.next()) {
 				
-				IDCarrello = rs.getInt("id_carrello");
+				c = new Carrello(rs.getInt("id_carrello"));
 				
 			}
-			return IDCarrello;	
+			
+			if(c == null)
+			{
+				
+				throw new CarrelloNonTrovatoException();
+				
+			}
+			return c;	
 		
 	}
 	

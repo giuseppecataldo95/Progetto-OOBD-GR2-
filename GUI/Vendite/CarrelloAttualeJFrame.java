@@ -57,7 +57,8 @@ public class CarrelloAttualeJFrame extends JFrame {
 	
 	public  CarrelloAttualeJFrame(ControllerVendite CV) {
 		ControllerV = CV;
-		
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 500, 532);
 		setResizable(false);

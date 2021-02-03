@@ -29,6 +29,8 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 		setAlwaysOnTop(true);
 		
 		setBounds(500, 500, 372, 202);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

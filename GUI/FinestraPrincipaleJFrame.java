@@ -31,6 +31,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		Controller = P;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(150, 80, 1000, 600);
 		FinestraPrincipalePanel = new JPanel();
 		FinestraPrincipalePanel.setBackground(new Color(255, 228, 181));
