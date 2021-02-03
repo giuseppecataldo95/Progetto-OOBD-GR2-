@@ -100,10 +100,7 @@ public class VenditeJFrame extends JFrame {
 		JButton VisualizzaCronologiaVenditeJButton = new JButton(" Cronologia Vendite");
 		VisualizzaCronologiaVenditeJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
 				ControllerV.VenditeCronologiaVenditeBottonePremuto();
-				ControllerV.CompletaTabellaFatture();
 			}
 		});
 		VisualizzaCronologiaVenditeJButton.setFont(new Font("Arial", Font.BOLD, 12));
