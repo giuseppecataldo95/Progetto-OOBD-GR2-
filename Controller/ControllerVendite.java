@@ -435,6 +435,8 @@ public class ControllerVendite {
 		}
 		else
 		{
+		RicercaCarrelloDialog.setVisible(false);
+		VisualizzaFatture.setVisible(false);
 		VisualizzaCarrello1 = new VisualizzaCarrelloJFrame(this, ControllerP);
 		VisualizzaCarrello1.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
 		VisualizzaCarrello1.setVisible(true);
@@ -450,7 +452,7 @@ public class ControllerVendite {
 	}
 	public void VisualizzaCarrello1VenditePercorsoBottonePremuto() {
 
-		VisualizzaFatture.setVisible(false);
+		VisualizzaCarrello1.setVisible(false);
 		Vendite = new VenditeJFrame(this, ControllerP);
 		Vendite.setVisible(true);
 		
@@ -479,6 +481,15 @@ public class ControllerVendite {
 	public VisualizzaFattureJFrame getVisualizzaCarrello() {
 		return VisualizzaFatture;
 	}
+
+	public void VisualizzaCarrello1VisualizzaDettagliPercorsoBottonePremuto() {
+
+		VisualizzaCarrello1.setVisible(false);
+		VisualizzaCarrello1.setVisible(true);
+		
+	}
+
+	
 	
 	
 

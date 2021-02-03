@@ -165,6 +165,13 @@ public class VisualizzaCarrelloJFrame extends JFrame {
 		percorsoTB.add(VisualizzaVenditePercorsoButton);
 		
 		JButton VisualizzaDettagliPercorsoButton = new JButton("> Visualizza Dettagli Fattura");
+		VisualizzaDettagliPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerV.VisualizzaCarrello1VisualizzaDettagliPercorsoBottonePremuto();
+				
+			}
+		});
 		VisualizzaDettagliPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		percorsoTB.add(VisualizzaDettagliPercorsoButton);
 		

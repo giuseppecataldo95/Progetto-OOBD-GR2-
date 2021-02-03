@@ -534,6 +534,7 @@ public class ControllerCliente
 		public void ErroreRicercaClienteRiprovaButtonPressed() 
 		
 		{
+			ErroreRicercaCliente.setVisible(false);
 			DettagliClienteDialog = new DettagliClienteJDialog(this);
 			DettagliClienteDialog.setVisible(true);
 		}
@@ -542,6 +543,7 @@ public class ControllerCliente
 		public void CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed() 
 		
 		{
+			CreaTessera.setVisible(false);
 			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
 			CreaTessera.setVisible(true);
 		}
@@ -550,10 +552,7 @@ public class ControllerCliente
 		public void RiepilogoTesseraRiepilogoTesseraPercorsoButtonPressed() 
 		
 		{
-			CreaTessera = new CreaTesseraJFrame(this, ControllerP);
-			CreaTessera.setVisible(false);
-			RiepilogoTessera = new RiepilogoTesseraJFrame(this, ControllerP);
-			CreaNuovaTesseraAvantiButtonPressed();
+			RiepilogoTessera.setVisible(false);
 			RiepilogoTessera.setVisible(true);
 		}
 

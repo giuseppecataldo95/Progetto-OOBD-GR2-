@@ -31,7 +31,7 @@ public class ErroreRicercaClienteByNTesseraJDialog extends JDialog {
 		RiprovaJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
+				
 				ControllerC.ErroreRicercaClienteRiprovaButtonPressed();
 				
 			
