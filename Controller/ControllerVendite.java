@@ -433,6 +433,7 @@ public class ControllerVendite {
 		}
 		else
 		{
+		VisualizzaCarrello1 = new VisualizzaCarrelloJFrame(this, ControllerP);
 		VisualizzaCarrello1.setRigheTabella(Carrello.getPuntiFrutta(), Carrello.getPuntiVerdura(), Carrello.getPuntiConfezionati(), Carrello.getPuntiFarinacei(), Carrello.getPuntiUova(), Carrello.getPuntiLatticini());
 		VisualizzaCarrello1.setVisible(true);
 		}
