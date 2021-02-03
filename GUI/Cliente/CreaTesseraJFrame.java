@@ -141,7 +141,7 @@ public class CreaTesseraJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				Controller.CreaNuovaTesseraClientiPercorsoBottonePremuto();
 				
 			}
 		});
@@ -152,7 +152,7 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed();
+				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoBottonePremuto();
 				
 			}
 		});
@@ -244,7 +244,7 @@ public class CreaTesseraJFrame extends JFrame {
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.CreaNuovaTesseraIndietroButtonPressed();
+				Controller.CreaNuovaTesseraIndietroBottonePremuto();
 				
 			}
 		});
@@ -256,7 +256,7 @@ public class CreaTesseraJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Controller.CreaNuovaTesseraAvantiButtonPressed();
+				Controller.CreaNuovaTesseraAvantiBottonePremuto();
 			}
 		});
 		AvantiButton.setBounds(799, 484, 103, 31);

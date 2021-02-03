@@ -44,7 +44,7 @@ public class ErroreTesseraJDialog extends JDialog {
 					public void actionPerformed(ActionEvent e) 
 					
 					{
-						controller.ErroreTesseraRiprovaButtonPressed();
+						controller.ErroreTesseraRiprovaBottonePremuto();
 						
 					}
 				});

@@ -67,34 +67,34 @@ public class CFGenerator {
   // Metogi getter per ottenere gli elementi della classe
   // Interfacce più comode ed ordinate per l'accesso alle funzionalità
   // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-  String getNome() {
+  public String getNome() {
     return modificaNC(nome,true);
   }
-  String getCognome() {
+  public String getCognome() {
     return modificaNC(cognome,false);
   }
   
-  String getNomeInserito() {
+  public String getNomeInserito() {
     return nome;
   }
-  String getCognomeInserito() {
+  public String getCognomeInserito() {
     return cognome;
   }
-  String getMese() {
+  public String getMese() {
     return modificaMese();
   }
-  String getMeseInserito() {
+  public String getMeseInserito() {
     return m;
   }
-  String getAnno() {
+  public String getAnno() {
     String Anno = String.valueOf(anno);
     String anno = Anno.substring(2, 4);
 	  return anno;
   }
-  int getAnnoInserito() {
+  public int getAnnoInserito() {
     return anno;
   }
-  String getGiorno() {
+  public String getGiorno() {
 	  
 	  int Giorno = 0; 
 	  
@@ -115,10 +115,10 @@ public class CFGenerator {
   }
 
   
-  String getComune() throws SQLException {
+  public String getComune() throws SQLException {
     return elaboraCodiceComune();
   }
-  String getCodice() throws SQLException, NullPointerException {
+  public String getCodice() throws SQLException, NullPointerException {
     return calcolaCodice();
   }
   

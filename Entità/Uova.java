@@ -2,44 +2,44 @@ package Entità;
 
 import java.sql.Date;
 
-public class Uova extends Prodotto_unitario{
-	private Date Data_scadenza;
-	private int N_perConfezione;
-	private String Lotto_lavorazione;
+public class Uova extends ProdottoUnitario{
+	private Date DataScadenza;
+	private int NPerConfezione;
+	private String LottoLavorazione;
 	private String Provenienza;
 	
 	public Uova(int iD_Prodotto, float valore, int scorte, Date data_scadenza, int n_perConfezione) {
 		super(iD_Prodotto, valore, scorte);
-		Data_scadenza = data_scadenza;
-		N_perConfezione = n_perConfezione;
+		DataScadenza = data_scadenza;
+		NPerConfezione = n_perConfezione;
 	}
 	
 	public Uova(int iD_Prodotto, float valore, int scorte, Date data_scadenza, int n_perConfezione,
 			String lotto_lavorazione, String provenienza) {
 		super(iD_Prodotto, valore, scorte);
-		Data_scadenza = data_scadenza;
-		N_perConfezione = n_perConfezione;
-		Lotto_lavorazione = lotto_lavorazione;
+		DataScadenza = data_scadenza;
+		NPerConfezione = n_perConfezione;
+		LottoLavorazione = lotto_lavorazione;
 		Provenienza = provenienza;
 	}
 
 	public Date getData_scadenza() {
-		return Data_scadenza;
+		return DataScadenza;
 	}
-	public void setData_scadenza(Date data_scadenza) {
-		Data_scadenza = data_scadenza;
+	public void setDataScadenza(Date data_scadenza) {
+		DataScadenza = data_scadenza;
 	}
-	public int getN_perConfezione() {
-		return N_perConfezione;
+	public int getNPerConfezione() {
+		return NPerConfezione;
 	}
-	public void setN_perConfezione(int n_perConfezione) {
-		N_perConfezione = n_perConfezione;
+	public void setNPerConfezione(int n_perConfezione) {
+		NPerConfezione = n_perConfezione;
 	}
-	public String getLotto_lavorazione() {
-		return Lotto_lavorazione;
+	public String getLottoLavorazione() {
+		return LottoLavorazione;
 	}
-	public void setLotto_lavorazione(String lotto_lavorazione) {
-		Lotto_lavorazione = lotto_lavorazione;
+	public void setLottoLavorazione(String lotto_lavorazione) {
+		LottoLavorazione = lotto_lavorazione;
 	}
 	public String getProvenienza() {
 		return Provenienza;

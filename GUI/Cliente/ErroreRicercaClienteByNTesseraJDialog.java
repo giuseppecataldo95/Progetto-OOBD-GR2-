@@ -30,10 +30,10 @@ public class ErroreRicercaClienteByNTesseraJDialog extends JDialog {
 		JButton RiprovaJButton = new JButton("Riprova");
 		RiprovaJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				ControllerC.ErroreRicercaClienteRiprovaButtonPressed();
-				
+
+		
+				ControllerC.ErroreRicercaClienteRiprovaBottonePremuto();		
+
 			
 				
 			}

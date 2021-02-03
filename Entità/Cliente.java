@@ -7,10 +7,10 @@ public class Cliente {
 	
 	private String Nome;
 	private String Cognome;
-	private String Luogo_nascita;
+	private String LuogoNascita;
 	private String Sesso;
 	private String CF;
-	private Date Data_nascita;
+	private Date DataNascita;
 	
 	
 	
@@ -18,10 +18,10 @@ public class Cliente {
 		super();
 		Nome = nome;
 		Cognome = cognome;
-		Luogo_nascita = luogo_nascita;
+		LuogoNascita = luogo_nascita;
 		Sesso = sesso;
 		CF = cF;
-		Data_nascita = data_nascita;
+		DataNascita = data_nascita;
 	}
 
 
@@ -58,13 +58,13 @@ public class Cliente {
 	}
 
 
-	public String getLuogo_nascita() {
-		return Luogo_nascita;
+	public String getLuogoNascita() {
+		return LuogoNascita;
 	}
 
 
-	public void setLuogo_nascita(String luogo_nascita) {
-		Luogo_nascita = luogo_nascita;
+	public void setLuogoNascita(String luogo_nascita) {
+		LuogoNascita = luogo_nascita;
 	}
 
 
@@ -88,13 +88,13 @@ public class Cliente {
 	}
 
 
-	public Date getData_nascita() {
-		return Data_nascita;
+	public Date getDataNascita() {
+		return DataNascita;
 	}
 
 
-	public void setData_nascita(Date data_nascita) {
-		Data_nascita = data_nascita;
+	public void setDataNascita(Date data_nascita) {
+		DataNascita = data_nascita;
 	}
 
 

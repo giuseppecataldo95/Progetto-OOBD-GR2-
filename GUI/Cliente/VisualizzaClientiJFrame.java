@@ -144,7 +144,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaClientiClientiPercorsoButtonPressed();
+				controller.VisualizzaClientiClientiPercorsoBottonePremuto();
 				
 			}
 		});
@@ -156,7 +156,7 @@ public class VisualizzaClientiJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				controller.VisualizzaClientiVisualizzaClientiPercorsoButtonPressed();
+				controller.VisualizzaClientiVisualizzaClientiPercorsoBottonePremuto();
 				controller.CompletaTabellaTessera();
 			}
 		});

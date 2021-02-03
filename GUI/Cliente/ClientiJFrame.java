@@ -84,9 +84,7 @@ public class ClientiJFrame extends JFrame {
 		JButton AggiungiTesseraButton = new JButton("Aggiungi Nuova Tessera");
 		AggiungiTesseraButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				setVisible(false);
-				ControllerC.ClientiCreaNuovaTesseraButtonPressed();
+				ControllerC.ClientiCreaNuovaTesseraBottonePremuto();
 			}
 		});
 		AggiungiTesseraButton.setFont(new Font("Arial", Font.BOLD, 12));
@@ -99,7 +97,7 @@ public class ClientiJFrame extends JFrame {
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerC.ClientiVisualizzaClientiButtonPressed();
+				ControllerC.ClientiVisualizzaClientiBottonePremuto();
 				ControllerC.CompletaTabellaTessera();
 			}
 		});

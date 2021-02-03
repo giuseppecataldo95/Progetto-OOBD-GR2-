@@ -140,7 +140,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiClientiPercorsoButtonPressed();
+				controller.VisualizzaPuntiClientiPercorsoBottonePremuto();
 				
 			}
 		});
@@ -151,7 +151,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		VisualizzaClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaClientiPercorsoButtonPressed();
+				controller.VisualizzaPuntiVisualizzaClientiPercorsoBottonePremuto();
 				controller.CompletaTabellaTessera();
 			}
 		});
@@ -164,7 +164,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		VisualizzaPuntiJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaPuntiPercorsoButtonPressed();
+				controller.VisualizzaPuntiVisualizzaPuntiPercorsoBottonePremuto();
 				controller.CompletaTabellaPunti();
 			}
 		});

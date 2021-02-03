@@ -39,7 +39,7 @@ public class TesseraEliminataJDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				controller.TesseraEliminataOKButtonPressed();
+				controller.TesseraEliminataOKBottonePremuto();
 				controller.CompletaTabellaTessera();
 				
 

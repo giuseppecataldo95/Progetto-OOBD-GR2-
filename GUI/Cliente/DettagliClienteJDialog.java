@@ -68,27 +68,20 @@ public class DettagliClienteJDialog extends JDialog {
 		JButton VisualizzaDettagliAnnullaJButton = new JButton("Annulla");
 		VisualizzaDettagliAnnullaJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			}
+		});	
+		VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
+		buttonPane.add(VisualizzaDettagliAnnullaJButton);	
 				
-					setVisible(false);
-					
-					}
-				});
-				VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.PLAIN, 12));
-				VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
-				buttonPane.add(VisualizzaDettagliAnnullaJButton);	
-				
-				JButton VisualizzaDettagliClienteDialogJButton = new JButton("Visualizza Dettagli");
-				VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-							
-							
-							int n_t = Integer.valueOf(VisualizzaDettagliNTesseraTB.getText());
-							controller.CercaClienteByCF(n_t);
-								
-						}
-							
-				});
-				buttonPane.add(VisualizzaDettagliClienteDialogJButton);
+		JButton VisualizzaDettagliClienteDialogJButton = new JButton("Visualizza Dettagli");
+		VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			int n_t = Integer.valueOf(VisualizzaDettagliNTesseraTB.getText());
+			controller.CercaClienteByCF(n_t);
+			}
+		});
+		buttonPane.add(VisualizzaDettagliClienteDialogJButton);
 	}
 }
 	
