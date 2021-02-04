@@ -57,8 +57,8 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Elimina Tessera");
-				okButton.addActionListener(new ActionListener() {
+				JButton OkButton = new JButton("Elimina Tessera");
+				OkButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						
 						ControllerC.EliminaTesseraByNTessera();
@@ -75,9 +75,9 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 					}
 				});
 				buttonPane.add(IndietroButton);
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				OkButton.setActionCommand("OK");
+				buttonPane.add(OkButton);
+				getRootPane().setDefaultButton(OkButton);
 			}
 			{
 				
