@@ -281,7 +281,7 @@ public class ControllerCliente
 	}
 
 	public void EliminaTesseraByNTessera() {
-		String N_tessera = EliminaTessera.getNTesseraDaEliminareTB();
+		String N_tessera = EliminaTessera.getNTesseraDaEliminareTF();
 		try {
 			int NTessera = Integer.parseInt(N_tessera);
 			EliminaTessera.setVisible(false);

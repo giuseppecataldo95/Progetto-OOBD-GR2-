@@ -18,9 +18,9 @@ import java.awt.event.ActionEvent;
 
 public class EliminaTesseraByNTesseraJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel EliminaTesseraPanel = new JPanel();
 	private ControllerCliente ControllerC;
-	private JTextField NTesseraDaEliminareTB;
+	private JTextField NTesseraDaEliminareTF;
 	
 	
 	
@@ -32,30 +32,30 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		EliminaTesseraPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(EliminaTesseraPanel, BorderLayout.CENTER);
+		EliminaTesseraPanel.setLayout(null);
 		
 		JLabel EliminaTesseraLB = new JLabel("Inserisci il Numero della Tessera da Eliminare!");
 		EliminaTesseraLB.setFont(new Font("Arial", Font.BOLD, 14));
 		EliminaTesseraLB.setHorizontalAlignment(SwingConstants.CENTER);
 		EliminaTesseraLB.setBounds(48, 29, 340, 25);
-		contentPanel.add(EliminaTesseraLB);
+		EliminaTesseraPanel.add(EliminaTesseraLB);
 		
 		JLabel NumeroTesseraEliminaTesseraLB = new JLabel("Numero Tessera : ");
 		NumeroTesseraEliminaTesseraLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		NumeroTesseraEliminaTesseraLB.setBounds(98, 111, 107, 25);
-		contentPanel.add(NumeroTesseraEliminaTesseraLB);
+		EliminaTesseraPanel.add(NumeroTesseraEliminaTesseraLB);
 		
-		NTesseraDaEliminareTB = new JTextField();
-		NTesseraDaEliminareTB.setFont(new Font("Arial", Font.PLAIN, 12));
-		NTesseraDaEliminareTB.setBounds(215, 111, 61, 22);
-		contentPanel.add(NTesseraDaEliminareTB);
-		NTesseraDaEliminareTB.setColumns(10);
+		NTesseraDaEliminareTF = new JTextField();
+		NTesseraDaEliminareTF.setFont(new Font("Arial", Font.PLAIN, 12));
+		NTesseraDaEliminareTF.setBounds(215, 111, 61, 22);
+		EliminaTesseraPanel.add(NTesseraDaEliminareTF);
+		NTesseraDaEliminareTF.setColumns(10);
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel ContainerPanel = new JPanel();
+			ContainerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(ContainerPanel, BorderLayout.SOUTH);
 			{
 				JButton OkButton = new JButton("Elimina Tessera");
 				OkButton.addActionListener(new ActionListener() {
@@ -74,9 +74,11 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 						
 					}
 				});
-				buttonPane.add(IndietroButton);
+
+				ContainerPanel.add(IndietroButton);
 				OkButton.setActionCommand("OK");
-				buttonPane.add(OkButton);
+				ContainerPanel.add(OkButton);
+
 				getRootPane().setDefaultButton(OkButton);
 			}
 			{
@@ -87,8 +89,8 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 
 
 
-	public String getNTesseraDaEliminareTB() {
-		return NTesseraDaEliminareTB.getText();
+	public String getNTesseraDaEliminareTF() {
+		return NTesseraDaEliminareTF.getText();
 	}
 
 
