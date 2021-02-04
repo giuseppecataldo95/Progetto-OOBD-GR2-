@@ -25,5 +25,6 @@ public interface VenditeDAO {
 	public void inserisciFattura(Fattura FatturaDaGenerare) throws SQLException, CarrelloVuotoException;
 	public Carrello getCarrello(int IDCarrello)throws SQLException;
 	public Carrello getIDCarrelloByIDFattura(String idFattura)throws SQLException, CarrelloNonTrovatoException;
+	public void eliminaCarrello(int IDCarrello) throws SQLException;
 
 }

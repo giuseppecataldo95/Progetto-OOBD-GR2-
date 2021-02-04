@@ -179,4 +179,9 @@ public class VenditeDAOPostgres implements VenditeDAO{
 		
 	}
 	
+	public void eliminaCarrello(int IDCarrello) throws SQLException {
+		Statement elimina = connessione.createStatement();
+		elimina.executeUpdate("DELETE FROM Carrello WHERE id_carrello="+IDCarrello);
+	}
+	
 }

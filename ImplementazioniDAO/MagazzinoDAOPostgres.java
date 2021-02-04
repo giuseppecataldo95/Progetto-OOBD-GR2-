@@ -46,7 +46,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	@Override
 	public ArrayList<Frutta> getFrutta() throws SQLException {
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM frutta");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM frutta WHERE esaurito IS NULL");
 		ArrayList<Frutta> ProdottiFrutta = new ArrayList<Frutta>();
 		while(rs.next()) {
 			
@@ -63,7 +63,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 	@Override
 	public ArrayList<Verdura> getVerdura() throws SQLException {
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM verdura");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM verdura WHERE esaurito IS NULL");
 		ArrayList<Verdura> ProdottiVerdura = new ArrayList<Verdura>();
 		while(rs.next()) {
 			Verdura v = new Verdura(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"));
@@ -81,7 +81,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		Statement gestisciScadenze = connessione.createStatement();
 		gestisciScadenze.execute("SELECT gestisci_scadenze_latticino()");
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM latticino");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM latticino WHERE esaurito IS NULL");
 		ArrayList<Latticino> ProdottiLatticini = new ArrayList<Latticino>();
 		while(rs.next()) {
 			Latticino l = new Latticino(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"), rs.getDate("data_scadenza"));
@@ -99,7 +99,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		Statement gestisciScadenze = connessione.createStatement();
 		gestisciScadenze.execute("SELECT gestisci_scadenze_confezionato()");
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM confezionato");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM confezionato WHERE esaurito IS NULL");
 		ArrayList<Confezionato> ProdottiConfezionati = new ArrayList<Confezionato>();
 		while(rs.next()) {
 			Confezionato c = new Confezionato(rs.getInt("id_prodotto"), rs.getString("nome"),  rs.getFloat("valore_unitario"), rs.getInt("scorte"), rs.getDate("data_scadenza"), rs.getString("marca"), rs.getFloat("peso"));
@@ -116,7 +116,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		Statement gestisciScadenze = connessione.createStatement();
 		gestisciScadenze.execute("SELECT gestisci_scadenze_uova()");
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM uova");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM uova WHERE esaurito IS NULL");
 		ArrayList<Uova> ProdottiUova = new ArrayList<Uova>();
 		while(rs.next()) {
 			Uova u = new Uova(rs.getInt("id_prodotto"), rs.getFloat("valore_unitario"), rs.getInt("scorte"), rs.getDate("data_scadenza"), rs.getInt("n_perconfezione"));
@@ -133,7 +133,7 @@ public class MagazzinoDAOPostgres implements MagazzinoDAO{
 		Statement gestisciScadenze = connessione.createStatement();
 		gestisciScadenze.execute("SELECT gestisci_scadenze_farinaceo()");
 		Statement getProd = connessione.createStatement();
-		ResultSet rs = getProd.executeQuery("SELECT * FROM farinaceo");
+		ResultSet rs = getProd.executeQuery("SELECT * FROM farinaceo WHERE esaurito IS NULL");
 		ArrayList<Farinaceo> ProdottiFarinacei = new ArrayList<Farinaceo>();
 		while(rs.next()) {
 			Farinaceo f = new Farinaceo(rs.getInt("id_prodotto"), rs.getString("nome"), rs.getFloat("valore_kg"), rs.getFloat("scorte_kg"), rs.getDate("data_scadenza"));

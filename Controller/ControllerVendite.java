@@ -216,6 +216,11 @@ public class ControllerVendite {
 		CreaCarrello.setEnabled(true);
 		Salvataggio.setVisible(false);
 		CreaCarrello.setVisible(false);
+		try {
+			DAO.eliminaCarrello(CarrelloDaCreare.getIDCarrello());
+		} catch (SQLException e) {
+			
+		}
 		Vendite.setVisible(true);
 	}
 	
