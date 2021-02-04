@@ -292,7 +292,7 @@ public class ControllerVendite {
 		
 		
 		try {
-			Tessera Compratore = new Tessera(Integer.parseInt(InserisciTessera.getNTessera()));
+			Tessera Compratore = new Tessera(Integer.parseInt(InserisciTessera.getNTesseraTF()));
 			DAO.getTesserabyNTessera(Compratore.getNTessera());
 			Fattura FatturaDaGenerare = new Fattura(Compratore.getNTessera());
 			FatturaDaGenerare.setIDCarrello(CarrelloDaCreare.getIDCarrello());
@@ -406,7 +406,7 @@ public class ControllerVendite {
 		
 		Carrello Carrello = null;
 		try {
-			 Carrello = DAO.getIDCarrelloByIDFattura(RicercaFattura.getIDFatturaTB());
+			 Carrello = DAO.getIDCarrelloByIDFattura(RicercaFattura.getIDFatturaTF());
 			 Carrello = DAO.getCarrello(Carrello.getIDCarrello());
 			 RicercaFattura.setVisible(false);
 			 VisualizzaFatture.setVisible(false);

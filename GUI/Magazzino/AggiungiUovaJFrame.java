@@ -27,11 +27,11 @@ import Controller.ControllerPrincipale;
 public class AggiungiUovaJFrame extends JFrame {
 
 	private JPanel AggiungiUovaPanel;
-	private JTextField InserisciNPerConfezioneTB;
-	private JTextField InserisciLottoTB;
-	private JTextField InserisciProvenienzaTB;
-	private JTextField InserisciValoreTB;
-	private JTextField InserisciScorteTB;
+	private JTextField InserisciNPerConfezioneTF;
+	private JTextField InserisciLottoTF;
+	private JTextField InserisciProvenienzaTF;
+	private JTextField InserisciValoreTF;
+	private JTextField InserisciScorteTF;
 	private JComboBox InserisciGiornoScadenzaCB;
 	private JComboBox InserisciMeseScadenzaCB;
 	private JComboBox InserisciAnnoScadenzaCB;
@@ -55,13 +55,13 @@ public class AggiungiUovaJFrame extends JFrame {
 		setContentPane(AggiungiUovaPanel);
 		AggiungiUovaPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		AggiungiUovaPanel.add(toolBar);
+		JToolBar MenùLaterale = new JToolBar();
+		MenùLaterale.setBackground(new Color(255, 153, 51));
+		MenùLaterale.setBorder(null);
+		MenùLaterale.setFloatable(false);
+		MenùLaterale.setOrientation(SwingConstants.VERTICAL);
+		MenùLaterale.setBounds(0, 0, 66, 563);
+		AggiungiUovaPanel.add(MenùLaterale);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -70,7 +70,7 @@ public class AggiungiUovaJFrame extends JFrame {
 				ControllerP.AggiungiUovaMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLaterale.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -84,7 +84,7 @@ public class AggiungiUovaJFrame extends JFrame {
 				ControllerP.AggiungiUovaMenuLateraleVenditeBottonePremuto();
 			}
 		});
-		toolBar.add(VenditeButton);
+		MenùLaterale.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -93,7 +93,7 @@ public class AggiungiUovaJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLaterale.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiUovaMenuLateraleMagazzinoBottonePremuto();
@@ -105,19 +105,19 @@ public class AggiungiUovaJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLaterale.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiUovaPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		AggiungiUovaPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -126,7 +126,7 @@ public class AggiungiUovaJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
@@ -135,7 +135,7 @@ public class AggiungiUovaJFrame extends JFrame {
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
+		PercorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton UovaPercorsoButton = new JButton("> Uova");
 		UovaPercorsoButton.addActionListener(new ActionListener() {
@@ -144,7 +144,7 @@ public class AggiungiUovaJFrame extends JFrame {
 			}
 		});
 		UovaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(UovaPercorsoButton);
+		PercorsoTB.add(UovaPercorsoButton);
 		
 		JLabel AggiungiUova1LB = new JLabel("Benvenuto\\a nella sezione dedicata all'aggiunta di un nuovo prodotto di tipo Uova!");
 		AggiungiUova1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -181,37 +181,37 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciProvenienzaLB.setBounds(139, 349, 140, 20);
 		AggiungiUovaPanel.add(InserisciProvenienzaLB);
 		
-		InserisciNPerConfezioneTB = new JTextField();
-		InserisciNPerConfezioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciNPerConfezioneTB.setBounds(316, 172, 96, 19);
-		AggiungiUovaPanel.add(InserisciNPerConfezioneTB);
-		InserisciNPerConfezioneTB.setColumns(10);
+		InserisciNPerConfezioneTF = new JTextField();
+		InserisciNPerConfezioneTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciNPerConfezioneTF.setBounds(316, 172, 96, 19);
+		AggiungiUovaPanel.add(InserisciNPerConfezioneTF);
+		InserisciNPerConfezioneTF.setColumns(10);
 		
-		InserisciLottoTB = new JTextField();
-		InserisciLottoTB.addKeyListener(new java.awt.event.KeyAdapter() {
+		InserisciLottoTF = new JTextField();
+		InserisciLottoTF.addKeyListener(new java.awt.event.KeyAdapter() {
 		    public void keyTyped(java.awt.event.KeyEvent evt) {
-		        if(InserisciLottoTB.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
+		        if(InserisciLottoTF.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
 		            getToolkit().beep();
 		            evt.consume();
 		         }
 		     }
 		});
-		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciLottoTB.setBounds(316, 223, 190, 19);
-		AggiungiUovaPanel.add(InserisciLottoTB);
-		InserisciLottoTB.setColumns(10);
+		InserisciLottoTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciLottoTF.setBounds(316, 223, 190, 19);
+		AggiungiUovaPanel.add(InserisciLottoTF);
+		InserisciLottoTF.setColumns(10);
 		
-		InserisciProvenienzaTB = new JTextField();
-		InserisciProvenienzaTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciProvenienzaTB.setBounds(316, 350, 190, 19);
-		AggiungiUovaPanel.add(InserisciProvenienzaTB);
-		InserisciProvenienzaTB.setColumns(10);
+		InserisciProvenienzaTF = new JTextField();
+		InserisciProvenienzaTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciProvenienzaTF.setBounds(316, 350, 190, 19);
+		AggiungiUovaPanel.add(InserisciProvenienzaTF);
+		InserisciProvenienzaTF.setColumns(10);
 		
-		InserisciValoreTB = new JTextField();
-		InserisciValoreTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValoreTB.setBounds(316, 267, 96, 20);
-		AggiungiUovaPanel.add(InserisciValoreTB);
-		InserisciValoreTB.setColumns(10);
+		InserisciValoreTF = new JTextField();
+		InserisciValoreTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciValoreTF.setBounds(316, 267, 96, 20);
+		AggiungiUovaPanel.add(InserisciValoreTF);
+		InserisciValoreTF.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -223,11 +223,11 @@ public class AggiungiUovaJFrame extends JFrame {
 		InserisciScorteLB.setBounds(234, 391, 45, 14);
 		AggiungiUovaPanel.add(InserisciScorteLB);
 		
-		InserisciScorteTB = new JTextField();
-		InserisciScorteTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(316, 389, 96, 20);
-		AggiungiUovaPanel.add(InserisciScorteTB);
+		InserisciScorteTF = new JTextField();
+		InserisciScorteTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciScorteTF.setColumns(10);
+		InserisciScorteTF.setBounds(316, 389, 96, 20);
+		AggiungiUovaPanel.add(InserisciScorteTF);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
@@ -276,19 +276,19 @@ public class AggiungiUovaJFrame extends JFrame {
 	}
 	
 	
-	public String getInserisciNomeTB() {
-		return InserisciNPerConfezioneTB.getText();
+	public String getInserisciNomeTF() {
+		return InserisciNPerConfezioneTF.getText();
 	}
 
 
 
-	public String getInserisciValoreTB() {
-		return InserisciValoreTB.getText();
+	public String getInserisciValoreTF() {
+		return InserisciValoreTF.getText();
 	}
 
 
-	public String getInserisciScorteTB() {
-		return InserisciScorteTB.getText();
+	public String getInserisciScorteTF() {
+		return InserisciScorteTF.getText();
 	}
 
 
@@ -306,16 +306,16 @@ public class AggiungiUovaJFrame extends JFrame {
 		return InserisciAnnoScadenzaCB.getSelectedItem().toString();
 	}
 	
-	public String getInserisciLottoTB() {
-		return InserisciLottoTB.getText();
+	public String getInserisciLottoTF() {
+		return InserisciLottoTF.getText();
 	}
 
 
-	public String getInserisciProvenienzaTB() {
-		return InserisciProvenienzaTB.getText();
+	public String getInserisciProvenienzaTF() {
+		return InserisciProvenienzaTF.getText();
 	}
 	
-	public String getInserisciNPerConfezione() {
-		return InserisciNPerConfezioneTB.getText();
+	public String getInserisciNPerConfezioneTF() {
+		return InserisciNPerConfezioneTF.getText();
 	}
 }

@@ -52,7 +52,7 @@ public class CreaCarrelloJFrame extends JFrame {
 	private DefaultComboBoxModel<String> CBModel;
 	private TableRowSorter<DefaultTableModel> Sorter;
 	private JTextField FiltraPerTB = new JTextField();
-	private JTextField InserisciIDProdottoTB;
+	private JTextField InserisciIDProdottoTF;
 	private JComboBox<String> SelezionaCategoriaCB;
 	private JTextField InserisciScorteTB;
 	private Timer TimerErrore;
@@ -244,11 +244,11 @@ public class CreaCarrelloJFrame extends JFrame {
 		AggiungiPanel.add(Aggiungi2LB);
 		Aggiungi2LB.setFont(new Font("Arial", Font.PLAIN, 12));
 		
-		InserisciIDProdottoTB = new JTextField();
-		InserisciIDProdottoTB.setForeground(new Color(0, 0, 0));
-		InserisciIDProdottoTB.setBounds(30, 40, 96, 20);
-		AggiungiPanel.add(InserisciIDProdottoTB);
-		InserisciIDProdottoTB.setColumns(10);
+		InserisciIDProdottoTF = new JTextField();
+		InserisciIDProdottoTF.setForeground(new Color(0, 0, 0));
+		InserisciIDProdottoTF.setBounds(30, 40, 96, 20);
+		AggiungiPanel.add(InserisciIDProdottoTF);
+		InserisciIDProdottoTF.setColumns(10);
 		
 		ProdottoAggiuntoLB = new JLabel("Prodotto aggiunto al Carrello");
 		ProdottoAggiuntoLB.setForeground(new Color(50, 205, 50));
@@ -478,7 +478,7 @@ public class CreaCarrelloJFrame extends JFrame {
 	 }
 	 
 	 public String getIDProdotto() {
-		 return InserisciIDProdottoTB.getText();
+		 return InserisciIDProdottoTF.getText();
 	 }
 	 
 	 public String getQuantità() {

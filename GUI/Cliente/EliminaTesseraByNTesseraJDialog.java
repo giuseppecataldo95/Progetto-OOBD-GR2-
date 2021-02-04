@@ -74,9 +74,11 @@ public class EliminaTesseraByNTesseraJDialog extends JDialog {
 						
 					}
 				});
+
 				ContainerPanel.add(IndietroButton);
 				OkButton.setActionCommand("OK");
 				ContainerPanel.add(OkButton);
+
 				getRootPane().setDefaultButton(OkButton);
 			}
 			{

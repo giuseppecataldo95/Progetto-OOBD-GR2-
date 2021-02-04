@@ -24,7 +24,7 @@ public class InserisciNTesseraJDialog extends JDialog {
 	private ControllerVendite Controller;
 	private JButton GeneraButton;
 	private final JButton IndietroButton = new JButton("Indietro");
-	private JTextField InserisciNTesseraTB;
+	private JTextField InserisciNTesseraTF;
 	
 	public InserisciNTesseraJDialog(ControllerVendite c) {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -44,10 +44,10 @@ public class InserisciNTesseraJDialog extends JDialog {
 		InserisciNTesseraLB.setBounds(10, 11, 338, 76);
 		InserisciNTesseraPanel.add(InserisciNTesseraLB);
 		
-		InserisciNTesseraTB = new JTextField();
-		InserisciNTesseraTB.setBounds(108, 78, 138, 20);
-		InserisciNTesseraPanel.add(InserisciNTesseraTB);
-		InserisciNTesseraTB.setColumns(10);
+		InserisciNTesseraTF = new JTextField();
+		InserisciNTesseraTF.setBounds(108, 78, 138, 20);
+		InserisciNTesseraPanel.add(InserisciNTesseraTF);
+		InserisciNTesseraTF.setColumns(10);
 	
 		{
 			JPanel ContainerPanel = new JPanel();
@@ -76,7 +76,7 @@ public class InserisciNTesseraJDialog extends JDialog {
 			}
 		}
 	}
-	public String getNTessera() {
-		return InserisciNTesseraTB.getText();
+	public String getNTesseraTF() {
+		return InserisciNTesseraTF.getText();
 	}
 }

@@ -19,9 +19,9 @@ import java.awt.event.ActionEvent;
 
 public class ErroreInserisciTesseraJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel ErroreInserisciTesseraPanel = new JPanel();
 	private ControllerVendite Controller;
-	private JButton riprovaButton;
+	private JButton RiprovaButton;
 	
 	public ErroreInserisciTesseraJDialog(ControllerVendite v) {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -32,26 +32,26 @@ public class ErroreInserisciTesseraJDialog extends JDialog {
 		setTitle("ProgettoOOBD2020");
 		setBounds(300, 300, 372, 202);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		ErroreInserisciTesseraPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(ErroreInserisciTesseraPanel, BorderLayout.CENTER);
+		ErroreInserisciTesseraPanel.setLayout(null);
 	
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel BottoniPanel = new JPanel();
+			BottoniPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+			getContentPane().add(BottoniPanel, BorderLayout.SOUTH);
 			{
-				riprovaButton = new JButton("Riprova");
-				riprovaButton.addActionListener(new ActionListener() {
+				RiprovaButton = new JButton("Riprova");
+				RiprovaButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Controller.ErroreTesseraRiprovaBottonePremuto();
 					}
 				});
 
 				
-				riprovaButton.setActionCommand("OK");
-				buttonPane.add(riprovaButton);
-				getRootPane().setDefaultButton(riprovaButton);
+				RiprovaButton.setActionCommand("OK");
+				BottoniPanel.add(RiprovaButton);
+				getRootPane().setDefaultButton(RiprovaButton);
 			}
 		}
 	}
@@ -60,7 +60,7 @@ public class ErroreInserisciTesseraJDialog extends JDialog {
 		JLabel ErroreLB = new JLabel("<html>"+errore+"<html>");
 		ErroreLB.setBounds(10, 11, 338, 58);
 		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 10));
-		contentPanel.add(ErroreLB);
+		ErroreInserisciTesseraPanel.add(ErroreLB);
 	}
 
 

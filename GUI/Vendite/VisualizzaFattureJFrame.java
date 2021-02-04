@@ -38,12 +38,12 @@ import java.awt.event.ActionEvent;
 public class VisualizzaFattureJFrame extends JFrame {
 
 	private JPanel VisualizzaFatturePanel;
-	ControllerVendite ControllerV;
-	ControllerPrincipale ControllerP;
-	private JTable table;
-	private TableRowSorter<DefaultTableModel> sorter;
-	private JTextField filterText;
-	private JTextField FiltraPerTB;
+	private ControllerVendite ControllerV;
+	private ControllerPrincipale ControllerP;
+	private JTable Table;
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FilterText;
+	private JTextField FiltraPerTF;
 	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
@@ -128,18 +128,18 @@ public class VisualizzaFattureJFrame extends JFrame {
 			}
 		});
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaFatturePanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaFatturePanel.add(PercorsoTB);
 		
 		JButton VenditePercorsoButton = new JButton("> Vendite");
 		VenditePercorsoButton.addActionListener(new ActionListener() {
@@ -150,7 +150,7 @@ public class VisualizzaFattureJFrame extends JFrame {
 			}
 		});
 		VenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VenditePercorsoButton);
+		PercorsoTB.add(VenditePercorsoButton);
 		
 		JButton VisualizzaVenditePercorsoButton = new JButton("> Visualizza Vendite");
 		VisualizzaVenditePercorsoButton.addActionListener(new ActionListener() {
@@ -162,25 +162,25 @@ public class VisualizzaFattureJFrame extends JFrame {
 			}
 		});
 		VisualizzaVenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaVenditePercorsoButton);
+		PercorsoTB.add(VisualizzaVenditePercorsoButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(97, 125, 722, 367);
-		VisualizzaFatturePanel.add(scrollPane);
-		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		sorter = new TableRowSorter<DefaultTableModel>(Model);
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
-		table.setAutoCreateRowSorter(true);
-		table.setRowSorter(sorter);
-		table.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(table);
+		JScrollPane ScrollPane = new JScrollPane();
+		ScrollPane.setBounds(97, 125, 722, 367);
+		VisualizzaFatturePanel.add(ScrollPane);
+		Table = new JTable(Model);
+		Table.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		Table.setRowSelectionAllowed(false);
+		Table.setBackground(new Color(255, 204, 153));
+		Table.setAutoCreateRowSorter(true);
+		Table.setRowSorter(Sorter);
+		Table.getTableHeader().setReorderingAllowed(false);
+		ScrollPane.setViewportView(Table);
 		
-		FiltraPerTB = new JTextField();
-		FiltraPerTB.setBounds(412, 41, 256, 20);
-		VisualizzaFatturePanel.add(FiltraPerTB);
-		FiltraPerTB.setColumns(10);
+		FiltraPerTF = new JTextField();
+		FiltraPerTF.setBounds(412, 41, 256, 20);
+		VisualizzaFatturePanel.add(FiltraPerTF);
+		FiltraPerTF.setColumns(10);
 		
 		JComboBox FiltraPerCB = new JComboBox();
 		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"Numero Tessera","ID Fattura", "Prezzo Totale", "PuntiTotali", "Data di Emissione"}));
@@ -209,12 +209,12 @@ public class VisualizzaFattureJFrame extends JFrame {
 		FiltraPerCB.addItemListener(new ItemListener() {
 			public void itemStateChanged (ItemEvent ie) {
 				if(ie.getStateChange() == ItemEvent.SELECTED) {
-				      FiltraPerTB.setText("");
+				      FiltraPerTF.setText("");
 				   }
 			}
 			
 		});
-		FiltraPerTB.getDocument().addDocumentListener(
+		FiltraPerTF.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
                     	newFilter(FiltraPerCB.getSelectedIndex());
@@ -240,11 +240,11 @@ public class VisualizzaFattureJFrame extends JFrame {
 	private void newFilter(int IndiceColonna) {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
+	        rf = RowFilter.regexFilter(FiltraPerTF.getText().toUpperCase(),IndiceColonna);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }
-	    sorter.setRowFilter(rf);
+	    Sorter.setRowFilter(rf);
 	}
 	
 	public void PulisciDatiTabella() {

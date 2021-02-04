@@ -35,7 +35,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 	};
 	private JTable ProdottiTable;
 	private TableRowSorter<DefaultTableModel> Sorter;
-	private JTextField FiltraPerTB;
+	private JTextField FiltraPerTF;
 
 	/**
 	 * Create the frame.
@@ -109,20 +109,20 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		
 
-		Component verticalStrut = Box.createVerticalStrut(280);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
+		MenùLateraleTB.add(VerticalStrut);
 		
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaProdottiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaProdottiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		PercorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JButton VisualizzaFruttaPercorsoButton = new JButton("> Visualizza Frutta\r\n\r\n");
 		VisualizzaFruttaPercorsoButton.addActionListener(new ActionListener() {
@@ -150,7 +150,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 			}
 		});
 		VisualizzaFruttaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaFruttaPercorsoButton);
+		PercorsoTB.add(VisualizzaFruttaPercorsoButton);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
@@ -175,10 +175,10 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		ProdottiTable.getTableHeader().setReorderingAllowed(false);
 		TabellaPanel.setViewportView(ProdottiTable);
 		
-		FiltraPerTB = new JTextField();
-		FiltraPerTB.setBounds(412, 41, 256, 20);
-		VisualizzaProdottiPanel.add(FiltraPerTB);
-		FiltraPerTB.setColumns(10);
+		FiltraPerTF = new JTextField();
+		FiltraPerTF.setBounds(412, 41, 256, 20);
+		VisualizzaProdottiPanel.add(FiltraPerTF);
+		FiltraPerTF.setColumns(10);
 		
 		JComboBox FiltraPerCB = new JComboBox();
 		FiltraPerCB.setModel(new DefaultComboBoxModel(new String[] {"ID Prodotto", "Nome", "Provenienza", "Lotto Lavorazione", "Data", "Valore", "Scorte (kg)"}));
@@ -203,13 +203,13 @@ public class VisualizzaFruttaJFrame extends JFrame {
 		FiltraPerCB.addItemListener(new ItemListener() {
 			public void itemStateChanged (ItemEvent ie) {
 				if(ie.getStateChange() == ItemEvent.SELECTED) {
-				      FiltraPerTB.setText("");
+				      FiltraPerTF.setText("");
 				   }
 			}
 			
 		});
 		
-		FiltraPerTB.getDocument().addDocumentListener(
+		FiltraPerTF.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
                     	newFilter(FiltraPerCB.getSelectedIndex());
@@ -231,7 +231,7 @@ public class VisualizzaFruttaJFrame extends JFrame {
 	private void newFilter(int IndiceColonna) {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(FiltraPerTB.getText().toUpperCase(),IndiceColonna);
+	        rf = RowFilter.regexFilter(FiltraPerTF.getText().toUpperCase(),IndiceColonna);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }

@@ -51,17 +51,17 @@ public class MagazzinoJFrame extends JFrame {
 		ContainerPanel.setMinimumSize(new Dimension(310, 189));
 		MagazzinoPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 153));
-		MagazzinoPanel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(ContainerPanel);
+		JPanel Panel = new JPanel();
+		Panel.setBackground(new Color(255, 204, 153));
+		MagazzinoPanel.add(Panel, BorderLayout.CENTER);
+		Panel.setLayout(new BorderLayout(0, 0));
+		Panel.add(ContainerPanel);
 		ContainerPanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(null);
-		panel_1.setBackground(new Color(255, 228, 181));
-		ContainerPanel.add(panel_1);
+		JPanel Panel_1 = new JPanel();
+		Panel_1.setBorder(null);
+		Panel_1.setBackground(new Color(255, 228, 181));
+		ContainerPanel.add(Panel_1);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Nuovo Prodotto");
 		AggiungiProdottoButton.setBounds(199, 200, 186, 103);
@@ -70,12 +70,12 @@ public class MagazzinoJFrame extends JFrame {
 				ControllerM.MostraFinestraAggiungiProdotto();
 			}
 		});
-		panel_1.setLayout(null);
+		Panel_1.setLayout(null);
 		AggiungiProdottoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		AggiungiProdottoButton.setBackground(new Color(255, 204, 153));
 		AggiungiProdottoButton.setMaximumSize(new Dimension(186, 102));
 		AggiungiProdottoButton.setPreferredSize(new Dimension(186, 102));
-		panel_1.add(AggiungiProdottoButton);
+		Panel_1.add(AggiungiProdottoButton);
 		
 		JButton VisualizzaProdottoButton = new JButton("Visualizza Prodotti");
 		VisualizzaProdottoButton.setBounds(529, 200, 186, 103);
@@ -88,16 +88,16 @@ public class MagazzinoJFrame extends JFrame {
 		VisualizzaProdottoButton.setBackground(new Color(255, 204, 153));
 		VisualizzaProdottoButton.setMaximumSize(new Dimension(186, 102));
 		VisualizzaProdottoButton.setPreferredSize(new Dimension(186, 23));
-		panel_1.add(VisualizzaProdottoButton);
+		Panel_1.add(VisualizzaProdottoButton);
 		
-		JLabel lblNewLabel = new JLabel("Sezione Magazzino");
-		lblNewLabel.setPreferredSize(new Dimension(90, 50));
-		lblNewLabel.setMinimumSize(new Dimension(90, 50));
-		lblNewLabel.setMaximumSize(new Dimension(90, 50));
-		lblNewLabel.setBackground(new Color(255, 204, 153));
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 22));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblNewLabel, BorderLayout.NORTH);
+		JLabel SezioneMagazzinoLB = new JLabel("Sezione Magazzino");
+		SezioneMagazzinoLB.setPreferredSize(new Dimension(90, 50));
+		SezioneMagazzinoLB.setMinimumSize(new Dimension(90, 50));
+		SezioneMagazzinoLB.setMaximumSize(new Dimension(90, 50));
+		SezioneMagazzinoLB.setBackground(new Color(255, 204, 153));
+		SezioneMagazzinoLB.setFont(new Font("Arial", Font.PLAIN, 22));
+		SezioneMagazzinoLB.setHorizontalAlignment(SwingConstants.CENTER);
+		Panel.add(SezioneMagazzinoLB, BorderLayout.NORTH);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		MagazzinoPanel.add(MenùLateraleTB, BorderLayout.WEST);
@@ -122,6 +122,7 @@ public class MagazzinoJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -151,9 +152,9 @@ public class MagazzinoJFrame extends JFrame {
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
+		MenùLateraleTB.add(VerticalStrut);
 	}
 		
 	}
