@@ -372,7 +372,7 @@ public class ControllerCliente
 	{  	
 		try {	
 			
-			Cliente c = DAO.getClienteByNTessera(Integer.valueOf(DettagliCliente.getVisualizzaDettagliNTesseraTB()));
+			Cliente c = DAO.getClienteByNTessera(Integer.valueOf(DettagliCliente.getVisualizzaDettagliNTesseraTF()));
 			VisualizzaClienti.setVisible(false);
 			VisualizzaDettagli = new VisualizzaDettagliClienteJFrame(this, ControllerP);	
 			VisualizzaDettagli.RiepilogoNomeTB.setText(c.getNome());
