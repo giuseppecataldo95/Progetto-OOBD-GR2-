@@ -439,7 +439,7 @@ public class ControllerMagazzino {
 		String Tipo = FinestraDaCuiApro.getClass().toString();
 		if(Tipo.contains("Confezionati")) {
 			try {
-				DAO.eliminaConfezionatiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaConfezionatiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -448,7 +448,7 @@ public class ControllerMagazzino {
 			}
 		} if(Tipo.contains("Frutta")) {
 			try {
-				DAO.eliminaFruttaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaFruttaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -457,7 +457,7 @@ public class ControllerMagazzino {
 			}
 		} if(Tipo.contains("Verdura")) {
 			try {
-				DAO.eliminaVerduraConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaVerduraConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -466,7 +466,7 @@ public class ControllerMagazzino {
 			}
 		} if(Tipo.contains("Farinacei")) {
 			try {
-				DAO.eliminaFarinaceiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaFarinaceiConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -475,7 +475,7 @@ public class ControllerMagazzino {
 			}
 		} if(Tipo.contains("Latticini")) {
 			try {
-				DAO.eliminaLatticiniConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaLatticiniConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -484,7 +484,7 @@ public class ControllerMagazzino {
 			}
 		} if(Tipo.contains("Uova")) {
 			try {
-				DAO.eliminaUovaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminare()));
+				DAO.eliminaUovaConID(Integer.parseInt(EliminaProdotto.getIDProdottoDaEliminareTF()));
 			} catch (NumberFormatException | ProdottoNonTrovatoException | SQLException e) {
 				EliminaProdotto.setVisible(false);
 				EliminaProdotto = new EliminaProdottoByIDJDialog(this, FinestraDaCuiApro);
@@ -591,11 +591,11 @@ public class ControllerMagazzino {
     
     public void FruttaBottoneAvantiPremuto() {
     	try {
-    		String Nome = Frutta.getInserisciNomeTB();
-    		String Lotto = Frutta.getInserisciLottoTB();
-    		String Provenienza = Frutta.getInserisciProvenienzaTB();
-    		float Scorte = Float.parseFloat(Frutta.getInserisciScorteTB());
-    		float Valore = Float.parseFloat(Frutta.getInserisciValorekgTB());
+    		String Nome = Frutta.getInserisciNomeTF();
+    		String Lotto = Frutta.getInserisciLottoTF();
+    		String Provenienza = Frutta.getInserisciProvenienzaTF();
+    		float Scorte = Float.parseFloat(Frutta.getInserisciScorteTF());
+    		float Valore = Float.parseFloat(Frutta.getInserisciValorekgTF());
     		String Giorno = Frutta.getInserisciGiornoCB();
     		String Mese = Frutta.getInserisciMeseCB();
     		String Anno = Frutta.getInserisciAnnoCB();
@@ -666,11 +666,11 @@ public class ControllerMagazzino {
     
     public void VerduraBottoneAvantiPremuto() {
     	try {
-    		String Nome = Verdura.getInserisciNomeTB();
-    		String Lotto = Verdura.getInserisciLottoTB();
-    		String Provenienza = Verdura.getInserisciProvenienzaTB();
-    		float Scorte = Float.parseFloat(Verdura.getInserisciScorteTB());
-    		float Valore = Float.parseFloat(Verdura.getInserisciValorekgTB());
+    		String Nome = Verdura.getInserisciNomeTF();
+    		String Lotto = Verdura.getInserisciLottoTF();
+    		String Provenienza = Verdura.getInserisciProvenienzaTF();
+    		float Scorte = Float.parseFloat(Verdura.getInserisciScorteTF());
+    		float Valore = Float.parseFloat(Verdura.getInserisciValorekgTF());
     		String Giorno = Verdura.getInserisciGiornoCB();
     		String Mese = Verdura.getInserisciMeseCB();
     		String Anno = Verdura.getInserisciAnnoCB();
@@ -743,10 +743,10 @@ public class ControllerMagazzino {
     
     public void FarinaceiBottoneAvantiPremuto() {
 	    try {	
-    		String Nome = Farinacei.getInserisciNomeTB();
-	    	String Lotto = Farinacei.getInserisciLottoTB();
-	    	float Scorte = Float.parseFloat(Farinacei.getInserisciScorteTB());
-	    	float Valore = Float.parseFloat(Farinacei.getInserisciValorekgTB());
+    		String Nome = Farinacei.getInserisciNomeTF();
+	    	String Lotto = Farinacei.getInserisciLottoTF();
+	    	float Scorte = Float.parseFloat(Farinacei.getInserisciScorteTF());
+	    	float Valore = Float.parseFloat(Farinacei.getInserisciValorekgTF());
 	    	String Giorno = Farinacei.getInserisciGiornoCB();
 	    	String Mese = Farinacei.getInserisciMeseCB();
 	    	String Anno = Farinacei.getInserisciAnnoCB();
@@ -820,11 +820,11 @@ public class ControllerMagazzino {
     
     public void LatticiniBottoneAvantiPremuto() {
     	try {	
-    		String Nome = Latticini.getInserisciNomeTB();
-    		String Paese_Lavorazione = Latticini.getInserisciPaeseLavorazioneTB();
-    		String Paese_Mungitura = Latticini.getInserisciPaeseMungituraTB();
-    		float Scorte = Float.parseFloat(Latticini.getInserisciScorteTB());
-    		float Valore = Float.parseFloat(Latticini.getInserisciValorekgTB());
+    		String Nome = Latticini.getInserisciNomeTF();
+    		String Paese_Lavorazione = Latticini.getInserisciPaeseLavorazioneTF();
+    		String Paese_Mungitura = Latticini.getInserisciPaeseMungituraTF();
+    		float Scorte = Float.parseFloat(Latticini.getInserisciScorteTF());
+    		float Valore = Float.parseFloat(Latticini.getInserisciValorekgTF());
     		String GiornoM = Latticini.getInserisciGiornoMungituraCB();
 		   	String MeseM = Latticini.getInserisciMeseMungituraCB();
 		   	String AnnoM = Latticini.getInserisciAnnoMungituraCB();
@@ -904,13 +904,13 @@ public class ControllerMagazzino {
     
     public void ConfezionatiBottoneAvantiPremuto() {
     	try {
-	    	String Nome = Confezionati.getInserisciNomeTB();
-	    	String Lotto = Confezionati.getInserisciLottoTB();
-	    	String Mod_Conservazione = Confezionati.getInserisciModConservazioneTB();
-	    	String Marca = Confezionati.getInserisciMarcaTB();
-	    	int Scorte = Integer.parseInt(Confezionati.getInserisciScorteTB());
-	    	float Valore = Float.parseFloat(Confezionati.getInserisciValorekgTB());
-	    	float Peso_Confezione = Float.parseFloat(Confezionati.getInserisciPesoConfezioneTB());
+	    	String Nome = Confezionati.getInserisciNomeTF();
+	    	String Lotto = Confezionati.getInserisciLottoTF();
+	    	String Mod_Conservazione = Confezionati.getInserisciModConservazioneTF();
+	    	String Marca = Confezionati.getInserisciMarcaTF();
+	    	int Scorte = Integer.parseInt(Confezionati.getInserisciScorteTF());
+	    	float Valore = Float.parseFloat(Confezionati.getInserisciValorekgTF());
+	    	float Peso_Confezione = Float.parseFloat(Confezionati.getInserisciPesoConfezioneTF());
 	    	String Giorno = Confezionati.getInserisciGiornoCB();
 	    	String Mese = Confezionati.getInserisciMeseCB();
 	    	String Anno = Confezionati.getInserisciAnnoCB();
@@ -983,14 +983,14 @@ public class ControllerMagazzino {
     
     public void UovaBottoneAvantiPremuto() {
 	    try {
-	    	String Lotto = Uova.getInserisciLottoTB();
-	    	String Provenienza = Uova.getInserisciProvenienzaTB();
-	    	int Scorte = Integer.parseInt(Uova.getInserisciScorteTB());
-	    	float Valore = Float.parseFloat(Uova.getInserisciValoreTB());
+	    	String Lotto = Uova.getInserisciLottoTF();
+	    	String Provenienza = Uova.getInserisciProvenienzaTF();
+	    	int Scorte = Integer.parseInt(Uova.getInserisciScorteTF());
+	    	float Valore = Float.parseFloat(Uova.getInserisciValoreTF());
 	    	String Giorno = Uova.getInserisciGiornoScadenzaCB();
 	    	String Mese = Uova.getInserisciMeseScadenzaCB();
 	    	String Anno = Uova.getInserisciAnnoScadenzaCB();
-	    	int NPerConfezione = Integer.parseInt(Uova.getInserisciNPerConfezione());
+	    	int NPerConfezione = Integer.parseInt(Uova.getInserisciNPerConfezioneTF());
 	    	Convertitore = new ConvertiCBInData(Giorno,Mese,Anno);
 	    	Convertitore.ControllaData();
 	    	Date Data_Scadenza = Convertitore.Converti();

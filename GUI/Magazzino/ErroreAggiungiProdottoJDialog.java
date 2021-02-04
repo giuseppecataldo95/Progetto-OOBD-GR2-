@@ -18,9 +18,9 @@ import java.awt.event.ActionEvent;
 
 public class ErroreAggiungiProdottoJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel ErroreAggiungiProdottoPanel = new JPanel();
 	private ControllerMagazzino Controller;
-	private JButton riprovaButton;
+	private JButton RiprovaButton;
 	
 	public ErroreAggiungiProdottoJDialog(ControllerMagazzino c, JFrame FinestraDaCuiApro) {
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -32,26 +32,26 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 		setResizable(false);
 		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		ErroreAggiungiProdottoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(ErroreAggiungiProdottoPanel, BorderLayout.CENTER);
+		ErroreAggiungiProdottoPanel.setLayout(null);
 	
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel BottoniPanel = new JPanel();
+			BottoniPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+			getContentPane().add(BottoniPanel, BorderLayout.SOUTH);
 			{
-				riprovaButton = new JButton("Riprova");
-				riprovaButton.addActionListener(new ActionListener() {
+				RiprovaButton = new JButton("Riprova");
+				RiprovaButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Controller.RiprovaBottonePremuto(FinestraDaCuiApro);
 					}
 				});
 
 				
-				riprovaButton.setActionCommand("OK");
-				buttonPane.add(riprovaButton);
-				getRootPane().setDefaultButton(riprovaButton);
+				RiprovaButton.setActionCommand("OK");
+				BottoniPanel.add(RiprovaButton);
+				getRootPane().setDefaultButton(RiprovaButton);
 			}
 		}
 	}
@@ -60,7 +60,7 @@ public class ErroreAggiungiProdottoJDialog extends JDialog {
 		JLabel ErroreLB = new JLabel("<html>"+errore+"<html>");
 		ErroreLB.setBounds(10, 11, 338, 58);
 		ErroreLB.setFont(new Font("Arial", Font.PLAIN, 10));
-		contentPanel.add(ErroreLB);
+		ErroreAggiungiProdottoPanel.add(ErroreLB);
 	}
 
 

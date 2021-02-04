@@ -34,20 +34,19 @@ import javax.swing.JLabel;
 public class VisualizzaPuntiJFrame extends JFrame {
 
 	private JPanel VisualizzaPuntiPanel;
-	ControllerCliente controller;
-	ControllerPrincipale ControllerP;
-	private JTable table;
-	private TableRowSorter<DefaultTableModel> sorter;
-	private JTextField filterText;
+	private JTable Table;
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FilterText;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Punti Frutta", "Punti Verdura", "Punti Confezionati", "Punti Uova", "Punti Latticini", "Punti Farinacei"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
 	};
-
+	private ControllerCliente ControllerC;
+	private ControllerPrincipale ControllerP;
 
 	public VisualizzaPuntiJFrame(ControllerCliente c, ControllerPrincipale c1) {
-		controller = c;
+		ControllerC = c;
 		ControllerP = c1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,79 +116,76 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaPuntiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaPuntiPanel.add(PercorsoTB);
 		
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiClientiPercorsoBottonePremuto();
+				ControllerC.VisualizzaPuntiClientiPercorsoBottonePremuto();
 				
 			}
 		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(ClientiPercorsoButton);
+		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton VisualizzaClientiPercorsoButton = new JButton("> Visualizza Clienti");
 		VisualizzaClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaClientiPercorsoBottonePremuto();
-				controller.CompletaTabellaTessera();
+				ControllerC.VisualizzaPuntiVisualizzaClientiPercorsoBottonePremuto();
+				ControllerC.CompletaTabellaTessera();
 			}
 		});
 		VisualizzaClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaClientiPercorsoButton);
+		PercorsoTB.add(VisualizzaClientiPercorsoButton);
 		
 		JButton VisualizzaPuntiJButton = new JButton("> Visualizza Punti");
 		VisualizzaPuntiJButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaPuntiJButton);
+		PercorsoTB.add(VisualizzaPuntiJButton);
 		VisualizzaPuntiJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaPuntiPercorsoBottonePremuto();
-				controller.CompletaTabellaPunti();
+				ControllerC.VisualizzaPuntiVisualizzaPuntiPercorsoBottonePremuto();
+				ControllerC.CompletaTabellaPunti();
 			}
 		});
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(91, 125, 770, 367);
-		VisualizzaPuntiPanel.add(scrollPane);
-		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		sorter = new TableRowSorter<DefaultTableModel>(Model);
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
-		table.setAutoCreateRowSorter(true);
-		table.setRowSorter(sorter);
-		table.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(table);
+		JScrollPane ScrollPane = new JScrollPane();
+		ScrollPane.setBounds(91, 125, 770, 367);
+		VisualizzaPuntiPanel.add(ScrollPane);
+		Table = new JTable(Model);
+		Table.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		Table.setRowSelectionAllowed(false);
+		Table.setBackground(new Color(255, 204, 153));
+		Table.setAutoCreateRowSorter(true);
+		Table.setRowSorter(Sorter);
+		Table.getTableHeader().setReorderingAllowed(false);
+		ScrollPane.setViewportView(Table);
 		
+		FilterText = new JTextField();
+		FilterText.setBounds(269, 73, 157, 20);
+		VisualizzaPuntiPanel.add(FilterText);
+		FilterText.setColumns(10);
 		
-		
-		
-		filterText = new JTextField();
-		filterText.setBounds(269, 73, 157, 20);
-		VisualizzaPuntiPanel.add(filterText);
-		filterText.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Cerca per n\u00B0 Tessera : ");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(126, 76, 140, 13);
-		VisualizzaPuntiPanel.add(lblNewLabel);
-		filterText.getDocument().addDocumentListener(
+		JLabel CercaLB = new JLabel("Cerca per n\u00B0 Tessera : ");
+		CercaLB.setFont(new Font("Arial", Font.PLAIN, 12));
+		CercaLB.setHorizontalAlignment(SwingConstants.CENTER);
+		CercaLB.setBounds(126, 76, 140, 13);
+		VisualizzaPuntiPanel.add(CercaLB);
+		FilterText.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
                         newFilter();
@@ -212,10 +208,10 @@ public class VisualizzaPuntiJFrame extends JFrame {
 	private void newFilter() {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),0);
+	        rf = RowFilter.regexFilter(FilterText.getText().toUpperCase(),0);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }
-	    sorter.setRowFilter(rf);
+	    Sorter.setRowFilter(rf);
 	}
 }

@@ -27,22 +27,22 @@ public class RiepilogoTesseraJFrame extends JFrame {
 
 
   
-		public JPanel RiepilogoTesseraPanel;
-		public JTextField RiepilogoNomeTB;
-		public JTextField RiepilogoCognomeTB;
-		public JTextField RiepilogoSessoTB;
-		public JTextField RiepilogoLuogoNTB;
-		public JTextField RiepilogoGiornoNTB;
-		public JTextField RiepilogoCFTB;
-		public JTextField RiepilogoMeseNTB;
-		public JTextField RiepilogoAnnoNTB;
-		ControllerCliente controller;
+		private JPanel RiepilogoTesseraPanel;
+		private JTextField RiepilogoNomeTF;
+		private JTextField RiepilogoCognomeTF;
+		private JTextField RiepilogoSessoTF;
+		private JTextField RiepilogoLuogoNTF;
+		private JTextField RiepilogoGiornoNTF;
+		private JTextField RiepilogoCFTF;
+		private JTextField RiepilogoMeseNTF;
+		private JTextField RiepilogoAnnoNTF;
+		private ControllerCliente ControllerC;
 		private ControllerPrincipale ControllerP;
 	
 
 	public RiepilogoTesseraJFrame(ControllerCliente c, ControllerPrincipale c1) {
 		ControllerP = c1;
-		controller = c;
+		ControllerC = c;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		setResizable(false);
@@ -116,10 +116,10 @@ public class RiepilogoTesseraJFrame extends JFrame {
 			}
 		});
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		verticalStrut.setBackground(Color.LIGHT_GRAY);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		VerticalStrut.setBackground(Color.LIGHT_GRAY);
 
-		MenùLateraleTB.add(verticalStrut);
+		MenùLateraleTB.add(VerticalStrut);
 		
 
 		JToolBar PercorsoTB = new JToolBar();
@@ -136,7 +136,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.RiepilogoTesseraClientiPercorsoBottonePremuto();
+				ControllerC.RiepilogoTesseraClientiPercorsoBottonePremuto();
 				
 			}
 		});
@@ -146,7 +146,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controller.RiepilogoTesseraNuovaTesseraPercorsoBottonePremuto();
+				ControllerC.RiepilogoTesseraNuovaTesseraPercorsoBottonePremuto();
 				
 			}
 		});
@@ -158,7 +158,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				controller.RiepilogoTesseraRiepilogoTesseraPercorsoBottonePremuto();
+				ControllerC.RiepilogoTesseraRiepilogoTesseraPercorsoBottonePremuto();
 				
 			}
 		});
@@ -218,7 +218,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.RiepilogoTesseraIndietroBottonePremuto();
+				ControllerC.RiepilogoTesseraIndietroBottonePremuto();
 				
 				
 			}
@@ -231,7 +231,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-					controller.RiepilogoTesseraAvantiBottonePremuto();
+					ControllerC.RiepilogoTesseraAvantiBottonePremuto();
 						
 				
 					
@@ -241,53 +241,53 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		AvantiButton.setBounds(808, 491, 103, 31);
 		RiepilogoTesseraPanel.add(AvantiButton);
 		
-		RiepilogoNomeTB = new JTextField();
-		RiepilogoNomeTB.setEditable(false);
-		RiepilogoNomeTB.setBounds(399, 178, 215, 19);
-		RiepilogoTesseraPanel.add(RiepilogoNomeTB);
-		RiepilogoNomeTB.setColumns(10);
+		RiepilogoNomeTF = new JTextField();
+		RiepilogoNomeTF.setEditable(false);
+		RiepilogoNomeTF.setBounds(399, 178, 215, 19);
+		RiepilogoTesseraPanel.add(RiepilogoNomeTF);
+		RiepilogoNomeTF.setColumns(10);
 		
-		RiepilogoCognomeTB = new JTextField();
-		RiepilogoCognomeTB.setEditable(false);
-		RiepilogoCognomeTB.setColumns(10);
-		RiepilogoCognomeTB.setBounds(399, 233, 215, 19);
-		RiepilogoTesseraPanel.add(RiepilogoCognomeTB);
+		RiepilogoCognomeTF = new JTextField();
+		RiepilogoCognomeTF.setEditable(false);
+		RiepilogoCognomeTF.setColumns(10);
+		RiepilogoCognomeTF.setBounds(399, 233, 215, 19);
+		RiepilogoTesseraPanel.add(RiepilogoCognomeTF);
 		
-		RiepilogoSessoTB = new JTextField();
-		RiepilogoSessoTB.setEditable(false);
-		RiepilogoSessoTB.setColumns(10);
-		RiepilogoSessoTB.setBounds(399, 288, 215, 19);
-		RiepilogoTesseraPanel.add(RiepilogoSessoTB);
+		RiepilogoSessoTF = new JTextField();
+		RiepilogoSessoTF.setEditable(false);
+		RiepilogoSessoTF.setColumns(10);
+		RiepilogoSessoTF.setBounds(399, 288, 215, 19);
+		RiepilogoTesseraPanel.add(RiepilogoSessoTF);
 		
-		RiepilogoLuogoNTB = new JTextField();
-		RiepilogoLuogoNTB.setEditable(false);
-		RiepilogoLuogoNTB.setColumns(10);
-		RiepilogoLuogoNTB.setBounds(399, 344, 215, 19);
-		RiepilogoTesseraPanel.add(RiepilogoLuogoNTB);
+		RiepilogoLuogoNTF = new JTextField();
+		RiepilogoLuogoNTF.setEditable(false);
+		RiepilogoLuogoNTF.setColumns(10);
+		RiepilogoLuogoNTF.setBounds(399, 344, 215, 19);
+		RiepilogoTesseraPanel.add(RiepilogoLuogoNTF);
 		
-		RiepilogoGiornoNTB = new JTextField();
-		RiepilogoGiornoNTB.setEditable(false);
-		RiepilogoGiornoNTB.setColumns(10);
-		RiepilogoGiornoNTB.setBounds(399, 390, 35, 19);
-		RiepilogoTesseraPanel.add(RiepilogoGiornoNTB);
+		RiepilogoGiornoNTF = new JTextField();
+		RiepilogoGiornoNTF.setEditable(false);
+		RiepilogoGiornoNTF.setColumns(10);
+		RiepilogoGiornoNTF.setBounds(399, 390, 35, 19);
+		RiepilogoTesseraPanel.add(RiepilogoGiornoNTF);
 		
-		RiepilogoCFTB = new JTextField();
-		RiepilogoCFTB.setEditable(false);
-		RiepilogoCFTB.setColumns(10);
-		RiepilogoCFTB.setBounds(399, 439, 215, 19);
-		RiepilogoTesseraPanel.add(RiepilogoCFTB);
+		RiepilogoCFTF = new JTextField();
+		RiepilogoCFTF.setEditable(false);
+		RiepilogoCFTF.setColumns(10);
+		RiepilogoCFTF.setBounds(399, 439, 215, 19);
+		RiepilogoTesseraPanel.add(RiepilogoCFTF);
 		
-		RiepilogoMeseNTB = new JTextField();
-		RiepilogoMeseNTB.setEditable(false);
-		RiepilogoMeseNTB.setColumns(10);
-		RiepilogoMeseNTB.setBounds(454, 390, 107, 19);
-		RiepilogoTesseraPanel.add(RiepilogoMeseNTB);
+		RiepilogoMeseNTF = new JTextField();
+		RiepilogoMeseNTF.setEditable(false);
+		RiepilogoMeseNTF.setColumns(10);
+		RiepilogoMeseNTF.setBounds(454, 390, 107, 19);
+		RiepilogoTesseraPanel.add(RiepilogoMeseNTF);
 		
-		RiepilogoAnnoNTB = new JTextField();
-		RiepilogoAnnoNTB.setEditable(false);
-		RiepilogoAnnoNTB.setColumns(10);
-		RiepilogoAnnoNTB.setBounds(581, 390, 65, 19);
-		RiepilogoTesseraPanel.add(RiepilogoAnnoNTB);
+		RiepilogoAnnoNTF = new JTextField();
+		RiepilogoAnnoNTF.setEditable(false);
+		RiepilogoAnnoNTF.setColumns(10);
+		RiepilogoAnnoNTF.setBounds(581, 390, 65, 19);
+		RiepilogoTesseraPanel.add(RiepilogoAnnoNTF);
 		
 		JLabel SlashData1 = new JLabel("/");
 		SlashData1.setBounds(444, 393, 28, 13);
@@ -301,97 +301,97 @@ public class RiepilogoTesseraJFrame extends JFrame {
 
 
 	public String getRiepilogoNomeTB() {
-		return RiepilogoNomeTB.getText();
+		return RiepilogoNomeTF.getText();
 	}
 
 
 
 	public String getRiepilogoCognomeTB() {
-		return RiepilogoCognomeTB.getText();
+		return RiepilogoCognomeTF.getText();
 	}
 
 
 
 	public String getRiepilogoSessoTB() {
-		return RiepilogoSessoTB.getText();
+		return RiepilogoSessoTF.getText();
 	}
 
 
 
 	public String getRiepilogoLuogoNTB() {
-		return RiepilogoLuogoNTB.getText();
+		return RiepilogoLuogoNTF.getText();
 	}
 
 
 
 	public String getRiepilogoGiornoNTB() {
-		return RiepilogoGiornoNTB.getText();
+		return RiepilogoGiornoNTF.getText();
 	}
 
 
 
 	public String getRiepilogoCFTB() {
-		return RiepilogoCFTB.getText();
+		return RiepilogoCFTF.getText();
 	}
 
 
 
 	public String getRiepilogoMeseNTB() {
-		return RiepilogoMeseNTB.getText();
+		return RiepilogoMeseNTF.getText();
 	}
 
 
 
 	public String getRiepilogoAnnoNTB() {
-		return RiepilogoAnnoNTB.getText();
+		return RiepilogoAnnoNTF.getText();
 	}
 
 
 
 	public void setRiepilogoNomeTB(String riepilogoNomeTB) {
-		RiepilogoNomeTB.setText(riepilogoNomeTB);
+		RiepilogoNomeTF.setText(riepilogoNomeTB);
 	}
 
 
 
 	public void setRiepilogoCognomeTB(String riepilogoCognomeTB) {
-		RiepilogoCognomeTB.setText(riepilogoCognomeTB);
+		RiepilogoCognomeTF.setText(riepilogoCognomeTB);
 	}
 
 
 
 	public void setRiepilogoSessoTB(String riepilogoSessoTB) {
-		RiepilogoSessoTB.setText(riepilogoSessoTB);
+		RiepilogoSessoTF.setText(riepilogoSessoTB);
 	}
 
 
 
 	public void setRiepilogoLuogoNTB(String riepilogoLuogoNTB) {
-		RiepilogoLuogoNTB.setText(riepilogoLuogoNTB);
+		RiepilogoLuogoNTF.setText(riepilogoLuogoNTB);
 	}
 
 
 
 	public void setRiepilogoGiornoNTB(String riepilogoGiornoNTB) {
-		RiepilogoGiornoNTB.setText(riepilogoGiornoNTB);
+		RiepilogoGiornoNTF.setText(riepilogoGiornoNTB);
 	}
 
 
 
 	public void setRiepilogoCFTB(String riepilogoCFTB) {
-		RiepilogoCFTB.setText(riepilogoCFTB);
+		RiepilogoCFTF.setText(riepilogoCFTB);
 	}
 
 
 
 	public void setRiepilogoMeseNTB(String riepilogoMeseNTB) {
-		RiepilogoMeseNTB.setText(riepilogoMeseNTB);
+		RiepilogoMeseNTF.setText(riepilogoMeseNTB);
 	}
 
 
 
 	public void setRiepilogoAnnoNTB(String riepilogoAnnoNTB) {
-		RiepilogoAnnoNTB.setText(riepilogoAnnoNTB);
+		RiepilogoAnnoNTF.setText(riepilogoAnnoNTB);
 	}
 
 

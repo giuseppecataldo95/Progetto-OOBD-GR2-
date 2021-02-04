@@ -29,10 +29,10 @@ import Controller.ControllerPrincipale;
 public class AggiungiFarinaceiJFrame extends JFrame {
 
 	private JPanel AggiungiFarinaceiPanel;
-	private JTextField InserisciNomeTB;
-	private JTextField InserisciLottoTB;
-	private JTextField InserisciValorekgTB;
-	private JTextField InserisciScorteTB;
+	private JTextField InserisciNomeTF;
+	private JTextField InserisciLottoTF;
+	private JTextField InserisciValorekgTF;
+	private JTextField InserisciScorteTF;
 	private JComboBox InserisciGiornoCB;
 	private JComboBox InserisciMeseCB;
 	private JComboBox InserisciAnnoCB;
@@ -59,22 +59,22 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		setContentPane(AggiungiFarinaceiPanel);
 		AggiungiFarinaceiPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		AggiungiFarinaceiPanel.add(toolBar);
+		JToolBar MenùLaterale = new JToolBar();
+		MenùLaterale.setBackground(new Color(255, 153, 51));
+		MenùLaterale.setBorder(null);
+		MenùLaterale.setFloatable(false);
+		MenùLaterale.setOrientation(SwingConstants.VERTICAL);
+		MenùLaterale.setBounds(0, 0, 66, 563);
+		AggiungiFarinaceiPanel.add(MenùLaterale);
 		
 		
-		JButton ClientiButton = new JButton("");
+		JButton ClientiButton  = new JButton("");
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiFarinaceiMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLaterale.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -88,7 +88,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 				ControllerP.AggiungiFarinaceiMenuLateraleVenditeBottonePremuto();
 			}
 		});
-		toolBar.add(VenditeButton);
+		MenùLaterale.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -97,7 +97,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLaterale.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiFarinaceiMenuLateraleMagazzinoBottonePremuto();
@@ -109,20 +109,20 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLaterale.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 	
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiFarinaceiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		AggiungiFarinaceiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -131,7 +131,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
+		PercorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton FarinaceiPercorsoButton = new JButton("> Farinacei");
 		FarinaceiPercorsoButton.addActionListener(new ActionListener() {
@@ -149,7 +149,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 			}
 		});
 		FarinaceiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(FarinaceiPercorsoButton);
+		PercorsoTB.add(FarinaceiPercorsoButton);
 		
 		JLabel AggiungiFarinacei1LB = new JLabel("Benvenuto\\a nella sezione dedicata all'aggiunta di un nuovo prodotto di tipo Farinaceo!");
 		AggiungiFarinacei1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -186,25 +186,25 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		InserisciDataScadenzaLB.setBounds(129, 317, 150, 20);
 		AggiungiFarinaceiPanel.add(InserisciDataScadenzaLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciNomeTB.setBounds(316, 172, 190, 19);
-		AggiungiFarinaceiPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNomeTF = new JTextField();
+		InserisciNomeTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciNomeTF.setBounds(316, 172, 190, 19);
+		AggiungiFarinaceiPanel.add(InserisciNomeTF);
+		InserisciNomeTF.setColumns(10);
 		
-		InserisciLottoTB = new JTextField();
-		InserisciLottoTB.addKeyListener(new java.awt.event.KeyAdapter() {
+		InserisciLottoTF = new JTextField();
+		InserisciLottoTF.addKeyListener(new java.awt.event.KeyAdapter() {
 		    public void keyTyped(java.awt.event.KeyEvent evt) {
-		        if(InserisciLottoTB.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
+		        if(InserisciLottoTF.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
 		            getToolkit().beep();
 		            evt.consume();
 		         }
 		     }
 		});
-		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciLottoTB.setBounds(316, 223, 190, 19);
-		AggiungiFarinaceiPanel.add(InserisciLottoTB);
-		InserisciLottoTB.setColumns(10);
+		InserisciLottoTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciLottoTF.setBounds(316, 223, 190, 19);
+		AggiungiFarinaceiPanel.add(InserisciLottoTF);
+		InserisciLottoTF.setColumns(10);
 		
 		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -226,11 +226,11 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		InserisciAnnoCB.setBounds(481, 317, 66, 21);
 		AggiungiFarinaceiPanel.add(InserisciAnnoCB);
 		
-		InserisciValorekgTB = new JTextField();
-		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValorekgTB.setBounds(316, 267, 96, 20);
-		AggiungiFarinaceiPanel.add(InserisciValorekgTB);
-		InserisciValorekgTB.setColumns(10);
+		InserisciValorekgTF = new JTextField();
+		InserisciValorekgTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciValorekgTF.setBounds(316, 267, 96, 20);
+		AggiungiFarinaceiPanel.add(InserisciValorekgTF);
+		InserisciValorekgTF.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -242,11 +242,11 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		InserisciScorteLB.setBounds(234, 366, 45, 14);
 		AggiungiFarinaceiPanel.add(InserisciScorteLB);
 		
-		InserisciScorteTB = new JTextField();
-		InserisciScorteTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(316, 364, 96, 20);
-		AggiungiFarinaceiPanel.add(InserisciScorteTB);
+		InserisciScorteTF = new JTextField();
+		InserisciScorteTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciScorteTF.setColumns(10);
+		InserisciScorteTF.setBounds(316, 364, 96, 20);
+		AggiungiFarinaceiPanel.add(InserisciScorteTF);
 		
 		JLabel KgLB = new JLabel("Kg");
 		KgLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -276,20 +276,20 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		AggiungiFarinaceiPanel.add(IndietroButton);
 	}
 
-	public String getInserisciNomeTB() {
-		return InserisciNomeTB.getText();
+	public String getInserisciNomeTF() {
+		return InserisciNomeTF.getText();
 	}
 
-	public String getInserisciLottoTB() {
-		return InserisciLottoTB.getText();
+	public String getInserisciLottoTF() {
+		return InserisciLottoTF.getText();
 	}
 
-	public String getInserisciValorekgTB() {
-		return InserisciValorekgTB.getText();
+	public String getInserisciValorekgTF() {
+		return InserisciValorekgTF.getText();
 	}
 
-	public String getInserisciScorteTB() {
-		return InserisciScorteTB.getText();
+	public String getInserisciScorteTF() {
+		return InserisciScorteTF.getText();
 	}
 	
 	public String getInserisciGiornoCB() {

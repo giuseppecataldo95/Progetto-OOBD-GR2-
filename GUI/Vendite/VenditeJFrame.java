@@ -53,36 +53,36 @@ public class VenditeJFrame extends JFrame {
 		ContainerPanel.setBounds(290, 219, 490, 108);
 		VenditePanel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 153));
-		VenditePanel.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(ContainerPanel, BorderLayout.CENTER);
+		JPanel Panel = new JPanel();
+		Panel.setBackground(new Color(255, 204, 153));
+		VenditePanel.add(Panel);
+		Panel.setLayout(new BorderLayout(0, 0));
+		Panel.add(ContainerPanel, BorderLayout.CENTER);
 		ContainerPanel.setLayout(new BorderLayout(0, 0));
 		
-		Component horizontalStrut = Box.createHorizontalStrut(20);
-		horizontalStrut.setPreferredSize(new Dimension(200, 0));
-		horizontalStrut.setMinimumSize(new Dimension(150, 0));
-		horizontalStrut.setMaximumSize(new Dimension(300, 32767));
-		ContainerPanel.add(horizontalStrut, BorderLayout.WEST);
+		Component HorizontalStrut = Box.createHorizontalStrut(20);
+		HorizontalStrut.setPreferredSize(new Dimension(200, 0));
+		HorizontalStrut.setMinimumSize(new Dimension(150, 0));
+		HorizontalStrut.setMaximumSize(new Dimension(300, 32767));
+		ContainerPanel.add(HorizontalStrut, BorderLayout.WEST);
 		
-		Component verticalStrut_1 = Box.createVerticalStrut(20);
-		verticalStrut_1.setPreferredSize(new Dimension(0, 200));
-		ContainerPanel.add(verticalStrut_1, BorderLayout.NORTH);
+		Component VerticalStrut_1 = Box.createVerticalStrut(20);
+		VerticalStrut_1.setPreferredSize(new Dimension(0, 200));
+		ContainerPanel.add(VerticalStrut_1, BorderLayout.NORTH);
 		
-		Component horizontalStrut_1 = Box.createHorizontalStrut(20);
-		horizontalStrut_1.setPreferredSize(new Dimension(200, 0));
-		ContainerPanel.add(horizontalStrut_1, BorderLayout.EAST);
+		Component HorizontalStrut_1 = Box.createHorizontalStrut(20);
+		HorizontalStrut_1.setPreferredSize(new Dimension(200, 0));
+		ContainerPanel.add(HorizontalStrut_1, BorderLayout.EAST);
 		
-		Component verticalStrut_2 = Box.createVerticalStrut(20);
-		verticalStrut_2.setPreferredSize(new Dimension(0, 200));
-		ContainerPanel.add(verticalStrut_2, BorderLayout.SOUTH);
+		Component VerticalStrut_2 = Box.createVerticalStrut(20);
+		VerticalStrut_2.setPreferredSize(new Dimension(0, 200));
+		ContainerPanel.add(VerticalStrut_2, BorderLayout.SOUTH);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(null);
-		panel_1.setBackground(new Color(255, 228, 181));
-		ContainerPanel.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel Panel_1 = new JPanel();
+		Panel_1.setBorder(null);
+		Panel_1.setBackground(new Color(255, 228, 181));
+		ContainerPanel.add(Panel_1, BorderLayout.CENTER);
+		Panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JButton CreaNuovoCarrelloJButton = new JButton("Crea Nuovo Carrello");
 		CreaNuovoCarrelloJButton.addActionListener(new ActionListener() {
@@ -94,7 +94,7 @@ public class VenditeJFrame extends JFrame {
 		CreaNuovoCarrelloJButton.setBackground(new Color(255, 204, 153));
 		CreaNuovoCarrelloJButton.setMaximumSize(new Dimension(186, 102));
 		CreaNuovoCarrelloJButton.setPreferredSize(new Dimension(186, 102));
-		panel_1.add(CreaNuovoCarrelloJButton, BorderLayout.WEST);
+		Panel_1.add(CreaNuovoCarrelloJButton, BorderLayout.WEST);
 		
 		JButton VisualizzaCronologiaVenditeJButton = new JButton(" Cronologia Vendite");
 		VisualizzaCronologiaVenditeJButton.addActionListener(new ActionListener() {
@@ -106,7 +106,7 @@ public class VenditeJFrame extends JFrame {
 		VisualizzaCronologiaVenditeJButton.setBackground(new Color(255, 204, 153));
 		VisualizzaCronologiaVenditeJButton.setMaximumSize(new Dimension(186, 102));
 		VisualizzaCronologiaVenditeJButton.setPreferredSize(new Dimension(186, 23));
-		panel_1.add(VisualizzaCronologiaVenditeJButton, BorderLayout.EAST);
+		Panel_1.add(VisualizzaCronologiaVenditeJButton, BorderLayout.EAST);
 		
 		JLabel SezioneVenditeLB = new JLabel("Sezione Vendite");
 		SezioneVenditeLB.setPreferredSize(new Dimension(90, 50));
@@ -115,7 +115,7 @@ public class VenditeJFrame extends JFrame {
 		SezioneVenditeLB.setBackground(new Color(255, 204, 153));
 		SezioneVenditeLB.setFont(new Font("Arial", Font.PLAIN, 22));
 		SezioneVenditeLB.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(SezioneVenditeLB, BorderLayout.NORTH);
+		Panel.add(SezioneVenditeLB, BorderLayout.NORTH);
 		
 		JToolBar MenùLateraleTB = new JToolBar();
 		VenditePanel.add(MenùLateraleTB, BorderLayout.WEST);
@@ -175,8 +175,8 @@ public class VenditeJFrame extends JFrame {
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
+		MenùLateraleTB.add(VerticalStrut);
 	}
 }

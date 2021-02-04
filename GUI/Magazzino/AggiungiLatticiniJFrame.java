@@ -30,12 +30,11 @@ import Controller.ControllerPrincipale;
 public class AggiungiLatticiniJFrame extends JFrame {
 
 	private JPanel AggiungiLatticiniPanel;
-	private JTextField InserisciNomeTB;
-	private JTextField InserisciPaeseLavorazioneTB;
-	private JTextField InserisciPaeseMungituraTB;
-	private JTextField InserisciValorekgTB;
-	private JTextField InserisciScorteTB;
-	private ControllerMagazzino ControllerM;
+	private JTextField InserisciNomeTF;
+	private JTextField InserisciPaeseLavorazioneTF;
+	private JTextField InserisciPaeseMungituraTF;
+	private JTextField InserisciValorekgTF;
+	private JTextField InserisciScorteTF;
 	private JComboBox InserisciGiornoMungituraCB;
 	private JComboBox InserisciMeseMungituraCB;
 	private JComboBox InserisciAnnoMungituraCB;
@@ -43,6 +42,8 @@ public class AggiungiLatticiniJFrame extends JFrame {
 	private JComboBox InserisciMeseScadenzaCB;
 	private JComboBox InserisciAnnoScadenzaCB;
 	private ControllerPrincipale ControllerP;
+	private ControllerMagazzino ControllerM;
+
 
 
 	/**
@@ -62,13 +63,13 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		setContentPane(AggiungiLatticiniPanel);
 		AggiungiLatticiniPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		AggiungiLatticiniPanel.add(toolBar);
+		JToolBar MenùLaterale = new JToolBar();
+		MenùLaterale.setBackground(new Color(255, 153, 51));
+		MenùLaterale.setBorder(null);
+		MenùLaterale.setFloatable(false);
+		MenùLaterale.setOrientation(SwingConstants.VERTICAL);
+		MenùLaterale.setBounds(0, 0, 66, 563);
+		AggiungiLatticiniPanel.add(MenùLaterale);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -77,7 +78,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 				ControllerP.AggiungiLatticiniMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLaterale.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -91,7 +92,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 				ControllerP.AggiungiLatticiniMenuLateraleVenditeBottonePremuto();
 			}
 		});
-		toolBar.add(VenditeButton);
+		MenùLaterale.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -100,7 +101,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLaterale.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiLatticiniMenuLateraleMagazzinoBottonePremuto();
@@ -112,19 +113,19 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLaterale.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiLatticiniPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		AggiungiLatticiniPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -133,7 +134,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
@@ -142,7 +143,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
+		PercorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton LatticiniPercorsoButton = new JButton("> Latticini");
 		LatticiniPercorsoButton.addActionListener(new ActionListener() {
@@ -151,7 +152,7 @@ public class AggiungiLatticiniJFrame extends JFrame {
 			}
 		});
 		LatticiniPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(LatticiniPercorsoButton);
+		PercorsoTB.add(LatticiniPercorsoButton);
 		
 		JLabel AggiungiLatticini1LB = new JLabel("Benvenuto\\a nella sezione dedicata all'aggiunta di un nuovo prodotto di tipo Latticino!");
 		AggiungiLatticini1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -194,17 +195,17 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		InserisciPaeseMungituraLB.setBounds(139, 398, 140, 20);
 		AggiungiLatticiniPanel.add(InserisciPaeseMungituraLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciNomeTB.setBounds(316, 172, 190, 19);
-		AggiungiLatticiniPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNomeTF = new JTextField();
+		InserisciNomeTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciNomeTF.setBounds(316, 172, 190, 19);
+		AggiungiLatticiniPanel.add(InserisciNomeTF);
+		InserisciNomeTF.setColumns(10);
 		
-		InserisciPaeseLavorazioneTB = new JTextField();
-		InserisciPaeseLavorazioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciPaeseLavorazioneTB.setBounds(316, 223, 190, 19);
-		AggiungiLatticiniPanel.add(InserisciPaeseLavorazioneTB);
-		InserisciPaeseLavorazioneTB.setColumns(10);
+		InserisciPaeseLavorazioneTF = new JTextField();
+		InserisciPaeseLavorazioneTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPaeseLavorazioneTF.setBounds(316, 223, 190, 19);
+		AggiungiLatticiniPanel.add(InserisciPaeseLavorazioneTF);
+		InserisciPaeseLavorazioneTF.setColumns(10);
 		
 		InserisciGiornoMungituraCB = new JComboBox();
 		InserisciGiornoMungituraCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -226,17 +227,17 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		InserisciAnnoMungituraCB.setBounds(481, 317, 66, 21);
 		AggiungiLatticiniPanel.add(InserisciAnnoMungituraCB);
 		
-		InserisciPaeseMungituraTB = new JTextField();
-		InserisciPaeseMungituraTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciPaeseMungituraTB.setBounds(316, 399, 190, 19);
-		AggiungiLatticiniPanel.add(InserisciPaeseMungituraTB);
-		InserisciPaeseMungituraTB.setColumns(10);
+		InserisciPaeseMungituraTF = new JTextField();
+		InserisciPaeseMungituraTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPaeseMungituraTF.setBounds(316, 399, 190, 19);
+		AggiungiLatticiniPanel.add(InserisciPaeseMungituraTF);
+		InserisciPaeseMungituraTF.setColumns(10);
 		
-		InserisciValorekgTB = new JTextField();
-		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValorekgTB.setBounds(316, 267, 96, 20);
-		AggiungiLatticiniPanel.add(InserisciValorekgTB);
-		InserisciValorekgTB.setColumns(10);
+		InserisciValorekgTF = new JTextField();
+		InserisciValorekgTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciValorekgTF.setBounds(316, 267, 96, 20);
+		AggiungiLatticiniPanel.add(InserisciValorekgTF);
+		InserisciValorekgTF.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -248,11 +249,11 @@ public class AggiungiLatticiniJFrame extends JFrame {
 		InserisciScorteLB.setBounds(234, 441, 45, 14);
 		AggiungiLatticiniPanel.add(InserisciScorteLB);
 		
-		InserisciScorteTB = new JTextField();
-		InserisciScorteTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(316, 439, 96, 20);
-		AggiungiLatticiniPanel.add(InserisciScorteTB);
+		InserisciScorteTF = new JTextField();
+		InserisciScorteTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciScorteTF.setColumns(10);
+		InserisciScorteTF.setBounds(316, 439, 96, 20);
+		AggiungiLatticiniPanel.add(InserisciScorteTF);
 		
 		JLabel KgLB = new JLabel("Kg");
 		KgLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -308,28 +309,28 @@ public class AggiungiLatticiniJFrame extends JFrame {
 	}
 
 
-	public String getInserisciNomeTB() {
-		return InserisciNomeTB.getText();
+	public String getInserisciNomeTF() {
+		return InserisciNomeTF.getText();
 	}
 
 
-	public String getInserisciPaeseLavorazioneTB() {
-		return InserisciPaeseLavorazioneTB.getText();
+	public String getInserisciPaeseLavorazioneTF() {
+		return InserisciPaeseLavorazioneTF.getText();
 	}
 
 
-	public String getInserisciPaeseMungituraTB() {
-		return InserisciPaeseMungituraTB.getText();
+	public String getInserisciPaeseMungituraTF() {
+		return InserisciPaeseMungituraTF.getText();
 	}
 
 
-	public String getInserisciValorekgTB() {
-		return InserisciValorekgTB.getText();
+	public String getInserisciValorekgTF() {
+		return InserisciValorekgTF.getText();
 	}
 
 
-	public String getInserisciScorteTB() {
-		return InserisciScorteTB.getText();
+	public String getInserisciScorteTF() {
+		return InserisciScorteTF.getText();
 	}
 
 

@@ -116,18 +116,18 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaProdottiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaProdottiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -136,7 +136,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
@@ -146,7 +146,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		PercorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JButton VisualizzaConfezionatiPercorsoButton = new JButton("> Visualizza Confezionati");
 		VisualizzaConfezionatiPercorsoButton.addActionListener(new ActionListener() {
@@ -158,7 +158,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 			}
 		});
 		VisualizzaConfezionatiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaConfezionatiPercorsoButton);
+		PercorsoTB.add(VisualizzaConfezionatiPercorsoButton);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {

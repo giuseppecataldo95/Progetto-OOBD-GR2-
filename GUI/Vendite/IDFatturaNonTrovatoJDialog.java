@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 public class IDFatturaNonTrovatoJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel IDFatturaNonTrovatoPanel = new JPanel();
 	private ControllerVendite ControllerV;
 
 	public IDFatturaNonTrovatoJDialog(ControllerVendite ControllerVendite) {
@@ -26,16 +26,16 @@ public class IDFatturaNonTrovatoJDialog extends JDialog {
 		ControllerV = ControllerVendite;
 		setBounds(100, 100, 450, 229);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		IDFatturaNonTrovatoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(IDFatturaNonTrovatoPanel, BorderLayout.CENTER);
+		IDFatturaNonTrovatoPanel.setLayout(null);
 		setResizable(false);
 		setTitle("ProgettoOOBD2020");
-		JLabel lblNewLabel = new JLabel("Il numero della fattura inserito non \u00E8 corretto");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(42, 29, 352, 37);
-		contentPanel.add(lblNewLabel);
+		JLabel TesseraNonCorrettaLB = new JLabel("Il numero della fattura inserito non \u00E8 corretto");
+		TesseraNonCorrettaLB.setFont(new Font("Tahoma", Font.BOLD, 14));
+		TesseraNonCorrettaLB.setHorizontalAlignment(SwingConstants.CENTER);
+		TesseraNonCorrettaLB.setBounds(42, 29, 352, 37);
+		IDFatturaNonTrovatoPanel.add(TesseraNonCorrettaLB);
 		
 		JButton RiprovaButton = new JButton("Riprova");
 		RiprovaButton.addActionListener(new ActionListener() {
@@ -46,6 +46,6 @@ public class IDFatturaNonTrovatoJDialog extends JDialog {
 			}
 		});
 		RiprovaButton.setBounds(175, 126, 85, 21);
-		contentPanel.add(RiprovaButton);
+		IDFatturaNonTrovatoPanel.add(RiprovaButton);
 	}
 }

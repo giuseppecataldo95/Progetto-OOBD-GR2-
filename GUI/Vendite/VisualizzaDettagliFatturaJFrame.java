@@ -38,11 +38,11 @@ import java.awt.event.ActionEvent;
 public class VisualizzaDettagliFatturaJFrame extends JFrame {
 
 	private JPanel VisualizzaFatturePanel;
-	ControllerVendite ControllerV;
-	ControllerPrincipale ControllerP;
-	private JTable table;
-	private TableRowSorter<DefaultTableModel> sorter;
-	private JTextField filterText;
+	private ControllerVendite ControllerV;
+	private ControllerPrincipale ControllerP;
+	private JTable Table;
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FilterText;
 	private static DefaultTableModel Model = new DefaultTableModel(new String[] { "Punti Frutta", "Punti Verdura", "Punti Confezionati", "Punti Farinacei", "Punti Uova", "Punti Latticini", },0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
@@ -120,18 +120,18 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 			}
 		});
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaFatturePanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaFatturePanel.add(PercorsoTB);
 		
 		JButton VenditePercorsoButton = new JButton("> Vendite");
 		VenditePercorsoButton.addActionListener(new ActionListener() {
@@ -142,7 +142,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 			}
 		});
 		VenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VenditePercorsoButton);
+		PercorsoTB.add(VenditePercorsoButton);
 		
 		JButton VisualizzaVenditePercorsoButton = new JButton("> Visualizza Vendite");
 		VisualizzaVenditePercorsoButton.addActionListener(new ActionListener() {
@@ -155,7 +155,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 			}
 		});
 		VisualizzaVenditePercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaVenditePercorsoButton);
+		PercorsoTB.add(VisualizzaVenditePercorsoButton);
 		
 		JButton VisualizzaDettagliPercorsoButton = new JButton("> Visualizza Dettagli Fattura");
 		VisualizzaDettagliPercorsoButton.addActionListener(new ActionListener() {
@@ -166,26 +166,26 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 			}
 		});
 		VisualizzaDettagliPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaDettagliPercorsoButton);
+		PercorsoTB.add(VisualizzaDettagliPercorsoButton);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(97, 125, 722, 367);
-		VisualizzaFatturePanel.add(scrollPane);
-		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		sorter = new TableRowSorter<DefaultTableModel>(Model);
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
-		table.setAutoCreateRowSorter(true);
-		table.setRowSorter(sorter);
-		table.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(table);
+		JScrollPane ScrollPane = new JScrollPane();
+		ScrollPane.setBounds(97, 125, 722, 367);
+		VisualizzaFatturePanel.add(ScrollPane);
+		Table = new JTable(Model);
+		Table.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		Table.setRowSelectionAllowed(false);
+		Table.setBackground(new Color(255, 204, 153));
+		Table.setAutoCreateRowSorter(true);
+		Table.setRowSorter(Sorter);
+		Table.getTableHeader().setReorderingAllowed(false);
+		ScrollPane.setViewportView(Table);
 		
-		JLabel lblNewLabel = new JLabel("Ecco l'elenco dei punti associati alla Fattura Ricercata");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel.setBounds(284, 55, 416, 30);
-		VisualizzaFatturePanel.add(lblNewLabel);
+		JLabel PuntiLB = new JLabel("Ecco l'elenco dei punti associati alla Fattura Ricercata");
+		PuntiLB.setHorizontalAlignment(SwingConstants.CENTER);
+		PuntiLB.setFont(new Font("Arial", Font.BOLD, 14));
+		PuntiLB.setBounds(284, 55, 416, 30);
+		VisualizzaFatturePanel.add(PuntiLB);
 
 
 	}

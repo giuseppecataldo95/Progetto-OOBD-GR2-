@@ -65,13 +65,13 @@ public class VisualizzaUovaJFrame extends JFrame {
 		setContentPane(VisualizzaProdottiPanel);
 		VisualizzaProdottiPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		VisualizzaProdottiPanel.add(toolBar);
+		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.setBorder(null);
+		MenùLateraleTB.setFloatable(false);
+		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		MenùLateraleTB.setBounds(0, 0, 66, 563);
+		VisualizzaProdottiPanel.add(MenùLateraleTB);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -80,7 +80,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 				ControllerP.VisualizzaUovaMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
@@ -94,7 +94,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 				ControllerP.VisualizzaUovaMenuLateraleVenditeBottonePremuto();
 			}
 		});
-		toolBar.add(VenditeButton);
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -103,7 +103,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.VisualizzaUovaMenuLateraleMagazzinoBottonePremuto();
@@ -115,19 +115,19 @@ public class VisualizzaUovaJFrame extends JFrame {
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaProdottiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaProdottiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -136,7 +136,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
@@ -145,7 +145,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		PercorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JButton VisualizzaUovaPercorsoButton = new JButton("> Visualizza Uova");
 		VisualizzaUovaPercorsoButton.addActionListener(new ActionListener() {
@@ -155,7 +155,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 			}
 		});
 		VisualizzaUovaPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaUovaPercorsoButton);
+		PercorsoTB.add(VisualizzaUovaPercorsoButton);
 		
 		
 		JButton IndietroButton = new JButton("Indietro");

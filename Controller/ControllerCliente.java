@@ -375,13 +375,13 @@ public class ControllerCliente
 			Cliente c = DAO.getClienteByNTessera(Integer.valueOf(DettagliCliente.getVisualizzaDettagliNTesseraTF()));
 			VisualizzaClienti.setVisible(false);
 			VisualizzaDettagli = new VisualizzaDettagliClienteJFrame(this, ControllerP);	
-			VisualizzaDettagli.RiepilogoNomeTB.setText(c.getNome());
-			VisualizzaDettagli.RiepilogoCognomeTB.setText(c.getCognome());
-			VisualizzaDettagli.RiepilogoCFTB.setText(c.getCF());
-			VisualizzaDettagli.RiepilogoLuogoNTB.setText(c.getLuogoNascita());
-			VisualizzaDettagli.RiepilogoSessoTB.setText(c.getSesso());
+			VisualizzaDettagli.RiepilogoNomeTF.setText(c.getNome());
+			VisualizzaDettagli.RiepilogoCognomeTF.setText(c.getCognome());
+			VisualizzaDettagli.RiepilogoCFTF.setText(c.getCF());
+			VisualizzaDettagli.RiepilogoLuogoNTF.setText(c.getLuogoNascita());
+			VisualizzaDettagli.RiepilogoSessoTF.setText(c.getSesso());
 			Date dataN = c.getDataNascita();
-			VisualizzaDettagli.setRiepilogoDataNTB(dataN.toString());
+			VisualizzaDettagli.setRiepilogoDataNTF(dataN.toString());
 			VisualizzaDettagli.setVisible(true);
 			DettagliCliente.setVisible(false);
 			
