@@ -80,6 +80,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		ClientiButton.addActionListener(new ActionListener() {
@@ -97,6 +98,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 		VenditeButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -110,6 +112,7 @@ public class VisualizzaDettagliFatturaJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaDettagliFatturaJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {

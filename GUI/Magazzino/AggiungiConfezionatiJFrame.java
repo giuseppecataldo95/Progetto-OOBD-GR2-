@@ -277,6 +277,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -290,6 +291,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
@@ -305,6 +307,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		

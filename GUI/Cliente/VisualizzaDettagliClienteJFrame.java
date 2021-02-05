@@ -75,6 +75,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
@@ -93,6 +94,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -108,6 +110,7 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzin");
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		

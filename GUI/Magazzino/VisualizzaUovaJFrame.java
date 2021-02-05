@@ -83,6 +83,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorder(null);
 		ClientiButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
@@ -97,6 +98,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
@@ -113,6 +115,7 @@ public class VisualizzaUovaJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
 		Component VerticalStrut = Box.createVerticalStrut(280);

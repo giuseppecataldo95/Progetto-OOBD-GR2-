@@ -76,6 +76,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
+		ClientiButton.setToolTipText("Clienti");
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
@@ -96,6 +97,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -106,6 +108,7 @@ public class RiepilogoTesseraJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setIcon(new ImageIcon(RiepilogoTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MagazzinoButton.addActionListener(new ActionListener() {

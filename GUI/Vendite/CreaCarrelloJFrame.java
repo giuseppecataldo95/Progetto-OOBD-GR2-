@@ -95,6 +95,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(new ImageIcon(CreaCarrelloJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
@@ -115,6 +116,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(VenditeButton);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
 		VenditeButton.setIcon(new ImageIcon(CreaCarrelloJFrame.class.getResource("/Risorse/vendite-menu.png")));
@@ -126,6 +128,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setIcon(new ImageIcon(CreaCarrelloJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MagazzinoButton.addActionListener(new ActionListener() {

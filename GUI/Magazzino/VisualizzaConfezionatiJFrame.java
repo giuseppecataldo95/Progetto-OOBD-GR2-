@@ -86,6 +86,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
 		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -98,6 +99,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
@@ -112,6 +114,7 @@ public class VisualizzaConfezionatiJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaConfezionatiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		

@@ -53,13 +53,13 @@ public class SalvataggioCarrelloJDialog extends JDialog {
 						Controller.SalvataggioBottoneAvantiPremuto();
 					}
 				});
-				{
+				{	ContainerPanel.add(IndietroButton);
 					IndietroButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Controller.SalvataggioBottoneIndietroPremuto();
 						}
 					});
-					ContainerPanel.add(IndietroButton);
+					
 				}
 
 				
