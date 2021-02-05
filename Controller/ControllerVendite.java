@@ -238,6 +238,7 @@ public class ControllerVendite {
 		Salvataggio.setVisible(false);
 		if(ChiudiProgramma==true) {
 			CreaCarrello.setVisible(true);
+			ChiudiProgramma=false;
 		}
 		
 	}
