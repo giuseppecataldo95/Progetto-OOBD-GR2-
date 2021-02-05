@@ -58,6 +58,7 @@ public class ControllerVendite {
 	 private ErroreInserisciTesseraJDialog ErroreTessera;
 	 private GenerazioneFatturaCompletataJDialog GenerazioneCompletata;
 	 private IDFatturaNonTrovatoJDialog IDFatturaNonTrovato;
+	 private boolean ChiudiProgramma = false;
 
 
 	 //COSTRUTTORE
@@ -203,12 +204,15 @@ public class ControllerVendite {
 		}
 	}
 	
-	public void CreaCarrelloIndietroBottonePremuto() {
+	public void CreaCarrelloIndietroBottonePremuto(boolean chiudi) {
 		
 		CreaCarrello.setEnabled(false);
     	CarrelloAttuale.setVisible(false);
     	Salvataggio = new SalvataggioCarrelloJDialog(this);
     	Salvataggio.setVisible(true);
+    	if (chiudi==true) {
+    		ChiudiProgramma=true;
+    	}
 	
 	}
 	
@@ -221,15 +225,23 @@ public class ControllerVendite {
 		} catch (SQLException e) {
 			
 		}
-		Vendite.setVisible(true);
+		if(ChiudiProgramma==false) {
+			Vendite.setVisible(true);
+		} else {
+			System.exit(0);
+		}
 	}
 	
 	public void SalvataggioBottoneIndietroPremuto() {
 		CreaCarrello.setEnabled(true);
 		CreaCarrello.AbilitaBottoneVisualizzaCarrello();
 		Salvataggio.setVisible(false);
+		if(ChiudiProgramma==true) {
+			CreaCarrello.setVisible(true);
+		}
 		
 	}
+	
 	
 	public void CompletaTabellaCarrelloKG() {
 		ArrayList<Prodotto_kg> CarrelloKG = null;

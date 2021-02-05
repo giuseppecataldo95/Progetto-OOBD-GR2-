@@ -33,6 +33,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -68,7 +70,11 @@ public class CreaCarrelloJFrame extends JFrame {
 		ControllerV = v;
 		ControllerP = p;
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt){
+            	ControllerV.CreaCarrelloIndietroBottonePremuto(true);
+            }
+        });
 		setBounds(150, 80, 1000, 600);
 		setTitle("ProgettoOOBD2020");
 		CreaCarrelloPanel = new JPanel();
@@ -183,8 +189,7 @@ public class CreaCarrelloJFrame extends JFrame {
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				ControllerV.CreaCarrelloIndietroBottonePremuto();
+				ControllerV.CreaCarrelloIndietroBottonePremuto(false);
 				
 			}
 		});

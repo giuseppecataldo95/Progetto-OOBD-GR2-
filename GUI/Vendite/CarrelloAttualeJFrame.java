@@ -56,10 +56,10 @@ public class CarrelloAttualeJFrame extends JFrame {
 	
 	
 	public  CarrelloAttualeJFrame(ControllerVendite CV) {
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		ControllerV = CV;
 		setResizable(false);
 		setTitle("ProgettoOOBD2020");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 500, 532);
 		setResizable(false);
 		VenditePanel = new JPanel();
