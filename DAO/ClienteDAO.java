@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Entità.Cliente;
-import Entità.Comune;
 import Entità.Tessera;
+import Risorse.MieEccezioni.TesseraNonTrovataException;
 
 
 
@@ -15,8 +15,7 @@ import Entità.Tessera;
 	
 	public ArrayList<Tessera> getTessera() throws SQLException;
 	public void insertCliente(String nome, String cognome,String luogoNascita, String cf, String sesso, Date dataN) throws SQLException;
-	public int deleteTessera (int nTessera) throws SQLException;
-	public Cliente  getClienteByCF(int n_tessera) throws SQLException;
-//	public int getPuntiClienteFrutta(int NTessera);
+	public void deleteTessera (int nTessera) throws SQLException, TesseraNonTrovataException;
+	public Cliente  getClienteByNTessera(int n_tessera) throws SQLException, TesseraNonTrovataException;
 	public ArrayList<Tessera> getPuntiPerCategoria() throws SQLException;
 }

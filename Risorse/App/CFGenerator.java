@@ -1,9 +1,4 @@
 package Risorse.App;
-/*
-  * Descrizione: Classe incaricata al calcolo del codice fiscale */
-  
-
-
 
 import java.util.Arrays;
 import DAO.ComuniDAO;
@@ -12,9 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class CFGenerator {
-  // Variabili di istanza
-  // -------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String nome, cognome, comune, m, sesso, giorno;
+
+  private String nome, cognome, comune, meseNascita, sesso, giorno;
   private int anno;
   private ComuniDAO DAO;
   
@@ -42,11 +36,7 @@ public class CFGenerator {
                                     {"Novembre","S"},
                                     {"Dicembre","T"}
                                   };
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------
-  
-  
-  // Inizializza le variabili di istanza della classe
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
   public CFGenerator(Connection c) throws SQLException {
 	  DAO = new ComuniDAOPostgres(c);
   }
@@ -55,46 +45,40 @@ public class CFGenerator {
     this.nome = nome;
     this.cognome = cognome;
     this.comune = comune;
-    this.m = m;
+    this.meseNascita = m;
     this.anno = anno;
     this.giorno = giorno;
     this.sesso = sesso;
     
-  } // Fine costruttore
-  // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-  
-  
-  // Metogi getter per ottenere gli elementi della classe
-  // Interfacce più comode ed ordinate per l'accesso alle funzionalità
-  // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-  String getNome() {
-    return modificaNC(nome,true);
+  } 
+  public String getNome() {
+    return modificaNomeCognome(nome,true);
   }
-  String getCognome() {
-    return modificaNC(cognome,false);
+  public String getCognome() {
+    return modificaNomeCognome(cognome,false);
   }
   
-  String getNomeInserito() {
+  public String getNomeInserito() {
     return nome;
   }
-  String getCognomeInserito() {
+  public String getCognomeInserito() {
     return cognome;
   }
-  String getMese() {
+  public String getMese() {
     return modificaMese();
   }
-  String getMeseInserito() {
-    return m;
+  public String getMeseInserito() {
+    return meseNascita;
   }
-  String getAnno() {
+  public String getAnno() {
     String Anno = String.valueOf(anno);
     String anno = Anno.substring(2, 4);
 	  return anno;
   }
-  int getAnnoInserito() {
+  public int getAnnoInserito() {
     return anno;
   }
-  String getGiorno() {
+  public String getGiorno() {
 	  
 	  int Giorno = 0; 
 	  
@@ -115,10 +99,10 @@ public class CFGenerator {
   }
 
   
-  String getComune() throws SQLException {
+  public String getComune() throws SQLException {
     return elaboraCodiceComune();
   }
-  String getCodice() throws SQLException, NullPointerException {
+  public String getCodice() throws SQLException, NullPointerException {
     return calcolaCodice();
   }
   
@@ -135,7 +119,7 @@ public class CFGenerator {
   }
 
   public void setM(String m) {
-	this.m = m;
+	this.meseNascita = m;
   }
 
   public void setSesso(String sesso) {
@@ -153,112 +137,97 @@ public class CFGenerator {
   public String getCodiceFiscale() {
     return toString();
   }
-  // -----------------------------------------------------------------------------------------------------------------------------------------------------------
   
   
-  // I seguenti metodi svolgono le operazioni specifiche sui dati
-  
-  /**
-       * @param stringa                  Corrisponde al nome/cognome da modificare
-       * @param cod                       Se cod e' true, indica il nome; altrimenti il cognome
-       * @return nuovaStringa       Restituisce la stringa modificata
-       */
-  // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String modificaNC(String stringa, boolean cod) {
-    String nuovastringa = "";
-    stringa = stringa.replaceAll(" ", "");           // Rimuovo eventuali spazi
-    stringa = stringa.toLowerCase();
+  //      @param cod                       Se cod e' true, indica il nome; altrimenti il cognome
+        
+  private String modificaNomeCognome(String NomeCognome, boolean cod) {
+    String NomeCognomeModificati = "";
+    NomeCognome = NomeCognome.replaceAll(" ", "");           // Rimuovo eventuali spazi
+    NomeCognome = NomeCognome.toLowerCase();
     
-    String consonanti = getConsonanti(stringa);      // Ottengo tutte le consonanti e tutte le vocali della stringa
-    String vocali = getVocali(stringa);
+    String consonanti = getConsonanti(NomeCognome);      // Ottengo tutte le consonanti e tutte le vocali della stringa
+    String vocali = getVocali(NomeCognome);
     
     // Controlla i possibili casi
     if(consonanti.length() == 3) {                   // La stringa contiene solo 3 consonanti, quindi ho gia' la modifica
-      nuovastringa = consonanti;
+      NomeCognomeModificati = consonanti;
     }
                                                      // Le consonanti non sono sufficienti, e la stinga e' più lunga o
                                                      // uguale a 3 caratteri [aggiungo le vocali mancanti]
-    else if((consonanti.length() < 3) && (stringa.length() >= 3)) {
-      nuovastringa = consonanti;
-      nuovastringa = aggiungiVocali(nuovastringa, vocali);
+    else if((consonanti.length() < 3) && (NomeCognome.length() >= 3)) {
+      NomeCognomeModificati = consonanti;
+      NomeCognomeModificati = aggiungiVocali(NomeCognomeModificati, vocali);
     } 
                                                      // Le consonanti non sono sufficienti, e la stringa 
                                                      //contiene meno di 3 caratteri [aggiungo consonanti e vocali, e le x]
-    else if((consonanti.length() < 3) && (stringa.length() < 3)) {
-      nuovastringa = consonanti;
-      nuovastringa += vocali;
-      nuovastringa = aggiungiX(nuovastringa);
+    else if((consonanti.length() < 3) && (NomeCognome.length() < 3)) {
+      NomeCognomeModificati = consonanti;
+      NomeCognomeModificati += vocali;
+      NomeCognomeModificati = aggiungiX(NomeCognomeModificati);
     } 
                                                      // Le consonanti sono in eccesso, prendo solo le 
                                                      //prime 3 nel caso del cognome; nel caso del nome la 0, 2, 3
     else if(consonanti.length() > 3) {
       // true indica il nome e false il cognome
-      if(!cod) nuovastringa = consonanti.substring(0,3);
-      else nuovastringa = consonanti.charAt(0) +""+ consonanti.charAt(2) +""+ consonanti.charAt(3);
+      if(!cod) NomeCognomeModificati = consonanti.substring(0,3);
+      else NomeCognomeModificati = consonanti.charAt(0) +""+ consonanti.charAt(2) +""+ consonanti.charAt(3);
     }
     
-    return nuovastringa;
+    return NomeCognomeModificati;
   }
-  // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  
   
   // Aggiunge le X sino a raggiungere una lunghezza complessiva di 3 caratteri
-  // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String aggiungiX(String stringa) {
-    while(stringa.length() < 3) {
-      stringa += "x";
+  
+  private String aggiungiX(String NomeCognome) {
+    while(NomeCognome.length() < 3) {
+      NomeCognome += "x";
     }
-    return stringa;
+    return NomeCognome;
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Aggiunge le vocali alla stringa passata per parametro
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String aggiungiVocali(String stringa, String vocali) {
+  
+  private String aggiungiVocali(String NomeCognome, String vocali) {
     int index = 0;
-    while(stringa.length() < 3) {
-      stringa += vocali.charAt(index);
+    while(NomeCognome.length() < 3) {
+      NomeCognome += vocali.charAt(index);
       index++;
     }
-    return stringa; 
+    return NomeCognome; 
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Toglie dalla stringa tutte le consonanti
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String getVocali(String stringa) {
-    stringa = stringa.replaceAll("[^aeiou]", "");
-    return stringa;
+  
+  private String getVocali(String NomeCognome) {
+    NomeCognome = NomeCognome.replaceAll("[^aeiou]", "");
+    return NomeCognome;
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Toglie dalla stringa tutte le vocali
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  private String getConsonanti(String stringa) {
-    stringa = stringa.replaceAll("[aeiou]","");
-    return stringa;
+  
+  private String getConsonanti(String NomeCognome) {
+    NomeCognome = NomeCognome.replaceAll("[aeiou]","");
+    return NomeCognome;
   }
-  // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Restituisce il codice del mese
-  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
   private String modificaMese() {
     for(int i=0; i<mese.length; i++) {
-      if(mese[i][0].equalsIgnoreCase(m)) return mese[i][1];
+      if(mese[i][0].equalsIgnoreCase(meseNascita)) return mese[i][1];
     }
     return null;
   }
-  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Elabora codice del comune
-  // ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
   private String elaboraCodiceComune() throws SQLException,NullPointerException  {
 	  return DAO.getCodiceComuneByNome(comune.toUpperCase());
   }
-  // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
+  
   // Calcolo del Codice di Controllo
-  // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
   private String calcolaCodice() throws SQLException, NullPointerException {
     String str = getCognome().toUpperCase()+getNome().toUpperCase()+getAnno()+getMese()+getGiorno()+getComune();
     int pari=0,dispari=0;
@@ -281,7 +250,6 @@ public class CFGenerator {
     
     return elencoPari[controllo]+"";
   }
-  // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   
   // Viene richiamato per una stampa
   public String toString(){

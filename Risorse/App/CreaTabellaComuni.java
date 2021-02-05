@@ -3,7 +3,6 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import DAO.ComuniDAO;
@@ -19,33 +18,31 @@ public class CreaTabellaComuni {
 		
 		
 		
-	 public CreaTabellaComuni(Connection conn) throws SQLException {
+	public CreaTabellaComuni(Connection conn) throws SQLException {
 		DAO = new ComuniDAOPostgres(conn);
 	}
 
-	public   ArrayList PrendiComuni() {
-		  String cc="";
-		  ArrayList Codici = new ArrayList();
-		    try {
-		      Scanner scanner = new Scanner(new File("Comuni.txt"));
-		      scanner.useDelimiter("\r\n");
-		      
-		      while(scanner.hasNext())
-		      {
+	public ArrayList<String> PrendiComuni() {
+		 ArrayList<String> Codici = new ArrayList<String>();
+		 try {
+			 Scanner scanner = new Scanner(new File("Comuni.txt"));
+		     scanner.useDelimiter("\r\n");
+		     while(scanner.hasNext()) {
 		        String s1 = scanner.nextLine();
 		        String s2 = s1.substring(0,s1.indexOf('-')-1);
 		        String s3 = s1.substring(s1.indexOf('-')+3);
 		        Codici.add(s2);
 		      }
 		      
-		      scanner.close();
-		    } catch(Exception e) {e.printStackTrace();}
+		    scanner.close();
+		    } catch(Exception e) {
+		    	e.printStackTrace();
+		    }
 		    return Codici;
 		  }
 		
-	 public   ArrayList PrendiCodici() {
-		  String cc="";
-		  ArrayList Comuni = new ArrayList();
+	 public ArrayList<String> PrendiCodici() {
+		  ArrayList<String> Comuni = new ArrayList<String>();
 		    try {
 		      Scanner scanner = new Scanner(new File("Comuni.txt"));
 		      scanner.useDelimiter("\r\n");

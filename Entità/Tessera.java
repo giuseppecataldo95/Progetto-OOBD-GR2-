@@ -5,35 +5,38 @@ import java.sql.Date;
 public class Tessera {
 	
 	private int NTessera;
-	private int PuntiFedeltà;
+	private float PuntiFedeltà;
 	private Date DataRilascio;
 	private Date DataScadenza;
-	private int PuntiFrutta;
-	private int PuntiVerdura;
-	private int PuntiConfezionati;
-	private int PuntiUova;
-	private int PuntiLatticini;
-	private int PuntiFarinacei;
-	private Cliente c;
+	private float PuntiFrutta;
+	private float PuntiVerdura;
+	private float PuntiConfezionati;
+	private float PuntiUova;
+	private float PuntiLatticini;
+	private float PuntiFarinacei;
+	private Cliente Possessore;
 	
 	
 
-
-	public Tessera(int nTessera, Cliente c, int puntiFedeltà, Date dataRilascio, Date dataScadenza) {
+	public Tessera(int NTessera) {
+		this.NTessera = NTessera;
+	}
+	
+	public Tessera(int nTessera, Cliente c, float puntiFedeltà, Date dataRilascio, Date dataScadenza) {
 		super();
 		NTessera = nTessera;
-		this.c = c;
+		this.Possessore = c;
 		PuntiFedeltà = puntiFedeltà;
 		DataRilascio = dataRilascio;
 		DataScadenza = dataScadenza;
 		
 	}
 
-	public Tessera(int nTessera, Cliente c,  int puntiFrutta, int puntiVerdura, int puntiConfezionati, int puntiUova,
-			int puntiLatticini, int puntiFarinacei) {
+	public Tessera(int nTessera, Cliente c,  float puntiFrutta, float puntiVerdura, float puntiConfezionati, float puntiUova,
+			float puntiLatticini, float puntiFarinacei) {
 		super();
 		NTessera = nTessera;
-		this.c = c;
+		this.Possessore = c;
 		PuntiFrutta = puntiFrutta;
 		PuntiVerdura = puntiVerdura;
 		PuntiConfezionati = puntiConfezionati;
@@ -43,67 +46,67 @@ public class Tessera {
 	}
 
 
-	public void setC(Cliente c) {
-		this.c = c;
+	public void setPossessore(Cliente c) {
+		this.Possessore = c;
 	}
 
 
-	public int getPuntiFrutta() {
+	public float getPuntiFrutta() {
 		return PuntiFrutta;
 	}
 
 
-	public void setPuntiFrutta(int puntiFrutta) {
+	public void setPuntiFrutta(float puntiFrutta) {
 		PuntiFrutta = puntiFrutta;
 	}
 
 
-	public int getPuntiVerdura() {
+	public float getPuntiVerdura() {
 		return PuntiVerdura;
 	}
 
 
-	public void setPuntiVerdura(int puntiVerdura) {
+	public void setPuntiVerdura(float puntiVerdura) {
 		PuntiVerdura = puntiVerdura;
 	}
 
 
-	public int getPuntiConfezionati() {
+	public float getPuntiConfezionati() {
 		return PuntiConfezionati;
 	}
 
 
-	public void setPuntiConfezionati(int puntiConfezionati) {
+	public void setPuntiConfezionati(float puntiConfezionati) {
 		PuntiConfezionati = puntiConfezionati;
 	}
 
 
-	public int getPuntiUova() {
+	public float getPuntiUova() {
 		return PuntiUova;
 	}
 
 
-	public void setPuntiUova(int puntiUova) {
+	public void setPuntiUova(float puntiUova) {
 		PuntiUova = puntiUova;
 	}
 
 
-	public int getPuntiLatticini() {
+	public float getPuntiLatticini() {
 		return PuntiLatticini;
 	}
 
 
-	public void setPuntiLatticini(int puntiLatticini) {
+	public void setPuntiLatticini(float puntiLatticini) {
 		PuntiLatticini = puntiLatticini;
 	}
 
 
-	public int getPuntiFarinacei() {
+	public float getPuntiFarinacei() {
 		return PuntiFarinacei;
 	}
 
 
-	public void setPuntiFarinacei(int puntiFarinacei) {
+	public void setPuntiFarinacei(float puntiFarinacei) {
 		PuntiFarinacei = puntiFarinacei;
 	}
 
@@ -117,12 +120,12 @@ public class Tessera {
 	}
 
 
-	public int getPuntiFedeltà() {
+	public float getPuntiFedeltà() {
 		return PuntiFedeltà;
 	}
 
 
-	public void setPuntiFedeltà(int puntiFedeltà) {
+	public void setPuntiFedeltà(float puntiFedeltà) {
 		PuntiFedeltà = puntiFedeltà;
 	}
 
@@ -145,8 +148,8 @@ public class Tessera {
 		DataScadenza = dataScadenza;
 	}
 	
-	public Cliente getC() {
-		return c;
+	public Cliente getPossessore() {
+		return Possessore;
 	}
 	
 	

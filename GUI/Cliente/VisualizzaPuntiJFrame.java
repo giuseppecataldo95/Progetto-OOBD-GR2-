@@ -29,29 +29,31 @@ import Controller.ControllerPrincipale;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class VisualizzaPuntiJFrame extends JFrame {
 
 	private JPanel VisualizzaPuntiPanel;
-	ControllerCliente controller;
-	ControllerPrincipale ControllerP;
-	private JTable table;
-	private TableRowSorter<DefaultTableModel> sorter;
-	private JTextField filterText;
+	private JTable Table;
+	private TableRowSorter<DefaultTableModel> Sorter;
+	private JTextField FilterText;
 	private DefaultTableModel Model = new DefaultTableModel(new String[] { "Numero Tessera", "Codice Fiscale", "Punti Frutta", "Punti Verdura", "Punti Confezionati", "Punti Uova", "Punti Latticini", "Punti Farinacei"},0) {
 		 public boolean isCellEditable(int row, int column) {
 		       return false; //Tabella non modificabile
 		    }
 	};
-
+	private ControllerCliente ControllerC;
+	private ControllerPrincipale ControllerP;
 
 	public VisualizzaPuntiJFrame(ControllerCliente c, ControllerPrincipale c1) {
-		controller = c;
+		ControllerC = c;
 		ControllerP = c1;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaPuntiPanel = new JPanel();
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		VisualizzaPuntiPanel.setBackground(new Color(255, 228, 181));
 		VisualizzaPuntiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		VisualizzaPuntiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,6 +75,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
@@ -85,9 +88,17 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		});
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaPuntiMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(VenditeButton);
@@ -104,84 +115,80 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		MenùLateraleTB.add(verticalStrut);
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
 		
-		JButton InfoButton = new JButton("");
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(VisualizzaPuntiJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(InfoButton);
-		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaPuntiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaPuntiPanel.add(PercorsoTB);
 		
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiClientiPercorsoButtonPressed();
+				ControllerC.VisualizzaPuntiClientiPercorsoBottonePremuto();
 				
 			}
 		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(ClientiPercorsoButton);
+		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton VisualizzaClientiPercorsoButton = new JButton("> Visualizza Clienti");
 		VisualizzaClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaClientiPercorsoButtonPressed();
-				controller.CompletaTabellaTessera();
+				ControllerC.VisualizzaPuntiVisualizzaClientiPercorsoBottonePremuto();
+				ControllerC.CompletaTabellaTessera();
 			}
 		});
 		VisualizzaClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaClientiPercorsoButton);
+		PercorsoTB.add(VisualizzaClientiPercorsoButton);
 		
 		JButton VisualizzaPuntiJButton = new JButton("> Visualizza Punti");
 		VisualizzaPuntiJButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaPuntiJButton);
+		PercorsoTB.add(VisualizzaPuntiJButton);
 		VisualizzaPuntiJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				controller.VisualizzaPuntiVisualizzaPuntiPercorsoButtonPressed();
-				controller.CompletaTabellaPunti();
+				ControllerC.VisualizzaPuntiVisualizzaPuntiPercorsoBottonePremuto();
+				ControllerC.CompletaTabellaPunti();
 			}
 		});
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(91, 125, 770, 367);
-		VisualizzaPuntiPanel.add(scrollPane);
-		table = new JTable(Model);
-		table.setFont(new Font("Arial", Font.PLAIN, 11));
-		sorter = new TableRowSorter<DefaultTableModel>(Model);
-		table.setRowSelectionAllowed(false);
-		table.setBackground(new Color(255, 204, 153));
-		table.setAutoCreateRowSorter(true);
-		table.setRowSorter(sorter);
-		table.getTableHeader().setReorderingAllowed(false);
-		scrollPane.setViewportView(table);
+		JScrollPane ScrollPane = new JScrollPane();
+		ScrollPane.setBounds(91, 125, 770, 367);
+		VisualizzaPuntiPanel.add(ScrollPane);
+		Table = new JTable(Model);
+		Table.setFont(new Font("Arial", Font.PLAIN, 11));
+		Sorter = new TableRowSorter<DefaultTableModel>(Model);
+		Table.setRowSelectionAllowed(false);
+		Table.setBackground(new Color(255, 204, 153));
+		Table.setAutoCreateRowSorter(true);
+		Table.setRowSorter(Sorter);
+		Table.getTableHeader().setReorderingAllowed(false);
+		ScrollPane.setViewportView(Table);
 		
+		FilterText = new JTextField();
+		FilterText.setBounds(269, 73, 157, 20);
+		VisualizzaPuntiPanel.add(FilterText);
+		FilterText.setColumns(10);
 		
-		
-		
-		filterText = new JTextField();
-		filterText.setBounds(200, 73, 391, 20);
-		VisualizzaPuntiPanel.add(filterText);
-		filterText.setColumns(10);
-		filterText.getDocument().addDocumentListener(
+		JLabel CercaLB = new JLabel("Cerca per n\u00B0 Tessera : ");
+		CercaLB.setFont(new Font("Arial", Font.PLAIN, 12));
+		CercaLB.setHorizontalAlignment(SwingConstants.CENTER);
+		CercaLB.setBounds(126, 76, 140, 13);
+		VisualizzaPuntiPanel.add(CercaLB);
+		FilterText.getDocument().addDocumentListener(
                 new DocumentListener() {
                     public void changedUpdate(DocumentEvent e) {
                         newFilter();
@@ -196,7 +203,7 @@ public class VisualizzaPuntiJFrame extends JFrame {
 		
 	}
 	
-	public void setRigheTabella(int NTessera, String CF, int PuntiFrutta, int PuntiVerdura, int PuntiConfezionati, int PuntiUova, int PuntiFarinacei, int PuntiLatticini ){
+	public void setRigheTabella(int NTessera, String CF, float PuntiFrutta, float PuntiVerdura, float PuntiConfezionati, float PuntiUova, float PuntiFarinacei, float PuntiLatticini ){
 		Model.addRow(new Object[] {NTessera, CF, PuntiFrutta, PuntiVerdura, PuntiConfezionati, PuntiUova, PuntiFarinacei, PuntiLatticini});
 		
 		}
@@ -204,10 +211,10 @@ public class VisualizzaPuntiJFrame extends JFrame {
 	private void newFilter() {
 	    RowFilter<DefaultTableModel, Object> rf = null;
 	    try {
-	        rf = RowFilter.regexFilter(filterText.getText().toUpperCase(),0);
+	        rf = RowFilter.regexFilter(FilterText.getText().toUpperCase(),0);
 	    } catch (java.util.regex.PatternSyntaxException e) {
 	        return;
 	    }
-	    sorter.setRowFilter(rf);
+	    Sorter.setRowFilter(rf);
 	}
 }

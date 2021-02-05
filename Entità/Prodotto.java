@@ -1,21 +1,24 @@
 package Entità;
 
 public class Prodotto {
-	private int ID_Prodotto;
+	private int IDProdotto;
 	private float Valore;
 	
 	
+	public Prodotto(int ID_Prodotto) {
+		this.IDProdotto = ID_Prodotto;
+	}
 	
 	public Prodotto(int iD_Prodotto, float valore) {
 		super();
-		ID_Prodotto = iD_Prodotto;
+		IDProdotto = iD_Prodotto;
 		Valore = valore;
 	}
-	public int getID_Prodotto() {
-		return ID_Prodotto;
+	public int getIDProdotto() {
+		return IDProdotto;
 	}
-	public void setID_Prodotto(int iD_Prodotto) {
-		ID_Prodotto = iD_Prodotto;
+	public void setIDProdotto(int iD_Prodotto) {
+		IDProdotto = iD_Prodotto;
 	}
 	
 	

@@ -28,9 +28,9 @@ public class CreaTesseraJFrame extends JFrame {
 
 
 	private JPanel CreaTesseraPanel;
-	private	JTextField InserisciNomeTB;
-	private	JTextField InserisciCognomeTB;
-	private	JTextField InserisciLuogoNTB;
+	private	JTextField InserisciNomeTF;
+	private	JTextField InserisciCognomeTF;
+	private	JTextField InserisciLuogoNTF;
 	private JComboBox  InserisciSessoCB;
 	private JComboBox  InserisciGiornoCB;
 	private JComboBox  InserisciMeseCB;
@@ -48,6 +48,8 @@ public class CreaTesseraJFrame extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		CreaTesseraPanel = new JPanel();
 		CreaTesseraPanel.setBackground(new Color(255, 228, 181));
 		CreaTesseraPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -69,40 +71,50 @@ public class CreaTesseraJFrame extends JFrame {
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			
-			ControllerP.CreaTesseraMenùLateraleClientiButtonPressed();
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.CreaTesseraMenùLateraleClientiBottonePremuto();
 
-		}
-	});
+			}
+		});
 		
 		JButton VenditeButton = new JButton("");
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
 		VenditeButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
+		VenditeButton.setToolTipText("Vendite");
+		MenùLateraleTB.add(VenditeButton);
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.CreaTesseraMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(MagazzinoButton);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ControllerP.CreaTesseraMenùLateraleMagazzinoButtonPressed();
+				ControllerP.CreaTesseraMenùLateraleMagazzinoBottonePremuto();
 
 			}
 		});
@@ -110,15 +122,6 @@ public class CreaTesseraJFrame extends JFrame {
 		Component VerticalStrut = Box.createVerticalStrut(280);
 		VerticalStrut.setBackground(Color.LIGHT_GRAY);
 		MenùLateraleTB.add(VerticalStrut);
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 
 		JToolBar PercorsoTB = new JToolBar();
 		PercorsoTB.setBorder(null);
@@ -131,27 +134,27 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(PercorsoTB);
 		
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
+		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(ClientiPercorsoButton);
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.CreaNuovaTesseraClientiPercorsoButtonPressed();
+				Controller.CreaNuovaTesseraClientiPercorsoBottonePremuto();
 				
 			}
 		});
-		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
+		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoButtonPressed();
+				Controller.CreaNuovaTesseraCreaNuovaTesseraPercorsoBottonePremuto();
 				
 			}
 		});
-		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
+		
 		
 		JLabel RegistrazioneCliente1LB = new JLabel("Benvenuto nella sezione dedicata all'inserimento di un nuovo Cliente!");
 		RegistrazioneCliente1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -194,15 +197,15 @@ public class CreaTesseraJFrame extends JFrame {
 		InserisciLuogoNLB.setBounds(129, 362, 152, 20);
 		CreaTesseraPanel.add(InserisciLuogoNLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setBounds(316, 172, 190, 19);
-		CreaTesseraPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNomeTF = new JTextField();
+		InserisciNomeTF.setBounds(316, 172, 190, 19);
+		CreaTesseraPanel.add(InserisciNomeTF);
+		InserisciNomeTF.setColumns(10);
 		
-		InserisciCognomeTB = new JTextField();
-		InserisciCognomeTB.setBounds(316, 223, 190, 19);
-		CreaTesseraPanel.add(InserisciCognomeTB);
-		InserisciCognomeTB.setColumns(10);
+		InserisciCognomeTF = new JTextField();
+		InserisciCognomeTF.setBounds(316, 223, 190, 19);
+		CreaTesseraPanel.add(InserisciCognomeTF);
+		InserisciCognomeTF.setColumns(10);
 		
 		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -222,11 +225,11 @@ public class CreaTesseraJFrame extends JFrame {
 		InserisciAnnoCB.setBounds(481, 317, 66, 21);
 		CreaTesseraPanel.add(InserisciAnnoCB);
 		
-		InserisciLuogoNTB = new JTextField();
-		InserisciLuogoNTB.setFont(new Font("Arial", Font.PLAIN, 12));
-		InserisciLuogoNTB.setBounds(316, 362, 190, 19);
-		CreaTesseraPanel.add(InserisciLuogoNTB);
-		InserisciLuogoNTB.setColumns(10);
+		InserisciLuogoNTF = new JTextField();
+		InserisciLuogoNTF.setFont(new Font("Arial", Font.PLAIN, 12));
+		InserisciLuogoNTF.setBounds(316, 362, 190, 19);
+		CreaTesseraPanel.add(InserisciLuogoNTF);
+		InserisciLuogoNTF.setColumns(10);
 		
 
 		InserisciSessoCB = new JComboBox();
@@ -235,44 +238,44 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(InserisciSessoCB);
 		
 		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.setBounds(640, 484, 103, 31);
+		CreaTesseraPanel.add(IndietroButton);
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Controller.CreaNuovaTesseraIndietroButtonPressed();
+				Controller.CreaNuovaTesseraIndietroBottonePremuto();
 				
 			}
 		});
-		IndietroButton.setBounds(640, 484, 103, 31);
-		CreaTesseraPanel.add(IndietroButton);
 		
 		JButton AvantiButton = new JButton("Avanti");	
+		AvantiButton.setBounds(799, 484, 103, 31);
+		CreaTesseraPanel.add(AvantiButton);
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Controller.CreaNuovaTesseraAvantiButtonPressed();
+				Controller.CreaNuovaTesseraAvantiBottonePremuto();
 			}
 		});
-		AvantiButton.setBounds(799, 484, 103, 31);
-		CreaTesseraPanel.add(AvantiButton);
 		
 		
 		
 	}
 
 
-	public String getNomeTB() {
-		return InserisciNomeTB.getText();
+	public String getNomeTF() {
+		return InserisciNomeTF.getText();
 	}
 
 
-	public String getCognomeTB() {
-		return InserisciCognomeTB.getText();
+	public String getCognomeTF() {
+		return InserisciCognomeTF.getText();
 	}
 
 
-	public String getLuogoNTB() {
-		return InserisciLuogoNTB.getText();
+	public String getLuogoNTF() {
+		return InserisciLuogoNTF.getText();
 	}
 
 

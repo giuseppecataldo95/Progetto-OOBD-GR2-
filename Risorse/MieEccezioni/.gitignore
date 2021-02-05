@@ -1,2 +1,8 @@
 /ProdottoNonTrovatoException.class
 /ComuniException.class
+/TesseraNonTrovataException.class
+/DataFormatException.class
+/MyDataFormatException.class
+/CarrelloNonTrovatoException.class
+/CarrelloVuotoException.class
+/FormatoDataException.class

@@ -17,37 +17,41 @@ import java.awt.event.ActionEvent;
 
 public class TesseraEliminataJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
-	private ControllerCliente controller;
+	private final JPanel TesseraEliminataPanel = new JPanel();
+	private ControllerCliente ControllerC;
 	
 	public TesseraEliminataJDialog(ControllerCliente c) {
-		controller = c;
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		ControllerC = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		TesseraEliminataPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(TesseraEliminataPanel, BorderLayout.CENTER);
+		TesseraEliminataPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Tessera Eliminata con Successo");
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(83, 48, 271, 46);
-		contentPanel.add(lblNewLabel);
+		JLabel TesseraEliminataLB = new JLabel("Tessera Eliminata con Successo");
+		TesseraEliminataLB.setFont(new Font("Arial", Font.BOLD, 14));
+		TesseraEliminataLB.setHorizontalAlignment(SwingConstants.CENTER);
+		TesseraEliminataLB.setBounds(83, 48, 271, 46);
+		TesseraEliminataPanel.add(TesseraEliminataLB);
 		
-		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton OkButton = new JButton("OK");
+		OkButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				controller.TesseraEliminataOKButtonPressed();
-				controller.CompletaTabellaTessera();
+				ControllerC.TesseraEliminataOKBottonePremuto();
+				ControllerC.CompletaTabellaTessera();
 				
 
 				
 			}
 		});
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnNewButton.setBounds(178, 155, 85, 21);
-		contentPanel.add(btnNewButton);
+		OkButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		OkButton.setBounds(178, 155, 85, 21);
+		TesseraEliminataPanel.add(OkButton);
 	}
 }

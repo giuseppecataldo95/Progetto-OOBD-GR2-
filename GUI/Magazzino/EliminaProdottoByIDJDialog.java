@@ -19,9 +19,9 @@ import java.awt.event.ActionEvent;
 
 public class EliminaProdottoByIDJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel EliminaProdottoByIDPanel = new JPanel();
 	private ControllerMagazzino ControllerM;
-	private JTextField IDProdottoDaEliminareTB;
+	private JTextField IDProdottoDaEliminareTF;
 	
 	
 	
@@ -31,31 +31,33 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 		ControllerM = c;
 		
 		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		EliminaProdottoByIDPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(EliminaProdottoByIDPanel, BorderLayout.CENTER);
+		EliminaProdottoByIDPanel.setLayout(null);
 		
 		JLabel EliminaProdottoLB = new JLabel("Inserisci l'ID del Prodotto da Eliminare");
 		EliminaProdottoLB.setFont(new Font("Arial", Font.BOLD, 14));
 		EliminaProdottoLB.setHorizontalAlignment(SwingConstants.CENTER);
 		EliminaProdottoLB.setBounds(49, 49, 340, 25);
-		contentPanel.add(EliminaProdottoLB);
+		EliminaProdottoByIDPanel.add(EliminaProdottoLB);
 		
 		JLabel IDProdottoLB = new JLabel("ID Prodotto : ");
 		IDProdottoLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		IDProdottoLB.setBounds(133, 110, 77, 25);
-		contentPanel.add(IDProdottoLB);
+		EliminaProdottoByIDPanel.add(IDProdottoLB);
 		
-		IDProdottoDaEliminareTB = new JTextField();
-		IDProdottoDaEliminareTB.setFont(new Font("Arial", Font.PLAIN, 12));
-		IDProdottoDaEliminareTB.setBounds(215, 111, 61, 22);
-		contentPanel.add(IDProdottoDaEliminareTB);
-		IDProdottoDaEliminareTB.setColumns(10);
+		IDProdottoDaEliminareTF = new JTextField();
+		IDProdottoDaEliminareTF.setFont(new Font("Arial", Font.PLAIN, 12));
+		IDProdottoDaEliminareTF.setBounds(215, 111, 61, 22);
+		EliminaProdottoByIDPanel.add(IDProdottoDaEliminareTF);
+		IDProdottoDaEliminareTF.setColumns(10);
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel BottoniPanel = new JPanel();
+			BottoniPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(BottoniPanel, BorderLayout.SOUTH);
 			{
 				JButton EliminaButton = new JButton("Elimina Prodotto");
 				EliminaButton.addActionListener(new ActionListener() {
@@ -71,9 +73,9 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 					}
 				});
 				IndietroButton.setActionCommand("OK");
-				buttonPane.add(IndietroButton);
+				BottoniPanel.add(IndietroButton);
 				EliminaButton.setActionCommand("OK");
-				buttonPane.add(EliminaButton);
+				BottoniPanel.add(EliminaButton);
 				getRootPane().setDefaultButton(EliminaButton);
 			}
 			{
@@ -82,7 +84,7 @@ public class EliminaProdottoByIDJDialog extends JDialog {
 		}
 	}
 	
-	public String getIDProdottoDaEliminare() {
-		return IDProdottoDaEliminareTB.getText();
+	public String getIDProdottoDaEliminareTF() {
+		return IDProdottoDaEliminareTF.getText();
 	}
 }

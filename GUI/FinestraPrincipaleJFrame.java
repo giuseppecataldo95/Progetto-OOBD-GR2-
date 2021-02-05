@@ -31,6 +31,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		Controller = P;
 		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(150, 80, 1000, 600);
 		FinestraPrincipalePanel = new JPanel();
 		FinestraPrincipalePanel.setBackground(new Color(255, 228, 181));
@@ -45,7 +46,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		
 		JLabel SelezionaLB = new JLabel("Seleziona l'area tematica:");
 		SelezionaLB.setFont(new Font("Arial", Font.PLAIN, 30));
-		SelezionaLB.setBounds(315, 74, 345, 36);
+		SelezionaLB.setBounds(321, 74, 394, 36);
 		FinestraPrincipalePanel.add(SelezionaLB);
 		
 		ContainerBottoniPanel = new JPanel();
@@ -65,7 +66,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 			
 			{
 				
-				Controller.FinestraPrincipaleClientiButtonPressed();
+				Controller.FinestraPrincipaleClientiBottonePremuto();
 				
 			}
 			
@@ -85,6 +86,13 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		ContainerBottoniPanel.add(horizontalStrut_1);
 		
 		JButton VenditeButton = new JButton("Vendite");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Controller.FinestraPrincipaleVenduteBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setMaximumSize(new Dimension(170, 150));
 		VenditeButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		VenditeButton.setIconTextGap(10);
@@ -102,7 +110,7 @@ public class FinestraPrincipaleJFrame extends JFrame {
 		JButton MagazzinoButton = new JButton("Magazzino");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				P.FinestraPrincipaleMagazzinoBottonePremuto();
+				Controller.FinestraPrincipaleMagazzinoBottonePremuto();
 			}
 		});
 		MagazzinoButton.setMaximumSize(new Dimension(170, 150));

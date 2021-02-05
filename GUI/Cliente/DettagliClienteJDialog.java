@@ -19,77 +19,87 @@ import java.awt.event.ActionEvent;
 
 public class DettagliClienteJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
-	private JTextField VisualizzaDettagliNTesseraTB;
-	public JTextField getVisualizzaDettagliNTesseraTB() {
-		return VisualizzaDettagliNTesseraTB;
-	}
+	private final JPanel DettagliPanel = new JPanel();
+	private JTextField VisualizzaDettagliNTesseraTF;
+	
 
 
-	public void setVisualizzaDettagliNTesseraTB(JTextField visualizzaDettagliNTesseraTB) {
-		VisualizzaDettagliNTesseraTB = visualizzaDettagliNTesseraTB;
-	}
+	
 
 
-	private ControllerCliente controller;
+	private ControllerCliente ControllerC;
 
 	
 	public DettagliClienteJDialog(ControllerCliente c) {
-		controller = c;
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		ControllerC = c;
 		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		DettagliPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(DettagliPanel, BorderLayout.CENTER);
+		DettagliPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Inserisci il Numero della Tessera di cui vuoi \r\nvisualizzare i dettagli. ");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 12));		
-		lblNewLabel.setBounds(10, 10, 405, 62);
-		contentPanel.add(lblNewLabel);
+		JLabel InserisciNumeroLB = new JLabel("Inserisci il Numero della Tessera di cui vuoi \r\nvisualizzare i dettagli. ");
+		InserisciNumeroLB.setHorizontalAlignment(SwingConstants.CENTER);
+		InserisciNumeroLB.setFont(new Font("Arial", Font.BOLD, 12));		
+		InserisciNumeroLB.setBounds(10, 10, 405, 62);
+		DettagliPanel.add(InserisciNumeroLB);
 		
 		
 		JLabel NumeroTesseraVisualizzaDettagliLB = new JLabel("Numero Tessera : ");
 		NumeroTesseraVisualizzaDettagliLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		NumeroTesseraVisualizzaDettagliLB.setHorizontalAlignment(SwingConstants.CENTER);
 		NumeroTesseraVisualizzaDettagliLB.setBounds(58, 117, 131, 26);
-		contentPanel.add(NumeroTesseraVisualizzaDettagliLB);
+		DettagliPanel.add(NumeroTesseraVisualizzaDettagliLB);
 		
 		
-		VisualizzaDettagliNTesseraTB = new JTextField();
-		VisualizzaDettagliNTesseraTB.setBounds(184, 121, 96, 19);
-		contentPanel.add(VisualizzaDettagliNTesseraTB);
-		VisualizzaDettagliNTesseraTB.setColumns(10);
+		VisualizzaDettagliNTesseraTF = new JTextField();
+		VisualizzaDettagliNTesseraTF.setBounds(184, 121, 96, 19);
+		DettagliPanel.add(VisualizzaDettagliNTesseraTF);
+		VisualizzaDettagliNTesseraTF.setColumns(10);
 		
-		JPanel buttonPane = new JPanel();
-		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		getContentPane().add(buttonPane, BorderLayout.SOUTH);			
+		JPanel ContainerPanel = new JPanel();
+		ContainerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		getContentPane().add(ContainerPanel, BorderLayout.SOUTH);			
 		
-		JButton VisualizzaDettagliAnnullaJButton = new JButton("Annulla");
-		VisualizzaDettagliAnnullaJButton.addActionListener(new ActionListener() {
+		JButton VisualizzaDettagliAnnullaButton = new JButton("Annulla");
+		VisualizzaDettagliAnnullaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-					setVisible(false);
+					ControllerC.VisualizzaDettagliJDialogAnnullaBottonePremuto();
 					
 					}
 				});
-				VisualizzaDettagliAnnullaJButton.setFont(new Font("Arial", Font.PLAIN, 12));
-				VisualizzaDettagliAnnullaJButton.setActionCommand("Cancel");
-				buttonPane.add(VisualizzaDettagliAnnullaJButton);	
+				VisualizzaDettagliAnnullaButton.setFont(new Font("Arial", Font.BOLD, 12));
+				VisualizzaDettagliAnnullaButton.setActionCommand("Cancel");
+				ContainerPanel.add(VisualizzaDettagliAnnullaButton);	
 				
-				JButton VisualizzaDettagliClienteDialogJButton = new JButton("Visualizza Dettagli");
-				VisualizzaDettagliClienteDialogJButton.addActionListener(new ActionListener() {
+				JButton VisualizzaDettagliClienteButton = new JButton("Visualizza Dettagli");
+				VisualizzaDettagliClienteButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 							
 							
-							int n_t = Integer.valueOf(VisualizzaDettagliNTesseraTB.getText());
-							controller.CercaClienteByCF(n_t);
+							
+							ControllerC.CercaClienteByNTessera();
 								
 						}
 							
 				});
-				buttonPane.add(VisualizzaDettagliClienteDialogJButton);
+				ContainerPanel.add(VisualizzaDettagliClienteButton);
 	}
-}
+	
+	public String getVisualizzaDettagliNTesseraTF()
+	{
+		
+		
+		return VisualizzaDettagliNTesseraTF.getText();
+	}
+	
+}	
+	
+	
+
 	
 

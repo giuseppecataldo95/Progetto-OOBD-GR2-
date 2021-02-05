@@ -1,7 +1,8 @@
 package App;
 import java.sql.*;
-import ConnessioneDB.ConnessioneDB;
+
 import Controller.ControllerPrincipale;
+import Risorse.App.ConnessioneDB;
 
 
 public class Main {
@@ -14,7 +15,7 @@ public class Main {
 			Conn = DBconn.getConnection();
 			ControllerPrincipale Main = new ControllerPrincipale(Conn);
 		}catch(SQLException e) {
-				System.out.println("Errore: "+e);
+			
 		}
 		 
 		 

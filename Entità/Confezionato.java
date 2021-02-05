@@ -2,10 +2,10 @@ package Entit‡;
 
 import java.sql.Date;
 
-public class Confezionato extends Prodotto_unitario {
-	private Date Data_scadenza;
-	private String Lotto_lavorazione;
-	private String Modalit‡_conservazione;
+public class Confezionato extends ProdottoUnitario {
+	private Date DataScadenza;
+	private String LottoLavorazione;
+	private String Modalit‡Conservazione;
 	private String Marca;
 	private float Peso;
 	private String Nome;
@@ -16,7 +16,7 @@ public class Confezionato extends Prodotto_unitario {
 	
 	public Confezionato(int iD_Prodotto, String nome, float valore, int scorte, Date data_scadenza, String marca,  float peso) {
 		super(iD_Prodotto, valore, scorte);
-		Data_scadenza = data_scadenza;
+		DataScadenza = data_scadenza;
 		Marca = marca;
 		Peso = peso;
 		Nome = nome;
@@ -27,9 +27,9 @@ public class Confezionato extends Prodotto_unitario {
 	public Confezionato(int iD_Prodotto, String nome, float valore, int scorte, Date data_scadenza,
 			String lotto_lavorazione, String modalit‡_conservazione, String marca, float peso) {
 		super(iD_Prodotto, valore, scorte);
-		Data_scadenza = data_scadenza;
-		Lotto_lavorazione = lotto_lavorazione;
-		Modalit‡_conservazione = modalit‡_conservazione;
+		DataScadenza = data_scadenza;
+		LottoLavorazione = lotto_lavorazione;
+		Modalit‡Conservazione = modalit‡_conservazione;
 		Marca = marca;
 		Peso = peso;
 	}
@@ -49,23 +49,23 @@ public class Confezionato extends Prodotto_unitario {
 
 
 
-	public Date getData_scadenza() {
-		return Data_scadenza;
+	public Date getDataScadenza() {
+		return DataScadenza;
 	}
-	public void setData_scadenza(Date data_scadenza) {
-		Data_scadenza = data_scadenza;
+	public void setDataScadenza(Date data_scadenza) {
+		DataScadenza = data_scadenza;
 	}
-	public String getLotto_lavorazione() {
-		return Lotto_lavorazione;
+	public String getLottoLavorazione() {
+		return LottoLavorazione;
 	}
-	public void setLotto_lavorazione(String lotto_lavorazione) {
-		Lotto_lavorazione = lotto_lavorazione;
+	public void setLottoLavorazione(String lotto_lavorazione) {
+		LottoLavorazione = lotto_lavorazione;
 	}
-	public String getModalit‡_conservazione() {
-		return Modalit‡_conservazione;
+	public String getModalit‡Conservazione() {
+		return Modalit‡Conservazione;
 	}
-	public void setModalit‡_conservazione(String modalit‡_conservazione) {
-		Modalit‡_conservazione = modalit‡_conservazione;
+	public void setModalit‡Conservazione(String modalit‡_conservazione) {
+		Modalit‡Conservazione = modalit‡_conservazione;
 	}
 	public String getMarca() {
 		return Marca;

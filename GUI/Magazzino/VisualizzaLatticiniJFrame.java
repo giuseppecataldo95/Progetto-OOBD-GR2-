@@ -55,6 +55,8 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 	public VisualizzaLatticiniJFrame(ControllerMagazzino c, ControllerPrincipale cp) {
 		ControllerM = c;
 		ControllerP = cp;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		VisualizzaProdottiPanel = new JPanel();
@@ -64,13 +66,13 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 		setContentPane(VisualizzaProdottiPanel);
 		VisualizzaProdottiPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		VisualizzaProdottiPanel.add(toolBar);
+		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.setBorder(null);
+		MenùLateraleTB.setFloatable(false);
+		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		MenùLateraleTB.setBounds(0, 0, 66, 563);
+		VisualizzaProdottiPanel.add(MenùLateraleTB);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -79,25 +81,32 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 				ControllerP.VisualizzaLatticiniMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
-		toolBar.add(VenditeButton);
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaLatticiniMenuLateraleVenditeBottonePremuto();
+			}
+		});
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.VisualizzaLatticiniMenuLateraleMagazzinoBottonePremuto();
@@ -107,30 +116,23 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		
-		JButton InfoButton = new JButton("");
-		toolBar.add(InfoButton);
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		VisualizzaProdottiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		VisualizzaProdottiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -139,7 +141,7 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton VisualizzaProdottiPercorsoButton = new JButton("> Visualizza Prodotti");
 		VisualizzaProdottiPercorsoButton.addActionListener(new ActionListener() {
@@ -148,7 +150,7 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 			}
 		});
 		VisualizzaProdottiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaProdottiPercorsoButton);
+		PercorsoTB.add(VisualizzaProdottiPercorsoButton);
 		
 		JButton VisualizzaLatticiniPercorsoButton = new JButton("> Visualizza Latticini");
 		VisualizzaLatticiniPercorsoButton.addActionListener(new ActionListener() {
@@ -158,7 +160,7 @@ public class VisualizzaLatticiniJFrame extends JFrame {
 			}
 		});
 		VisualizzaLatticiniPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(VisualizzaLatticiniPercorsoButton);
+		PercorsoTB.add(VisualizzaLatticiniPercorsoButton);
 		
 		JButton IndietroButton = new JButton("Indietro");
 		IndietroButton.addActionListener(new ActionListener() {

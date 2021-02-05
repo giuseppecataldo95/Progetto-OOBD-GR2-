@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 
 public class InserimentoProdottoCompletatoJDialog extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel InserimentoProdottoCompletatoPanel = new JPanel();
 	private ControllerMagazzino Controller;
 	private JButton OkButton;
 	
@@ -30,21 +30,23 @@ public class InserimentoProdottoCompletatoJDialog extends JDialog {
 		setAlwaysOnTop(true);
 		
 		setBounds(500, 500, 372, 202);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
+		InserimentoProdottoCompletatoPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(InserimentoProdottoCompletatoPanel, BorderLayout.CENTER);
+		InserimentoProdottoCompletatoPanel.setLayout(null);
 		
-		JLabel lblIlProdotto = new JLabel("Il Prodotto \u00E8 stato inserito con successo!");
-		lblIlProdotto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIlProdotto.setFont(new Font("Arial", Font.BOLD, 14));
-		lblIlProdotto.setBounds(0, 39, 361, 47);
-		contentPanel.add(lblIlProdotto);
+		JLabel InserimentoCompletatoLB = new JLabel("Il Prodotto \u00E8 stato inserito con successo!");
+		InserimentoCompletatoLB.setHorizontalAlignment(SwingConstants.CENTER);
+		InserimentoCompletatoLB.setFont(new Font("Arial", Font.BOLD, 14));
+		InserimentoCompletatoLB.setBounds(0, 39, 361, 47);
+		InserimentoProdottoCompletatoPanel.add(InserimentoCompletatoLB);
 	
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			JPanel BottoniPanel = new JPanel();
+			BottoniPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+			getContentPane().add(BottoniPanel, BorderLayout.SOUTH);
 			{
 				OkButton = new JButton("Ok");
 				OkButton.addActionListener(new ActionListener() {
@@ -55,7 +57,7 @@ public class InserimentoProdottoCompletatoJDialog extends JDialog {
 
 				
 				OkButton.setActionCommand("OK");
-				buttonPane.add(OkButton);
+				BottoniPanel.add(OkButton);
 				getRootPane().setDefaultButton(OkButton);
 			}
 		}

@@ -27,19 +27,19 @@ import Controller.ControllerPrincipale;
 public class AggiungiConfezionatiJFrame extends JFrame {
 
 	private JPanel AggiungiConfezionatiPanel;
-	private JTextField InserisciNomeTB;
-	private JTextField InserisciLottoTB;
-	private JTextField InserisciValorekgTB;
-	private JTextField InserisciScorteTB;
-	private JTextField InserisciModConservazioneTB;
-	private JTextField InserisciMarcaTB;
-	private ControllerMagazzino ControllerM;
+	private JTextField InserisciNomeTF;
+	private JTextField InserisciLottoTF;
+	private JTextField InserisciValorekgTF;
+	private JTextField InserisciScorteTF;
+	private JTextField InserisciModConservazioneTF;
+	private JTextField InserisciMarcaTF;
 	private JComboBox InserisciGiornoCB;
 	private JComboBox InserisciMeseCB;
 	private JComboBox InserisciAnnoCB;
-	private JTextField InserisciPesoConfezioneTB;
+	private JTextField InserisciPesoConfezioneTF;
 	private ControllerPrincipale ControllerP;
-	
+	private ControllerMagazzino ControllerM;
+
 
 	/**
 	 * Create the frame.
@@ -51,6 +51,8 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
 		AggiungiConfezionatiPanel = new JPanel();
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		AggiungiConfezionatiPanel.setBackground(new Color(255, 228, 181));
 		AggiungiConfezionatiPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		AggiungiConfezionatiPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,15 +60,15 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		AggiungiConfezionatiPanel.setLayout(null);
 	
 		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiConfezionatiPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		AggiungiConfezionatiPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -75,7 +77,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
@@ -84,7 +86,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
+		PercorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JButton ConfezionatiPercorsoButton = new JButton("> Confezionati");
 		ConfezionatiPercorsoButton.addActionListener(new ActionListener() {
@@ -93,7 +95,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 			}
 		});
 		ConfezionatiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(ConfezionatiPercorsoButton);
+		PercorsoTB.add(ConfezionatiPercorsoButton);
 		
 		JLabel AggiungiConfezionati1LB = new JLabel("Benvenuto\\a nella sezione dedicata all'aggiunta di un nuovo prodotto di tipo Confezionato!");
 		AggiungiConfezionati1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -130,25 +132,25 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		InserisciDataScadenzaLB.setBounds(129, 264, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciDataScadenzaLB);
 		
-		InserisciNomeTB = new JTextField();
-		InserisciNomeTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciNomeTB.setBounds(316, 172, 190, 19);
-		AggiungiConfezionatiPanel.add(InserisciNomeTB);
-		InserisciNomeTB.setColumns(10);
+		InserisciNomeTF = new JTextField();
+		InserisciNomeTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciNomeTF.setBounds(316, 172, 190, 19);
+		AggiungiConfezionatiPanel.add(InserisciNomeTF);
+		InserisciNomeTF.setColumns(10);
 		
-		InserisciLottoTB = new JTextField();
-		InserisciLottoTB.addKeyListener(new java.awt.event.KeyAdapter() {
+		InserisciLottoTF = new JTextField();
+		InserisciLottoTF.addKeyListener(new java.awt.event.KeyAdapter() {
 		    public void keyTyped(java.awt.event.KeyEvent evt) {
-		        if(InserisciLottoTB.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
+		        if(InserisciLottoTF.getText().length()>=8&&!(evt.getKeyChar()==KeyEvent.VK_DELETE||evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)) {
 		            getToolkit().beep();
 		            evt.consume();
 		         }
 		     }
 		});
-		InserisciLottoTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciLottoTB.setBounds(316, 203, 190, 19);
-		AggiungiConfezionatiPanel.add(InserisciLottoTB);
-		InserisciLottoTB.setColumns(10);
+		InserisciLottoTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciLottoTF.setBounds(316, 203, 190, 19);
+		AggiungiConfezionatiPanel.add(InserisciLottoTF);
+		InserisciLottoTF.setColumns(10);
 		
 		InserisciGiornoCB = new JComboBox();
 		InserisciGiornoCB.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -170,11 +172,11 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		InserisciAnnoCB.setBounds(484, 264, 66, 21);
 		AggiungiConfezionatiPanel.add(InserisciAnnoCB);
 		
-		InserisciValorekgTB = new JTextField();
-		InserisciValorekgTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciValorekgTB.setBounds(316, 234, 96, 20);
-		AggiungiConfezionatiPanel.add(InserisciValorekgTB);
-		InserisciValorekgTB.setColumns(10);
+		InserisciValorekgTF = new JTextField();
+		InserisciValorekgTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciValorekgTF.setBounds(316, 234, 96, 20);
+		AggiungiConfezionatiPanel.add(InserisciValorekgTF);
+		InserisciValorekgTF.setColumns(10);
 		
 		JLabel EuroLB = new JLabel("\u20AC");
 		EuroLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -186,11 +188,11 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		InserisciScorteLB.setBounds(234, 298, 45, 14);
 		AggiungiConfezionatiPanel.add(InserisciScorteLB);
 		
-		InserisciScorteTB = new JTextField();
-		InserisciScorteTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciScorteTB.setColumns(10);
-		InserisciScorteTB.setBounds(316, 296, 96, 20);
-		AggiungiConfezionatiPanel.add(InserisciScorteTB);
+		InserisciScorteTF = new JTextField();
+		InserisciScorteTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciScorteTF.setColumns(10);
+		InserisciScorteTF.setBounds(316, 296, 96, 20);
+		AggiungiConfezionatiPanel.add(InserisciScorteTF);
 		
 		JButton AggiungiProdottoButton = new JButton("Aggiungi Prodotto");
 		AggiungiProdottoButton.addActionListener(new ActionListener() {
@@ -208,33 +210,33 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		InserisciModConservazioneLB.setBounds(129, 326, 150, 20);
 		AggiungiConfezionatiPanel.add(InserisciModConservazioneLB);
 		
-		InserisciModConservazioneTB = new JTextField();
-		InserisciModConservazioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciModConservazioneTB.setColumns(10);
-		InserisciModConservazioneTB.setBounds(316, 327, 190, 19);
-		AggiungiConfezionatiPanel.add(InserisciModConservazioneTB);
+		InserisciModConservazioneTF = new JTextField();
+		InserisciModConservazioneTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciModConservazioneTF.setColumns(10);
+		InserisciModConservazioneTF.setBounds(316, 327, 190, 19);
+		AggiungiConfezionatiPanel.add(InserisciModConservazioneTF);
 		
 		JLabel InserisciMarcaLB = new JLabel("Marca :");
 		InserisciMarcaLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		InserisciMarcaLB.setBounds(234, 359, 45, 14);
 		AggiungiConfezionatiPanel.add(InserisciMarcaLB);
 		
-		InserisciMarcaTB = new JTextField();
-		InserisciMarcaTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciMarcaTB.setColumns(10);
-		InserisciMarcaTB.setBounds(316, 357, 190, 19);
-		AggiungiConfezionatiPanel.add(InserisciMarcaTB);
+		InserisciMarcaTF = new JTextField();
+		InserisciMarcaTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciMarcaTF.setColumns(10);
+		InserisciMarcaTF.setBounds(316, 357, 190, 19);
+		AggiungiConfezionatiPanel.add(InserisciMarcaTF);
 		
 		JLabel lnserisciPesoConfezioneLB = new JLabel("Peso Confezione :");
 		lnserisciPesoConfezioneLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		lnserisciPesoConfezioneLB.setBounds(176, 391, 103, 14);
 		AggiungiConfezionatiPanel.add(lnserisciPesoConfezioneLB);
 		
-		InserisciPesoConfezioneTB = new JTextField();
-		InserisciPesoConfezioneTB.setFont(new Font("Arial", Font.PLAIN, 11));
-		InserisciPesoConfezioneTB.setColumns(10);
-		InserisciPesoConfezioneTB.setBounds(316, 388, 96, 20);
-		AggiungiConfezionatiPanel.add(InserisciPesoConfezioneTB);
+		InserisciPesoConfezioneTF = new JTextField();
+		InserisciPesoConfezioneTF.setFont(new Font("Arial", Font.PLAIN, 11));
+		InserisciPesoConfezioneTF.setColumns(10);
+		InserisciPesoConfezioneTF.setBounds(316, 388, 96, 20);
+		AggiungiConfezionatiPanel.add(InserisciPesoConfezioneTF);
 		
 		JLabel KgLB = new JLabel("Kg");
 		KgLB.setFont(new Font("Arial", Font.ITALIC, 14));
@@ -256,13 +258,13 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		IndietroButton.setBounds(652, 484, 137, 31);
 		AggiungiConfezionatiPanel.add(IndietroButton);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		AggiungiConfezionatiPanel.add(toolBar);
+		JToolBar MenùLateraleTB = new JToolBar();
+		MenùLateraleTB.setBackground(new Color(255, 153, 51));
+		MenùLateraleTB.setBorder(null);
+		MenùLateraleTB.setFloatable(false);
+		MenùLateraleTB.setOrientation(SwingConstants.VERTICAL);
+		MenùLateraleTB.setBounds(0, 0, 66, 563);
+		AggiungiConfezionatiPanel.add(MenùLateraleTB);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -271,25 +273,32 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 				ControllerP.AggiungiConfezionatiMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
-		toolBar.add(VenditeButton);
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.AggiungiConfezionatiMenuLateraleVenditeBottonePremuto();
+			}
+		});
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiConfezionatiMenuLateraleMagazzinoBottonePremuto();
@@ -298,56 +307,49 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
-		
-		JButton InfoButton = new JButton("");
-		toolBar.add(InfoButton);
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(AggiungiConfezionatiJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLateraleTB.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 	}
 
 
 
-	public String getInserisciNomeTB() {
-		return InserisciNomeTB.getText();
+	public String getInserisciNomeTF() {
+		return InserisciNomeTF.getText();
 	}
 
 
 
-	public String getInserisciLottoTB() {
-		return InserisciLottoTB.getText();
+	public String getInserisciLottoTF() {
+		return InserisciLottoTF.getText();
 	}
 
 
 
-	public String getInserisciValorekgTB() {
-		return InserisciValorekgTB.getText();
+	public String getInserisciValorekgTF() {
+		return InserisciValorekgTF.getText();
 	}
 
 
 
-	public String getInserisciScorteTB() {
-		return InserisciScorteTB.getText();
+	public String getInserisciScorteTF() {
+		return InserisciScorteTF.getText();
 	}
 
 
 
-	public String getInserisciModConservazioneTB() {
-		return InserisciModConservazioneTB.getText();
+	public String getInserisciModConservazioneTF() {
+		return InserisciModConservazioneTF.getText();
 	}
 
 
 
-	public String getInserisciMarcaTB() {
-		return InserisciMarcaTB.getText();
+	public String getInserisciMarcaTF() {
+		return InserisciMarcaTF.getText();
 	}
 
 
@@ -368,7 +370,7 @@ public class AggiungiConfezionatiJFrame extends JFrame {
 		return InserisciAnnoCB.getSelectedItem().toString();
 	}
 	
-	public String getInserisciPesoConfezioneTB() {
-		return InserisciPesoConfezioneTB.getText();
+	public String getInserisciPesoConfezioneTF() {
+		return InserisciPesoConfezioneTF.getText();
 	}
 }

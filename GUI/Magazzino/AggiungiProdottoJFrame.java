@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerMagazzino;
 import Controller.ControllerPrincipale;
+import Controller.ControllerVendite;
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -34,6 +36,8 @@ public class AggiungiProdottoJFrame extends JFrame {
 		ControllerP = cp;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 80, 1000, 600);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		AggiungiNuovoProdottoPanel = new JPanel();
 		AggiungiNuovoProdottoPanel.setBackground(new Color(255, 228, 181));
 		AggiungiNuovoProdottoPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -41,13 +45,13 @@ public class AggiungiProdottoJFrame extends JFrame {
 		setContentPane(AggiungiNuovoProdottoPanel);
 		AggiungiNuovoProdottoPanel.setLayout(null);
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setBackground(new Color(255, 153, 51));
-		toolBar.setBorder(null);
-		toolBar.setFloatable(false);
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBounds(0, 0, 66, 563);
-		AggiungiNuovoProdottoPanel.add(toolBar);
+		JToolBar MenùLaterale = new JToolBar();
+		MenùLaterale.setBackground(new Color(255, 153, 51));
+		MenùLaterale.setBorder(null);
+		MenùLaterale.setFloatable(false);
+		MenùLaterale.setOrientation(SwingConstants.VERTICAL);
+		MenùLaterale.setBounds(0, 0, 66, 563);
+		AggiungiNuovoProdottoPanel.add(MenùLaterale);
 		
 		
 		JButton ClientiButton = new JButton("");
@@ -56,25 +60,32 @@ public class AggiungiProdottoJFrame extends JFrame {
 				ControllerP.AggiungiProdottoMenuLateraleClientiBottonePremuto();
 			}
 		});
-		toolBar.add(ClientiButton);
+		MenùLaterale.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
-		toolBar.add(VenditeButton);
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.AggiungiProdottoMenuLateraleVenditeBottonePremuto();
+			}
+		});
+		MenùLaterale.add(VenditeButton);
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
-		toolBar.add(MagazzinoButton);
+		MenùLaterale.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControllerP.AggiungiProdottoMenuLateraleMagazzinoBottonePremuto();
@@ -84,29 +95,22 @@ public class AggiungiProdottoJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
-		Component verticalStrut = Box.createVerticalStrut(280);
-		toolBar.add(verticalStrut);
-		verticalStrut.setMaximumSize(new Dimension(32767, 300));
+		Component VerticalStrut = Box.createVerticalStrut(280);
+		MenùLaterale.add(VerticalStrut);
+		VerticalStrut.setMaximumSize(new Dimension(32767, 300));
 		
-		JButton InfoButton = new JButton("");
-		toolBar.add(InfoButton);
-		InfoButton.setBackground(new Color(255, 153, 51));
-		InfoButton.setIcon(new ImageIcon(AggiungiLatticiniJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setBorder(null);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setMaximumSize(new Dimension(65, 70));
-		
-		JToolBar percorsoTB = new JToolBar();
-		percorsoTB.setBorder(null);
-		percorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
-		percorsoTB.setBorderPainted(false);
-		percorsoTB.setFloatable(false);
-		percorsoTB.setBackground(new Color(255, 204, 153));
-		percorsoTB.setMaximumSize(new Dimension(100, 100));
-		percorsoTB.setBounds(65, 0, 976, 30);
-		AggiungiNuovoProdottoPanel.add(percorsoTB);
+		JToolBar PercorsoTB = new JToolBar();
+		PercorsoTB.setBorder(null);
+		PercorsoTB.setAlignmentX(Component.LEFT_ALIGNMENT);
+		PercorsoTB.setBorderPainted(false);
+		PercorsoTB.setFloatable(false);
+		PercorsoTB.setBackground(new Color(255, 204, 153));
+		PercorsoTB.setMaximumSize(new Dimension(100, 100));
+		PercorsoTB.setBounds(65, 0, 976, 30);
+		AggiungiNuovoProdottoPanel.add(PercorsoTB);
 		
 		JButton MagazzinoPercorsoButton = new JButton("> Magazzino");
 		MagazzinoPercorsoButton.addActionListener(new ActionListener() {
@@ -115,7 +119,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 			}
 		});
 		MagazzinoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(MagazzinoPercorsoButton);
+		PercorsoTB.add(MagazzinoPercorsoButton);
 		
 		JButton AggiungiNuovoProdottoPercorsoButton = new JButton("> Aggiungi Nuovo Prodotto");
 		AggiungiNuovoProdottoPercorsoButton.addActionListener(new ActionListener() {
@@ -124,7 +128,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 			}
 		});
 		AggiungiNuovoProdottoPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		percorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
+		PercorsoTB.add(AggiungiNuovoProdottoPercorsoButton);
 		
 		JPanel ContainerPanel = new JPanel();
 		ContainerPanel.setBackground(new Color(255, 204, 153));
@@ -190,7 +194,7 @@ public class AggiungiProdottoJFrame extends JFrame {
 		
 		JLabel SelezionaCategoriaLB = new JLabel("Seleziona la categoria in cui vuoi inserire un nuovo prodotto");
 		SelezionaCategoriaLB.setFont(new Font("Arial", Font.BOLD, 20));
-		SelezionaCategoriaLB.setBounds(236, 66, 570, 66);
+		SelezionaCategoriaLB.setBounds(229, 61, 685, 66);
 		AggiungiNuovoProdottoPanel.add(SelezionaCategoriaLB);
 	}
 }

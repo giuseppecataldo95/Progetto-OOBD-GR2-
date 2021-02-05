@@ -20,27 +20,34 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ControllerCliente;
+import Controller.ControllerPrincipale;
+
 import javax.swing.ImageIcon;
 
 public class VisualizzaDettagliClienteJFrame extends JFrame {
 
 	private JPanel VisualizzaDettagliClientePanel;
-	private ControllerCliente controller;
-	public JTextField RiepilogoNomeTB;
-	public JTextField RiepilogoCognomeTB;
-	public JTextField RiepilogoSessoTB;
-	public JTextField RiepilogoLuogoNTB;
-	public JTextField RiepilogoGiornoNTB;
-	public JTextField RiepilogoCFTB;
-	public JTextField RiepilogoMeseNTB;
-	public JTextField RiepilogoAnnoNTB;
-	private JTextField RiepilogoDataNTB;
+	public JTextField RiepilogoNomeTF;
+	public JTextField RiepilogoCognomeTF;
+	public JTextField RiepilogoSessoTF;
+	public JTextField RiepilogoLuogoNTF;
+	private JTextField RiepilogoGiornoNTF;
+	public JTextField RiepilogoCFTF;
+	private JTextField RiepilogoMeseNTF;
+	private JTextField RiepilogoAnnoNTF;
+	private JTextField RiepilogoDataNTF;
+	private ControllerPrincipale ControllerP;
+	private ControllerCliente ControllerC;
+
 	
 	
 
-	public VisualizzaDettagliClienteJFrame(ControllerCliente c) {
-		controller = c;
+	public VisualizzaDettagliClienteJFrame(ControllerCliente c, ControllerPrincipale c1) {
+		ControllerC = c;
+		ControllerP = c1;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(150, 80, 1000, 600);
 		VisualizzaDettagliClientePanel = new JPanel();
 		VisualizzaDettagliClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,31 +66,51 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		VisualizzaDettagliClientePanel.add(MenùLateraleTB);
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaDettagliClienteMenùLateraleClientiBottonePremuto();
+			}
+		});
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.setBorder(null);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.VisualizzaDettagliClienteMenùLateraleVenditeBottonePremuto();
+				
+			}
+		});
 		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.setBorderPainted(false);
 		VenditeButton.setBorder(null);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/vendite-menu.png")));
 		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControllerP.VisualizzaDettagliClienteMenùLateraleMagazzinoBottonePremuto();
+			}
+		});
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
 		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzin");
 		MagazzinoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
@@ -92,16 +119,6 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		verticalStrut.setBackground(Color.LIGHT_GRAY);
 
 		MenùLateraleTB.add(verticalStrut);
-		
-		
-		JButton InfoButton = new JButton("");
-		InfoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		InfoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(InfoButton);
-		InfoButton.setBorderPainted(false);
-		InfoButton.setBorder(null);
-		InfoButton.setIcon(new ImageIcon(VisualizzaDettagliClienteJFrame.class.getResource("/Risorse/info-menu.png")));
-		InfoButton.setMaximumSize(new Dimension(65, 70));
 		
 
 		JToolBar PercorsoTB = new JToolBar();
@@ -118,29 +135,35 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				controller.VisualizzaDettagliClienteClientiPercorsoButtonPressed();
+				
+				ControllerC.VisualizzaDettagliClienteClientiPercorsoBottonePremuto();
 				
 			}
 		});
 		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		PercorsoTB.add(ClientiPercorsoButton);
 		
-		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Nuova Tessera");
-		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
+		JButton VisualizzaClientiPercorsoButton = new JButton("> Visualizza Clienti");
+		VisualizzaClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				setVisible(false);
-				controller.RiepilogoTesseraNuovaTesseraPercorsoButtonPressed();
+				ControllerC.VisualizzaDettagliClienteVisualizzaClientiPercorsoBottonePremuto();
 				
 			}
 		});
-		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
+		VisualizzaClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(VisualizzaClientiPercorsoButton);
 		
-		JButton RiepilogoNuovaTesseraPercorsoButton = new JButton("> Riepilogo Nuova Tessera");
-		RiepilogoNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(RiepilogoNuovaTesseraPercorsoButton);
+		JButton RiepilogoTesseraPercorsoButton = new JButton("> Riepilogo Tessera");
+		RiepilogoTesseraPercorsoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				ControllerC.VisualizzaDettagliClienteVisualizzaDettagliClientePercorsoBottonePremuto();	
+			}
+		});
+		RiepilogoTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(RiepilogoTesseraPercorsoButton);
 		
 		JLabel Riepilogo1LB = new JLabel("Questi sono i dettagli del Cliente!");
 		Riepilogo1LB.setHorizontalAlignment(SwingConstants.CENTER);
@@ -185,133 +208,123 @@ public class VisualizzaDettagliClienteJFrame extends JFrame {
 		CodFiscaleLB.setHorizontalAlignment(SwingConstants.RIGHT);
 		CodFiscaleLB.setFont(new Font("Arial", Font.PLAIN, 12));
 		CodFiscaleLB.setBounds(173, 442, 176, 13);
-
 		VisualizzaDettagliClientePanel.add(CodFiscaleLB);
 		
-		
-		
-		
-		JButton VisualizzaDettagliClienteAvantiButton = new JButton("Chiudi");
-		VisualizzaDettagliClienteAvantiButton.addActionListener(new ActionListener() {
+		JButton VisualizzaDettagliClienteChiudiButton = new JButton("Chiudi");
+		VisualizzaDettagliClienteChiudiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 						
-						controller.VisualizzaDettagliClienteChiudiButtonPressed();
-						controller.CompletaTabellaTessera();
+						ControllerC.VisualizzaDettagliClienteChiudiBottonePremuto();
+						ControllerC.CompletaTabellaTessera();
 					
 				
 			}
 		});
-		VisualizzaDettagliClienteAvantiButton.setBounds(808, 491, 103, 31);
-		VisualizzaDettagliClientePanel.add(VisualizzaDettagliClienteAvantiButton);
+		VisualizzaDettagliClienteChiudiButton.setBounds(808, 491, 103, 31);
+		VisualizzaDettagliClientePanel.add(VisualizzaDettagliClienteChiudiButton);
 		
-		RiepilogoNomeTB = new JTextField();
-		RiepilogoNomeTB.setEditable(false);
-		RiepilogoNomeTB.setBounds(399, 178, 215, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoNomeTB);
-		RiepilogoNomeTB.setColumns(10);
+		RiepilogoNomeTF = new JTextField();
+		RiepilogoNomeTF.setEditable(false);
+		RiepilogoNomeTF.setBounds(399, 178, 215, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoNomeTF);
+		RiepilogoNomeTF.setColumns(10);
 		
-		RiepilogoCognomeTB = new JTextField();
-		RiepilogoCognomeTB.setEditable(false);
-		RiepilogoCognomeTB.setColumns(10);
-		RiepilogoCognomeTB.setBounds(399, 233, 215, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoCognomeTB);
+		RiepilogoCognomeTF = new JTextField();
+		RiepilogoCognomeTF.setEditable(false);
+		RiepilogoCognomeTF.setColumns(10);
+		RiepilogoCognomeTF.setBounds(399, 233, 215, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoCognomeTF);
 		
-		RiepilogoSessoTB = new JTextField();
-		RiepilogoSessoTB.setEditable(false);
-		RiepilogoSessoTB.setColumns(10);
-		RiepilogoSessoTB.setBounds(399, 288, 59, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoSessoTB);
+		RiepilogoSessoTF = new JTextField();
+		RiepilogoSessoTF.setEditable(false);
+		RiepilogoSessoTF.setColumns(10);
+		RiepilogoSessoTF.setBounds(399, 288, 59, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoSessoTF);
 		
-		RiepilogoLuogoNTB = new JTextField();
-		RiepilogoLuogoNTB.setEditable(false);
-		RiepilogoLuogoNTB.setColumns(10);
-		RiepilogoLuogoNTB.setBounds(399, 344, 215, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoLuogoNTB);
+		RiepilogoLuogoNTF = new JTextField();
+		RiepilogoLuogoNTF.setEditable(false);
+		RiepilogoLuogoNTF.setColumns(10);
+		RiepilogoLuogoNTF.setBounds(399, 344, 215, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoLuogoNTF);
 		
-		RiepilogoDataNTB = new JTextField();
-		RiepilogoDataNTB.setEditable(false);
-		RiepilogoDataNTB.setColumns(10);
-		RiepilogoDataNTB.setBounds(399, 390, 108, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoDataNTB);
+		RiepilogoDataNTF = new JTextField();
+		RiepilogoDataNTF.setEditable(false);
+		RiepilogoDataNTF.setColumns(10);
+		RiepilogoDataNTF.setBounds(399, 390, 108, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoDataNTF);
 		
-		RiepilogoCFTB = new JTextField();
-		RiepilogoCFTB.setEditable(false);
-		RiepilogoCFTB.setColumns(10);
-		RiepilogoCFTB.setBounds(399, 439, 215, 19);
-		VisualizzaDettagliClientePanel.add(RiepilogoCFTB);
-		
+		RiepilogoCFTF = new JTextField();
+		RiepilogoCFTF.setEditable(false);
+		RiepilogoCFTF.setColumns(10);
+		RiepilogoCFTF.setBounds(399, 439, 215, 19);
+		VisualizzaDettagliClientePanel.add(RiepilogoCFTF);
 	
 		
-		
-		
-		JLabel SlashData2 = new JLabel("/");
-		SlashData2.setBounds(5, 5, 976, 553);
-		VisualizzaDettagliClientePanel.add(SlashData2);
 	}
 
-	public JTextField getRiepilogoNomeTB() {
-		return RiepilogoNomeTB;
+	public JTextField getRiepilogoNomeTF() {
+		return RiepilogoNomeTF;
 	}
 
-	public void setRiepilogoNomeTB(JTextField riepilogoNomeTB) {
-		RiepilogoNomeTB = riepilogoNomeTB;
+	public void setRiepilogoNomeTF(JTextField riepilogoNomeTB) {
+		RiepilogoNomeTF = riepilogoNomeTB;
 	}
 
-	public JTextField getRiepilogoCognomeTB() {
-		return RiepilogoCognomeTB;
+	public JTextField getRiepilogoCognomeTF() {
+		return RiepilogoCognomeTF;
 	}
 
-	public void setRiepilogoCognomeTB(JTextField riepilogoCognomeTB) {
-		RiepilogoCognomeTB = riepilogoCognomeTB;
+	public void setRiepilogoCognomeTF(JTextField riepilogoCognomeTB) {
+		RiepilogoCognomeTF = riepilogoCognomeTB;
 	}
 
-	public JTextField getRiepilogoSessoTB() {
-		return RiepilogoSessoTB;
+	public JTextField getRiepilogoSessoTF() {
+		return RiepilogoSessoTF;
 	}
 
-	public void setRiepilogoSessoTB(JTextField riepilogoSessoTB) {
-		RiepilogoSessoTB = riepilogoSessoTB;
+	public void setRiepilogoSessoTF(JTextField riepilogoSessoTB) {
+		RiepilogoSessoTF = riepilogoSessoTB;
 	}
 
-	public JTextField getRiepilogoLuogoNTB() {
-		return RiepilogoLuogoNTB;
+	public JTextField getRiepilogoLuogoNTF() {
+		return RiepilogoLuogoNTF;
 	}
 
-	public void setRiepilogoLuogoNTB(JTextField riepilogoLuogoNTB) {
-		RiepilogoLuogoNTB = riepilogoLuogoNTB;
+	public void setRiepilogoLuogoNTF(JTextField riepilogoLuogoNTB) {
+		RiepilogoLuogoNTF = riepilogoLuogoNTB;
 	}
 
-	public JTextField getRiepilogoCFTB() {
-		return RiepilogoCFTB;
+	public JTextField getRiepilogoCFTF() {
+		return RiepilogoCFTF;
 	}
 
-	public void setRiepilogoCFTB(JTextField riepilogoCFTB) {
-		RiepilogoCFTB = riepilogoCFTB;
+	public void setRiepilogoCFTF(JTextField riepilogoCFTB) {
+		RiepilogoCFTF = riepilogoCFTB;
 	}
 
-	public JTextField getRiepilogoMeseNTB() {
-		return RiepilogoMeseNTB;
+	public JTextField getRiepilogoMeseNTF() {
+		return RiepilogoMeseNTF;
 	}
 
-	public void setRiepilogoMeseNTB(JTextField riepilogoMeseNTB) {
-		RiepilogoMeseNTB = riepilogoMeseNTB;
+	public void setRiepilogoMeseNTF(JTextField riepilogoMeseNTB) {
+		RiepilogoMeseNTF = riepilogoMeseNTB;
 	}
 
-	public JTextField getRiepilogoAnnoNTB() {
-		return RiepilogoAnnoNTB;
+	public JTextField getRiepilogoAnnoNTF() {
+		return RiepilogoAnnoNTF;
 	}
 
-	public void setRiepilogoAnnoNTB(JTextField riepilogoAnnoNTB) {
-		RiepilogoAnnoNTB = riepilogoAnnoNTB;
+	public void setRiepilogoAnnoNTF(JTextField riepilogoAnnoNTB) {
+		RiepilogoAnnoNTF = riepilogoAnnoNTB;
 	}
 
-	public JTextField getRiepilogoDataNTB() {
-		return RiepilogoDataNTB;
+	public JTextField getRiepilogoDataNTF() {
+		return RiepilogoDataNTF;
 	}
 
-	public void setRiepilogoDataNTB(String riepilogoDataNTB) {
-		RiepilogoDataNTB.setText(riepilogoDataNTB);
+	public void setRiepilogoDataNTF(String riepilogoDataNTB) {
+		RiepilogoDataNTF.setText(riepilogoDataNTB);
 	}
 
 }

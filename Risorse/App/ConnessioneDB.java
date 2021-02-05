@@ -1,4 +1,4 @@
-package ConnessioneDB;
+package Risorse.App;
 
 import java.sql.*;
 

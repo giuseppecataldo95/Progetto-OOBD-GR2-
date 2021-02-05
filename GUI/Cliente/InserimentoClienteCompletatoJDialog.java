@@ -18,13 +18,16 @@ import java.awt.event.ActionEvent;
 public class InserimentoClienteCompletatoJDialog extends JDialog {
 
 	private final JPanel InserimentoClientePanel = new JPanel();
-	private ControllerCliente controller;
+	private ControllerCliente ControllerC;
 
 	
 	public InserimentoClienteCompletatoJDialog(ControllerCliente c)
 	
 	{
-		controller = c;
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		ControllerC = c;
+		setResizable(false);
+		setTitle("ProgettoOOBD2020");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		InserimentoClientePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +40,7 @@ public class InserimentoClienteCompletatoJDialog extends JDialog {
 			
 			{				
 				
-				controller.MostraFinestraClientiDaInserimentoClienteCompletato();
+				ControllerC.MostraFinestraClientiDaInserimentoClienteCompletato();
 			}
 			
 		});

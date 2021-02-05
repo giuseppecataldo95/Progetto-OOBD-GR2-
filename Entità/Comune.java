@@ -2,8 +2,8 @@ package Entità;
 
 public class Comune {
 	
-	String Nome;
-	String Codice;
+	private String Nome;
+	private String Codice;
 
 	
 	public Comune(String nome, String codice) {
