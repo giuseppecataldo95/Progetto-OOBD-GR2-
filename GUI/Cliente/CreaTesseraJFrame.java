@@ -71,20 +71,29 @@ public class CreaTesseraJFrame extends JFrame {
 		JButton ClientiButton = new JButton("");
 		ClientiButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		ClientiButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorder(null);
 		ClientiButton.setBorderPainted(false);
 		ClientiButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		MenùLateraleTB.add(ClientiButton);
 		ClientiButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			
-			ControllerP.CreaTesseraMenùLateraleClientiBottonePremuto();
+			public void actionPerformed(ActionEvent e) {
+				
+				ControllerP.CreaTesseraMenùLateraleClientiBottonePremuto();
 
-		}
-	});
+			}
+		});
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		VenditeButton.setBackground(new Color(255, 153, 51));
+		VenditeButton.setBorderPainted(false);
+		VenditeButton.setBorder(null);
+		VenditeButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setMaximumSize(new Dimension(65, 70));
+		VenditeButton.setToolTipText("Vendite");
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -92,22 +101,16 @@ public class CreaTesseraJFrame extends JFrame {
 				
 			}
 		});
-		VenditeButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		VenditeButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(VenditeButton);
-		VenditeButton.setBorderPainted(false);
-		VenditeButton.setBorder(null);
-		VenditeButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/vendite-menu.png")));
-		VenditeButton.setMaximumSize(new Dimension(65, 70));
 		
 		JButton MagazzinoButton = new JButton("");
 		MagazzinoButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MenùLateraleTB.add(MagazzinoButton);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
 		MagazzinoButton.setIcon(new ImageIcon(CreaTesseraJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MenùLateraleTB.add(MagazzinoButton);
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -131,6 +134,8 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(PercorsoTB);
 		
 		JButton ClientiPercorsoButton = new JButton("> Clienti");
+		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(ClientiPercorsoButton);
 		ClientiPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -138,10 +143,10 @@ public class CreaTesseraJFrame extends JFrame {
 				
 			}
 		});
-		ClientiPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(ClientiPercorsoButton);
 		
 		JButton CreaNuovaTesseraPercorsoButton = new JButton("> Crea Nuova Tessera");
+		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
 		CreaNuovaTesseraPercorsoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -149,8 +154,7 @@ public class CreaTesseraJFrame extends JFrame {
 				
 			}
 		});
-		CreaNuovaTesseraPercorsoButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		PercorsoTB.add(CreaNuovaTesseraPercorsoButton);
+		
 		
 		JLabel RegistrazioneCliente1LB = new JLabel("Benvenuto nella sezione dedicata all'inserimento di un nuovo Cliente!");
 		RegistrazioneCliente1LB.setFont(new Font("Arial", Font.BOLD, 14));
@@ -234,6 +238,8 @@ public class CreaTesseraJFrame extends JFrame {
 		CreaTesseraPanel.add(InserisciSessoCB);
 		
 		JButton IndietroButton = new JButton("Indietro");
+		IndietroButton.setBounds(640, 484, 103, 31);
+		CreaTesseraPanel.add(IndietroButton);
 		IndietroButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -241,10 +247,10 @@ public class CreaTesseraJFrame extends JFrame {
 				
 			}
 		});
-		IndietroButton.setBounds(640, 484, 103, 31);
-		CreaTesseraPanel.add(IndietroButton);
 		
 		JButton AvantiButton = new JButton("Avanti");	
+		AvantiButton.setBounds(799, 484, 103, 31);
+		CreaTesseraPanel.add(AvantiButton);
 		AvantiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -252,8 +258,6 @@ public class CreaTesseraJFrame extends JFrame {
 				Controller.CreaNuovaTesseraAvantiBottonePremuto();
 			}
 		});
-		AvantiButton.setBounds(799, 484, 103, 31);
-		CreaTesseraPanel.add(AvantiButton);
 		
 		
 		

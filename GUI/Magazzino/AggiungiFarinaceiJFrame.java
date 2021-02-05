@@ -77,6 +77,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		MenùLaterale.add(ClientiButton);
 		ClientiButton.setBackground(new Color(255, 153, 51));
 		ClientiButton.setBorderPainted(false);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.setBorder(null);
 		ClientiButton.setIcon(new ImageIcon(AggiungiFarinaceiJFrame.class.getResource("/Risorse/cliente.png")));
 		ClientiButton.setMaximumSize(new Dimension(65, 70));
@@ -89,6 +90,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 			}
 		});
 		MenùLaterale.add(VenditeButton);
+		VenditeButton.setToolTipText("Vendite");
 		VenditeButton.setBackground(new Color(255, 153, 51));
 		VenditeButton.setBorder(null);
 		VenditeButton.setBorderPainted(false);
@@ -107,6 +109,7 @@ public class AggiungiFarinaceiJFrame extends JFrame {
 		MagazzinoButton.setIcon(new ImageIcon(AggiungiFarinaceiJFrame.class.getResource("/Risorse/magazzino.png")));
 		MagazzinoButton.setBorderPainted(false);
 		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		
 		Component VerticalStrut = Box.createVerticalStrut(280);

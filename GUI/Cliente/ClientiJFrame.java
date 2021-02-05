@@ -94,6 +94,11 @@ public class ClientiJFrame extends JFrame {
 		ContainerPanel.add(AggiungiTesseraButton, BorderLayout.WEST);
 		
 		JButton VisualizzaClientiButton = new JButton("Visualizza Clienti");
+		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));
+		VisualizzaClientiButton.setBackground(new Color(255, 204, 153));
+		VisualizzaClientiButton.setMaximumSize(new Dimension(186, 102));
+		VisualizzaClientiButton.setPreferredSize(new Dimension(186, 23));
+		ContainerPanel.add(VisualizzaClientiButton, BorderLayout.EAST);
 		VisualizzaClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -101,11 +106,6 @@ public class ClientiJFrame extends JFrame {
 				ControllerC.CompletaTabellaTessera();
 			}
 		});
-		VisualizzaClientiButton.setFont(new Font("Arial", Font.BOLD, 12));
-		VisualizzaClientiButton.setBackground(new Color(255, 204, 153));
-		VisualizzaClientiButton.setMaximumSize(new Dimension(186, 102));
-		VisualizzaClientiButton.setPreferredSize(new Dimension(186, 23));
-		ContainerPanel.add(VisualizzaClientiButton, BorderLayout.EAST);
 		
 		JLabel ClientiLB = new JLabel("Sezione Clienti");
 		ClientiLB.setPreferredSize(new Dimension(90, 50));
@@ -128,6 +128,13 @@ public class ClientiJFrame extends JFrame {
 		
 		
 		JButton ClientiButton = new JButton("");
+		ClientiButton.setBackground(new Color(255, 153, 51));
+		ClientiButton.setBorderPainted(false);
+		ClientiButton.setBorder(null);
+		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
+		ClientiButton.setMaximumSize(new Dimension(65, 70));
+		MenùLateraleTB.add(ClientiButton);
+		ClientiButton.setToolTipText("Clienti");
 		ClientiButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -136,15 +143,16 @@ public class ClientiJFrame extends JFrame {
 				
 			}
 		});
-		ClientiButton.setBackground(new Color(255, 153, 51));
-		ClientiButton.setBorderPainted(false);
-		ClientiButton.setBorder(null);
-		MenùLateraleTB.add(ClientiButton);
-		ClientiButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/cliente.png")));
-		ClientiButton.setMaximumSize(new Dimension(65, 70));
 		
 		
 		JButton VenditeButton = new JButton("");
+		VenditeButton.setBackground(new Color(255, 153, 51));
+		VenditeButton.setBorder(null);
+		VenditeButton.setBorderPainted(false);
+		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
+		VenditeButton.setMaximumSize(new Dimension(65, 70));
+		VenditeButton.setToolTipText("Vendite");
+		MenùLateraleTB.add(VenditeButton);
 		VenditeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -152,15 +160,15 @@ public class ClientiJFrame extends JFrame {
 				
 			}
 		});
-		VenditeButton.setBackground(new Color(255, 153, 51));
-		VenditeButton.setBorder(null);
-		VenditeButton.setBorderPainted(false);
-		VenditeButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/vendite-menu.png")));
-		VenditeButton.setMaximumSize(new Dimension(65, 70));
-		MenùLateraleTB.add(VenditeButton);
 		
 		
 		JButton MagazzinoButton = new JButton("");
+		MagazzinoButton.setBackground(new Color(255, 153, 51));
+		MagazzinoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/magazzino.png")));
+		MagazzinoButton.setBorderPainted(false);
+		MagazzinoButton.setBorder(null);
+		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
+		MagazzinoButton.setToolTipText("Magazzino");
 		MagazzinoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -168,11 +176,6 @@ public class ClientiJFrame extends JFrame {
 				
 			}
 		});
-		MagazzinoButton.setBackground(new Color(255, 153, 51));
-		MagazzinoButton.setIcon(new ImageIcon(ClientiJFrame.class.getResource("/Risorse/magazzino.png")));
-		MagazzinoButton.setBorderPainted(false);
-		MagazzinoButton.setBorder(null);
-		MagazzinoButton.setMaximumSize(new Dimension(65, 70));
 		MenùLateraleTB.add(MagazzinoButton);
 	}
 }
